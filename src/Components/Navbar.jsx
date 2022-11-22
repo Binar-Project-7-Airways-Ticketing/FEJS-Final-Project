@@ -5,6 +5,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import "./All.css";
 
 export default function Navbar() {
+
   return (
     <div className="ffff">
       <div className="container">
@@ -24,12 +25,12 @@ export default function Navbar() {
           <div className="search">
             <BsSearch />
             <AiOutlineUser />
-            <a>Login</a>
+            <a href="/login">Login</a>
             <p>|</p>
             <a>Sign up</a>
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div> 
+  ); 
 }
