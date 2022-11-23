@@ -1,15 +1,181 @@
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /*-------------------------Header---------------------------------*/
-.wrap-header{
+header {
   background: #3f4444;
-  height: 100vh;
+  height: 80vh;
+  border-radius: 0 0 20px 20px;
+}
+.wrap-header {
   width: 100%;
 }
+.header-main {
+  display: flex;
+  width: 100%;
+  gap: 50px;
+  
+}
+.img1 {
+  background: #f1efe9;
+  width: 100%;
+  padding: 8px;
+  border-radius: 20px;
+}
+.img1 img {
+  border-radius: 20px;
+}
+.img2 {
+  width: 100%;
+}
+.wrap-booking {
+  margin-top: 50px;
+  width: 100%;
+  height: fit-content;
+  /* padding: 20px; */
+  border-radius: 20px 20px 0 0;
+  background: white;
+  height: 50px;
+}
+.booking {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.book-default {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  transition: all ease-in-out 0.8s;
+  cursor: pointer;
+  background: #f1efe9;
+  border-radius: 20px 0 0 0;
+  color: #cba052;
+  gap: 30px;
+  font-size: 20px;
+}
+.my-trip-default {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  transition: all ease-in-out 0.8s;
+  cursor: pointer;
+  background: #f1efe9;
+  color: #cba052;
+  gap: 30px;
+  font-size: 20px;
+}
+.check-in-default {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  transition: all ease-in-out 0.8s;
+  cursor: pointer;
+  background: #f1efe9;
+  color: #cba052;
+  gap: 30px;
+  font-size: 20px;
+}
+.flight-status-default {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  transition: all ease-in-out 0.8s;
+  cursor: pointer;
+  background: #f1efe9;
+  border-radius: 0 20px 0 0;
+  color: #cba052;
+  gap: 30px;
+  font-size: 20px;
+}
+.book-cst {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  transition: all ease-in-out 0.8s;
+  cursor: pointer;
+  background:#cba052;
+  color: #f1efe9;
+  border-radius: 20px 0 0 0;
+  gap: 30px;
+  font-size: 20px;
+}
+.my-trip-cst {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  transition: all ease-in-out 0.8s;
+  cursor: pointer;
+  background:#cba052;
+  color: #f1efe9;
+  gap: 30px;
+  font-size: 20px;
+}
+.check-in-cst {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  transition: all ease-in-out 0.8s;
+  cursor: pointer;
+  background:#cba052;
+  color: #f1efe9;
+  gap: 30px;
+  font-size: 20px;
+}
+.flight-status-cst {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  transition: all ease-in-out 0.8s;
+  cursor: pointer;
+  background:#cba052;
+  color: #f1efe9;
+  border-radius: 0 20px 0 0;
+  gap: 30px;
+  font-size: 20px;
+}
+/* .book:hover{
+  background: #f1efe9;
+  border-radius: 20px 0 0 0;
+}
+.check-in:hover{
+  background: #f1efe9;
 
+}
+.flight-status:hover{
+  background: #f1efe9;
+  border-radius: 0 20px 0 0;
+}
+.my-trip:hover{
+  background: #f1efe9;
 
+} */
+.detail-booking {
+  width: 100%;
+  background: #f1efe9;
+  height: 100px;
+  border-radius: 0 0 20px 20px;
+  color: #00843d;
+}
 
 /*-------------------------NAVBAR---------------------------------*/
-.ffff{
+.ffff {
   position: fixed;
   z-index: 11;
   top: 0;
@@ -22,7 +188,6 @@
   align-items: center;
   gap: 20px;
   padding: 10px 0;
- 
 }
 .logo {
   width: 30%;
@@ -38,46 +203,46 @@
   margin-inline-start: 0;
   margin-inline-end: 0;
   padding-inline-start: 0;
-  gap:20px;
+  gap: 20px;
   justify-content: space-around;
   color: #f1efe9;
 }
-.hr{
+.hr {
   color: #f4a93f;
 }
-.search{
-    color: #f1efe9;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    width: 30%;
-    justify-content: flex-end;
+.search {
+  color: #f1efe9;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 30%;
+  justify-content: flex-end;
 }
-.search a{
-    font-size: 12px;
+.search a {
+  font-size: 12px;
 }
 
 /*-------------------------FOOTER---------------------------------*/
-footer{
+footer {
   background: #3f4444;
   width: 100%;
 }
-.wrap-footer{
+.wrap-footer {
   display: flex;
   flex-direction: row;
-  gap: 10px;
-  padding: 20PX 0;
+  gap: 50px;
+  padding: 20px 0;
   color: #f1efe9;
 }
-.wrap-footer h6{
+.wrap-footer h6 {
   font-size: 15px;
   font-weight: 100;
   margin-bottom: 10px;
 }
-.wrap-footer p{
+.wrap-footer p {
   font-size: 13px;
 }
-.menu-footer{
+.menu-footer {
   list-style: none;
   display: flex;
   flex-direction: column;

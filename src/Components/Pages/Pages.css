@@ -8,4 +8,13 @@
     background: #3f4444;
     
 }
+<<<<<<< HEAD
 
+=======
+@media only screen and (max-width: 1024px) {
+  .container{
+    width: 95%;
+   
+  }
+}
+>>>>>>> fe8aa431d4717eb2f8fe5c3de795265d71fe69a9
