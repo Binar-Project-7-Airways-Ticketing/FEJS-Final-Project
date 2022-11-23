@@ -73,7 +73,6 @@ h5 {
 header {
   background: #3f4444;
   height: 80vh;
-  border-radius: 0 0 20px 20px;
   margin-bottom: 100px;
 }
 .wrap-header {
@@ -373,7 +372,7 @@ header {
   margin-inline-end: 0;
   padding-inline-start: 0;
   gap: 20px;
-  justify-content: space-around;
+  justify-content: flex-start;
   color: #f1efe9;
 }
 .hr {
@@ -384,11 +383,36 @@ header {
   display: flex;
   gap: 10px;
   align-items: center;
-  width: 30%;
+  width: 100%;
   justify-content: flex-end;
 }
 .search a {
   font-size: 12px;
+}
+.notif{
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  cursor: pointer;
+}
+.notif p{
+  font-size: 12px;
+  font-family: 'Roboto';
+}
+.ant-input{
+  width:200px;
+  background: #f1efe9;
+
+  transition: none;
+}
+.frm{
+  visibility: hidden;
+}
+.user{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 /*-------------------------FOOTER---------------------------------*/
