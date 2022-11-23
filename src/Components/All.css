@@ -305,10 +305,73 @@ footer {
   }
   
   .login-form button {
-    @apply cursor-pointer bg-[#157ae1] text-[#f9f9f9] border-0 font-[600] tracking-[2px];
+    @apply cursor-pointer bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px];
   }
   
   .login-form a {
+    @apply text-[#157ae1] text-[16px] text-left;
+    text-decoration: none;
+  }
+
+  /*-------------------------REGISTER---------------------------------*/
+  .register-page {
+    @apply w-screen flex min-h-screen overflow-x-hidden bg-[#3f4444];
+  }
+
+  .register-container {
+    @apply container flex justify-between w-full mt-[80px];
+  }
+
+  .register-container-left {
+    @apply border-r border-brand-gray;
+  }
+
+  .register-container-left,
+  .register-container-right {
+    @apply block p-8 w-full;
+  }
+  .register-form {
+    @apply grid gap-[16px] w-full m-0 justify-items-center;
+  }
+
+  .register-form-tittle {
+    @apply flex justify-start mb-4 w-full;
+  }
+
+  .register-form-tittle h1 {
+    @apply text-5xl text-brand-nude;
+  }
+
+  .textbox {
+    @apply relative w-full mb-2;
+  }
+
+  .textbox span {
+    @apply absolute top-[50%] left-[16px] translate-x-0 translate-y-[-50%];
+  }
+
+  .register-form input,
+  .register-form button {
+    @apply w-full h-[60px] outline-none p-0 text-[16px] rounded-[8px];
+  }
+
+  .register-form input {
+    @apply bg-transparent border-[2px] border-brand-gray text-[18px] px-[50px] py-[20px];
+  }
+
+  .register-form input:focus {
+    @apply border-[#157ae1];
+  }
+
+  .register-form input:focus ~ span {
+    @apply text-[#157ae1];
+  }
+
+  .register-form button {
+    @apply cursor-pointer bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px];
+  }
+
+  .register-form a {
     @apply text-[#157ae1] text-[16px] text-left;
     text-decoration: none;
   }

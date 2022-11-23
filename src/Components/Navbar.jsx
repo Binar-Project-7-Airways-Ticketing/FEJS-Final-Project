@@ -30,7 +30,7 @@ export default function Navbar() {
             <AiOutlineUser />
             <a href="/login">Login</a>
             <p>|</p>
-            <a>Sign up</a>
+            <a href="/register">Sign up</a>
           </div>
         </div>
       </div>
