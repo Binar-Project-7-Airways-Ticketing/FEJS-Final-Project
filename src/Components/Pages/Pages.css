@@ -6,6 +6,7 @@
 
 .Homepage{
     background: #3f4444;
+    width: 100vw;
     
 }
 @media only screen and (max-width: 1024px) {

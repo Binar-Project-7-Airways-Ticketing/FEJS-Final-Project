@@ -8,6 +8,26 @@ export default function Homepage() {
     <div>
       <Header />
       <Navbar />
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
+      <h1>AKKK</h1>
       <Footer />
     </div>
   );

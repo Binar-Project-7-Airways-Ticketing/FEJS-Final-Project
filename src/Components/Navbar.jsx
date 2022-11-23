@@ -26,7 +26,7 @@ export default function Navbar() {
             <BsSearch />
             <AiOutlineUser />
             <a href="/login">Login</a>
-            <p>|</p>
+            <p style={{display:"flex", justifyContent:"center", margin:"0"}}>|</p>
             <a>Sign up</a>
           </div>
         </div>
