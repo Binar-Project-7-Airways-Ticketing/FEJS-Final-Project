@@ -122,31 +122,5 @@ export const Login = () => {
             </main>
             <Footer />
         </React.Fragment>
-        // <div class="login">
-        //     <div class="avatar">
-        //         <img src="./image/avatar.jpg" />
-        //     </div>
-        //     <h2>SIGN IN</h2>
-        //     <h3>Welcome back</h3>
-        // <form class="login-form">
-        //     <div class="textbox">
-        //         <input type="email" placeholder="Email" />
-        //         <span class="material-symbols-outlined">
-        //             <UserOutlined />
-        //         </span>
-        //     </div>
-        //     <div class="textbox">
-        //         <input type="password" placeholder="Password" />
-        //         <span class="material-symbols-outlined">
-        //             <LockOutlined />
-        //         </span>
-        //     </div>
-        //     <button type="submit">LOGIN</button>
-        //     <a href="#">
-        //         Forgot your credentials?
-        //     </a>
-        //     <button type="submit">LOGIN With GOOGLE</button>
-        // </form>
-        // </div>
     )
 }
