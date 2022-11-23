@@ -3,7 +3,7 @@ import logo from "../logo3.png";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import "./All.css";
-
+import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <div className="ffff">
@@ -19,6 +19,9 @@ export default function Navbar() {
             <li>Review</li>
             <li>Flight Info</li>
             <li>Contact Us</li>
+            <Link to={"/update"}>
+              <button>update</button>
+            </Link>
           </ul>
 
           <div className="search">
