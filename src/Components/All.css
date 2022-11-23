@@ -394,6 +394,8 @@ header {
   font-size: 20px;
   align-items: center;
   cursor: pointer;
+  justify-content: center;
+  padding-top:5px ;
 }
 .notif p{
   font-size: 12px;
@@ -402,8 +404,9 @@ header {
 .ant-input{
   width:200px;
   background: #f1efe9;
-
+  border: transparent;
   transition: none;
+  border-radius: 13px;
 }
 .frm{
   visibility: hidden;
@@ -583,5 +586,12 @@ footer {
   .register-form a {
     @apply text-[#157ae1] text-[16px] text-left;
     text-decoration: none;
+  }
+}
+
+/*---------------Navbar Media Screen---------------*/
+@media only screen and (max-width: 1280px) {
+  .ant-input{
+    width: 150px;
   }
 }
