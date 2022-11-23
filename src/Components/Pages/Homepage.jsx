@@ -8,7 +8,7 @@ export default function Homepage() {
     <div>
       <Header />
       <Navbar />
-      <Footer/>
+      <Footer />
     </div>
   );
 }
