@@ -1,4 +1,6 @@
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /*-------------------------Header---------------------------------*/
 header {
   background: #3f4444;
