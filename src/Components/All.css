@@ -1,20 +1,99 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h5 {
+  margin: 0;
+}
+/*-------------------------LOGIN---------------------------------*/
+@layer components {
+  .login-page {
+    @apply w-screen flex min-h-screen overflow-x-hidden bg-[#3f4444];
+  }
+
+  .login-container {
+    @apply container flex justify-between w-full mt-[80px];
+  }
+
+  .login-container-left {
+    @apply border-r border-brand-gray;
+  }
+
+  .login-container-left,
+  .login-container-right {
+    @apply block p-8 w-full;
+  }
+  .login-form {
+    @apply grid gap-[16px] w-full m-0 justify-items-center;
+  }
+
+  .login-form-tittle {
+    @apply flex justify-start mb-4 w-full;
+  }
+
+  .login-form-tittle h1 {
+    @apply text-5xl text-brand-nude;
+  }
+
+  .textbox {
+    @apply relative w-full mb-2;
+  }
+
+  .textbox span {
+    @apply absolute top-[50%] left-[16px] translate-x-0 translate-y-[-50%];
+  }
+
+  .login-form input,
+  .login-form button {
+    @apply w-full h-[60px] outline-none p-0 text-[16px] rounded-[8px];
+  }
+
+  .login-form input {
+    @apply bg-transparent border-[2px] border-brand-gray text-[18px] px-[50px] py-[20px];
+  }
+
+  .login-form input:focus {
+    @apply border-[#157ae1];
+  }
+
+  .login-form input:focus ~ span {
+    @apply text-[#157ae1];
+  }
+
+  .login-form button {
+    @apply cursor-pointer bg-[#157ae1] text-[#f9f9f9] border-0 font-[600] tracking-[2px];
+  }
+
+  .login-form a {
+    @apply text-[#157ae1] text-[16px] text-left;
+    text-decoration: none;
+  }
+}
 /*-------------------------Header---------------------------------*/
 header {
   background: #3f4444;
   height: 80vh;
-  border-radius: 0 0 20px 20px;
+  margin-bottom: 100px;
 }
 .wrap-header {
   width: 100%;
 }
+
 .header-main {
   display: flex;
   width: 100%;
   gap: 50px;
-  
+  justify-content: center;
+  padding: 250px 0;
+}
+.slogan {
+  width: 500px;
+}
+.slogan h1 {
+  font-size: 40px;
+  font-weight: bolder;
+  color: #f1efe9;
+  text-align: center;
 }
 .img1 {
   background: #f1efe9;
@@ -104,7 +183,7 @@ header {
   justify-content: center;
   transition: all ease-in-out 0.8s;
   cursor: pointer;
-  background:#cba052;
+  background: #cba052;
   color: #f1efe9;
   border-radius: 20px 0 0 0;
   gap: 30px;
@@ -118,7 +197,7 @@ header {
   justify-content: center;
   transition: all ease-in-out 0.8s;
   cursor: pointer;
-  background:#cba052;
+  background: #cba052;
   color: #f1efe9;
   gap: 30px;
   font-size: 20px;
@@ -131,7 +210,7 @@ header {
   justify-content: center;
   transition: all ease-in-out 0.8s;
   cursor: pointer;
-  background:#cba052;
+  background: #cba052;
   color: #f1efe9;
   gap: 30px;
   font-size: 20px;
@@ -144,34 +223,122 @@ header {
   justify-content: center;
   transition: all ease-in-out 0.8s;
   cursor: pointer;
-  background:#cba052;
+  background: #cba052;
   color: #f1efe9;
   border-radius: 0 20px 0 0;
   gap: 30px;
   font-size: 20px;
 }
-/* .book:hover{
-  background: #f1efe9;
-  border-radius: 20px 0 0 0;
-}
-.check-in:hover{
-  background: #f1efe9;
 
-}
-.flight-status:hover{
-  background: #f1efe9;
-  border-radius: 0 20px 0 0;
-}
-.my-trip:hover{
-  background: #f1efe9;
-
-} */
-.detail-booking {
+.wrap-detail-booking {
   width: 100%;
   background: #f1efe9;
-  height: 100px;
+  height: fit-content;
   border-radius: 0 0 20px 20px;
-  color: #00843d;
+  color: #cba052;
+  padding: 30px;
+}
+.wrap-detail-title {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.detail-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+}
+.detail-title h2 {
+  font-size: 20px;
+  font-weight: bolder;
+}
+.detail-booking {
+  display: flex;
+  width: 100%;
+}
+.inpt-book {
+  width: 100%;
+  height: 70px;
+  border: 1px solid rgb(178, 178, 178);
+  border-radius: 10px;
+  padding: 20px;
+}
+.inpt-trip {
+  width: 50%;
+  height: 70px;
+  border: 1px solid rgb(178, 178, 178);
+  border-radius: 10px;
+  padding: 20px;
+}
+.inpt-date {
+  width: 100%;
+  height: 70px;
+  border: 1px solid rgb(178, 178, 178);
+  border-radius: 10px;
+  padding: 5px;
+}
+.wrap-input {
+  position: relative;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  width: 100%;
+}
+.input{
+  position: relative;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  width: 225%;
+}
+.swap {
+  left: 45%;
+  position: absolute;
+  background: #f1efe9;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgb(178, 178, 178);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrap-date {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.find{
+  margin-top: 20px;
+  display: flex;
+  width: 42%;
+  justify-content: center;
+}
+.btn-flight{
+  width: 50%;
+  background: #cba052;
+  color: #f1efe9;
+  height: 50px;
+  border-radius: 8px;
+  padding: 5px 0;
+}
+.date {
+  width: 100%;
+}
+.ant-picker{
+  border-color: transparent;
+}
+.ant-picker:hover{
+  border-color: transparent;
+}
+.ant-picker-focused{
+  box-shadow:0 0 0 2px rgba(203, 161, 82, 0.196);
+}
+.ant-picker-range .ant-picker-active-bar{
+  background:#cba052;
 }
 
 /*-------------------------NAVBAR---------------------------------*/
@@ -180,6 +347,8 @@ header {
   z-index: 11;
   top: 0;
   width: 100vw;
+  height: fit-content;
+  background: #8c857b;
 }
 .wrap-navbar {
   width: 100%;
@@ -204,7 +373,7 @@ header {
   margin-inline-end: 0;
   padding-inline-start: 0;
   gap: 20px;
-  justify-content: space-around;
+  justify-content: flex-start;
   color: #f1efe9;
 }
 .hr {
@@ -215,12 +384,111 @@ header {
   display: flex;
   gap: 10px;
   align-items: center;
-  width: 30%;
+  width: 100%;
   justify-content: flex-end;
 }
 .search a {
   font-size: 12px;
 }
+.notif{
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  padding-top:5px ;
+}
+.notif p{
+  font-size: 12px;
+  font-family: 'Roboto';
+}
+.ant-input{
+  width:200px;
+  background: #f1efe9;
+  border: transparent;
+  transition: none;
+  border-radius: 13px;
+}
+.frm{
+  visibility: hidden;
+}
+.user{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.user img{
+  width: 50px;
+  height: 50px;
+}
+/*-------------------------Resullt Booking---------------------------------*/
+.main-result-booking{
+  margin-top: 80px;
+  background: #f1efe9;
+}
+.wrap-result-booking{
+  padding: 50px 0;
+}
+.title-result-booking{
+  width: 50%;
+  color: #3f4444;
+  margin-bottom: 50px;
+}
+.title-result-booking h1{
+  font-size: 40px;
+  line-height: 3.7rem;
+}
+.card-result-booking{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.wrap-card-result-booking{
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid rgb(178, 178, 178);
+  padding: 20px;
+  background: #8c857b;
+  color: #f1efe9;
+  display: flex;
+  gap: 20px;
+}
+.result-booking{
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
+.card-class{
+  border: 1px solid rgb(178, 178, 178);
+  width: 100%;
+  height: 250px;
+  border-radius: 20px;
+  background: #f1efe9;
+  color: #3f4444;
+  padding: 20px;
+}
+.card-detail{
+  border: 1px solid rgb(178, 178, 178);
+  width: 100%;
+  height: 250px;
+  border-radius: 20px;
+  background: #f1efe9;
+  color: #3f4444;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-detail-flight{
+  background: #cba052;
+  height: 30px;
+  width: fit-content;
+  font-size: 13px;
+  color: #f1efe9;
+  padding: 6px;
+  border-radius: 5px;
+}
+
 
 /*-------------------------FOOTER---------------------------------*/
 footer {
@@ -248,11 +516,27 @@ footer {
   flex-direction: column;
   gap: 10px;
 }
+.menu-footer h6{
+  margin: 0;
+}
+.social-media {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.facebook {
+  font-size: 25px;
+  color: blue;
+}
+.youtube {
+  font-size: 25px;
+  color: red;
+}
 
 /*-------------------------LOGIN---------------------------------*/
 @layer components {
   .login-page {
-    @apply w-screen flex min-h-screen overflow-x-hidden bg-[#3f4444];
+    @apply w-full flex min-h-screen overflow-x-hidden bg-[#3f4444];
   }
 
   .login-container {
@@ -423,5 +707,12 @@ footer {
 
   .register-account a {
     @apply cursor-pointer justify-center h-[60px] w-[50%] p-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px];
+  }
+}
+
+/*---------------Navbar Media Screen---------------*/
+@media only screen and (max-width: 1280px) {
+  .ant-input{
+    width: 150px;
   }
 }

@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function CheckIn() {
   return (
-    <div className="detail-booking">Check In</div>
+    <div className="wrap-detail-booking">Check In</div>
   )
 }
