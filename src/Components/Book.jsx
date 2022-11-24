@@ -2,31 +2,37 @@ import React from "react";
 import { AiOutlineSwap } from "react-icons/ai";
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space, DatePicker } from "antd";
+import { useNavigate } from "react-router-dom";
 
-const items = [
-  {
-    label: <a href="#">Return</a>,
-    key: "0",
-  },
-  {
-    label: <a href="#">One Way</a>,
-    key: "1",
-  },
-  {
-    label: "Multiple cities or countries",
-    key: "3",
-  },
-];
 
-const { RangePicker } = DatePicker;
-const onChange = (value, dateString) => {
-  console.log("Selected Time: ", value);
-  console.log("Formatted Selected Time: ", dateString);
-};
-const onOk = (value) => {
-  console.log("onOk: ", value);
-};
+
 export default function Book() {
+  const navigate = useNavigate()
+  const items = [
+    {
+      label: <a href="#">Return</a>,
+      key: "0",
+    },
+    {
+      label: <a href="#">One Way</a>,
+      key: "1",
+    },
+    {
+      label: "Multiple cities or countries",
+      key: "3",
+    },
+  ];
+  
+  const { RangePicker } = DatePicker;
+  const onChange = (value, dateString) => {
+    console.log("Selected Time: ", value);
+    console.log("Formatted Selected Time: ", dateString);
+  };
+  const onOk = (value) => {
+    console.log("onOk: ", value);
+  };
+  
+
   return (
     <>
       <div className="wrap-detail-booking">
@@ -82,6 +88,11 @@ export default function Book() {
               <p>Passenger/Class</p>
             </div>
           </div>
+        </div>
+        <div className="find">
+          <button onClick={()=>navigate('/booking')} className="btn-flight">
+            <h5>Find flight</h5>
+          </button>
         </div>
       </div>
     </>

@@ -229,40 +229,26 @@ header {
   gap: 30px;
   font-size: 20px;
 }
-/* .book:hover{
-  background: #f1efe9;
-  border-radius: 20px 0 0 0;
-}
-.check-in:hover{
-  background: #f1efe9;
 
-}
-.flight-status:hover{
-  background: #f1efe9;
-  border-radius: 0 20px 0 0;
-}
-.my-trip:hover{
-  background: #f1efe9;
-
-} */
 .wrap-detail-booking {
   width: 100%;
   background: #f1efe9;
   height: fit-content;
   border-radius: 0 0 20px 20px;
   color: #cba052;
+  padding: 30px;
 }
 .wrap-detail-title {
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-bottom: 20px;
 }
 .detail-title {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px 0;
   width: 500px;
 }
 .detail-title h2 {
@@ -270,7 +256,6 @@ header {
   font-weight: bolder;
 }
 .detail-booking {
-  padding: 0 30px 30px 30px;
   display: flex;
   width: 100%;
 }
@@ -326,6 +311,20 @@ header {
   flex-direction: column;
   gap: 2px;
 }
+.find{
+  margin-top: 20px;
+  display: flex;
+  width: 42%;
+  justify-content: center;
+}
+.btn-flight{
+  width: 50%;
+  background: #cba052;
+  color: #f1efe9;
+  height: 50px;
+  border-radius: 8px;
+  padding: 5px 0;
+}
 .date {
   width: 100%;
 }
@@ -348,6 +347,8 @@ header {
   z-index: 11;
   top: 0;
   width: 100vw;
+  height: fit-content;
+  background: #8c857b;
 }
 .wrap-navbar {
   width: 100%;
@@ -421,6 +422,73 @@ header {
   width: 50px;
   height: 50px;
 }
+/*-------------------------Resullt Booking---------------------------------*/
+.main-result-booking{
+  margin-top: 80px;
+  background: #f1efe9;
+}
+.wrap-result-booking{
+  padding: 50px 0;
+}
+.title-result-booking{
+  width: 50%;
+  color: #3f4444;
+  margin-bottom: 50px;
+}
+.title-result-booking h1{
+  font-size: 40px;
+  line-height: 3.7rem;
+}
+.card-result-booking{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.wrap-card-result-booking{
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid rgb(178, 178, 178);
+  padding: 20px;
+  background: #8c857b;
+  color: #f1efe9;
+  display: flex;
+  gap: 20px;
+}
+.result-booking{
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
+.card-class{
+  border: 1px solid rgb(178, 178, 178);
+  width: 100%;
+  height: 250px;
+  border-radius: 20px;
+  background: #f1efe9;
+  color: #3f4444;
+  padding: 20px;
+}
+.card-detail{
+  border: 1px solid rgb(178, 178, 178);
+  width: 100%;
+  height: 250px;
+  border-radius: 20px;
+  background: #f1efe9;
+  color: #3f4444;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-detail-flight{
+  background: #cba052;
+  height: 30px;
+  width: fit-content;
+  font-size: 13px;
+  color: #f1efe9;
+  padding: 6px;
+  border-radius: 5px;
+}
+
 
 /*-------------------------FOOTER---------------------------------*/
 footer {
@@ -468,7 +536,7 @@ footer {
 /*-------------------------LOGIN---------------------------------*/
 @layer components {
   .login-page {
-    @apply w-screen flex min-h-screen overflow-x-hidden bg-[#3f4444];
+    @apply w-full flex min-h-screen overflow-x-hidden bg-[#3f4444];
   }
 
   .login-container {
