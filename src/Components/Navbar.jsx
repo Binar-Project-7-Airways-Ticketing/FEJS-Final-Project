@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../logo3.png";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineUser, AiOutlineBell } from "react-icons/ai";
@@ -9,6 +9,9 @@ import { Dropdown, Space, DatePicker, Input } from "antd";
 export default function Navbar() {
   const [search, setSearch] = useState(false);
   const [token, setToken] = useState(false);
+
+  const [isLogin, setIsLogin] = useState(false);
+
   const srch = () => {
     setSearch(true);
   };
@@ -29,6 +32,21 @@ export default function Navbar() {
       key: "3",
     },
   ];
+
+  // hook handle login
+  useEffect(() => {
+    if (localStorage.getItem("auth")) {
+      setIsLogin(true);
+    }
+    else {
+      setIsLogin(false);
+    }
+  }, [setIsLogin])
+
+  const logOutHandler = () => {
+    localStorage.removeItem("auth");
+    return setIsLogin(false);
+  }
 
   return (
     <>
@@ -131,9 +149,19 @@ export default function Navbar() {
                 </div>
                 <div className="user">
                   <AiOutlineUser style={{ fontSize: "20px" }} />
-                  <a href="/login">Login</a>
-                  <p>|</p>
-                  <a href="/register">Sign up</a>
+                  {
+                    isLogin ? (
+                      <>
+                        <button onClick={() => {logOutHandler()}}>Log Out</button>
+                      </>
+                    ) : (
+                      <>
+                        <a href="/login">Login</a>
+                        <p>|</p>
+                        <a href="/register">Sign up</a>
+                      </>
+                    )
+                  }
                 </div>
               </div>
             </div>

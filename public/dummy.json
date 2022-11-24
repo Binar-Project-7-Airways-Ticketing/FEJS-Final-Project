@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "email": "lusi@gmail.com",
+      "password": "$2a$10$SZNrLOXYuwN3j7xem0ECtOJUYiBMn1Bg1egVgZG4aKzB0RAx4hzey",
+      "firstname": "lusi",
+      "lastname": "ph",
+      "birth": "2022-11-24",
+      "gender": "perempuan",
+      "role": "buyer",
+      "id": 1
+    }
+  ]
+}
