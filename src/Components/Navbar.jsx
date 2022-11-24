@@ -67,16 +67,8 @@ export default function Navbar() {
               </ul>
 
               <div className="search">
-                {search ? (
-                  <Input placeholder="Basic usage" />
-                ) : (
-                  <Input className="frm" placeholder="Basic usage" />
-                )}
-                {search ? (
-                  <BsSearch onClick={srchClose} />
-                ) : (
-                  <BsSearch onClick={srch} />
-                )}
+                {search ? <Input placeholder="Basic usage" /> : <Input className="frm" placeholder="Basic usage" />}
+                {search ? <BsSearch onClick={srchClose} /> : <BsSearch onClick={srch} />}
 
                 <div className="notif">
                   <Dropdown
@@ -118,19 +110,14 @@ export default function Navbar() {
                 <li>Review</li>
                 <li>Flight Info</li>
                 <li>Contact Us</li>
+                <Link to={"/profile"}>
+                  <button>profile</button>
+                </Link>
               </ul>
 
               <div className="search">
-                {search ? (
-                  <Input placeholder="Basic usage" />
-                ) : (
-                  <Input className="frm" placeholder="Basic usage" />
-                )}
-                {search ? (
-                  <BsSearch onClick={srchClose} />
-                ) : (
-                  <BsSearch onClick={srch} />
-                )}
+                {search ? <Input placeholder="Basic usage" /> : <Input className="frm" placeholder="Basic usage" />}
+                {search ? <BsSearch onClick={srchClose} /> : <BsSearch onClick={srch} />}
 
                 <div className="notif">
                   <Dropdown
