@@ -9,6 +9,16 @@
       "gender": "perempuan",
       "role": "buyer",
       "id": 1
+    },
+    {
+      "email": "coba@gmail.com",
+      "password": "$2a$10$icu2NBo3QyuSmi1/52hlmu/uBZBHkdk/AwLjRuuFIetokmjVJIcY2",
+      "firstname": "Coba",
+      "lastname": "coba",
+      "birth": "2002-12-12",
+      "gender": "wanita",
+      "role": "buyer",
+      "id": 2
     }
   ]
 }
