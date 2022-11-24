@@ -67,8 +67,21 @@ export default function Navbar() {
               </ul>
 
               <div className="search">
+<<<<<<< HEAD
+                {search ? (
+                  <Input placeholder="Search Cities or Countries" />
+                ) : (
+                  <Input className="frm" placeholder="Search Cities or Countries" />
+                )}
+                {search ? (
+                  <BsSearch onClick={srchClose} />
+                ) : (
+                  <BsSearch onClick={srch} />
+                )}
+=======
                 {search ? <Input placeholder="Basic usage" /> : <Input className="frm" placeholder="Basic usage" />}
                 {search ? <BsSearch onClick={srchClose} /> : <BsSearch onClick={srch} />}
+>>>>>>> 971ffbcbe9db49933b0de0ab782be245e50e3d4c
 
                 <div className="notif">
                   <Dropdown
