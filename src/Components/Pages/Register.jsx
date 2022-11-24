@@ -2,8 +2,15 @@ import React, { useEffect, useState } from "react";
 import { UserOutlined, LockOutlined, MailOutlined, CalendarOutlined } from '@ant-design/icons';
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { getRegister } from "../Feature/Models/AuthRegister";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 export const Register = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
@@ -60,7 +67,15 @@ export const Register = () => {
         setIsPasswordValid(validate);
     }, [registerPassword])
 
-    function registerHandler() {
+    const registerHandler = async () => {
+        if (!registerFirstName) {
+            alert("Harus ada first name")
+            return;
+        }
+        if (!registerLastname) {
+            alert("Harus ada last name")
+            return;
+        }
         if (!isEmailValid || !registerEmail) {
             alert("Email Tidak Valid")
             return;
@@ -69,7 +84,38 @@ export const Register = () => {
             alert("Password Tidak Valid")
             return;
         }
+        if (!registerBirth) {
+            alert("Harus ada tanggal lahir")
+            return;
+        }
+        if (!registerGender) {
+            alert("Harus ada gender")
+            return;
+        }
+
+        const resultsActions = await dispatch(getRegister({
+            email: registerEmail,
+            password: registerPassword,
+            firstname: registerFirstName,
+            lastname: registerLastname,
+            birth: registerBirth,
+            gender: registerGender,
+            role: "buyer",
+        }))
+
+        const results = unwrapResult(resultsActions);
+
+        if (results && results.accessToken) {
+            navigate("/")
+        }
     }
+
+    // ketika user login tidak bisa ke halaman login lagi
+    useEffect(() => {
+        if (localStorage.getItem("auth")) {
+            navigate("/")
+        }
+    }, [navigate])
 
     return (
         <React.Fragment>
@@ -83,13 +129,13 @@ export const Register = () => {
                             </div>
                             <div className="block w-full">
                                 <div className="textbox ">
-                                    <input type="text" placeholder="FirstName" />
+                                    <input onChange={(event) => { setRegisterFirstName(event.target.value) }} type="text" placeholder="FirstName" />
                                     <span className="material-symbols-outlined">
                                         <UserOutlined />
                                     </span>
                                 </div>
                                 <div className="textbox ">
-                                    <input type="text" placeholder="LastName" />
+                                    <input onChange={(event) => { setRegisterLastName(event.target.value) }} type="text" placeholder="LastName" />
                                     <span className="material-symbols-outlined">
                                         <UserOutlined />
                                     </span>
@@ -128,13 +174,13 @@ export const Register = () => {
                                 }
                             </div>
                             <div className="textbox ">
-                                <input type="date" placeholder="Date of Birth" />
+                                <input onChange={(event) => { setRegisterBirth(event.target.value) }} type="date" placeholder="Date of Birth" />
                                 <span className="material-symbols-outlined">
                                     <CalendarOutlined />
                                 </span>
                             </div>
                             <div className="textbox ">
-                                <input type="text" placeholder="Gender" />
+                                <input onChange={(event) => (setRegisterGender(event.target.value))} type="text" placeholder="Gender" />
                                 <span className="material-symbols-outlined">
                                     <UserOutlined />
                                 </span>

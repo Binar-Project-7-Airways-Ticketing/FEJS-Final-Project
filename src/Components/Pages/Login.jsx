@@ -2,8 +2,14 @@ import React, { useEffect, useState } from "react";
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import { useNavigate } from "react-router-dom";
+import { getLogin } from "../Feature/Models/AuthLogin";
+import { useDispatch } from "react-redux";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 export const Login = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
 
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
@@ -55,7 +61,7 @@ export const Login = () => {
         setIsPasswordValid(validate);
     }, [loginPassword])
 
-    function loginHandler() {
+    const loginHandler = async () => {
         if (!isEmailValid || !loginEmail) {
             alert("Email Tidak Valid")
             return ;
@@ -64,7 +70,25 @@ export const Login = () => {
             alert("Password Tidak Valid")
             return ;
         }
+
+        const resultsActions = await dispatch(getLogin({
+            email: loginEmail,
+            password: loginPassword,
+        }))
+
+        const results = unwrapResult(resultsActions);
+
+        if (results && results.accessToken) {
+            navigate("/")
+        }
     }
+
+    // ketika user login tidak bisa ke halaman login lagi
+    useEffect(() => {
+        if (localStorage.getItem("auth")) {
+            navigate("/")
+        }
+    }, [navigate])
 
     return (
         <React.Fragment>

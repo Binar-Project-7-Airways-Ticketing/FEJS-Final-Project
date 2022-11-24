@@ -614,11 +614,11 @@ footer {
   }
 
   .login-account-desc p{
-    @apply text-xl text-brand-nude;
+    @apply text-center text-xl text-brand-nude;
   }
 
   .login-account a {
-    @apply cursor-pointer justify-center h-[60px] w-[50%] p-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px];
+    @apply flex cursor-pointer justify-center h-[60px] w-[50%] p-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px];
   }
 
 
@@ -686,7 +686,7 @@ footer {
   }
 
   .register-account {
-    @apply grid gap-[16px] w-full m-0 justify-items-center;
+    @apply grid gap-[16px] w-full mt-4 justify-items-center;
   }
 
   .register-account-tittle {
@@ -702,11 +702,11 @@ footer {
   }
 
   .register-account-desc p{
-    @apply text-xl text-brand-nude;
+    @apply flex text-center text-xl text-brand-nude;
   }
 
   .register-account a {
-    @apply cursor-pointer justify-center h-[60px] w-[50%] p-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px];
+    @apply flex cursor-pointer justify-center h-[60px] w-[50%] p-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px];
   }
 }
 
