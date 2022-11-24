@@ -143,7 +143,17 @@ export const Register = () => {
                         </div>
                     </div>
                     <div className="register-container-right">
-
+                        <div className="block w-full">
+                            <div className="register-account">
+                                <div className="register-account-tittle">
+                                    <h1>Have account</h1>
+                                </div>
+                                <div className="register-account-desc">
+                                    <p>Manage your bookings and receive our latest news and offers just for you</p>
+                                </div>
+                                <a href="/login" type="button">Login</a>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </main>

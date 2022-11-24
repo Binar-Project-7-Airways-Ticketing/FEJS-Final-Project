@@ -117,7 +117,17 @@ export const Login = () => {
                             <button type="submit">LOGIN With GOOGLE</button>
                         </div>
                     </div>
-                    <div className="login-container-right"></div>
+                    <div className="login-container-right">
+                        <div className="login-account">
+                            <div className="login-account-tittle">
+                                <h1>Don't have an account yet ?</h1>
+                            </div>
+                            <div className="login-account-desc">
+                                <p>Manage your bookings and receive our latest news and offers just for you</p>
+                            </div>
+                            <a href="/register" type="button">Create a new account</a>
+                        </div>
+                    </div>
                 </section>
             </main>
             <Footer />

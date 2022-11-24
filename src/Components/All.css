@@ -264,7 +264,7 @@ footer {
   }
 
   .login-container-left, .login-container-right {
-    @apply block p-8 w-full;
+    @apply block p-[6rem] w-full;
   }
   .login-form {
     @apply grid gap-[16px] w-full m-0 justify-items-center;
@@ -293,15 +293,15 @@ footer {
   }
   
   .login-form input {
-    @apply bg-transparent border-[2px] border-brand-gray text-[18px] px-[50px] py-[20px];
+    @apply bg-transparent text-brand-nude border-[2px] border-brand-gray text-[18px] px-[50px] py-[20px];
   }
   
   .login-form input:focus {
-    @apply border-[#157ae1];
+    @apply border-brand-yellow;
   }
   
   .login-form input:focus ~ span {
-    @apply text-[#157ae1];
+    @apply text-brand-yellow;
   }
   
   .login-form button {
@@ -309,9 +309,34 @@ footer {
   }
   
   .login-form a {
-    @apply text-[#157ae1] text-[16px] text-left;
+    @apply text-brand-nude text-[16px] text-left;
     text-decoration: none;
   }
+
+  .login-account {
+    @apply grid gap-[16px] w-full m-0 justify-items-center;
+  }
+
+  .login-account-tittle {
+    @apply flex justify-center mb-4 w-full;;
+  }
+
+  .login-account-tittle h1{
+    @apply text-4xl text-brand-nude;
+  }
+
+  .login-account-desc {
+    @apply justify-center mb-4 w-full;
+  }
+
+  .login-account-desc p{
+    @apply text-xl text-brand-nude;
+  }
+
+  .login-account a {
+    @apply cursor-pointer justify-center h-[60px] w-[50%] p-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px];
+  }
+
 
   /*-------------------------REGISTER---------------------------------*/
   .register-page {
@@ -328,7 +353,7 @@ footer {
 
   .register-container-left,
   .register-container-right {
-    @apply block p-8 w-full;
+    @apply block p-[6rem] w-full;
   }
   .register-form {
     @apply grid gap-[16px] w-full m-0 justify-items-center;
@@ -356,15 +381,15 @@ footer {
   }
 
   .register-form input {
-    @apply bg-transparent border-[2px] border-brand-gray text-[18px] px-[50px] py-[20px];
+    @apply bg-transparent text-brand-nude border-[2px] border-brand-gray text-[18px] px-[50px] py-[20px];
   }
 
   .register-form input:focus {
-    @apply border-[#157ae1];
+    @apply border-brand-yellow;
   }
 
   .register-form input:focus ~ span {
-    @apply text-[#157ae1];
+    @apply text-brand-yellow;
   }
 
   .register-form button {
@@ -372,7 +397,31 @@ footer {
   }
 
   .register-form a {
-    @apply text-[#157ae1] text-[16px] text-left;
+    @apply text-brand-yellow text-[16px] text-left;
     text-decoration: none;
+  }
+
+  .register-account {
+    @apply grid gap-[16px] w-full m-0 justify-items-center;
+  }
+
+  .register-account-tittle {
+    @apply flex justify-center mb-4 w-full;
+  }
+
+  .register-account-tittle h1{
+    @apply text-4xl text-brand-nude;
+  }
+
+  .register-account-desc {
+    @apply flex justify-center mb-4 w-full;
+  }
+
+  .register-account-desc p{
+    @apply text-xl text-brand-nude;
+  }
+
+  .register-account a {
+    @apply cursor-pointer justify-center h-[60px] w-[50%] p-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px];
   }
 }
