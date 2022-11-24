@@ -50,9 +50,9 @@ export default function Navbar() {
 
               <div className="search">
                 {search ? (
-                  <Input placeholder="Basic usage" />
+                  <Input placeholder="Search Cities or Countries" />
                 ) : (
-                  <Input className="frm" placeholder="Basic usage" />
+                  <Input className="frm" placeholder="Search Cities or Countries" />
                 )}
                 {search ? (
                   <BsSearch onClick={srchClose} />
