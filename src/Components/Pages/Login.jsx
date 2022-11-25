@@ -70,14 +70,16 @@ export const Login = () => {
             alert("Password Tidak Valid")
             return ;
         }
+        // console.log(loginEmail);
 
         const resultsActions = await dispatch(getLogin({
             email: loginEmail,
             password: loginPassword,
         }))
+  
 
         const results = unwrapResult(resultsActions);
-
+        console.log(results);
         if (results && results.accessToken) {
             navigate("/")
         }
