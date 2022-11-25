@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import { AiOutlineCheck } from "react-icons/ai";
+import logo from "../../logo.png";
 
 export default function CardResultBooking() {
+  const [economy, setEconomy] = useState(false);
+  const [business, setBusiness] = useState(false);
+
+  const economyDetail = () => {
+    setBusiness(false);
+    setEconomy(true);
+  };
+  const economyDetailClose = () => {
+    setEconomy(false);
+  };
+  const businessDetail = () => {
+    setBusiness(true);
+    setEconomy(false);
+  };
+  const businessDetailClose = () => {
+    setBusiness(false);
+  };
   return (
     <section className="main-result-booking">
       <div className="container">
@@ -10,22 +29,123 @@ export default function CardResultBooking() {
           </div>
           <div className="card-result-booking">
             <div className="wrap-card-result-booking">
-              <div className="result-booking">
-                <div className="card-class">Economy</div>
-                <div className="card-class">Business</div>
+              <div className="card-booking">
+                <div className="result-booking">
+                  {economy ? (
+                    <div className="card-class" onClick={economyDetailClose}>
+                      <h5>Economy</h5>
+                      <div className="idr">
+                        <h6>IDR 4.300.000,00</h6>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="card-class" onClick={economyDetail}>
+                      <h5>Economy</h5>
+                      <div className="idr">
+                        <h6>IDR 4.300.000,00</h6>
+                      </div>
+                    </div>
+                  )}
+                  {business ? (
+                    <div className="card-class" onClick={businessDetailClose}>
+                      <h5>Business</h5>
+                      <div className="idr">
+                        <h6>IDR 7.300.000,00</h6>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="card-class" onClick={businessDetail}>
+                      <h5>Business</h5>
+                      <div className="idr">
+                        <h6>IDR 7.300.000,00</h6>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div className="card-detail">
+                  <button className="btn-detail-flight">Flight Detail</button>
+                  <div className="times">
+                    <div className="time">
+                      <p>10:30</p>
+                      <h6>From .....</h6>
+                    </div>
+                    <div className="time-logo">
+                      <img
+                        style={{ width: "70px", height: "70px" }}
+                        src={logo}
+                      ></img>
+                    </div>
+                    <div className="time">
+                      <p>14:40</p>
+                      <h6>To .....</h6>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="card-detail">
-                <button className="btn-detail-flight">Flight Detail</button>
-              </div>
-            </div>
-            <div className="wrap-card-result-booking">
-              <div className="result-booking">
-                <div className="card-class">Economy</div>
-                <div className="card-class">Business</div>
-              </div>
-              <div className="card-detail">
-                <button className="btn-detail-flight">Flight Detail</button>
-              </div>
+              {economy ? (
+                <div className="detail-economy-class">
+                  <div className="benefit">
+                    <h2>Economy Class Flight</h2>
+                    <div className="btn-select-class">
+                      <p>Select Class</p>
+                    </div>
+                    <p>The benefits you get in economy class</p>
+                    <div className="benefit-detail">
+                      <div className="icon-benefit">
+                        <AiOutlineCheck />
+                        <AiOutlineCheck />
+                        <AiOutlineCheck />
+                        <AiOutlineCheck />
+                        <AiOutlineCheck />
+                      </div>
+                      <div className="text-benefit">
+                        <p>Cancel anytime without fees</p>
+                        <p>Cancel anytime without fees</p>
+                        <p>Cancel anytime without fees</p>
+                        <p>Cancel anytime without fees</p>
+                        <p>Cancel anytime without fees</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="img-benefit">
+                    <img src="https://images.unsplash.com/photo-1540339832862-474599807836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"></img>
+                  </div>
+                </div>
+              ) : (
+                <></>
+              )}
+              {business ? (
+                <div className="detail-economy-class">
+                  <div className="benefit">
+                    <h2>Business Class Flight</h2>
+                    <div className="btn-select-class">
+                      <p>Select Class</p>
+                    </div>
+                    <p>The benefits you get in economy class</p>
+                    <div className="benefit-detail">
+                      <div className="icon-benefit">
+                        <AiOutlineCheck />
+                        <AiOutlineCheck />
+                        <AiOutlineCheck />
+                        <AiOutlineCheck />
+                        <AiOutlineCheck />
+                      </div>
+                      <div className="text-benefit">
+                        <p>Cancel anytime without fees</p>
+                        <p>Cancel anytime without fees</p>
+                        <p>Cancel anytime without fees</p>
+                        <p>Cancel anytime without fees</p>
+                        <p>Cancel anytime without fees</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="img-benefit">
+                    <img src="https://media.istockphoto.com/id/903718466/id/foto/pria-dengan-pesawat-jet-pribadi.jpg?s=612x612&w=0&k=20&c=alq9cAHoN6wZwyHq7UlH8Gueh_2wYwrZx6TkHYN-AEw="></img>
+                  </div>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </div>

@@ -74,9 +74,9 @@ export default function Navbar() {
             ) : (
               <BsSearch onClick={srch} />
             )}
-
+            
             <div className="notif">
-              <Dropdown
+              {isLogin ? (<Dropdown
                 menu={{
                   items,
                 }}
@@ -88,7 +88,8 @@ export default function Navbar() {
                     <p>Notifikasi</p>
                   </Space>
                 </a>
-              </Dropdown>
+              </Dropdown>):(<></>)}
+              
             </div>
             <div className="user">
               {isLogin ? (
