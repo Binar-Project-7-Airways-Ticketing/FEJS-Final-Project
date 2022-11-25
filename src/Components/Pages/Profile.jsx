@@ -72,11 +72,7 @@ export const Profile = (setIsLogin) => {
       return;
     }
   }
-  const logOutHandler = () => {
-    localStorage.removeItem("auth");
-    navigate('/')
-    return setIsLogin(false);
-  };
+
   return (
     <React.Fragment>
       <Navbar />
@@ -156,13 +152,6 @@ export const Profile = (setIsLogin) => {
                 type="submit"
               >
                 Update
-              </button>
-              <button
-                 onClick={() => {
-                      logOutHandler();
-                    }}
-              >
-                Log Out
               </button>
             </div>
           </div>

@@ -132,7 +132,7 @@ export default function CardResultBooking() {
                           <div className="wrap-logo">
                             <img
                               src={logo}
-                              style={{ width: "90px", height: "90px" }}
+                              style={{ width: "90px", height: "90px", borderRadius:"100%", border:"1px solid black" }}
                             ></img>
                           </div>
                           <div className="circle">

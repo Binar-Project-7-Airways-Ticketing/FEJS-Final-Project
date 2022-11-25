@@ -127,12 +127,11 @@ header {
   width: 100%;
   height: 50px;
   justify-content: flex-start;
-  transition: all ease-in-out 0.8s;
   cursor: pointer;
   background: #f1efe9;
   border-radius: 20px 0 0 0;
   color: #cba052;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
   padding: 0 30px;
 }
@@ -151,12 +150,11 @@ header {
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #f1efe9;
   color: #cba052;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
   padding: 0 30px;
 }
@@ -165,12 +163,11 @@ header {
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #f1efe9;
   color: #cba052;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
   padding: 0 30px;
 }
@@ -179,13 +176,12 @@ header {
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #f1efe9;
   border-radius: 0 20px 0 0;
   color: #cba052;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
   padding: 0 30px;
 }
@@ -194,28 +190,25 @@ header {
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #cba052;
   color: #f1efe9;
   border-radius: 20px 0 0 0;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
   padding: 0 30px;
-  animation: flexxx 2s ease-in-out;
 }
 .my-trip-cst {
   display: flex;
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #cba052;
   color: #f1efe9;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
   padding: 0 30px;
 }
@@ -224,12 +217,11 @@ header {
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #cba052;
   color: #f1efe9;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
   padding: 0 30px;
 }
@@ -238,13 +230,12 @@ header {
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #cba052;
   color: #f1efe9;
   border-radius: 0 20px 0 0;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
   padding: 0 30px;
 }
@@ -476,7 +467,6 @@ header {
   gap: 20px;
 }
 
-
 .card-booking {
   width: 100%;
   display: flex;
@@ -547,7 +537,7 @@ header {
   justify-content: center;
   width: 60%;
 }
-.time-logo{
+.time-logo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -567,16 +557,21 @@ header {
 .time p {
   font-size: 40px;
 }
-.wrap-modal-detail-flight{
+.wrap-modal-detail-flight {
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.title-detail-flight{
+.title-detail-flight {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-end;
   font-size: 14px;
   font-weight: 500;
 }
-.modal-detail-flight{
+.modal-detail-flight {
   display: flex;
   width: 100%;
   gap: 30px;
@@ -587,30 +582,30 @@ header {
   animation: class 1s ease-in-out;
   gap: 20px;
 }
-.modal-time{
+.modal-time {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.airports{
+.airports {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
 }
-.modal-logo{
+.modal-logo {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.wrap-logo::before{
+.wrap-logo::before {
   border-left: 1px solid #000000;
   content: "";
   flex-grow: 1;
   position: relative;
   left: 50%;
 }
-.wrap-logo::after{
+.wrap-logo::after {
   border-left: 1px solid #000000;
   content: "";
   flex-grow: 1;
@@ -636,7 +631,7 @@ header {
   flex-direction: column;
   width: 100%;
   gap: 20px;
-  border: 1px solid #b2b2b2;
+  border: 1px solid #f1efe9;
   border-radius: 20px;
   padding: 20px;
 }
