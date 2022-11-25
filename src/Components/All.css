@@ -126,108 +126,118 @@ header {
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #f1efe9;
   border-radius: 20px 0 0 0;
   color: #cba052;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
+  padding: 0 30px;
+}
+@keyframes flexxx {
+  0% {
+    justify-content: flex-start;
+    opacity: 0;
+  }
+  100% {
+    justify-content: center;
+    opacity: 1;
+  }
 }
 .my-trip-default {
   display: flex;
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #f1efe9;
   color: #cba052;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
+  padding: 0 30px;
 }
 .check-in-default {
   display: flex;
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #f1efe9;
   color: #cba052;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
+  padding: 0 30px;
 }
 .flight-status-default {
   display: flex;
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #f1efe9;
   border-radius: 0 20px 0 0;
   color: #cba052;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
+  padding: 0 30px;
 }
 .book-cst {
   display: flex;
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #cba052;
   color: #f1efe9;
   border-radius: 20px 0 0 0;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
+  padding: 0 30px;
 }
 .my-trip-cst {
   display: flex;
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #cba052;
   color: #f1efe9;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
+  padding: 0 30px;
 }
 .check-in-cst {
   display: flex;
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #cba052;
   color: #f1efe9;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
+  padding: 0 30px;
 }
 .flight-status-cst {
   display: flex;
   align-items: center;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  transition: all ease-in-out 0.8s;
+  justify-content: flex-start;
   cursor: pointer;
   background: #cba052;
   color: #f1efe9;
   border-radius: 0 20px 0 0;
-  gap: 30px;
+  gap: 15px;
   font-size: 20px;
+  padding: 0 30px;
 }
 
 .wrap-detail-booking {
@@ -262,7 +272,7 @@ header {
 .inpt-book {
   width: 100%;
   height: 70px;
-  border: 1px solid rgb(178, 178, 178);
+  border: 1px solid #b2b2b2;
   border-radius: 10px;
   padding: 20px;
 }
@@ -287,7 +297,7 @@ header {
   align-items: center;
   width: 100%;
 }
-.input{
+.input {
   position: relative;
   display: flex;
   gap: 6px;
@@ -311,13 +321,13 @@ header {
   flex-direction: column;
   gap: 2px;
 }
-.find{
+.find {
   margin-top: 20px;
   display: flex;
   width: 42%;
   justify-content: center;
 }
-.btn-flight{
+.btn-flight {
   width: 50%;
   background: #cba052;
   color: #f1efe9;
@@ -328,17 +338,17 @@ header {
 .date {
   width: 100%;
 }
-.ant-picker{
+.ant-picker {
   border-color: transparent;
 }
-.ant-picker:hover{
+.ant-picker:hover {
   border-color: transparent;
 }
-.ant-picker-focused{
-  box-shadow:0 0 0 2px rgba(203, 161, 82, 0.196);
+.ant-picker-focused {
+  box-shadow: 0 0 0 2px rgba(203, 161, 82, 0.196);
 }
-.ant-picker-range .ant-picker-active-bar{
-  background:#cba052;
+.ant-picker-range .ant-picker-active-bar {
+  background: #cba052;
 }
 
 /*-------------------------NAVBAR---------------------------------*/
@@ -390,85 +400,84 @@ header {
 .search a {
   font-size: 12px;
 }
-.notif{
+.notif {
   display: flex;
   font-size: 20px;
   align-items: center;
   cursor: pointer;
   justify-content: center;
-  padding-top:5px ;
+  padding-top: 5px;
 }
-.notif p{
+.notif p {
   font-size: 12px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
-.ant-input{
-  width:200px;
+.ant-input {
+  width: 200px;
   background: #f1efe9;
   border: transparent;
   transition: none;
   border-radius: 13px;
 }
-.frm{
+.frm {
   visibility: hidden;
 }
-.user{
+.user {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
 }
-.user img{
+.user img {
   width: 50px;
   height: 50px;
 }
 /*-------------------------Resullt Booking---------------------------------*/
-.main-result-booking{
+.main-result-booking {
   margin-top: 80px;
   background: #f1efe9;
 }
-.wrap-result-booking{
+.wrap-result-booking {
   padding: 50px 0;
 }
-.title-result-booking{
+.title-result-booking {
   width: 50%;
   color: #3f4444;
   margin-bottom: 50px;
 }
-.title-result-booking h1{
+.title-result-booking h1 {
   font-size: 40px;
   line-height: 3.7rem;
 }
-.card-result-booking{
+.card-result-booking {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.wrap-card-result-booking{
+.wrap-card-result-booking {
   width: 100%;
+  height: auto;
   border-radius: 20px;
   border: 1px solid rgb(178, 178, 178);
   padding: 20px;
   background: #8c857b;
   color: #f1efe9;
   display: flex;
+  flex-direction: column;
   gap: 20px;
 }
-.result-booking{
+
+.card-booking {
   width: 100%;
   display: flex;
   gap: 20px;
 }
-.card-class{
-  border: 1px solid rgb(178, 178, 178);
+.result-booking {
   width: 100%;
-  height: 250px;
-  border-radius: 20px;
-  background: #f1efe9;
-  color: #3f4444;
-  padding: 20px;
+  display: flex;
+  gap: 20px;
 }
-.card-detail{
+.card-class {
   border: 1px solid rgb(178, 178, 178);
   width: 100%;
   height: 250px;
@@ -477,9 +486,36 @@ header {
   color: #3f4444;
   padding: 20px;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
 }
-.btn-detail-flight{
+.card-class h5 {
+  font-size: 15px;
+  font-weight: 700;
+}
+.idr {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+.card-class h6 {
+  font-size: 25px;
+}
+
+.card-detail {
+  border: 1px solid rgb(178, 178, 178);
+  width: 100%;
+  height: 250px;
+  border-radius: 20px;
+  background: #f1efe9;
+  color: #3f4444;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.btn-detail-flight {
   background: #cba052;
   height: 30px;
   width: fit-content;
@@ -488,7 +524,159 @@ header {
   padding: 6px;
   border-radius: 5px;
 }
+.times {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  height: 100%;
+}
+.time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+}
+.time-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+.time-logo::before {
+  border-bottom: 1px solid #000000;
+  content: "";
+  flex-grow: 1;
+}
+.time-logo::after {
+  border-bottom: 1px solid #000000;
+  content: "";
+  flex-grow: 1;
+}
+.time p {
+  font-size: 40px;
+}
+.wrap-modal-detail-flight {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.title-detail-flight {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-end;
+  font-size: 14px;
+  font-weight: 500;
+}
+.modal-detail-flight {
+  display: flex;
+  width: 100%;
+  gap: 30px;
+}
+.detail-economy-class {
+  display: flex;
+  width: 100%;
+  animation: class 1s ease-in-out;
+  gap: 20px;
+}
+.modal-time {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.airports {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+.modal-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrap-logo::before {
+  border-left: 1px solid #000000;
+  content: "";
+  flex-grow: 1;
+  position: relative;
+  left: 50%;
+}
+.wrap-logo::after {
+  border-left: 1px solid #000000;
+  content: "";
+  flex-grow: 1;
+  position: relative;
+  left: 50%;
+}
 
+@keyframes class {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.detail-economy-class h2 {
+  font-size: 25px;
+  font-weight: 700;
+}
+.benefit {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+  border: 1px solid #f1efe9;
+  border-radius: 20px;
+  padding: 20px;
+}
+.btn-select-class {
+  background: #cba052;
+  border-radius: 10px;
+  padding: 5px 10px;
+  width: 25%;
+  text-align: center;
+}
+.benefit-detail {
+  display: flex;
+  gap: 10px;
+}
+.icon-benefit {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 7px;
+}
+.text-benefit {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.img-benefit {
+  /* display: block;
+  width: 100%; */
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.img-benefit img {
+  width: 100%;
+  max-width: inherit;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(1.5);
+  -moz-transform: translate(-50%, -50%) scale(1.5);
+  -o-transform: translate(-50%, -50%) scale(1.5);
+  transform: translate(-50%, -50%) scale(1.5);
+}
 
 /*-------------------------FOOTER---------------------------------*/
 footer {
@@ -516,7 +704,7 @@ footer {
   flex-direction: column;
   gap: 10px;
 }
-.menu-footer h6{
+.menu-footer h6 {
   margin: 0;
 }
 .social-media {
@@ -547,7 +735,8 @@ footer {
     @apply border-r border-brand-gray;
   }
 
-  .login-container-left, .login-container-right {
+  .login-container-left,
+  .login-container-right {
     @apply block p-[6rem] w-full;
   }
   .login-form {
@@ -558,40 +747,39 @@ footer {
     @apply flex justify-start mb-4 w-full;
   }
 
-  .login-form-tittle h1{
+  .login-form-tittle h1 {
     @apply text-5xl text-brand-nude;
   }
-  
+
   .textbox {
     @apply relative w-full mb-2;
-
   }
-  
+
   .textbox span {
     @apply absolute top-[50%] left-[16px] translate-x-0 translate-y-[-50%];
   }
-  
+
   .login-form input,
   .login-form button {
     @apply w-full h-[60px] outline-none p-0 text-[16px] rounded-[8px];
   }
-  
+
   .login-form input {
     @apply bg-transparent text-brand-nude border-[2px] border-brand-gray text-[18px] px-[50px] py-[20px];
   }
-  
+
   .login-form input:focus {
     @apply border-brand-yellow;
   }
-  
+
   .login-form input:focus ~ span {
     @apply text-brand-yellow;
   }
-  
+
   .login-form button {
     @apply cursor-pointer bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px];
   }
-  
+
   .login-form a {
     @apply text-brand-nude text-[16px] text-left;
     text-decoration: none;
@@ -602,10 +790,10 @@ footer {
   }
 
   .login-account-tittle {
-    @apply flex justify-center mb-4 w-full;;
+    @apply flex justify-center mb-4 w-full;
   }
 
-  .login-account-tittle h1{
+  .login-account-tittle h1 {
     @apply text-4xl text-brand-nude;
   }
 
@@ -613,14 +801,13 @@ footer {
     @apply justify-center mb-4 w-full;
   }
 
-  .login-account-desc p{
+  .login-account-desc p {
     @apply text-center text-xl text-brand-nude;
   }
 
   .login-account a {
     @apply flex cursor-pointer justify-center h-[60px] w-[50%] p-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px];
   }
-
 
   /*-------------------------REGISTER---------------------------------*/
   .register-page {
@@ -693,7 +880,7 @@ footer {
     @apply flex justify-center mb-4 w-full;
   }
 
-  .register-account-tittle h1{
+  .register-account-tittle h1 {
     @apply text-4xl text-brand-nude;
   }
 
@@ -701,7 +888,7 @@ footer {
     @apply flex justify-center mb-4 w-full;
   }
 
-  .register-account-desc p{
+  .register-account-desc p {
     @apply flex text-center text-xl text-brand-nude;
   }
 
@@ -712,7 +899,7 @@ footer {
 
 /*---------------Navbar Media Screen---------------*/
 @media only screen and (max-width: 1280px) {
-  .ant-input{
+  .ant-input {
     width: 150px;
   }
 }

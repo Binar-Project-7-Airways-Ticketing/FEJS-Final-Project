@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { UserOutlined, LockOutlined, MailOutlined, CalendarOutlined } from "@ant-design/icons";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import { useNavigate } from "react-router-dom";
 
-export const Profile = () => {
+export const Profile = (setIsLogin) => {
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [passwordErrors, setIsPasswordErrors] = useState([]);
@@ -14,6 +15,8 @@ export const Profile = () => {
   const [registerPassword, setRegisterPassword] = useState(undefined);
   const [registerBirth, setRegisterBirth] = useState(undefined);
   const [registerGender, setRegisterGender] = useState(undefined);
+
+  const navigate = useNavigate()
 
   function validatePassword() {
     const errors = [];
