@@ -281,7 +281,7 @@ header {
 .inpt-book {
   width: 100%;
   height: 70px;
-  border: 1px solid rgb(178, 178, 178);
+  border: 1px solid #b2b2b2;
   border-radius: 10px;
   padding: 20px;
 }
@@ -465,6 +465,7 @@ header {
 }
 .wrap-card-result-booking {
   width: 100%;
+  height: auto;
   border-radius: 20px;
   border: 1px solid rgb(178, 178, 178);
   padding: 20px;
@@ -475,13 +476,9 @@ header {
   gap: 20px;
 }
 
+
 .card-booking {
   width: 100%;
-  /* border-radius: 20px;
-  border: 1px solid rgb(178, 178, 178);
-  padding: 20px;
-  background: #8c857b;
-  color: #f1efe9; */
   display: flex;
   gap: 20px;
 }
@@ -548,7 +545,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 60%;
 }
 .time-logo{
   display: flex;
@@ -570,10 +567,55 @@ header {
 .time p {
   font-size: 40px;
 }
+.wrap-modal-detail-flight{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.title-detail-flight{
+  font-size: 14px;
+  font-weight: 500;
+}
+.modal-detail-flight{
+  display: flex;
+  width: 100%;
+  gap: 30px;
+}
 .detail-economy-class {
   display: flex;
   width: 100%;
   animation: class 1s ease-in-out;
+  gap: 20px;
+}
+.modal-time{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.airports{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+.modal-logo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrap-logo::before{
+  border-left: 1px solid #000000;
+  content: "";
+  flex-grow: 1;
+  position: relative;
+  left: 50%;
+}
+.wrap-logo::after{
+  border-left: 1px solid #000000;
+  content: "";
+  flex-grow: 1;
+  position: relative;
+  left: 50%;
 }
 
 @keyframes class {
@@ -594,6 +636,9 @@ header {
   flex-direction: column;
   width: 100%;
   gap: 20px;
+  border: 1px solid #b2b2b2;
+  border-radius: 20px;
+  padding: 20px;
 }
 .btn-select-class {
   background: #cba052;

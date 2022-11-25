@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
+import { Button, Modal } from "antd";
 import logo from "../../logo.png";
+import { BsCircle } from "react-icons/bs";
 
 export default function CardResultBooking() {
   const [economy, setEconomy] = useState(false);
@@ -20,12 +22,25 @@ export default function CardResultBooking() {
   const businessDetailClose = () => {
     setBusiness(false);
   };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <section className="main-result-booking">
       <div className="container">
         <div className="wrap-result-booking">
           <div className="title-result-booking">
-            <h1>Select your departure flight from ..... to ....</h1>
+            <h1>Select your departure flight from Jakarta to Singapore</h1>
           </div>
           <div className="card-result-booking">
             <div className="wrap-card-result-booking">
@@ -63,11 +78,13 @@ export default function CardResultBooking() {
                   )}
                 </div>
                 <div className="card-detail">
-                  <button className="btn-detail-flight">Flight Detail</button>
+                  <button onClick={showModal} className="btn-detail-flight">
+                    Flight Detail
+                  </button>
                   <div className="times">
                     <div className="time">
                       <p>10:30</p>
-                      <h6>From .....</h6>
+                      <h6>Jakarta</h6>
                     </div>
                     <div className="time-logo">
                       <img
@@ -77,9 +94,59 @@ export default function CardResultBooking() {
                     </div>
                     <div className="time">
                       <p>14:40</p>
-                      <h6>To .....</h6>
+                      <h6>Singapore</h6>
                     </div>
                   </div>
+                  <Modal
+                    title="Flight Details"
+                    open={isModalOpen}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                    footer={[null]}
+                  >
+                    <div className="wrap-modal-detail-flight">
+                      <div className="title-detail-flight">
+                        <p>Jakarta to Singapore</p>
+                        <p>Saturday, Nov 26</p>
+                      </div>
+                      <div className="modal-detail-flight">
+                        <div className="airports">
+                          <div>
+                            <p>Jakarta</p>
+                            <p>Soekarno-Hatta International Airports</p>
+                          </div>
+                          <div>
+                            <p>NO PESAWAT</p>
+                            <p>Flight by 7-Airways</p>
+                          </div>
+                          <div>
+                            <p>Singapore</p>
+                            <p>Changi International Airports</p>
+                          </div>
+                        </div>
+
+                        <div className="modal-logo">
+                          <div className="circle">
+                            <BsCircle />
+                          </div>
+                          <div className="wrap-logo">
+                            <img
+                              src={logo}
+                              style={{ width: "90px", height: "90px" }}
+                            ></img>
+                          </div>
+                          <div className="circle">
+                            <BsCircle />
+                          </div>
+                        </div>
+                        <div className="modal-time">
+                          <p>10:30</p>
+                          <p>2h 10m</p>
+                          <p>14:40</p>
+                        </div>
+                      </div>
+                    </div>
+                  </Modal>
                 </div>
               </div>
               {economy ? (
