@@ -10,6 +10,7 @@ export default function Prf(setIsLogin) {
     setTimeout(function () {
         window.location.reload(1);
       }, 500);
+      navigate("/")
     return setIsLogin(false);
   };
   const items = [

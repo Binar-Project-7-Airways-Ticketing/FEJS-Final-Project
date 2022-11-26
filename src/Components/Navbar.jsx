@@ -48,7 +48,7 @@ export default function Navbar() {
       <div className="container">
         <div className="wrap-navbar">
           <div className="logo">
-            <img style={{ width: "150px" }} src={logo}></img>
+            <img onClick={()=>navigate("/")} style={{ width: "150px", cursor:"pointer" }} src={logo}></img>
           </div>
 
           <ul className="menu-navbar">

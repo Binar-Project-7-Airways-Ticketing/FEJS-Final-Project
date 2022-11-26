@@ -22,7 +22,7 @@ export const getLogin = createAsyncThunk("auth/login", async (body) => {
           ...body
       }
   )
-
+  console.log(results);
 
   if (!results) {
     throw new Error("Can't login")

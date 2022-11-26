@@ -3,18 +3,17 @@ import { AiOutlineSwap } from "react-icons/ai";
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space, DatePicker } from "antd";
 import { useNavigate } from "react-router-dom";
-
-
+import Passenger from "./Reusable/Passenger";
 
 export default function Book() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const items = [
     {
       label: <a href="#">Return</a>,
       key: "0",
     },
     {
-      label: <a href="#">One Way</a>,
+      label: <a  href="#">One Way</a>,
       key: "1",
     },
     {
@@ -22,7 +21,7 @@ export default function Book() {
       key: "3",
     },
   ];
-  
+
   const { RangePicker } = DatePicker;
   const onChange = (value, dateString) => {
     console.log("Selected Time: ", value);
@@ -31,7 +30,6 @@ export default function Book() {
   const onOk = (value) => {
     console.log("onOk: ", value);
   };
-  
 
   return (
     <>
@@ -63,8 +61,13 @@ export default function Book() {
             >
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
-                  Trip
-                  <DownOutlined />
+                 <div style={{display:"flex", flexDirection:"column"}}>
+                  <div>
+                    <p>Trip</p>
+                    <DownOutlined />
+                  </div>
+                  <p>{}</p>
+                 </div>
                 </Space>
               </a>
             </Dropdown>
@@ -84,13 +87,12 @@ export default function Book() {
                 </div>
               </div>
             </Space>
-            <div className="inpt-book">
-              <p>Passenger/Class</p>
-            </div>
+
+            <Passenger />
           </div>
         </div>
         <div className="find">
-          <button onClick={()=>navigate('/booking')} className="btn-flight">
+          <button onClick={() => navigate("/booking")} className="btn-flight">
             <h5>Find flight</h5>
           </button>
         </div>

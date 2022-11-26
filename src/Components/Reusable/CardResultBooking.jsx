@@ -132,7 +132,12 @@ export default function CardResultBooking() {
                           <div className="wrap-logo">
                             <img
                               src={logo}
-                              style={{ width: "90px", height: "90px", borderRadius:"100%", border:"1px solid black" }}
+                              style={{
+                                width: "90px",
+                                height: "90px",
+                                borderRadius: "100%",
+                                border: "1px solid black",
+                              }}
                             ></img>
                           </div>
                           <div className="circle">
@@ -153,9 +158,6 @@ export default function CardResultBooking() {
                 <div className="detail-economy-class">
                   <div className="benefit">
                     <h2>Economy Class Flight</h2>
-                    <div className="btn-select-class">
-                      <p>Select Class</p>
-                    </div>
                     <p>The benefits you get in economy class</p>
                     <div className="benefit-detail">
                       <div className="icon-benefit">
@@ -172,6 +174,9 @@ export default function CardResultBooking() {
                         <p>Cancel anytime without fees</p>
                         <p>Cancel anytime without fees</p>
                       </div>
+                    </div>
+                    <div className="btn-select-class">
+                      <p>Select Class</p>
                     </div>
                   </div>
                   <div className="img-benefit">
@@ -185,9 +190,6 @@ export default function CardResultBooking() {
                 <div className="detail-economy-class">
                   <div className="benefit">
                     <h2>Business Class Flight</h2>
-                    <div className="btn-select-class">
-                      <p>Select Class</p>
-                    </div>
                     <p>The benefits you get in economy class</p>
                     <div className="benefit-detail">
                       <div className="icon-benefit">
@@ -204,6 +206,9 @@ export default function CardResultBooking() {
                         <p>Cancel anytime without fees</p>
                         <p>Cancel anytime without fees</p>
                       </div>
+                    </div>
+                    <div className="btn-select-class">
+                      <p>Select Class</p>
                     </div>
                   </div>
                   <div className="img-benefit">
