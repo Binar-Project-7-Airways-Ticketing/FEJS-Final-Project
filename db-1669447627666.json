@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "email": "lusi@gmail.com",
+      "password": "$2a$10$SZNrLOXYuwN3j7xem0ECtOJUYiBMn1Bg1egVgZG4aKzB0RAx4hzey",
+      "firstname": "lusi",
+      "lastname": "ph",
+      "birth": "2022-11-24",
+      "gender": "perempuan",
+      "role": "buyer",
+      "id": 1
+    },
+    {
+      "email": "coba@gmail.com",
+      "password": "$2a$10$icu2NBo3QyuSmi1/52hlmu/uBZBHkdk/AwLjRuuFIetokmjVJIcY2",
+      "firstname": "Coba",
+      "lastname": "coba",
+      "birth": "2002-12-12",
+      "gender": "wanita",
+      "role": "buyer",
+      "id": 2
+    }
+  ]
+}

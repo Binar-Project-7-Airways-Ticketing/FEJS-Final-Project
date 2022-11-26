@@ -16,7 +16,7 @@ export const Profile = (setIsLogin) => {
   const [registerBirth, setRegisterBirth] = useState(undefined);
   const [registerGender, setRegisterGender] = useState(undefined);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function validatePassword() {
     const errors = [];
@@ -140,7 +140,10 @@ export const Profile = (setIsLogin) => {
                 </span>
               </div>
               <div className="textbox ">
-                <input type="text" placeholder="Gender" />
+                <input type="radio" name="gender" id="laki" />
+                <label htmlFor="laki">Laki-laki</label>
+                <input type="radio" name="gender" id="perempuan" />
+                <label htmlFor="perempuan">perempuan</label>
                 <span className="material-symbols-outlined">
                   <UserOutlined />
                 </span>
