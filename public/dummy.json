@@ -11,14 +11,24 @@
       "id": 1
     },
     {
-      "email": "coba@gmail.com",
-      "password": "$2a$10$icu2NBo3QyuSmi1/52hlmu/uBZBHkdk/AwLjRuuFIetokmjVJIcY2",
-      "firstname": "Coba",
-      "lastname": "coba",
-      "birth": "2002-12-12",
-      "gender": "wanita",
+      "email": "apa@gmail.com",
+      "password": "$2a$10$YPyD5XilQ4GmOwONvTgzDuQDKhEjpQnoF9uf5EQPhmfvpdLx/c1ru",
+      "firstname": "apa",
+      "lastname": "aja",
+      "birth": "2001-12-12",
+      "gender": "Wanita",
       "role": "buyer",
-      "id": 2
+      "id": 3
+    },
+    {
+      "email": "boy123@gmail.com",
+      "password": "$2a$10$NPBnPLqiD9d0LT6TZJPJDuibpjEyusNkZZ08YZ5eqB/.dKyOiJOT.",
+      "firstname": "boy",
+      "lastname": "mikail",
+      "birth": "2018-01-10",
+      "gender": "Pria",
+      "role": "buyer",
+      "id": 4
     }
   ]
 }

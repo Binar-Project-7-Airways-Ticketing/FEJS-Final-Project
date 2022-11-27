@@ -297,7 +297,7 @@ header {
   cursor: pointer;
 }
 
-.dropdown-passenger{
+.dropdown-passenger {
   position: absolute;
   left: 0;
   background: #8c857b;
@@ -307,53 +307,51 @@ header {
   padding: 15px;
   border: 1px solid rgb(178, 178, 178);
   color: #f1efe9;
-  box-shadow: 0 0 20px rgb(171, 171, 171)
+  box-shadow: 0 0 20px rgb(171, 171, 171);
 }
-.wrap-passenger{
+.wrap-passenger {
   display: flex;
   flex-direction: column;
   gap: 5px;
   width: 100%;
-  
 }
-.passenger{
+.passenger {
   width: 100%;
   display: flex;
-
 }
-.passenger p{
+.passenger p {
   width: 100%;
 }
-.detail-passanger-class{
+.detail-passanger-class {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.btn-increment-decrement{
+.btn-increment-decrement {
   display: flex;
   gap: 5px;
   width: 100%;
   justify-content: flex-end;
 }
-.btn-increment-decrement button{
+.btn-increment-decrement button {
   width: 100%;
   color: #cba052;
-  background:  #f1efe9;
+  background: #f1efe9;
   border-radius: 5px;
   color: #555;
 }
-.wrap-class{
+.wrap-class {
   display: flex;
   width: 100%;
   flex-direction: column;
   gap: 5px;
 }
-.class{
+.class {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
-.confirm-passenger-class{
+.confirm-passenger-class {
   background: #f1efe9;
   color: #cba052;
   height: 40px;
@@ -922,9 +920,43 @@ footer {
     @apply absolute top-[50%] left-[16px] translate-x-0 translate-y-[-50%];
   }
 
+  .textbox-select {
+    @apply relative w-full mb-2;
+  }
+
+  .textbox-select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  .select::-ms-expand {
+    display: none;
+  }
+
+  .textbox-select:after {
+    content: "<>";
+    font: 17px "Consolas", monospace;
+    color: #f2efea;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: 55px;
+    top: 19px;
+    padding: 0 0 1px;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .textbox-select span {
+    @apply absolute top-[50%] left-[16px] translate-x-0 translate-y-[-50%];
+  }
+
   .register-form input,
-  .register-form button {
-    @apply w-full h-[60px] outline-none p-0 text-[16px] rounded-[8px];
+  .register-form button,
+  .register-form select {
+    @apply w-full h-[70px] outline-none p-0 text-[16px] rounded-[8px];
   }
 
   .register-form input {
@@ -936,6 +968,18 @@ footer {
   }
 
   .register-form input:focus ~ span {
+    @apply text-brand-yellow;
+  }
+
+  .register-form select {
+    @apply bg-transparent text-brand-nude border-[2px] border-brand-gray text-[18px] px-[50px] py-[20px];
+  }
+
+  .register-form select:focus {
+    @apply border-brand-yellow;
+  }
+
+  .register-form select:focus ~ span {
     @apply text-brand-yellow;
   }
 
