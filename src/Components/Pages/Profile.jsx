@@ -3,7 +3,8 @@ import { UserOutlined, LockOutlined, MailOutlined, CalendarOutlined } from "@ant
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
-import { Card } from 'antd';
+import { Card } from "antd";
+import CardHistory from "../CardHistory";
 
 export const Profile = (setIsLogin) => {
   const [isEmailValid, setIsEmailValid] = useState(true);
@@ -141,11 +142,15 @@ export const Profile = (setIsLogin) => {
                 </span>
               </div>
 
-              <div className="textbox-select">
+              <div className="textbox-select ">
                 <select onChange={(event) => setRegisterGender(event.target.value)} type="text">
                   <option selected>Gender</option>
-                  <option value="Wanita">Wanita</option>
-                  <option value="Pria">Pria</option>
+                  <option className="text-black" value="Wanita">
+                    Wanita
+                  </option>
+                  <option className="text-black" value="Pria">
+                    Pria
+                  </option>
                 </select>
                 <span className="material-symbols-outlined">
                   <UserOutlined />
@@ -196,15 +201,10 @@ export const Profile = (setIsLogin) => {
           </div>
         </section>
       </main>
-      <Card
-    style={{
-      width: 300,
-    }}
-  >
-    <p>Card content</p>
-    <p>Card content</p>
-    <p>Card content</p>
-  </Card>
+
+      <Card style={{ backgroundColor: "#cba052", width: "100%" }} title="History">
+        <CardHistory />
+      </Card>
       <Footer />
     </React.Fragment>
   );
