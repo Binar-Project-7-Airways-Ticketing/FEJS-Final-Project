@@ -1015,7 +1015,37 @@ footer {
   .register-account a {
     @apply flex cursor-pointer justify-center h-[60px] w-[50%] p-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px];
   }
+
+  /*---------------Transaction---------------*/
+  .booking-container {
+    @apply container flex justify-between;
+  }
+
+  .booking-left,
+  .booking-right {
+    @apply w-full;
+  }
+
+  .booking-left {
+    @apply p-4;
+  }
+
+  .left-header {
+    @apply flex justify-start items-center mb-4 gap-4;
+  }
+
+  .left-header h3 {
+    @apply text-[20px];
+  }
+
+  .left-header span {
+    @apply p-2 rounded-full border;
+  }
 }
+
+/*---------------Transaction---------------*/
+
+
 
 /*---------------Navbar Media Screen---------------*/
 @media only screen and (max-width: 1280px) {

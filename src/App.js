@@ -6,6 +6,7 @@ import { Login } from "./Components/Pages/Login";
 import { Register } from "./Components/Pages/Register";
 import Bookingpage from "./Components/Pages/Bookingpage";
 import Profile from "./Components/Pages/Profile";
+import Transaction from "./Components/Transaction";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/booking" element={<Bookingpage />} />
-        <Route path="/profile:id" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/transaction" element={<Transaction />} />
       </Routes>
     </BrowserRouter>
   );
