@@ -6,6 +6,7 @@ import "./All.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Dropdown, Space, DatePicker, Input } from "antd";
 import Prf from "./Reusable/Prf";
+import Profile from "./Pages/Profile";
 
 export default function Navbar() {
   const [search, setSearch] = useState(false);
@@ -48,7 +49,7 @@ export default function Navbar() {
       <div className="container">
         <div className="wrap-navbar">
           <div className="logo">
-            <img onClick={()=>navigate("/")} style={{ width: "150px", cursor:"pointer" }} src={logo}></img>
+            <img onClick={() => navigate("/")} style={{ width: "150px", cursor: "pointer" }} src={logo}></img>
           </div>
 
           <ul className="menu-navbar">
@@ -57,22 +58,14 @@ export default function Navbar() {
             <li>Review</li>
             <li>Flight Info</li>
             <li>Contact Us</li>
-            {/* <Link to={"/profile"}>
+            <Link to={"/profile"}>
               <button>profile</button>
-            </Link> */}
+            </Link>
           </ul>
 
           <div className="search">
-            {search ? (
-              <Input placeholder="Search Cities or Countries" />
-            ) : (
-              <Input className="frm" placeholder="Search Cities or Countries" />
-            )}
-            {search ? (
-              <BsSearch onClick={srchClose} />
-            ) : (
-              <BsSearch onClick={srch} />
-            )}
+            {search ? <Input placeholder="Search Cities or Countries" /> : <Input className="frm" placeholder="Search Cities or Countries" />}
+            {search ? <BsSearch onClick={srchClose} /> : <BsSearch onClick={srch} />}
 
             <div className="notif">
               {isLogin ? (
