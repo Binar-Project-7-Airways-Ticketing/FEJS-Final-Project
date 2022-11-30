@@ -268,6 +268,8 @@ header {
 .detail-booking {
   display: flex;
   width: 100%;
+  gap: 6px;
+  height: 110px;
 }
 .inpt-book {
   width: 100%;
@@ -277,11 +279,17 @@ header {
   padding: 20px;
 }
 .inpt-trip {
-  width: 50%;
+  width: 80px;
   height: 70px;
   border: 1px solid rgb(178, 178, 178);
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.inpt-trip input{
+  padding: 0;
+  width: 100%;
 }
 .inpt-passenger {
   width: 100%;
@@ -333,12 +341,21 @@ header {
   width: 100%;
   justify-content: flex-end;
 }
+
 .btn-increment-decrement button {
   width: 100%;
   color: #cba052;
   background: #f1efe9;
   border-radius: 5px;
+  width: 35px;
   color: #555;
+  padding: 5px;
+}
+.btn-increment-decrement input{
+  width: 35px;
+  border-radius: 10px;
+  padding: 2px;
+  text-align: center;
 }
 .wrap-class {
   display: flex;
@@ -368,15 +385,13 @@ header {
   position: relative;
   display: flex;
   gap: 6px;
-  align-items: center;
   width: 100%;
 }
 .input {
   position: relative;
   display: flex;
   gap: 6px;
-  align-items: center;
-  width: 225%;
+  width: 100%;
 }
 .swap {
   left: 45%;
@@ -424,7 +439,12 @@ header {
 .ant-picker-range .ant-picker-active-bar {
   background: #cba052;
 }
-
+.ant-form-item{
+  margin: 0;
+}
+.ant-btn.ant-btn-sm{
+  background: #cba052;
+}
 /*-------------------------NAVBAR---------------------------------*/
 .ffff {
   position: fixed;
@@ -751,7 +771,9 @@ header {
   -o-transform: translate(-50%, -50%) scale(1.5);
   transform: translate(-50%, -50%) scale(1.5);
 }
-
+.ant-col-16{
+  max-width: none;
+}
 /*-------------------------FOOTER---------------------------------*/
 footer {
   background: #3f4444;

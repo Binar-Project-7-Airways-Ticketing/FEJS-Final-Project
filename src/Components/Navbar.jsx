@@ -58,9 +58,7 @@ export default function Navbar() {
             <li>Review</li>
             <li>Flight Info</li>
             <li>Contact Us</li>
-            <Link to={"/profile"}>
-              <button>profile</button>
-            </Link>
+            
           </ul>
 
           <div className="search">

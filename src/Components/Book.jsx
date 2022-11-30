@@ -1,34 +1,26 @@
-import React from "react";
-import { AiOutlineSwap } from "react-icons/ai";
-import { DownOutlined } from "@ant-design/icons";
-import { Dropdown, Space, DatePicker } from "antd";
+import React, { useState } from "react";
+import { Space, DatePicker, Form, Input, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import Passenger from "./Reusable/Passenger";
+import FormToFrom from "./FormToFrom";
+import Trip from "./Trip";
 
 export default function Book() {
-  const navigate = useNavigate();
-  const items = [
-    {
-      label: <a href="#">Return</a>,
-      key: "0",
-    },
-    {
-      label: <a  href="#">One Way</a>,
-      key: "1",
-    },
-    {
-      label: "Multiple cities or countries",
-      key: "3",
-    },
-  ];
-
   const { RangePicker } = DatePicker;
+  const [date, setDate] = useState(null)
   const onChange = (value, dateString) => {
     console.log("Selected Time: ", value);
     console.log("Formatted Selected Time: ", dateString);
   };
   const onOk = (value) => {
-    console.log("onOk: ", value);
+    setDate(value)
+  };
+  const handleFindFlight = () => {};
+  const onFinish = (values, value) => {
+    console.log("Success:", {values,name:date});
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
   };
 
   return (
@@ -43,59 +35,74 @@ export default function Book() {
             </p>
           </div>
         </div>
-        <div className="detail-booking">
-          <div className="wrap-input">
-            <div className="input">
-              <input className="inpt-book" placeholder="From"></input>
-              <div className="swap">
-                <AiOutlineSwap />
+        <Form
+          name="basic"
+          labelCol={{
+            span: 8,
+          }}
+          wrapperCol={{
+            span: 16,
+          }}
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
+        >
+          <div className="detail-booking">
+            <div className="wrap-input">
+              <div className="input">
+                <FormToFrom />
               </div>
-              <input className="inpt-book" placeholder="To"></input>
+              <div style={{ width: "50%" }}>
+                <Trip />
+              </div>
             </div>
-            <Dropdown
-              menu={{
-                items,
-              }}
-              trigger={["click"]}
-              className="inpt-trip"
-            >
-              <a onClick={(e) => e.preventDefault()}>
-                <Space>
-                 <div style={{display:"flex", flexDirection:"column"}}>
-                  <div>
-                    <p>Trip</p>
-                    <DownOutlined />
+            <div className="input">
+              <div style={{ width: "100%" }}>
+                <Form.Item
+                  // name="dateTime"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Cannot empty",
+                    },
+                  ]}
+                >
+                  <div className="inpt-date">
+                    <Space direction="vertical" size={5}>
+                      <div className="wrap-date">
+                        <p>Departure</p>
+                        <p></p>
+                        <div className="date">
+                          
+                            <RangePicker
+                              showTime={{
+                                format: "HH:mm",
+                              }}
+                              style={{color:"black"}}
+                              format="YYYY-MM-DD HH:mm"
+                              onChange={onChange}
+                              onOk={onOk}
+                            />
+                           
+                      
+                        </div>
+                      </div>
+                    </Space>
                   </div>
-                  <p>{}</p>
-                 </div>
-                </Space>
-              </a>
-            </Dropdown>
-
-            <Space className="inpt-date" direction="vertical" size={5}>
-              <div className="wrap-date">
-                <p>Departure</p>
-                <div className="date">
-                  <RangePicker
-                    showTime={{
-                      format: "HH:mm",
-                    }}
-                    format="YYYY-MM-DD HH:mm"
-                    onChange={onChange}
-                    onOk={onOk}
-                  />
-                </div>
+                </Form.Item>
               </div>
-            </Space>
-
-            <Passenger />
+              <Passenger />
+            </div>
           </div>
-        </div>
-        <div className="find">
-          <button onClick={() => navigate("/booking")} className="btn-flight">
-            <h5>Find flight</h5>
-          </button>
-        </div>
+          <div className="find">
+            <button onClick={handleFindFlight} className="btn-flight">
+              <h5>Find flight</h5>
+            </button>
+          </div>
+        </Form>
       </div>
     </>
   );
