@@ -131,19 +131,19 @@ export const Register = () => {
                                 <div className="textbox ">
                                     <input onChange={(event) => { setRegisterFirstName(event.target.value) }} type="text" placeholder="FirstName" />
                                     <span className="material-symbols-outlined">
-                                        <UserOutlined />
+                                        <UserOutlined style={{ color: '#F2EFEA' }} />
                                     </span>
                                 </div>
                                 <div className="textbox ">
                                     <input onChange={(event) => { setRegisterLastName(event.target.value) }} type="text" placeholder="LastName" />
                                     <span className="material-symbols-outlined">
-                                        <UserOutlined />
+                                        <UserOutlined style={{ color: '#F2EFEA' }} />
                                     </span>
                                 </div>
                                 <div className="textbox ">
                                     <input onChange={(event) => { setRegisterEmail(event.target.value) }} type="email" placeholder="Email" />
                                     <span className="material-symbols-outlined">
-                                        <MailOutlined />
+                                        <MailOutlined style={{ color: '#F2EFEA' }} />
                                     </span>
                                 </div>
                                 {
@@ -158,7 +158,7 @@ export const Register = () => {
                                 <div className="textbox">
                                     <input onChange={(event) => { setRegisterPassword(event.target.value) }} type="password" placeholder="Password" />
                                     <span className="material-symbols-outlined">
-                                        <LockOutlined />
+                                        <LockOutlined style={{ color: '#F2EFEA' }} />
                                     </span>
                                 </div>
                                 {
@@ -176,7 +176,7 @@ export const Register = () => {
                             <div className="textbox ">
                                 <input onChange={(event) => { setRegisterBirth(event.target.value) }} type="date" placeholder="Date of Birth" />
                                 <span className="material-symbols-outlined">
-                                    <CalendarOutlined />
+                                    <CalendarOutlined style={{ color: '#F2EFEA' }} />
                                 </span>
                             </div>
                             <div className="textbox-select">
@@ -186,7 +186,7 @@ export const Register = () => {
                                     <option value="Pria">Pria</option>
                                 </select>
                                 <span className="material-symbols-outlined">
-                                    <UserOutlined />
+                                    <UserOutlined style={{ color: '#F2EFEA' }} />
                                 </span>
                             </div>
                             <button onClick={() => { registerHandler() }} type="submit">SIGN UP</button>
