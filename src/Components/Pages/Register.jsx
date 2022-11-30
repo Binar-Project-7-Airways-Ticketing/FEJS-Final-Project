@@ -179,8 +179,12 @@ export const Register = () => {
                                     <CalendarOutlined />
                                 </span>
                             </div>
-                            <div className="textbox ">
-                                <input onChange={(event) => (setRegisterGender(event.target.value))} type="text" placeholder="Gender" />
+                            <div className="textbox-select">
+                                <select onChange={(event) => (setRegisterGender(event.target.value))} type="text">
+                                    <option selected>Gender</option>
+                                    <option value="Wanita">Wanita</option>
+                                    <option value="Pria">Pria</option>
+                                </select>
                                 <span className="material-symbols-outlined">
                                     <UserOutlined />
                                 </span>
