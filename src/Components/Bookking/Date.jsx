@@ -24,6 +24,7 @@ export default function Date(props) {
   useEffect(() => {
     loadFlight();
   });
+
   return (
     
     <Form.Item
@@ -59,11 +60,12 @@ export default function Date(props) {
           <div className="wrap-date">
             {props.trip === "Return" ? (
               <div className="date">
-                <RangePicker value={[dayjs(),dayjs()]}/>
+                
+                <RangePicker onChange={props.handleDate} value={props.date}/>
               </div>
             ) : (
               <div className="date">
-                <DatePicker defaultValue={dayjs}/>
+                <DatePicker onChange={props.handleDate} defaultValue={dayjs}/>
               </div>
             )}
           </div>

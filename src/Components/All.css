@@ -14,11 +14,11 @@ h4{
 }
 h5 {
   margin: 0;
-  font-size: 0,7rem;
+  font-size: 1.3rem;
   font-weight: 600;
 }
 h6{
-  font-size: 1.1rem ;
+  font-size: 1rem ;
 }
 p {
   font-size: 0.7rem;
@@ -515,7 +515,7 @@ height: 50px;
 .ant-checkbox-wrapper {
   margin-left: 8px;
 }
-.ant-modal-content {
+.modal-seat {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 800px;
