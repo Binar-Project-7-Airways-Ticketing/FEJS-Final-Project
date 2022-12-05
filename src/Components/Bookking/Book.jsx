@@ -6,25 +6,29 @@ import FormToFrom from "./FormToFrom";
 import Trip from "./Trip";
 import ButtonFlindFilght from "../Reusable/ButtonFlindFilght";
 import Date from "./Date";
+import dayjs from 'dayjs';
+
 
 export default function Book() {
  
-  const [date, setDate] = useState(null);
+  const [date, setDate] = useState();
   const [trip, setTrip] = useState("Return");
 
   const navigate = useNavigate();
-  const onChange = (value, dateString) => {
-    console.log("Selected Time: ", value);
-    console.log("Formatted Selected Time: ", dateString);
-  };
+
   const onOk = (value) => {
     setDate(value);
   };
+  const handleDate = (date, dateString) => {
+    
+    console.log(dateString);
+    setDate(dateString);
+  };
   const handleFindFlight = () => {
-    // navigate("/booking");
+    navigate("/booking");
   };
   const onFinish = (values, value) => {
-    console.log("Success:", { values, name: date });
+    console.log("Success:", { values, date});
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -33,6 +37,7 @@ export default function Book() {
   const handleChangeTrip = (e) => {
     setTrip(e.target.value);
   };
+  const dateFormat = 'YYYY/MM/DD';
 
   return (
     <>
@@ -72,7 +77,7 @@ export default function Book() {
               </div> */}
             </div>
             <div className="input">
-             <Date trip={trip}/>
+             <Date handleDate={handleDate} trip={trip} date={[dayjs(),dayjs().add(7,'d')]}/>
             </div>
             <div className="input">
               <Passenger />
