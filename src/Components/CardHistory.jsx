@@ -1,7 +1,7 @@
 import { DownOutlined } from "@ant-design/icons";
 import React from "react";
 import { AiOutlineSwap } from "react-icons/ai";
-import Passenger from "./Reusable/Passenger";
+import Passenger from "./Bookking/Passenger";
 import { useNavigate } from "react-router-dom";
 
 function CardHistory() {

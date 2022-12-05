@@ -1,15 +1,16 @@
 import React from "react";
 import Footer from "../Footer";
 import Header from "../Header";
+import MainFlightStatus from "../Main/MainFlightStatus";
 import MainHome from "../Main/MainHome";
 import Navbar from "../Navbar";
-import "./Pages.css";
-export default function Homepage() {
+
+export default function FlightStatusPage() {
   return (
     <div>
       <Navbar />
-      <Header />
-      <MainHome/>
+      <Header/>
+      <MainFlightStatus/>
       <Footer />
     </div>
   );

@@ -2,8 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+h1{
+  font-size: 2.5rem;
+  line-height: 3.7rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+h4{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
 h5 {
   margin: 0;
+  font-size: 0,7rem;
+  font-weight: 600;
+}
+h6{
+  font-size: 1.1rem ;
+}
+p {
+  font-size: 0.7rem;
 }
 /*-------------------------LOGIN---------------------------------*/
 @layer components {
@@ -73,7 +91,6 @@ h5 {
 header {
   background: #3f4444;
   height: 80vh;
-  margin-bottom: 100px;
 }
 .wrap-header {
   width: 100%;
@@ -269,31 +286,31 @@ header {
   display: flex;
   width: 100%;
   gap: 6px;
-  height: 110px;
+  height: fit-content;
+  margin-bottom: 20px;
 }
 .inpt-book {
   width: 100%;
-  height: 70px;
+  height: 90px;
   border: 1px solid #b2b2b2;
   border-radius: 10px;
-  padding: 20px;
-}
-.inpt-trip {
-  width: 80px;
-  height: 70px;
-  border: 1px solid rgb(178, 178, 178);
-  border-radius: 10px;
-  padding: 10px;
+  padding: 5px 20px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+
 }
-.inpt-trip input{
+.inpt-trip {
+margin-bottom: 10px;
+height: 50px;
+}
+.inpt-trip input {
   padding: 0;
   width: 100%;
 }
 .inpt-passenger {
   width: 100%;
-  height: 70px;
+  height: 90px;
   border: 1px solid rgb(178, 178, 178);
   border-radius: 10px;
   padding: 5px 20px;
@@ -309,13 +326,13 @@ header {
   position: absolute;
   left: 0;
   background: #8c857b;
-  top: 110%;
+  top: 100%;
   width: 100%;
   border-radius: 10px;
   padding: 15px;
   border: 1px solid rgb(178, 178, 178);
   color: #f1efe9;
-  box-shadow: 0 0 20px rgb(171, 171, 171);
+  box-shadow: 0 0 5px rgb(0 0 0 / 45%);
 }
 .wrap-passenger {
   display: flex;
@@ -351,7 +368,7 @@ header {
   color: #555;
   padding: 5px;
 }
-.btn-increment-decrement input{
+.btn-increment-decrement input {
   width: 35px;
   border-radius: 10px;
   padding: 2px;
@@ -374,13 +391,7 @@ header {
   height: 40px;
   border-radius: 10px;
 }
-.inpt-date {
-  width: 100%;
-  height: 70px;
-  border: 1px solid rgb(178, 178, 178);
-  border-radius: 10px;
-  padding: 5px;
-}
+
 .wrap-input {
   position: relative;
   display: flex;
@@ -392,9 +403,10 @@ header {
   display: flex;
   gap: 6px;
   width: 100%;
+  height: fit-content;
 }
 .swap {
-  left: 45%;
+  left: 46%;
   position: absolute;
   background: #f1efe9;
   width: 40px;
@@ -404,6 +416,8 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 25%;
+  color: #cba052;
 }
 .wrap-date {
   display: flex;
@@ -411,13 +425,10 @@ header {
   gap: 2px;
 }
 .find {
-  margin-top: 20px;
-  display: flex;
-  width: 42%;
-  justify-content: center;
+  width: 100%;
 }
 .btn-flight {
-  width: 50%;
+  width: 15%;
   background: #cba052;
   color: #f1efe9;
   height: 50px;
@@ -427,24 +438,103 @@ header {
 .date {
   width: 100%;
 }
-.ant-picker {
-  border-color: transparent;
-}
-.ant-picker:hover {
-  border-color: transparent;
-}
+
 .ant-picker-focused {
   box-shadow: 0 0 0 2px rgba(203, 161, 82, 0.196);
 }
 .ant-picker-range .ant-picker-active-bar {
   background: #cba052;
 }
-.ant-form-item{
+.ant-form-item {
   margin: 0;
 }
-.ant-btn.ant-btn-sm{
+.ant-btn.ant-btn-sm {
   background: #cba052;
 }
+.ant-btn-default:not(:disabled):hover {
+  color: #cba052;
+  border-color: #cba052;
+}
+.ant-form-vertical .ant-form-item-label > label{
+  color: #b6b6b6;
+}
+
+/*-------------------------Modal Seats---------------------------------*/
+.wrap-detail-seats {
+  width: 100%;
+  display: flex;
+  gap: 50px;
+}
+.detail-seats {
+  width: 100%;
+  display: flex;
+}
+.detail-service {
+  width: 30%;
+}
+.status-seats {
+  width: 100%;
+}
+.plane {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.seats {
+  display: flex;
+  width: fit-content;
+  gap: 10px;
+  background: lightgrey;
+}
+.seats1 {
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: fit-content;
+}
+.seats2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: fit-content;
+  height: fit-content;
+}
+.status {
+  display: flex;
+  gap: 10px;
+}
+.icon-status {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.icon-mean {
+  /* display: flex;
+  flex-direction: column; */
+}
+.ant-checkbox-wrapper {
+  margin-left: 8px;
+}
+.ant-modal-content {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 800px;
+}
+.ant-checkbox-checked .ant-checkbox-inner {
+  background: #cba052;
+  border-color: transparent;
+}
+.ant-checkbox-checked:not(.ant-checkbox-disabled):hover .ant-checkbox-inner {
+  background: #cba052;
+  border-color: #cba052;
+}
+.ant-checkbox:not(.ant-checkbox-disabled):hover .ant-checkbox-inner {
+  border-color: #cba052;
+}
+
+/* .ant-checkbox-checked:after{
+  border: 2px solid #cba052;
+} */
 /*-------------------------NAVBAR---------------------------------*/
 .ffff {
   position: fixed;
@@ -501,6 +591,8 @@ header {
   cursor: pointer;
   justify-content: center;
   padding-top: 5px;
+  position: relative;
+  width: 100px;
 }
 .notif p {
   font-size: 12px;
@@ -508,10 +600,28 @@ header {
 }
 .ant-input {
   width: 200px;
-  background: #f1efe9;
-  border: transparent;
+  background: transparent;
+  border-color: #8c857b;
   transition: none;
-  border-radius: 13px;
+  border-radius: 8px;
+}
+.ant-picker {
+  border-color: #8c857b;
+  background: transparent;
+}
+.ant-picker:hover{
+  border-color: #cba052;
+  background: transparent;
+}
+.ant-radio-wrapper .ant-radio-checked .ant-radio-inner{
+  border-color: #cba052;
+  background: #cba052;
+}
+.ant-radio-wrapper:hover .ant-radio-inner{
+  border-color: #cba052;
+}
+.ant-input:hover {
+  border-color: #cba052;
 }
 .frm {
   visibility: hidden;
@@ -526,9 +636,23 @@ header {
   width: 50px;
   height: 50px;
 }
+.space {
+}
+.notif-read {
+  background: #cba052;
+  color: white;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 10px;
+  padding: 2px;
+  position: absolute;
+  top: 0;
+  left: 16px;
+}
 /*-------------------------Resullt Booking---------------------------------*/
 .main-result-booking {
-  margin-top: 80px;
+  padding: 80px 0;
   background: #f1efe9;
 }
 .wrap-result-booking {
@@ -537,11 +661,6 @@ header {
 .title-result-booking {
   width: 50%;
   color: #3f4444;
-  margin-bottom: 50px;
-}
-.title-result-booking h1 {
-  font-size: 40px;
-  line-height: 3.7rem;
 }
 .card-result-booking {
   display: flex;
@@ -550,7 +669,7 @@ header {
 }
 .wrap-card-result-booking {
   width: 100%;
-  height: auto;
+  height: fit-content;
   border-radius: 20px;
   border: 1px solid rgb(178, 178, 178);
   padding: 20px;
@@ -560,6 +679,7 @@ header {
   flex-direction: column;
   gap: 20px;
 }
+
 
 .card-booking {
   width: 100%;
@@ -582,19 +702,12 @@ header {
   display: flex;
   flex-direction: column;
 }
-.card-class h5 {
-  font-size: 15px;
-  font-weight: 700;
-}
 .idr {
   display: flex;
   width: 100%;
   height: 100%;
   flex-direction: column;
   justify-content: center;
-}
-.card-class h6 {
-  font-size: 25px;
 }
 
 .card-detail {
@@ -676,6 +789,14 @@ header {
   animation: class 1s ease-in-out;
   gap: 20px;
 }
+@keyframes class {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .modal-time {
   display: flex;
   flex-direction: column;
@@ -707,14 +828,7 @@ header {
   left: 50%;
 }
 
-@keyframes class {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+
 
 .detail-economy-class h2 {
   font-size: 25px;
@@ -735,6 +849,7 @@ header {
   padding: 5px 10px;
   width: 25%;
   text-align: center;
+  cursor: pointer;
 }
 .benefit-detail {
   display: flex;
@@ -771,7 +886,7 @@ header {
   -o-transform: translate(-50%, -50%) scale(1.5);
   transform: translate(-50%, -50%) scale(1.5);
 }
-.ant-col-16{
+.ant-col-16 {
   max-width: none;
 }
 /*-------------------------FOOTER---------------------------------*/
@@ -1066,8 +1181,6 @@ footer {
 }
 
 /*---------------Transaction---------------*/
-
-
 
 /*---------------Navbar Media Screen---------------*/
 @media only screen and (max-width: 1280px) {

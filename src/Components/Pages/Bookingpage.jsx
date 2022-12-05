@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
-import CardResultBooking from "../Reusable/CardResultBooking";
+import CardResultBooking from "../Bookking/CardResultBooking";
 
 export default function Bookingpage() {
   return (
