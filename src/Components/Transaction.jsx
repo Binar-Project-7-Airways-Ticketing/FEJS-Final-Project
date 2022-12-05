@@ -86,7 +86,7 @@ export default function Transaction() {
               </div>
             </div>
           </div>
-          <div className='parent-b w-full bg-white p-6'>
+          <div className='parent-b w-full bg-white p-6 mt-6'>
             <div className='left-header'>
               <span>
                 <ContactsOutlined />
