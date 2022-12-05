@@ -76,7 +76,7 @@ export default function Transaction() {
               </div>
               <div className='flex mb-2 w-full'>
                 <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
-                  <Select options={options} value={value} onChange={changeHandler} />
+                  <Select options={options} value={value} onChange={changeHandler} placeholder='Country' />
                 </div>
               </div>
               <div className='flex mb-2 w-full'>
@@ -86,7 +86,7 @@ export default function Transaction() {
               </div>
             </div>
           </div>
-          <div className='parent-b w-full bg-white p-6 mt-6'>
+          <div className='parent-b w-full bg-white p-6'>
             <div className='left-header'>
               <span>
                 <ContactsOutlined />
@@ -109,6 +109,11 @@ export default function Transaction() {
                   <input className='w-full p-2 focus:outline-none text-black placeholder:text-black' type="text" placeholder="Email" />
                 </div>
               </div>
+              <div className='flex mb-2 w-full'>
+                <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
+                  <Select className='placeholder:text-black' options={options} value={value} onChange={changeHandler} placeholder="Country" />
+                </div>
+              </div>
               <div className='flex w-full'>
                 <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
                   <input className='w-full p-2 focus:outline-none text-black placeholder:text-black' type="text" placeholder="No Telepon" />
@@ -123,11 +128,24 @@ export default function Transaction() {
               </span>
               <h3>Extra Fasilitas</h3>
             </div>
-            <div className='flex justify-start items-center mb-4 gap-4'>
-              <span>
-                <ShoppingOutlined />
-              </span>
-              <h3 className='text-[20px] mt-2'>Bagasi</h3>
+            <div className='flex justify-between items-center mb-4 gap-4'>
+              <div className='flex justify-start items-center mb-4 gap-4'>
+                <span>
+                  <ShoppingOutlined />
+                </span>
+                <h3 className='text-[20px] mt-2'>Bagasi</h3>
+              </div>
+              <div className='flex justify-start items-center gap-4'>
+                <select>
+                  <option >Select Extra Baggage</option>
+                  <option >+5Kg x 1 (175000IDR)</option>
+                  <option >+5Kg x 2 (350000IDR)</option>
+                  <option >+5Kg x 3 (525000IDR)</option>
+                  <option >+5Kg x 4 (700000IDR)</option>
+                  <option >+5Kg x 5 (875000IDR)</option>
+                  <option >+5Kg x 6 (1050000IDR)</option>
+                </select>
+              </div>
             </div>
           </div>
           <div className='parent-d w-full mt-6 flex justify-end'>
