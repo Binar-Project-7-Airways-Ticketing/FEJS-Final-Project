@@ -6,7 +6,7 @@ export default function MyTrip() {
       <div className="wrap-detail-booking">
         <div className="wrap-detail-title">
           <div className="detail-title">
-            <h2>Plan your upcoming trip with us</h2>
+            <h2>Update your flight</h2>
           </div>
         </div>
       </div>

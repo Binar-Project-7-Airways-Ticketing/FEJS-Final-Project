@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Book from "./Book";
 import CheckIn from "./CheckIn";
 import FlightStatus from "./FlightStatus";
-import MyTrip from "./MyTrip";
+import MyTrip from "../MyTrip";
 import { SlPlane } from "react-icons/sl";
 import { MdOutlineFlightTakeoff } from "react-icons/md";
 import { AiFillFolderOpen, AiOutlineCheckCircle } from "react-icons/ai";

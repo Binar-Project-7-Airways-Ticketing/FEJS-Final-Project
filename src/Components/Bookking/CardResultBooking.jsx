@@ -3,10 +3,17 @@ import { AiOutlineCheck } from "react-icons/ai";
 import { Button, Modal } from "antd";
 import logo from "../../logo.png";
 import { BsCircle } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import { AiOutlineDollar } from "react-icons/ai";
+import { MdFastfood } from "react-icons/md";
+import { BsCreditCard2Back } from "react-icons/bs";
+import { GiNightSleep } from "react-icons/gi";
+import { VscVm } from "react-icons/vsc";
 
 export default function CardResultBooking() {
   const [economy, setEconomy] = useState(false);
   const [business, setBusiness] = useState(false);
+  const navigate = useNavigate()
 
   const economyDetail = () => {
     setBusiness(false);
@@ -48,14 +55,14 @@ export default function CardResultBooking() {
                 <div className="result-booking">
                   {economy ? (
                     <div className="card-class" onClick={economyDetailClose}>
-                      <h5>Economy</h5>
+                      <h4>Economy</h4>
                       <div className="idr">
                         <h6>IDR 4.300.000,00</h6>
                       </div>
                     </div>
                   ) : (
                     <div className="card-class" onClick={economyDetail}>
-                      <h5>Economy</h5>
+                      <h4>Economy</h4>
                       <div className="idr">
                         <h6>IDR 4.300.000,00</h6>
                       </div>
@@ -63,14 +70,14 @@ export default function CardResultBooking() {
                   )}
                   {business ? (
                     <div className="card-class" onClick={businessDetailClose}>
-                      <h5>Business</h5>
+                      <h4>Business</h4>
                       <div className="idr">
                         <h6>IDR 7.300.000,00</h6>
                       </div>
                     </div>
                   ) : (
                     <div className="card-class" onClick={businessDetail}>
-                      <h5>Business</h5>
+                      <h4>Business</h4>
                       <div className="idr">
                         <h6>IDR 7.300.000,00</h6>
                       </div>
@@ -161,22 +168,20 @@ export default function CardResultBooking() {
                     <p>The benefits you get in economy class</p>
                     <div className="benefit-detail">
                       <div className="icon-benefit">
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
+                      <AiOutlineCheck />
+                      <BsCreditCard2Back />
+                      <MdFastfood />
+                      <AiOutlineDollar />
                       </div>
                       <div className="text-benefit">
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
+                      <p>Cancel anytime without fees</p>
+                        <p>Money Back Guarantee If The Delay Exceeds 1 Hour</p>
+                        <p>Get Snacks During The Trip </p>
+                        <p>Cheapest Price To Your Destination</p>
                       </div>
                     </div>
                     <div className="btn-select-class">
-                      <p>Select Class</p>
+                    <p onClick={()=> navigate('/transaction')}>Select Class</p>
                     </div>
                   </div>
                   <div className="img-benefit">
@@ -193,22 +198,22 @@ export default function CardResultBooking() {
                     <p>The benefits you get in economy class</p>
                     <div className="benefit-detail">
                       <div className="icon-benefit">
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
+                      <AiOutlineCheck />
+                        <GiNightSleep />
+                        <VscVm />
+                        <AiOutlineDollar />
+                        <MdFastfood />
                       </div>
                       <div className="text-benefit">
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
+                      <p>Cancel anytime without fees</p>
+                        <p>Sleep Well Because It Is Equipped With a Comfortable Bed</p>
+                        <p>Many Entertainment Options That You Can Enjoy</p>
+                        <p>Money Back Guarantee If The Delay Exceeds 15 Minutes</p>
+                        <p>Get Anything Food You Want</p>
                       </div>
                     </div>
                     <div className="btn-select-class">
-                      <p>Select Class</p>
+                      <p onClick={()=> navigate('/transaction')}>Select Class</p>
                     </div>
                   </div>
                   <div className="img-benefit">

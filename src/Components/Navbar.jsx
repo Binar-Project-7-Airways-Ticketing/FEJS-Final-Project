@@ -11,6 +11,7 @@ import Profile from "./Pages/Profile";
 export default function Navbar() {
   const [search, setSearch] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+  const [openNotif, setOpenNotif] = useState(false);
 
   const navigate = useNavigate();
 
@@ -35,7 +36,6 @@ export default function Navbar() {
     },
   ];
 
-  // hook handle login
   useEffect(() => {
     if (localStorage.getItem("auth")) {
       setIsLogin(true);
@@ -49,7 +49,11 @@ export default function Navbar() {
       <div className="container">
         <div className="wrap-navbar">
           <div className="logo">
-            <img onClick={() => navigate("/")} style={{ width: "150px", cursor: "pointer" }} src={logo}></img>
+            <img
+              onClick={() => navigate("/")}
+              style={{ width: "150px", cursor: "pointer" }}
+              src={logo}
+            ></img>
           </div>
 
           <ul className="menu-navbar">
@@ -62,16 +66,36 @@ export default function Navbar() {
           </ul>
 
           <div className="search">
-            {search ? <Input placeholder="Search Cities or Countries" /> : <Input className="frm" placeholder="Search Cities or Countries" />}
-            {search ? <BsSearch onClick={srchClose} /> : <BsSearch onClick={srch} />}
+            {search ? (
+              <Input placeholder="Search Cities or Countries" />
+            ) : (
+              <Input className="frm" placeholder="Search Cities or Countries" />
+            )}
+            {search ? (
+              <BsSearch style={{ fontSize: "25px" }} onClick={srchClose} />
+            ) : (
+              <BsSearch style={{ fontSize: "25px" }} onClick={srch} />
+            )}
 
             <div className="notif">
               {isLogin ? (
-                <Dropdown placement="bottom" arrow menu={{ items }}>
+                <Dropdown
+                  onMouseEnter={() => setOpenNotif(true)}
+                  placement="bottom"
+                  arrow
+                  menu={{ items }}
+                >
                   <a onClick={(e) => e.preventDefault()}>
-                    <Space>
-                      <AiOutlineBell style={{ fontSize: "20px" }} />
-                      <p>Notifikasi</p>
+                    <Space className="space">
+                      {openNotif ? (
+                        <div></div>
+                      ) : (
+                        <div className="notif-read">
+                          <p>{items.length}</p>
+                        </div>
+                      )}
+                      <AiOutlineBell style={{ fontSize: "30px" }} />
+                      <p style={{ fontSize: "15px" }}>Notifikasi</p>
                     </Space>
                   </a>
                 </Dropdown>

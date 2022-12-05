@@ -7,6 +7,7 @@ import { Register } from "./Components/Pages/Register";
 import Bookingpage from "./Components/Pages/Bookingpage";
 import Profile from "./Components/Pages/Profile";
 import Transaction from "./Components/Transaction";
+import FlightStatusPage from "./Components/Pages/FlightStatusPage";
 import Payment from "./Components/Payment";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/booking" element={<Bookingpage />} />
+        <Route path="/flight status" element={<FlightStatusPage/>} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/transaction" element={<Transaction />} />
         <Route path="/payment" element={<Payment />} />

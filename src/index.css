@@ -3,7 +3,7 @@
 @tailwind utilities;
 body {
   margin: 0;
-  font-family: 'Roboto';
+  font-family: 'Open Sans', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: white;
@@ -11,8 +11,8 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace; */
 }
 *{
   margin: 0;
