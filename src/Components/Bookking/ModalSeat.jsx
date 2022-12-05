@@ -226,7 +226,7 @@ export default function ModalSeat(props) {
               <p>Kursi 23A, IDR 0</p>
               <h5>Seat Description</h5>
               <div className="flex w-full gap-3">
-                <div className="flex flex-col justify-between">
+                <div className="flex flex-col justify-around">
                   <MdEventSeat />
                   <MdEventSeat />
                   <MdEventSeat />

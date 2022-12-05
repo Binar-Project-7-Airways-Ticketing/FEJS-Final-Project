@@ -4,7 +4,7 @@ export default function ButtonFlindFilght(props) {
   return (
     <div className="find">
       <button onClick={props.handle} className="btn-flight">
-        <h5 >{props.value}</h5>
+        <h6 >{props.value}</h6>
       </button>
     </div>
   );

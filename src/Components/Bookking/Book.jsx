@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Space, DatePicker, Form, Input, Button } from "antd";
+import { Form,} from "antd";
 import { useNavigate } from "react-router-dom";
 import Passenger from "./Passenger";
 import FormToFrom from "./FormToFrom";
@@ -37,7 +37,7 @@ export default function Book() {
   const handleChangeTrip = (e) => {
     setTrip(e.target.value);
   };
-  const dateFormat = 'YYYY/MM/DD';
+ 
 
   return (
     <>
@@ -72,9 +72,7 @@ export default function Book() {
               <div className="input">
                 <FormToFrom />
               </div>
-              {/* <div style={{ width: "50%" }}>
-                
-              </div> */}
+        
             </div>
             <div className="input">
              <Date handleDate={handleDate} trip={trip} date={[dayjs(),dayjs().add(7,'d')]}/>
@@ -83,11 +81,6 @@ export default function Book() {
               <Passenger />
             </div>
           </div>
-          {/* <div className="find">
-            <button onClick={handleFindFlight} className="btn-flight">
-              <h5>Find flight</h5>
-            </button>
-          </div> */}
           <ButtonFlindFilght handle={handleFindFlight} value={"Find Flight"} />
         </Form>
       </div>

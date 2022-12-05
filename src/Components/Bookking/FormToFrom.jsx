@@ -1,12 +1,12 @@
 import React from "react";
-import { Dropdown, Space, DatePicker, Form, Input, Button, Radio } from "antd";
+import { Form, Input } from "antd";
+import { MdFlightTakeoff, MdFlightLand } from "react-icons/md";
 import { AiOutlineSwap } from "react-icons/ai";
 
 export default function FormToFrom() {
   return (
     <>
       <div className="inpt-book">
-    
         <Form.Item
           name="from"
           label="From"
@@ -17,12 +17,14 @@ export default function FormToFrom() {
             },
           ]}
         >
-          <Input />
+          <div className="flex w-full items-center gap-2">
+            <MdFlightTakeoff size={"25"} color="#cba052" />
+            <Input />
+          </div>
         </Form.Item>
       </div>
 
       <div className="inpt-book">
-    
         <Form.Item
           label="To"
           name="to"
@@ -32,8 +34,9 @@ export default function FormToFrom() {
               message: "Cannot Empty",
             },
           ]}
-        >
-          <Input />
+        > <div className="flex w-full items-center gap-2">
+        <MdFlightLand size={"25"} color="#cba052" />
+        <Input /></div>
         </Form.Item>
       </div>
       <div className="swap">

@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-h1{
+h1 {
   font-size: 2.5rem;
   line-height: 3.7rem;
   font-weight: 600;
   margin-bottom: 3rem;
 }
-h4{
+h4 {
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -17,11 +17,12 @@ h5 {
   font-size: 1.3rem;
   font-weight: 600;
 }
-h6{
-  font-size: 1rem ;
+h6 {
+  font-size: 1rem;
+  font-weight: 600;
 }
 p {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 /*-------------------------LOGIN---------------------------------*/
 @layer components {
@@ -90,7 +91,7 @@ p {
 /*-------------------------Header---------------------------------*/
 header {
   background: #3f4444;
-  height: 80vh;
+  height: 100vh;
 }
 .wrap-header {
   width: 100%;
@@ -125,7 +126,6 @@ header {
   width: 100%;
 }
 .wrap-booking {
-  margin-top: 50px;
   width: 100%;
   height: fit-content;
   /* padding: 20px; */
@@ -146,7 +146,7 @@ header {
   justify-content: flex-start;
   cursor: pointer;
   background: #f1efe9;
-  border-radius: 20px 0 0 0;
+  border-radius: 16px 0 0 0;
   color: #cba052;
   gap: 15px;
   font-size: 20px;
@@ -196,7 +196,7 @@ header {
   justify-content: flex-start;
   cursor: pointer;
   background: #f1efe9;
-  border-radius: 0 20px 0 0;
+  border-radius: 0 16px 0 0;
   color: #cba052;
   gap: 15px;
   font-size: 20px;
@@ -211,7 +211,7 @@ header {
   cursor: pointer;
   background: #cba052;
   color: #f1efe9;
-  border-radius: 20px 0 0 0;
+  border-radius: 16px 0 0 0;
   gap: 15px;
   font-size: 20px;
   padding: 0 30px;
@@ -251,7 +251,7 @@ header {
   cursor: pointer;
   background: #cba052;
   color: #f1efe9;
-  border-radius: 0 20px 0 0;
+  border-radius: 0 16px 0 0;
   gap: 15px;
   font-size: 20px;
   padding: 0 30px;
@@ -261,7 +261,7 @@ header {
   width: 100%;
   background: #f1efe9;
   height: fit-content;
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 16px 16px;
   color: #cba052;
   padding: 30px;
 }
@@ -294,15 +294,14 @@ header {
   height: 90px;
   border: 1px solid #b2b2b2;
   border-radius: 10px;
-  padding: 5px 20px;
+  padding: 5px 20px 5px 15px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
 }
 .inpt-trip {
-margin-bottom: 10px;
-height: 50px;
+  margin-bottom: 10px;
+  height: 50px;
 }
 .inpt-trip input {
   padding: 0;
@@ -455,7 +454,7 @@ height: 50px;
   color: #cba052;
   border-color: #cba052;
 }
-.ant-form-vertical .ant-form-item-label > label{
+.ant-form-vertical .ant-form-item-label > label {
   color: #b6b6b6;
 }
 
@@ -599,7 +598,7 @@ height: 50px;
   font-family: "Roboto";
 }
 .ant-input {
-  width: 200px;
+  width: 180px;
   background: transparent;
   border-color: #8c857b;
   transition: none;
@@ -609,15 +608,15 @@ height: 50px;
   border-color: #8c857b;
   background: transparent;
 }
-.ant-picker:hover{
+.ant-picker:hover {
   border-color: #cba052;
   background: transparent;
 }
-.ant-radio-wrapper .ant-radio-checked .ant-radio-inner{
+.ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
   border-color: #cba052;
   background: #cba052;
 }
-.ant-radio-wrapper:hover .ant-radio-inner{
+.ant-radio-wrapper:hover .ant-radio-inner {
   border-color: #cba052;
 }
 .ant-input:hover {
@@ -679,7 +678,6 @@ height: 50px;
   flex-direction: column;
   gap: 20px;
 }
-
 
 .card-booking {
   width: 100%;
@@ -828,8 +826,6 @@ height: 50px;
   left: 50%;
 }
 
-
-
 .detail-economy-class h2 {
   font-size: 25px;
   font-weight: 700;
@@ -888,6 +884,25 @@ height: 50px;
 }
 .ant-col-16 {
   max-width: none;
+}
+/*-------------------------Card Review---------------------------------*/
+.img-review{
+  width: 50%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.img-review img {
+  width: 100%;
+  max-width: inherit;
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(1.5);
+  -moz-transform: translate(-50%, -50%) scale(1.5);
+  -o-transform: translate(-50%, -50%) scale(1.5);
+  transform: translate(-50%, -50%) scale(1.5);
 }
 /*-------------------------FOOTER---------------------------------*/
 footer {

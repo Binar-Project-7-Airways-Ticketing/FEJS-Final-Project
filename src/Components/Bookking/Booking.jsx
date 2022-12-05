@@ -33,27 +33,23 @@ export default function Booking() {
     setFlightStatus(true);
   };
   return (
-    <>
+    <div className="shadow-xl rounded-2xl">
       {booking ? (
         <>
           <div className="wrap-booking">
             <div className="booking">
               <div className="book-default">
                 <SlPlane />
-                <h5>Book</h5>
+                <h6>Book</h6>
               </div>
               <div className="my-trip-cst" onClick={mytrip}>
                 <AiFillFolderOpen />
-                <h5>My Trip</h5>
-              </div>
-              <div className="check-in-cst" onClick={checkin}>
-                <AiOutlineCheckCircle />
-                <h5>Check In</h5>
+                <h6>My Trip</h6>
               </div>
 
               <div className="flight-status-cst" onClick={flightstatus}>
                 <MdOutlineFlightTakeoff />
-                <h5>Flight Status</h5>
+                <h6>Flight Status</h6>
               </div>
             </div>
           </div>
@@ -65,48 +61,20 @@ export default function Booking() {
             <div className="booking">
               <div className="book-cst" onClick={book}>
                 <SlPlane />
-                <h5>Book</h5>
+                <h6>Book</h6>
               </div>
               <div className="my-trip-default">
                 <AiFillFolderOpen />
-                <h5>My Trip</h5>
-              </div>
-              <div className="check-in-cst" onClick={checkin}>
-                <AiOutlineCheckCircle />
-                <h5>Check In</h5>
+                <h6>My Trip</h6>
               </div>
 
               <div className="flight-status-cst" onClick={flightstatus}>
                 <MdOutlineFlightTakeoff />
-                <h5>Flight Status</h5>
+                <h6>Flight Status</h6>
               </div>
             </div>
           </div>
           <MyTrip />
-        </>
-      ) : checkIn ? (
-        <>
-          <div className="wrap-booking">
-            <div className="booking">
-              <div className="book-cst" onClick={book}>
-                <SlPlane />
-                <h5>Book</h5>
-              </div>
-              <div className="my-trip-cst" onClick={mytrip}>
-                <AiFillFolderOpen />
-                <h5>My Trip</h5>
-              </div>
-              <div className="check-in-default">
-                <AiOutlineCheckCircle />
-                <h5>Check In</h5>
-              </div>
-              <div className="flight-status-cst" onClick={flightstatus}>
-                <MdOutlineFlightTakeoff />
-                <h5>Flight Status</h5>
-              </div>
-            </div>
-          </div>
-          <CheckIn />
         </>
       ) : flightStatus ? (
         <>
@@ -114,27 +82,22 @@ export default function Booking() {
             <div className="booking">
               <div className="book-cst" onClick={book}>
                 <SlPlane />
-                <h5>Book</h5>
+                <h6>Book</h6>
               </div>
               <div className="my-trip-cst" onClick={mytrip}>
                 <AiFillFolderOpen />
-                <h5>My Trip</h5>
+                <h6>My Trip</h6>
               </div>
-              <div className="check-in-cst" onClick={checkin}>
-                <AiOutlineCheckCircle />
-                <h5>Check In</h5>
-              </div>
+
               <div className="flight-status-default">
                 <MdOutlineFlightTakeoff />
-                <h5>Flight Status</h5>
+                <h6>Flight Status</h6>
               </div>
             </div>
           </div>
           <FlightStatus />
         </>
-      ) : (
-        <h1>hiyaa</h1>
-      )}
-    </>
+      ) : null}
+    </div>
   );
 }

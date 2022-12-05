@@ -126,6 +126,7 @@ export default function Passenger() {
                       <Button onClick={adultDecrement}>-</Button>
                       <Input
                         name={"name"}
+                        readOnly
                         onChange={handleAdults}
                         style={{ color: "black" }}
                         value={adults}
@@ -142,6 +143,7 @@ export default function Passenger() {
                       <Button onClick={childDecrement}>-</Button>
                       <Input
                         name={"name"}
+                        readOnly
                         onChange={handleChild}
                         style={{ color: "black" }}
                         value={childs}
@@ -158,6 +160,7 @@ export default function Passenger() {
                       <Button onClick={infantDecrement}>-</Button>
                       <Input
                         name={"name"}
+                        readOnly
                         onChange={handleInfant}
                         style={{ color: "black" }}
                         value={infants}

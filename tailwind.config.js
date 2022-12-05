@@ -16,6 +16,7 @@ module.exports = {
           choco: "#8C857B",
           gray: "#8C8C8C",
           nude: "#F2EFEA",
+          whiteLight:"#f1efe9"
         }
       }
     },
