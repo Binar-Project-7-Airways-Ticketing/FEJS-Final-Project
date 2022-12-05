@@ -4,6 +4,11 @@ import { Button, Modal } from "antd";
 import logo from "../../logo.png";
 import { BsCircle } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineDollar } from "react-icons/ai";
+import { MdFastfood } from "react-icons/md";
+import { BsCreditCard2Back } from "react-icons/bs";
+import { GiNightSleep } from "react-icons/gi";
+import { VscVm } from "react-icons/vsc";
 
 export default function CardResultBooking() {
   const [economy, setEconomy] = useState(false);
@@ -163,18 +168,16 @@ export default function CardResultBooking() {
                     <p>The benefits you get in economy class</p>
                     <div className="benefit-detail">
                       <div className="icon-benefit">
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
+                      <AiOutlineCheck />
+                      <BsCreditCard2Back />
+                      <MdFastfood />
+                      <AiOutlineDollar />
                       </div>
                       <div className="text-benefit">
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
+                      <p>Cancel anytime without fees</p>
+                        <p>Money Back Guarantee If The Delay Exceeds 1 Hour</p>
+                        <p>Get Snacks During The Trip </p>
+                        <p>Cheapest Price To Your Destination</p>
                       </div>
                     </div>
                     <div className="btn-select-class">
@@ -195,18 +198,18 @@ export default function CardResultBooking() {
                     <p>The benefits you get in economy class</p>
                     <div className="benefit-detail">
                       <div className="icon-benefit">
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
-                        <AiOutlineCheck />
+                      <AiOutlineCheck />
+                        <GiNightSleep />
+                        <VscVm />
+                        <AiOutlineDollar />
+                        <MdFastfood />
                       </div>
                       <div className="text-benefit">
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
-                        <p>Cancel anytime without fees</p>
+                      <p>Cancel anytime without fees</p>
+                        <p>Sleep Well Because It Is Equipped With a Comfortable Bed</p>
+                        <p>Many Entertainment Options That You Can Enjoy</p>
+                        <p>Money Back Guarantee If The Delay Exceeds 15 Minutes</p>
+                        <p>Get Anything Food You Want</p>
                       </div>
                     </div>
                     <div className="btn-select-class">
