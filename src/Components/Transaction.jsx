@@ -1,10 +1,22 @@
 import React, { useState, useMemo } from 'react';
 import { ContactsOutlined, ShoppingOutlined, UnorderedListOutlined, ArrowRightOutlined, ScheduleOutlined, DollarCircleOutlined } from '@ant-design/icons';
+import { Modal } from "antd";
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Countdown from 'react-countdown';
 import Select from 'react-select';
 import countryList from 'react-select-country-list';
+import logo from "../logo.png";
+import bri from "../image/bri.jpg";
+import bca from "../image/bca.jpg";
+import mandiri from "../image/mandiri.jpg";
+import bni from "../image/bni.jpg";
+import ovo from "../image/ovo.jpg";
+import danaa from "../image/dana.jpg";
+import linkAja from "../image/link aja.jpg";
+import { BsCircle } from "react-icons/bs";
+import { useNavigate } from 'react-router-dom';
+
 
 const Completionist = () => <span>You are good to go!</span>;
 
@@ -30,11 +42,49 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 
 export default function Transaction() {
 
+  const navigate = useNavigate();
+
   const [value, setValue] = useState('');
   const options = useMemo(() => countryList().getData(), []);
 
   const changeHandler = value => {
     setValue(value)
+  }
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const [isModalBayarOpen, setIsModalBayarOpen] = useState(false);
+
+  const showModalBayar = () => {
+    setIsModalBayarOpen(true);
+  };
+
+  const handleBayarOk = () => {
+    setIsModalBayarOpen(false);
+  };
+
+  const handleBayarCancel = () => {
+    setIsModalBayarOpen(false);
+  };
+
+  // method payment
+  const dana = () => {
+    // navigate('/payment')
+    alert("Transasi akan diproses")
+    setIsModalBayarOpen(false);
+    navigate('/');
   }
 
   return (
@@ -149,7 +199,80 @@ export default function Transaction() {
             </div>
           </div>
           <div className='parent-d w-full mt-6 flex justify-end'>
-            <button className='block rounded-lg cursor-pointer justify-center h-[60px] w-[50%] bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px]' type="submit">LANJUT PEMBAYARAN</button>
+            <button className='block rounded-lg cursor-pointer justify-center h-[60px] w-[50%] bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px]' type="submit" onClick={showModalBayar}>LANJUT PEMBAYARAN</button>
+            <Modal
+              title="Select Payment Method"
+              open={isModalBayarOpen}
+              onOk={handleBayarOk}
+              onCancel={handleBayarCancel}
+              footer={[null]}
+            >
+              <div className='p-2 mt-4'>
+                <div onClick={dana} className='flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2'>
+                  <img
+                    src={bri}
+                    style={{
+                      width: "70px",
+                      height: "70px",
+                    }}></img>
+                  <h3 className='p-6 text-black text-bold'>BRI</h3>
+                </div>
+                <div onClick={dana} className='flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2'>
+                  <img
+                    src={bca}
+                    style={{
+                      width: "70px",
+                      height: "70px",
+                    }}></img>
+                  <h3 className='p-6 text-black text-bold'>BCA</h3>
+                </div>
+                <div onClick={dana} className='flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2'>
+                  <img
+                    src={mandiri}
+                    style={{
+                      width: "70px",
+                      height: "70px",
+                    }}></img>
+                  <h3 className='p-6 text-black text-bold'>Mandiri</h3>
+                </div>
+                <div onClick={dana} className='flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2'>
+                  <img
+                    src={bni}
+                    style={{
+                      width: "70px",
+                      height: "70px",
+                    }}></img>
+                  <h3 className='p-6 text-black text-bold'>BNI</h3>
+                </div>
+                <div onClick={dana} className='flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2'>
+                  <img
+                    src={ovo}
+                    style={{
+                      width: "70px",
+                      height: "70px",
+                    }}></img>
+                  <h3 className='p-6 text-black text-bold'>OVO</h3>
+                </div>
+                <div onClick={dana} className='flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2'>
+                  <img
+                    src={danaa}
+                    style={{
+                      width: "70px",
+                      height: "70px",
+                    }}></img>
+                  <h3 className='p-6 text-black text-bold'>Dana</h3>
+                </div>
+                <div onClick={dana} className='flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2'>
+                  <img
+                    src={linkAja}
+                    style={{
+                      width: "70px",
+                      height: "70px",
+                    }}></img>
+                  <h3 className='p-6 text-black text-bold'>Link Aja</h3>
+                </div>
+              </div>
+            </Modal>
           </div>
         </div>
 
@@ -166,11 +289,66 @@ export default function Transaction() {
                     <span>
                       <ArrowRightOutlined />
                     </span>
-                    <h3>Makassar</h3>
+                    <h3>Singapore</h3>
                   </div>
                   <div>
-                    <a href=''>Detail</a>
+                    <button onClick={showModal}>Detail</button>
                   </div>
+                  <Modal
+                    title="Flight Detail"
+                    open={isModalOpen}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                    footer={[null]}
+                  >
+                    <div className="wrap-modal-detail-flight">
+                      <div className="title-detail-flight">
+                        <p>Jakarta to Singapore</p>
+                        <p>Saturday, Nov 26</p>
+                      </div>
+                      <div className="modal-detail-flight">
+                        <div className="airports">
+                          <div>
+                            <p>Jakarta</p>
+                            <p>Soekarno-Hatta International Airports</p>
+                          </div>
+                          <div>
+                            <p>NO PESAWAT</p>
+                            <p>Flight by 7-Airways</p>
+                          </div>
+                          <div>
+                            <p>Singapore</p>
+                            <p>Changi International Airports</p>
+                          </div>
+                        </div>
+
+                        <div className="modal-logo">
+                          <div className="circle">
+                            <BsCircle />
+                          </div>
+                          <div className="wrap-logo">
+                            <img
+                              src={logo}
+                              style={{
+                                width: "90px",
+                                height: "90px",
+                                borderRadius: "100%",
+                                border: "1px solid black",
+                              }}
+                            ></img>
+                          </div>
+                          <div className="circle">
+                            <BsCircle />
+                          </div>
+                        </div>
+                        <div className="modal-time">
+                          <p>10:30</p>
+                          <p>2h 10m</p>
+                          <p>14:40</p>
+                        </div>
+                      </div>
+                    </div>
+                  </Modal>
                 </div>
                 <div className='w-full my-[2rem]'>
                   <h3 className='text-[20px] text-black mb-4'>Kebijakan Tiket</h3>
