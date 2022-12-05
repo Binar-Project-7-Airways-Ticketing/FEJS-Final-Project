@@ -62,6 +62,7 @@ export default function Navbar() {
             <li>Review</li>
             <li>Flight Info</li>
             <li>Contact Us</li>
+            
           </ul>
 
           <div className="search">

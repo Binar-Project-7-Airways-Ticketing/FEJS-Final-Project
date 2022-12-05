@@ -106,7 +106,7 @@ export const Login = () => {
                                 <div className="textbox ">
                                     <input onChange={(event) => { setLoginEmail(event.target.value) }} type="email" placeholder="Email" />
                                     <span className="material-symbols-outlined">
-                                        <UserOutlined />
+                                        <UserOutlined style={{ color: '#F2EFEA' }} />
                                     </span>
                                 </div>
                                 {
@@ -121,7 +121,7 @@ export const Login = () => {
                                 <div className="textbox">
                                     <input onChange={(event) => { setLoginPassword(event.target.value) }} type="password" placeholder="Password" />
                                     <span className="material-symbols-outlined">
-                                        <LockOutlined />
+                                        <LockOutlined style={{ color: '#F2EFEA' }} />
                                     </span>
                                 </div>
                                 {

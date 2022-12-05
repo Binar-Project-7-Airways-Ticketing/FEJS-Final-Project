@@ -1155,16 +1155,20 @@ footer {
 
   /*---------------Transaction---------------*/
   .booking-container {
-    @apply container flex justify-between;
+    @apply container flex justify-between w-full px-[3rem] py-[3rem];
   }
 
   .booking-left,
   .booking-right {
-    @apply w-full;
+    @apply block w-full p-6;
   }
 
   .booking-left {
-    @apply p-4;
+    @apply flex-initial w-[65%];
+  }
+
+  .booking-right {
+    @apply flex-initial w-[35%];
   }
 
   .left-header {

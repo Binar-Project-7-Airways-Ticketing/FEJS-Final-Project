@@ -26,8 +26,8 @@ function CardHistory() {
       <div className="wrap-detail-booking">
         <div className="wrap-detail-title">
           <div className="detail-title">
-            <h2>Get Flight Route</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, error.</p>
+            <h2>Your Travel History</h2>
+            {/* <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, error.</p> */}
           </div>
         </div>
         <div className="detail-booking">

@@ -8,6 +8,7 @@ import Bookingpage from "./Components/Pages/Bookingpage";
 import Profile from "./Components/Pages/Profile";
 import Transaction from "./Components/Transaction";
 import FlightStatusPage from "./Components/Pages/FlightStatusPage";
+import Payment from "./Components/Payment";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/flight status" element={<FlightStatusPage/>} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/transaction" element={<Transaction />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </BrowserRouter>
   );
