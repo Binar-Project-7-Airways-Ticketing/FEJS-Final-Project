@@ -276,6 +276,8 @@ header {
   color: #cba052;
   padding: 30px;
 }
+
+
 .wrap-detail-title {
   display: flex;
   justify-content: center;
@@ -331,6 +333,8 @@ header {
   gap: 7px;
   cursor: pointer;
 }
+
+
 
 .dropdown-passenger {
   position: absolute;
@@ -1220,4 +1224,27 @@ footer {
   .ant-input {
     width: 150px;
   }
+}
+
+.wrap-history {
+  width: 100%;
+  background: #f1efe9;
+  height: fit-content;
+  border-radius: 0 0 16px 16px;
+  color: #cba052;
+  padding: 30px;
+}
+
+.history {
+  width: 50%;
+  height: 90px;
+  border: 1px solid rgb(178, 178, 178);
+  border-radius: 10px;
+  padding: 5px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
 }

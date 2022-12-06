@@ -202,7 +202,7 @@ export const Profile = (setIsLogin) => {
         </section>
       </main>
 
-      <Card style={{ backgroundColor: "#cba052", width: "100%" }} title="History">
+      <Card style={{ backgroundColor: "#3f4444", width: "100%" }}>
         <CardHistory />
       </Card>
       <Footer />
