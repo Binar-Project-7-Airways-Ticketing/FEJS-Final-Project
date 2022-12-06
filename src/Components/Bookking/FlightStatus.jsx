@@ -37,7 +37,6 @@ export default function FlightStatus() {
 
   return (
     <div className="wrap-detail-booking">
-      
       <Form
         layout="vertical"
         labelCol={{
@@ -55,9 +54,7 @@ export default function FlightStatus() {
       >
         <div className="detail-booking">
           <div className="wrap-input">
-            <div className="input">
-              <FormToFrom />
-            </div>
+            <FormToFrom />
           </div>
           <div className="input">
             <Date
@@ -65,13 +62,8 @@ export default function FlightStatus() {
               date={[dayjs(), dayjs().add(7, "d")]}
             />
           </div>
-          <div className="input">
-            <ButtonFlindFilght
-              handle={handleFindFlight}
-              value={"Find Flight"}
-            />
-          </div>
         </div>
+        <ButtonFlindFilght handle={handleFindFlight} value={"Find Flight"} />
       </Form>
     </div>
   );

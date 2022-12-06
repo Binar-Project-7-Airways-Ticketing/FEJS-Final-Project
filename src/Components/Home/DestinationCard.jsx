@@ -3,8 +3,8 @@ import { Card } from "antd";
 const { Meta } = Card;
 export default function Destination() {
   return (
-    <div className="flex flex-col h-screen w-full">
-      <h2 className=" text-brand-black pb-10">
+    <div className="flex flex-col h-fit w-full">
+      <h2 className=" text-brand-black mb-10">
         Explore your travel destination
       </h2>
       <div className="flex w-full h-full gap-10">

@@ -16,3 +16,25 @@
    
   }
 }
+@media only screen and (min-width: 1700px) {
+ .input{
+  width: 50%;
+ }
+ .ant-input{
+  width: 280px;
+ }
+ .ant-picker{
+  width: 330px;
+ }
+}
+@media only screen and (max-width: 1440px) {
+ .input{
+  width: 50%;
+ }
+
+}
+@media only screen and (max-width: 768px) {
+ .input{
+  width: 100%;
+ }
+}

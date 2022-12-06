@@ -69,9 +69,9 @@ export default function Book() {
           <Trip change={handleChangeTrip} value={trip} />
           <div className="detail-booking">
             <div className="wrap-input">
-              <div className="input">
+              {/* <div className="input"> */}
                 <FormToFrom />
-              </div>
+              {/* </div> */}
         
             </div>
             <div className="input">
