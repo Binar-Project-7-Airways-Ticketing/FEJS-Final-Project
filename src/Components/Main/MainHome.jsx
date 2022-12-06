@@ -23,7 +23,7 @@ export default function MainHome() {
           </div>
         </div>
       </section>
-      <section className="w-screen bg-brand-black">
+      <section className="w-screen h-fit bg-brand-black">
         <div className="container">
           <div className="py-12">
             <ComingServices />
