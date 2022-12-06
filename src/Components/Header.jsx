@@ -11,11 +11,13 @@ export default function Header() {
           <div className="header-main">
             <div className="slogan">
               <h1>Let's go to the best places in the World with us</h1>
+              <p style={{fontSize:"1rem"}}>
+                Would you explore nature paradise in the world, let't find the
+                best destination in world with us.
+              </p>
             </div>
           </div>
-          {/* <div className="zzz">
-            <Booking />
-          </div> */}
+          {/* <Booking /> */}
         </div>
       </div>
     </header>

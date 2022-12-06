@@ -6,9 +6,9 @@ export default function ReviewCard() {
     <>
       <div className="bg-brand-choco rounded-2xl">
         <div className="flex flex-col w-full p-5">
-          <h1 className=" text-brand-whiteLight">
+          <h2 className=" text-brand-whiteLight">
             Our client Shared Their Experience
-          </h1>
+          </h2>
 
           <div>
             <div className="flex w-full">

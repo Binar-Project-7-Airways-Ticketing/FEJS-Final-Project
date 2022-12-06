@@ -51,7 +51,7 @@ export default function Navbar() {
           <div className="logo">
             <img
               onClick={() => navigate("/")}
-              style={{ width: "150px", cursor: "pointer" }}
+              style={{ width: "130px", cursor: "pointer" }}
               src={logo}
             ></img>
           </div>
