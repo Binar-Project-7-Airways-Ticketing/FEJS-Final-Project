@@ -30,7 +30,7 @@ export default function MainHome() {
           </div>
         </div>
       </section>
-      <section className="w-screen ">
+      <section className="w-screen h-fit bg-brand-choco  ">
         <div className="container">
           <div className="py-12">
             <ReviewCard />
