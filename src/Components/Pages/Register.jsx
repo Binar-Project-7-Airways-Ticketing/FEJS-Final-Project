@@ -16,6 +16,7 @@ export const Register = () => {
     const [isPasswordValid, setIsPasswordValid] = useState(true);
     const [passwordErrors, setIsPasswordErrors] = useState([]);
 
+    const [registerDisplayName, setRegisterDisplayName] = useState(undefined);
     const [registerFirstName, setRegisterFirstName] = useState(undefined);
     const [registerLastname, setRegisterLastName] = useState(undefined);
     const [registerEmail, setRegisterEmail] = useState(undefined);
@@ -94,11 +95,12 @@ export const Register = () => {
         }
 
         const resultsActions = await dispatch(getRegister({
+            displayName: registerDisplayName,
             email: registerEmail,
             password: registerPassword,
             firstname: registerFirstName,
             lastname: registerLastname,
-            birth: registerBirth,
+            birthday: String(registerBirth),
             gender: registerGender,
             role: "buyer",
         }))
@@ -128,6 +130,12 @@ export const Register = () => {
                                 <h1>Sign Up</h1>
                             </div>
                             <div className="block w-full">
+                                <div className="textbox ">
+                                    <input onChange={(event) => { setRegisterDisplayName(event.target.value) }} type="text" placeholder="DisplayName" />
+                                    <span className="material-symbols-outlined">
+                                        <UserOutlined style={{ color: '#F2EFEA' }} />
+                                    </span>
+                                </div>
                                 <div className="textbox ">
                                     <input onChange={(event) => { setRegisterFirstName(event.target.value) }} type="text" placeholder="FirstName" />
                                     <span className="material-symbols-outlined">

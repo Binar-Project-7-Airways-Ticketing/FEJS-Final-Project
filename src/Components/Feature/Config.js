@@ -1,3 +1,3 @@
 export const authConfig = {
-    baseUrl: 'http://localhost:3004',
+    baseUrl: 'https://cors-anywhere.herokuapp.com/https://bej-ticketing-production.up.railway.app',
 }

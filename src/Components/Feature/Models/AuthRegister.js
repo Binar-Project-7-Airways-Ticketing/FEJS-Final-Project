@@ -17,7 +17,8 @@ const initialState = {
 export const getRegister = createAsyncThunk(
   "authRegister/register",
   async (body) => {
-    const results = await axios.post(`${authConfig.baseUrl}/register`, {
+    const results = await axios.post(
+      `${authConfig.baseUrl}/api/auth/signup`, {
       ...body,
     });
 
@@ -33,6 +34,7 @@ export const getRegister = createAsyncThunk(
         token: data.accessToken,
       })
     );
+    console.log("register", results.data)
 
     return data;
   }
