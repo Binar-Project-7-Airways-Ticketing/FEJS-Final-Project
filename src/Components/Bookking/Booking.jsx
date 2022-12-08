@@ -33,7 +33,7 @@ export default function Booking() {
     setFlightStatus(true);
   };
   return (
-    <div className="shadow-xl rounded-2xl">
+    <div className="shadow-xl rounded-2xl w-full">
       {booking ? (
         <>
           <div className="wrap-booking">

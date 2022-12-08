@@ -6,11 +6,11 @@ import Navbar from "../Navbar";
 import "./Pages.css";
 export default function Homepage() {
   return (
-    <div>
+    <>
       <Navbar />
       <Header />
-      <MainHome/>
+      <MainHome />
       <Footer />
-    </div>
+    </>
   );
 }
