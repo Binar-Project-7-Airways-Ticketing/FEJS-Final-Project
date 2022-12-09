@@ -20,16 +20,19 @@ export const getLogin = createAsyncThunk("auth/login", async (body) => {
     
       `${authConfig.baseUrl}/api/auth/signin`,
       {
+        headers: {
+          "Content-Type": "application/json",
+        },
           ...body
       }
   )
-  console.log("login", results)
 
   if (!results) {
-    throw new Error("Can't login")
+    throw new Error("Can't login");
   }
 
   const data = await results.data;
+  console.log(data);
 
   localStorage.setItem(
     "auth",

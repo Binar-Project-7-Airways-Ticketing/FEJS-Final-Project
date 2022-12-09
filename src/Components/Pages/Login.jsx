@@ -64,11 +64,11 @@ export const Login = () => {
     const loginHandler = async () => {
         if (!isEmailValid || !loginEmail) {
             alert("Email Tidak Valid")
-            return ;
+            return;
         }
         if (!isPasswordValid || !loginPassword) {
             alert("Password Tidak Valid")
-            return ;
+            return;
         }
         // console.log(loginEmail);
 
@@ -76,21 +76,23 @@ export const Login = () => {
             email: loginEmail,
             password: loginPassword,
         }))
-  
+
 
         const results = unwrapResult(resultsActions);
         console.log(results);
         if (results && results.token) {
-            navigate("/")
-        }
-    }
+            if (results.token) {
+                navigate("/")
+            }
+        };
+    };
 
     // ketika user login tidak bisa ke halaman login lagi
     useEffect(() => {
         if (localStorage.getItem("auth")) {
             navigate("/")
         }
-    }, [navigate])
+    }, [navigate]);
 
     return (
         <React.Fragment>
@@ -136,7 +138,7 @@ export const Login = () => {
                                         : <></>
                                 }
                             </div>
-                            <button onClick={() => {loginHandler()}} type="submit">LOGIN</button>
+                            <button onClick={() => { loginHandler() }} type="submit">LOGIN</button>
                             <a href="#">
                                 Forgot your credentials?
                             </a>
@@ -158,5 +160,5 @@ export const Login = () => {
             </main>
             <Footer />
         </React.Fragment>
-    )
+    );
 }

@@ -4,9 +4,12 @@ const { Meta } = Card;
 export default function Destination() {
   return (
     <div className="flex flex-col h-fit w-full">
-      <h2 className=" text-brand-black mb-10">
-        Explore your travel destination
-      </h2>
+      <div>
+        <h5>EXPLORE</h5>
+        <h2 className=" text-brand-black mb-10">
+          Explore your travel destination
+        </h2>
+      </div>
       <div className="flex w-full h-full gap-10">
         <div className="grid xl:grid-cols-3 w-full h-fit gap-5 lg:grid-cols-2">
           <div className="w-full">

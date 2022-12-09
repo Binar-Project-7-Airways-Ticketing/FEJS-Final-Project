@@ -45,7 +45,7 @@ export default function Navbar() {
   }, [setIsLogin]);
 
   return (
-    <div className="ffff">
+    <nav >
       <div className="container">
         <div className="wrap-navbar">
           <div className="logo">
@@ -59,7 +59,7 @@ export default function Navbar() {
           <ul className="menu-navbar">
             <li>Home</li>
             <li>About Us</li>
-            <li>Review</li>
+            <li className="cursor-pointer" onClick={()=> navigate('review')}>Review</li>
           </ul>
 
           <div className="search">
@@ -115,6 +115,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
