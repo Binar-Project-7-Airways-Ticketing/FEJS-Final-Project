@@ -5,12 +5,16 @@ import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
 import { Card } from "antd";
 import CardHistory from "../CardHistory";
+import axios from "axios";
+import {authConfig} from "../Feature/Config";
 
 export const Profile = (setIsLogin) => {
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [passwordErrors, setIsPasswordErrors] = useState([]);
 
+  const [histories, setHistories] = useState([]);
+  const [user, setUser] = useState(null);
   const [registerFirstName, setRegisterFirstName] = useState(undefined);
   const [registerLastname, setRegisterLastName] = useState(undefined);
   const [registerEmail, setRegisterEmail] = useState(undefined);
@@ -19,6 +23,9 @@ export const Profile = (setIsLogin) => {
   const [registerGender, setRegisterGender] = useState(undefined);
   const [update, setupdate] = useState(true);
   const navigate = useNavigate();
+
+  let userId = localStorage.getItem("auth");
+  userId = JSON.parse(userId).id;
 
   function validatePassword() {
     const errors = [];
@@ -74,6 +81,23 @@ export const Profile = (setIsLogin) => {
       return;
     }
   }
+
+  const getUserIdentity = () => {
+    axios.get(authConfig.baseUrl + "/api/user/" + userId).then((response) => {
+      setUser(response.data.payload);
+    });
+  }
+
+  const getHistoryTravel = () => {
+    axios.get(authConfig.baseUrl + "/api/history").then((response) => {
+      setHistories(response.data.payload);
+    });
+  }
+
+  useEffect(() => {
+    getHistoryTravel();
+    getUserIdentity();
+  }, [])
 
   return (
     <React.Fragment>
