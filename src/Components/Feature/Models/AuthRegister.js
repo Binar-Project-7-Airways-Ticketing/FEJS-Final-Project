@@ -21,6 +21,7 @@ export const getRegister = createAsyncThunk(
       `${authConfig.baseUrl}/api/auth/signup`, {
       ...body,
     });
+    console.log("register", results)
 
     if (!results) {
       throw new Error("Can't login");
@@ -30,8 +31,8 @@ export const getRegister = createAsyncThunk(
     localStorage.setItem(
       "auth",
       JSON.stringify({
-        id: data.user.id,
-        token: data.accessToken,
+        id: data.id,
+        token: data.token,
       })
     );
     console.log("register", results.data)

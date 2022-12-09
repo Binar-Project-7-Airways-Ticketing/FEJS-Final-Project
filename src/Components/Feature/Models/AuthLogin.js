@@ -17,11 +17,13 @@ const initialState = {
 export const getLogin = createAsyncThunk("auth/login", async (body) => {
 
   const results = await axios.post(
+    
       `${authConfig.baseUrl}/api/auth/signin`,
       {
           ...body
       }
   )
+  console.log("login", results)
 
   if (!results) {
     throw new Error("Can't login")
@@ -32,8 +34,8 @@ export const getLogin = createAsyncThunk("auth/login", async (body) => {
   localStorage.setItem(
     "auth",
     JSON.stringify({
-      id: data.user.id,
-      token: data.accessToken,
+      id: data.id,
+      token: data.token,
     })
   );
 

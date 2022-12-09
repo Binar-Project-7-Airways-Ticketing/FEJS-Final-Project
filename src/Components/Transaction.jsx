@@ -108,11 +108,12 @@ export default function Transaction() {
   };
 
   return (
-    <div className="bg-gray-200">
+    <div className="bg-brand-yellow">
+      {/* bg-gray-200 */}
       <Navbar />
-      <div className="flex justify-center items-center pt-[80px] bg-brand-black">
+      <div className="flex justify-center items-center pt-[80px] bg-brand-nude">
         <div className="flex my-2 gap-2 items-center">
-          <h3 className="text-brand-nude">
+          <h3 className="text-brand-black">
             Mohon selesaikan pesanan anda dalam{" "}
           </h3>
           <Countdown date={Date.now() + 900000} renderer={renderer} />
@@ -120,7 +121,7 @@ export default function Transaction() {
       </div>
       <div className="booking-container">
         <div className="booking-left">
-          <div className="parent-a w-full bg-white p-6">
+          <div className="parent-a w-full bg-brand-nude p-6 rounded-md border-2 border-brand-black">
             <div className="left-header">
               <span>
                 <ContactsOutlined />
@@ -139,7 +140,7 @@ export default function Transaction() {
                 </select>
                 <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
                   <input
-                    className="w-full p-2 focus:outline-none text-black placeholder:text-black"
+                    className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
                     type="text"
                     placeholder="Nama Lengkap"
                   />
@@ -148,7 +149,7 @@ export default function Transaction() {
               <div className="flex mb-2 w-full">
                 <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
                   <input
-                    className="w-full p-2 focus:outline-none text-black placeholder:text-black"
+                    className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
                     type="text"
                     placeholder="Email"
                   />
@@ -167,7 +168,7 @@ export default function Transaction() {
               <div className="flex mb-2 w-full">
                 <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
                   <input
-                    className="w-full p-2 focus:outline-none text-black placeholder:text-black"
+                    className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
                     type="text"
                     placeholder="No Telepon"
                   />
@@ -175,7 +176,7 @@ export default function Transaction() {
               </div>
             </div>
           </div>
-          <div className="parent-b w-full bg-white p-6 mt-6">
+          <div className="parent-b w-full bg-brand-nude p-6 mt-6 rounded-md border-2 border-brand-black">
             <div className="left-header">
               <span>
                 <ContactsOutlined />
@@ -194,7 +195,7 @@ export default function Transaction() {
                 </select>
                 <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
                   <input
-                    className="w-full p-2 focus:outline-none text-black placeholder:text-black"
+                    className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
                     type="text"
                     placeholder="Nama Lengkap"
                   />
@@ -203,7 +204,7 @@ export default function Transaction() {
               <div className="flex mb-2 w-full">
                 <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
                   <input
-                    className="w-full p-2 focus:outline-none text-black placeholder:text-black"
+                    className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
                     type="text"
                     placeholder="Email"
                   />
@@ -223,7 +224,7 @@ export default function Transaction() {
               <div className="flex w-full">
                 <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
                   <input
-                    className="w-full p-2 focus:outline-none text-black placeholder:text-black"
+                    className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
                     type="text"
                     placeholder="No Telepon"
                   />
@@ -231,7 +232,7 @@ export default function Transaction() {
               </div>
             </div>
           </div>
-          <div className="parent-c w-full bg-white p-6 mt-6">
+          <div className="parent-c w-full bg-brand-nude p-6 mt-6 rounded-md border-2 border-brand-black">
             <div className="left-header">
               <span>
                 <UnorderedListOutlined />
@@ -245,8 +246,8 @@ export default function Transaction() {
                 </span>
                 <h3 className="text-[20px] mt-2">Bagasi</h3>
               </div>
-              <div className="flex justify-start items-center gap-4">
-                <select>
+              <div className="flex justify-start items-center gap-4 bg-brand-nude rounded-sm border-2 border-brand-gray p-2">
+                <select className="bg-brand-nude">
                   <option>Select Extra Baggage</option>
                   <option>+5Kg x 1 (175000IDR)</option>
                   <option>+5Kg x 2 (350000IDR)</option>
@@ -267,7 +268,7 @@ export default function Transaction() {
           </div>
           <div className="parent-d w-full mt-6 flex justify-end">
             <button
-              className="block rounded-lg cursor-pointer justify-center h-[60px] w-[50%] bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px]"
+              className="block rounded-lg cursor-pointer justify-center h-[60px] w-[50%] bg-brand-green text-[#f9f9f9] border-0 font-[600] tracking-[2px]"
               type="submit"
               onClick={showModalBayar}
             >
@@ -378,13 +379,13 @@ export default function Transaction() {
         </div>
 
         <div className="booking-right">
-          <div className="w-full bg-white">
-            <div className="parent-a w-full bg-white p-6">
-              <div className="flex justify-start items-center mb-4 gap-4">
-                <h3 className="text-[20px] text-black mb-2">Penerbangan</h3>
+          <div className="w-full">
+            <div className="parent-a w-full bg-brand-whiteLight p-6 rounded-md border-2 border-brand-black">
+              <div className="w-full bg-blue-300 p-2 mb-4 gap-4 rounded-md">
+                <h3 className="text-[20px] text-black font-semibold mb-2">Penerbangan</h3>
               </div>
               <div className="py-2">
-                <div className="flex w-full gap-8 mb-2 ">
+                <div className="flex w-full gap-8 mb-2 p-2 ">
                   <div className="flex w-full gap-4">
                     <h3>Jakarta</h3>
                     <span>
@@ -393,7 +394,7 @@ export default function Transaction() {
                     <h3>Singapore</h3>
                   </div>
                   <div>
-                    <button onClick={showModal}>Detail</button>
+                    <button className="text-blue-600" onClick={showModal}>Detail</button>
                   </div>
                   <Modal
                     title="Flight Detail"
@@ -451,7 +452,7 @@ export default function Transaction() {
                     </div>
                   </Modal>
                 </div>
-                <div className="w-full my-[2rem]">
+                <div className="w-full my-[2rem] border-2 border-brand-gray p-2">
                   <h3 className="text-[20px] text-black mb-4">
                     Kebijakan Tiket
                   </h3>
@@ -468,11 +469,14 @@ export default function Transaction() {
                     <p className="mt-2">Bisa Rescedhule</p>
                   </div>
                 </div>
-                <div className="flex w-full my-[2rem]">
+                <div className="flex justify-end w-full my-[2rem]">
                   <div>
-                    <h3 className="text-[20px] text-black mb-4">
+                    <h3 className="text-[16px] text-black mb-4 font-semibold">
                       Total Pembayaran
                     </h3>
+                    <span className="w-full">
+                      Rp. 0,-
+                    </span>
                   </div>
                 </div>
               </div>
