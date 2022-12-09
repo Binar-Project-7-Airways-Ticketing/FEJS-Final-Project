@@ -9,8 +9,9 @@ const { Meta } = Card;
 
 export default function ComingServices() {
   return (
-    <div >
+    <div>
       <div className="mb-10 p-5 text-brand-whiteLight">
+        <h5>SERVICES COMING SOON</h5>
         <h2 className=" mb-5">Our services are coming soon</h2>
         <p className="xl:w-3/4 lg:w-full">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente,
@@ -39,8 +40,8 @@ export default function ComingServices() {
               slidesPerView: 5,
             },
             1024: {
-              spaceBetween:30,
-              slidesPerView:4
+              spaceBetween: 30,
+              slidesPerView: 4,
             },
             768: {
               spaceBetween: 30,

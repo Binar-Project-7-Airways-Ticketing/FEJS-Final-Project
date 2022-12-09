@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { authConfig } from "../Config";
 
 const initialState = {
@@ -15,27 +16,32 @@ const initialState = {
 };
 
 export const getLogin = createAsyncThunk("auth/login", async (body) => {
-
+  // const navigate = useNavigate()
   const results = await axios.post(
-      `${authConfig.baseUrl}/login`,
+      `https://cors-anywhere.herokuapp.com/https://bej-ticketing-production.up.railway.app/api/auth/signin`,
+    
       {
+        headers: {
+          "Content-Type": "application/json"
+      },
           ...body
-      }
+      },
+   
   )
-  console.log(results);
+  console.log(results.data);
 
   if (!results) {
     throw new Error("Can't login")
   }
 
   const data = await results.data;
-
+  console.log(data);
 
   localStorage.setItem(
     "auth",
     JSON.stringify({
-      id: data.user.id,
-      token: data.accessToken,
+      id: data.id,
+      token: data.token,
     })
   );
 

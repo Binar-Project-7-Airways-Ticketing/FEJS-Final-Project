@@ -23,7 +23,10 @@ import danaa from "../image/dana.jpg";
 import linkAja from "../image/link aja.jpg";
 import { BsCircle } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import ModalSeat from "./Bookking/ModalSeat"
+import ModalSeat from "./Bookking/ModalSeat";
+import { loadLuggages } from "./Feature/Models/LuggageSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Completionist = () => <span>You are good to go!</span>;
 
@@ -53,6 +56,7 @@ export default function Transaction() {
   const navigate = useNavigate();
 
   const [value, setValue] = useState("");
+  const [bagasi, setBagasi] = useState('')
   const options = useMemo(() => countryList().getData(), []);
 
   const changeHandler = (value) => {
@@ -61,7 +65,8 @@ export default function Transaction() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalSeatOpen, setIsModalSeatOpen] = useState(false);
-
+  const { luggages } = useSelector((state) => state.luggage);
+  const dispatch = useDispatch();
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -93,6 +98,7 @@ export default function Transaction() {
   const handleBayarCancel = () => {
     setIsModalBayarOpen(false);
   };
+ 
 
   // method payment
   const dana = () => {
@@ -101,6 +107,9 @@ export default function Transaction() {
     setIsModalBayarOpen(false);
     navigate("/");
   };
+  useEffect(() => {
+    dispatch(loadLuggages());
+  }, [luggages]);
 
   return (
     <div className="bg-gray-200">
@@ -241,14 +250,18 @@ export default function Transaction() {
                 <h3 className="text-[20px] mt-2">Bagasi</h3>
               </div>
               <div className="flex justify-start items-center gap-4">
-                <select>
-                  <option>Select Extra Baggage</option>
-                  <option>+5Kg x 1 (175000IDR)</option>
-                  <option>+5Kg x 2 (350000IDR)</option>
-                  <option>+5Kg x 3 (525000IDR)</option>
-                  <option>+5Kg x 4 (700000IDR)</option>
-                  <option>+5Kg x 5 (875000IDR)</option>
-                  <option>+5Kg x 6 (1050000IDR)</option>
+                <select onClick={(e)=>setBagasi(e.target.value)}>
+                  <option >Select Extra Baggage</option>
+                  {luggages.map((item) => (
+                    <option>
+                      +{item.capacity}kg ({item.price})
+                    </option>
+                  ))}
+                  {/* <option>+5Kg x 2 (350000IDR)</option>
+                    <option>+5Kg x 3 (525000IDR)</option>
+                    <option>+5Kg x 4 (700000IDR)</option>
+                    <option>+5Kg x 5 (875000IDR)</option>
+                    <option>+5Kg x 6 (1050000IDR)</option> */}
                 </select>
               </div>
             </div>
@@ -256,8 +269,16 @@ export default function Transaction() {
               <span>
                 <ShoppingOutlined />
               </span>
-              <h3 onClick={showModalSeat} className="text-[20px] mt-2 cursor-pointer" >Seats</h3>
-              <ModalSeat isModalOpen={isModalSeatOpen} handleCancel={handleCancelSeat}/>
+              <h3
+                onClick={showModalSeat}
+                className="text-[20px] mt-2 cursor-pointer"
+              >
+                Seats
+              </h3>
+              <ModalSeat
+                isModalOpen={isModalSeatOpen}
+                handleCancel={handleCancelSeat}
+              />
             </div>
           </div>
           <div className="parent-d w-full mt-6 flex justify-end">
@@ -442,6 +463,18 @@ export default function Transaction() {
                           <p>2h 10m</p>
                           <p>14:40</p>
                         </div>
+                      </div>
+                      <div>
+                        <h6>Passenger</h6>
+                        <p>Adults, Childs, Infant</p>
+                      </div>
+                      <div>
+                        <h6>Luggage</h6>
+                        <p>{bagasi}</p>
+                      </div>
+                      <div>
+                        <h6>Number Seats</h6>
+                        <p></p>
                       </div>
                     </div>
                   </Modal>

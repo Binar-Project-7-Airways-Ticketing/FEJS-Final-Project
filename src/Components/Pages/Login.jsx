@@ -80,7 +80,7 @@ export const Login = () => {
 
         const results = unwrapResult(resultsActions);
         console.log(results);
-        if (results && results.accessToken) {
+        if (results.token) {
             navigate("/")
         }
     }

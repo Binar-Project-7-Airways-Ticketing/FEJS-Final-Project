@@ -12,6 +12,7 @@ export default function ReviewCard() {
       <div className="rounded-2xl">
         <div className="flex flex-col w-full gap-10 p-5 text-brand-whiteLight">
           <div>
+            <h5>EXPERIENCE</h5>
             <h2 className=" mb-2 ">Our client Shared Their Experience</h2>
             <p className="xl:w-1/2">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis
@@ -38,8 +39,8 @@ export default function ReviewCard() {
                   slidesPerView: 5,
                 },
                 1024: {
-                  spaceBetween:10,
-                  slidesPerView:4
+                  spaceBetween: 10,
+                  slidesPerView: 4,
                 },
                 768: {
                   spaceBetween: 10,
