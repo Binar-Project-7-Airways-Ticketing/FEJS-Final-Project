@@ -57,10 +57,15 @@ export default function Transaction() {
 
   const [value, setValue] = useState("");
   const [bagasi, setBagasi] = useState('')
+  const [value1, setValue1] = useState("");
   const options = useMemo(() => countryList().getData(), []);
 
   const changeHandler = (value) => {
     setValue(value);
+  };
+
+  const changeHandler1 = (value1) => {
+    setValue1(value1);
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -218,8 +223,8 @@ export default function Transaction() {
                   <Select
                     className="placeholder:text-black"
                     options={options}
-                    value={value}
-                    onChange={changeHandler}
+                    value1={value1}
+                    onChange={changeHandler1}
                     placeholder="Country"
                   />
                 </div>
