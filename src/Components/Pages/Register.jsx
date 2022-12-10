@@ -23,6 +23,7 @@ export const Register = () => {
     const [registerPassword, setRegisterPassword] = useState(undefined);
     const [registerBirth, setRegisterBirth] = useState(undefined);
     const [registerGender, setRegisterGender] = useState(undefined);
+    const [registerRole, setRegisterRole] = useState(undefined);
 
     function validatePassword() {
         const errors = [];
@@ -107,7 +108,7 @@ export const Register = () => {
 
         const results = unwrapResult(resultsActions);
 
-        if (results && results.accessToken) {
+        if (results && results.token) {
             navigate("/")
         }
     }
@@ -187,10 +188,16 @@ export const Register = () => {
                                     <CalendarOutlined style={{ color: '#F2EFEA' }} />
                                 </span>
                             </div>
+                            <div className="textbox ">
+                                <input onChange={(event) => { setRegisterRole(event.target.value) }} type="text" placeholder="Role" />
+                                <span className="material-symbols-outlined">
+                                    <CalendarOutlined style={{ color: '#F2EFEA' }} />
+                                </span>
+                            </div>
                             <div className="textbox-select">
                                 <select onChange={(event) => (setRegisterGender(event.target.value))} type="text">
                                     <option selected>Gender</option>
-                                    <option value="Wanita">Wanita</option>
+                                    <option value="Perempuan">Perempuan</option>
                                     <option value="Pria">Pria</option>
                                 </select>
                                 <span className="material-symbols-outlined">
