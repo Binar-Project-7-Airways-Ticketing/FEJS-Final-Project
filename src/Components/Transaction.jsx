@@ -104,6 +104,7 @@ export default function Transaction() {
     setIsModalBayarOpen(false);
   };
 
+
   // method payment
   const dana = () => {
     // navigate('/payment')
@@ -135,6 +136,21 @@ export default function Transaction() {
                   <ContactsOutlined />
                 </span>
                 <h3>Detail Pemesan</h3>
+              </div>
+              <div className="flex justify-start items-center gap-4 bg-brand-nude rounded-sm border-2 border-brand-gray p-2">
+                <select className="bg-brand-nude" onClick={(e) => setBagasi(e.target.value)}>
+                  <option >Select Extra Baggage</option>
+                  {luggages.map((item) => (
+                    <option>
+                      +{item.capacity}kg ({item.price})
+                    </option>
+                  ))}
+                  {/* <option>+5Kg x 2 (350000IDR)</option>
+                    <option>+5Kg x 3 (525000IDR)</option>
+                    <option>+5Kg x 4 (700000IDR)</option>
+                    <option>+5Kg x 5 (875000IDR)</option>
+                    <option>+5Kg x 6 (1050000IDR)</option> */}
+                </select>
               </div>
               <div className="left-content">
                 <div className="flex w-full gap-8 mb-2 ">
@@ -634,9 +650,126 @@ export default function Transaction() {
             </div>
           </div>
         </div>
-      </div>
+
+        <div className="booking-right">
+          <div className="w-full">
+            <div className="parent-a w-full bg-brand-whiteLight p-6 rounded-md border-2 border-brand-black">
+              <div className="w-full bg-brand-black text-white p-2 mb-4 gap-4 rounded-md">
+                <h3 className="text-[20px] font-semibold mb-2">Penerbangan</h3>
+              </div>
+              <div className="py-2">
+                <div className="flex w-full gap-8 mb-2 p-2 ">
+                  <div className="flex w-full gap-4">
+                    <h3>Jakarta</h3>
+                    <span>
+                      <ArrowRightOutlined />
+                    </span>
+                    <h3>Singapore</h3>
+                  </div>
+                  <div>
+                    <button className="text-blue-600" onClick={showModal}>Detail</button>
+                  </div>
+                  <Modal
+                    title="Flight Detail"
+                    open={isModalOpen}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                    footer={[null]}
+                  >
+                    <div className="wrap-modal-detail-flight">
+                      <div className="title-detail-flight">
+                        <p>Jakarta to Singapore</p>
+                        <p>Saturday, Nov 26</p>
+                      </div>
+                      <div className="modal-detail-flight">
+                        <div className="airports">
+                          <div>
+                            <p>Jakarta</p>
+                            <p>Soekarno-Hatta International Airports</p>
+                          </div>
+                          <div>
+                            <p>NO PESAWAT</p>
+                            <p>Flight by 7-Airways</p>
+                          </div>
+                          <div>
+                            <p>Singapore</p>
+                            <p>Changi International Airports</p>
+                          </div>
+                        </div>
+
+                        <div className="modal-logo">
+                          <div className="circle">
+                            <BsCircle />
+                          </div>
+                          <div className="wrap-logo">
+                            <img
+                              src={logo}
+                              style={{
+                                width: "90px",
+                                height: "90px",
+                                borderRadius: "100%",
+                                border: "1px solid black",
+                              }}
+                            ></img>
+                          </div>
+                          <div className="circle">
+                            <BsCircle />
+                          </div>
+                        </div>
+                        <div className="modal-time">
+                          <p>10:30</p>
+                          <p>2h 10m</p>
+                          <p>14:40</p>
+                        </div>
+                      </div>
+                      <div>
+                        <h6>Passenger</h6>
+                        <p>Adults, Childs, Infant</p>
+                      </div>
+                      <div>
+                        <h6>Luggage</h6>
+                        <p>{bagasi}</p>
+                      </div>
+                      <div>
+                        <h6>Number Seats</h6>
+                        <p></p>
+                      </div>
+                    </div>
+                  </Modal>
+                </div>
+                <div className="w-full my-[2rem] border-2 border-brand-gray p-2">
+                  <h3 className="text-[20px] text-black mb-4">
+                    Kebijakan Tiket
+                  </h3>
+                  <div className="flex justify-start items-center mb-4 gap-4">
+                    <span>
+                      <DollarCircleOutlined />
+                    </span>
+                    <p className="mt-2">Bisa Refund</p>
+                  </div>
+                  <div className="flex justify-start items-center mb-4 gap-4">
+                    <span>
+                      <ScheduleOutlined />
+                    </span>
+                    <p className="mt-2">Bisa Rescedhule</p>
+                  </div>
+                </div>
+                <div className="flex justify-end w-full my-[2rem]">
+                  <div>
+                    <h3 className="text-[16px] text-black mb-4 font-semibold">
+                      Total Pembayaran
+                    </h3>
+                    <span className="w-full">
+                      Rp. 0,-
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       <Footer />
+    </div>
     </>
-    //   {/* bg-gray-200 */}
   );
 }

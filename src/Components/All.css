@@ -1194,7 +1194,7 @@ footer {
   }
 
   .left-header {
-    @apply flex justify-start items-center mb-4 gap-4 bg-purple-500 font-semibold font-sans rounded-md;
+    @apply flex justify-start text-white items-center mb-4 gap-4 bg-brand-black font-semibold font-sans rounded-md;
   }
 
   .left-header h3 {
