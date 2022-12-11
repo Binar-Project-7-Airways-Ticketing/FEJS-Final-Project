@@ -54,15 +54,15 @@ export default function Navbar() {
     <nav>
       <div className="container">
         <div className="wrap-navbar text-brand-whiteLight relative">
-          <div className="logo">
+          <div className="flex justify-start h-16 ">
             <img
               onClick={() => navigate("/")}
-              style={{ width: "130px", cursor: "pointer" }}
+              className="flex cursor-pointer xl:w-36 md:w-44 "
               src={logo}
             ></img>
           </div>
           {show ? (
-            <div className="search">
+            <div className="flex w-full justify-end items-center gap-4 text-brand-whiteLight">
               {search ? (
                 <Input
                   className="md:w-full"
@@ -75,91 +75,108 @@ export default function Navbar() {
                 />
               )}
               {search ? (
-                <BsSearch
-                  style={{
-                    fontSize: "29px",
-                    paddingTop: "5px",
-                    width:"fit-content"
-                   
-                  }}
+                <FaTimes
+                  size={33.5}
+                  className="flex w-fit items-center"
                   onClick={srchClose}
                 />
               ) : (
                 <BsSearch
-                  style={{
-                    fontSize: "25px",
-                    paddingTop: "5px",
-                    width:"fit-content"
-                   
-                  }}
+                  size={20}
+                  className="flex w-fit items-center"
                   onClick={srch}
                 />
               )}
 
-              <div className="notif">
-                {isLogin ? (
-                  <Dropdown
-                    onMouseEnter={() => setOpenNotif(true)}
-                    placement="bottom"
-                    arrow
-                    menu={{ items }}
-                  >
-                    <a onClick={(e) => e.preventDefault()}>
-                      <Space className="space">
-                        {openNotif ? (
-                          <div></div>
-                        ) : (
-                          <div className="notif-read">
-                            <p>{items.length}</p>
+              {isLogin ? (
+                <>
+                  <div className="notif">
+                    <Dropdown
+                      onMouseEnter={() => setOpenNotif(true)}
+                      placement="bottom"
+                      arrow
+                      menu={{ items }}
+                    >
+                      <a onClick={(e) => e.preventDefault()}>
+                        <Space className="space">
+                          <div className="relative">
+                            <AiOutlineBell size={30} />
+                            {openNotif ? null : (
+                              <div className="text-brand-whiteLight bg-brand-yellow rounded-full absolute top-0 w-5 h-5 text-center">
+                                <p>{items.length}</p>
+                              </div>
+                            )}
                           </div>
-                        )}
-                        <AiOutlineBell style={{ fontSize: "30px" }} />
-                      </Space>
+                        </Space>
+                      </a>
+                    </Dropdown>
+                  </div>
+                  <Prf />
+                </>
+              ) : (
+                <div className="flex w-fit h-14 items-center text-brand-whiteLight relative">
+                  <div className="border-solid border-2 bg-brand-black text-brand-whiteLight border-brand-whiteLight w-12 h-12 rounded-full flex items-center absolute justify-center ">
+                    <AiOutlineUser size={25} />
+                  </div>
+                  <div className="flex gap-1 h-7 bg-brand-whiteLight text-brand-black items-center px-3 rounded-md w-40 justify-end ml-2">
+                    <a className="text-sm" href="/login">
+                      Login
                     </a>
-                  </Dropdown>
-                ) : (
-                  <></>
-                )}
-              </div>
+                    <p>|</p>
+                    <a className="text-sm" href="/register">
+                      Sign up
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
           ) : (
             <div
               ref={navRef}
               className="nav-respon flex w-full items-center justify-center"
             >
-              <ul className="menu-navbar">
-                <li>Home</li>
-                <li>About Us</li>
+              <ul className="flex w-full justify-start text-brand-whiteLight">
+                <li className="hover:bg-brand-whiteLight hover:text-brand-black w-fit py-1 px-4 rounded-md">
+                  Home
+                </li>
+                <li className="hover:bg-brand-whiteLight hover:text-brand-black w-fit py-1 px-4 rounded-md">
+                  About Us
+                </li>
                 <li
-                  className="cursor-pointer"
+                  className="hover:bg-brand-whiteLight hover:text-brand-black w-fit py-1 px-4 rounded-md cursor-pointer"
                   onClick={() => navigate("review")}
                 >
                   Review
                 </li>
               </ul>
 
-              <div className="search">
+              <div className="flex items-center justify-end w-full gap-3.5">
                 {search ? (
-                  <Input placeholder="Search Cities or Countries" />
+                  <Input
+                    className="w-full"
+                    placeholder="Search Cities or Countries"
+                  />
                 ) : (
                   <Input
-                    className="frm"
+                    className="hidden"
                     placeholder="Search Cities or Countries"
                   />
                 )}
                 {search ? (
-                  <BsSearch
-                    style={{ fontSize: "25px", paddingTop: "5px" }}
+                  <FaTimes
+                    size={20}
+                    className="flex items-center"
                     onClick={srchClose}
                   />
                 ) : (
                   <BsSearch
-                    style={{ fontSize: "25px", paddingTop: "5px" }}
+                    size={20}
+                    className="flex items-center"
                     onClick={srch}
                   />
                 )}
 
-                <div className="notif">
+                <div className="flex items-center cursor-pointer w-fit">
                   {isLogin ? (
                     <Dropdown
                       onMouseEnter={() => setOpenNotif(true)}
@@ -169,30 +186,38 @@ export default function Navbar() {
                     >
                       <a onClick={(e) => e.preventDefault()}>
                         <Space className="space">
-                          {openNotif ? (
-                            <div></div>
-                          ) : (
-                            <div className="notif-read">
-                              <p>{items.length}</p>
-                            </div>
-                          )}
-                          <AiOutlineBell style={{ fontSize: "30px" }} />
+                          <div className="relative">
+                            <AiOutlineBell size={30} />
+                            {openNotif ? null : (
+                              <div className="text-brand-whiteLight bg-brand-yellow rounded-full absolute top-0 w-5 h-5 text-center">
+                                <p>{items.length}</p>
+                              </div>
+                            )}
+                          </div>
                         </Space>
                       </a>
                     </Dropdown>
-                  ) : (
-                    <></>
-                  )}
+                  ) : null}
                 </div>
                 <div className="user">
                   {isLogin ? (
                     <Prf />
                   ) : (
                     <>
-                      <AiOutlineUser style={{ fontSize: "20px" }} />
-                      <a href="/login">Login</a>
-                      <p>|</p>
-                      <a href="/register">Sign up</a>
+                      <div className="flex w-fit h-14 items-center text-brand-whiteLight relative">
+                        <div className="border-solid border-2 bg-brand-black text-brand-whiteLight border-brand-whiteLight w-12 h-12 rounded-full flex items-center absolute justify-center ">
+                          <AiOutlineUser size={25} />
+                        </div>
+                        <div className="flex gap-1 h-7 bg-brand-whiteLight text-brand-black items-center px-3 rounded-md w-40 justify-end ml-2">
+                          <a className="text-sm" href="/login">
+                            Login
+                          </a>
+                          <p>|</p>
+                          <a className="text-sm" href="/register">
+                            Sign up
+                          </a>
+                        </div>
+                      </div>
                     </>
                   )}
                 </div>
@@ -202,7 +227,7 @@ export default function Navbar() {
           {show ? null : (
             <button
               className="xl:hidden lg:hidden md:flex sm:h-full sm:visible sm:items-center sm:opacity-100 xl:opacity-0 xl:cursor-none"
-              onClick={showBar}
+              onClick={() => setShow(true)}
             >
               <FaBars />
             </button>
@@ -213,11 +238,23 @@ export default function Navbar() {
         {show ? (
           <div className="container">
             <div className="flex flex-col w-full h-fit py-5">
-              <div className="flex w-full">
+              <div className="flex flex-col w-full">
                 {isLogin ? (
-                  <div className="flex w-full justify-between items-start ">
-                    <Prf />
-
+                  <div className="flex w-full justify-between">
+                    <ul className="flex flex-col gap-1">
+                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
+                        Home
+                      </li>
+                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
+                        About Us
+                      </li>
+                      <li
+                        className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md cursor-pointer"
+                        onClick={() => navigate("review")}
+                      >
+                        Review
+                      </li>
+                    </ul>
                     <button
                       className="flex h-full visible opacity-100"
                       onClick={() => setShow(false)}
@@ -226,24 +263,30 @@ export default function Navbar() {
                     </button>
                   </div>
                 ) : (
-                  <>
-                    <AiOutlineUser style={{ fontSize: "20px" }} />
-                    <a href="/login">Login</a>
-                    <p>|</p>
-                    <a href="/register">Sign up</a>
-                  </>
+                  <div className="flex w-full justify-between">
+                    <ul className="flex flex-col gap-1">
+                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
+                        Home
+                      </li>
+                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
+                        About Us
+                      </li>
+                      <li
+                        className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md cursor-pointer"
+                        onClick={() => navigate("review")}
+                      >
+                        Review
+                      </li>
+                    </ul>
+                    <button
+                      className="flex h-full visible opacity-100"
+                      onClick={() => setShow(false)}
+                    >
+                      <FaTimes />
+                    </button>
+                  </div>
                 )}
               </div>
-              <ul>
-                <li>Home</li>
-                <li>About Us</li>
-                <li
-                  className="cursor-pointer"
-                  onClick={() => navigate("review")}
-                >
-                  Review
-                </li>
-              </ul>
             </div>
           </div>
         ) : null}

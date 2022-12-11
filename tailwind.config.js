@@ -11,7 +11,7 @@ module.exports = {
       colors: {
         brand: {
           yellow: "#CBA052",
-          black: "#404445",
+          black: "#3F4444",
           green: "#01843E",
           choco: "#8C857B",
           gray: "#8C8C8C",
