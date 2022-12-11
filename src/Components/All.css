@@ -406,21 +406,7 @@ header {
 .ant-form-vertical .ant-form-item-label > label {
   color: #b6b6b6;
 }
-@media only screen and (max-width: 1280px) {
-  .inpt-book{
-    padding: 8px;
-  }
-  .inpt-passenger{
-    padding: 8px;
 
-  }
-  .wrap-detail-booking{
-    padding: 15px;
-  }
-  .swap {
-    left: 45.5%;
-  }
-}
 /*-------------------------Modal Seats---------------------------------*/
 .wrap-detail-seats {
   width: 100%;
@@ -896,16 +882,7 @@ nav {
   width: 400px;
   border-radius: 300px;
 }
-@media only screen and (max-width: 1280px) {
-  .img-large {
-    width: 300px;
-  }
-  .img-small {
-    width: 230px;
-    height: 320px;
-    right: 200px;
-  }
-}
+
 /*-------------------------Card Review---------------------------------*/
 .img-review {
   width: 50%;
@@ -1224,12 +1201,7 @@ footer {
 
 /*---------------Transaction---------------*/
 
-/*---------------Navbar Media Screen---------------*/
-@media only screen and (max-width: 1280px) {
-  .ant-input {
-    width: 150px;
-  }
-}
+
 
 .wrap-history {
   width: 100%;
@@ -1252,4 +1224,77 @@ footer {
   justify-content: center;
   gap: 7px;
   cursor: pointer;
+}
+
+/*-------------- Media Screen---------------*/
+@media only screen and (max-width: 1280px) {
+  /*-------------- Navbar ---------------*/
+  .ant-input {
+    width: 150px;
+  }
+  /*--------------Homepage benefit---------------*/
+  .img-large {
+    width: 300px;
+  }
+  .img-small {
+    width: 230px;
+    height: 320px;
+    right: 200px;
+  }
+/*-------------- booking component homepage---------------*/
+  .inpt-book{
+    padding: 8px;
+  }
+  .inpt-passenger{
+    padding: 8px;
+
+  }
+  .wrap-detail-booking{
+    padding: 15px;
+  }
+  .swap {
+    left: 45.5%;
+  }
+}
+@media only screen and (max-width: 425px) {
+  /*--------------Header ---------------*/
+  h1{
+    font-size: 2.2rem;
+    line-height: 3rem;
+  }
+  header{
+    height: fit-content;
+  }
+  .wrap-header {
+    padding: 0;
+  }
+  .container {
+    height: 0;
+    }
+    .header-main{
+      padding: 100px 0;
+    }
+  /*--------------Homepage benefit---------------*/
+  /* .img-large {
+    width: 300px;
+  }
+  .img-small {
+    width: 230px;
+    height: 320px;
+    right: 200px;
+  } */
+/*-------------- booking component homepage---------------*/
+  /* .inpt-book{
+    padding: 8px;
+  }
+  .inpt-passenger{
+    padding: 8px;
+
+  }
+  .wrap-detail-booking{
+    padding: 15px;
+  }
+  .swap {
+    left: 45.5%;
+  } */
 }
