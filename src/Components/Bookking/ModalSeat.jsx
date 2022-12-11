@@ -76,7 +76,7 @@ export default function ModalSeat(props) {
       onOk={props.handleOk}
       onCancel={props.handleCancel}
       footer={[null]}
-      width={700}
+      width={"fit-content"}
     >
       <div className="modal-seat">
         <div className="flex w-full">
@@ -215,6 +215,46 @@ export default function ModalSeat(props) {
                   <div className="flex items-center gap-1 flex-col">
                     <h6>D</h6>
                     {seats.slice(30, 40).map((item) => (
+                      <div className="flex items-center">
+                        <MdEventSeat
+                          onClick={() => handleSeat(item)}
+                          onMouseEnter={() => HandleDetailSeat(item)}
+                          onMouseLeave={() => HandleDetailSeatClose()}
+                          color={
+                            item.stateSeat === "READY"
+                              ? "grey"
+                              : item.stateSeat === "AVAILABLE"
+                              ? "#f5cf89"
+                              : "#cba052"
+                          }
+                          size={"30"}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-1 flex-col">
+                    <h6>E</h6>
+                    {seats.slice(40, 50).map((item) => (
+                      <div className="flex items-center">
+                        <MdEventSeat
+                          onClick={() => handleSeat(item)}
+                          onMouseEnter={() => HandleDetailSeat(item)}
+                          onMouseLeave={() => HandleDetailSeatClose()}
+                          color={
+                            item.stateSeat === "READY"
+                              ? "grey"
+                              : item.stateSeat === "AVAILABLE"
+                              ? "#f5cf89"
+                              : "#cba052"
+                          }
+                          size={"30"}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-1 flex-col">
+                    <h6>F</h6>
+                    {seats.slice(50, 60).map((item) => (
                       <div className="flex items-center">
                         <MdEventSeat
                           onClick={() => handleSeat(item)}

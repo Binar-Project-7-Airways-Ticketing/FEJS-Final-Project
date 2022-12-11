@@ -354,17 +354,17 @@ header {
   height: fit-content;
 }
 .swap {
-  left: 46.5%;
+  left: 48%;
   position: absolute;
   background: #f1efe9;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border: 1px solid rgb(178, 178, 178);
   border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 25%;
+  top: 32%;
   color: #cba052;
 }
 .wrap-date {
@@ -492,11 +492,12 @@ nav {
 }
 .wrap-navbar {
   width: 100%;
-  height: 90px;
+  height: fit-content;
   display: flex;
   align-items: center;
   gap: 20px;
   padding: 10px 0;
+  transition: 1s;
 }
 .logo {
   width: 30%;
@@ -524,9 +525,10 @@ nav {
 .search {
   color: #f1efe9;
   display: flex;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
   width: 100%;
+  height: 100%;
   justify-content: flex-end;
 }
 .search a {
@@ -537,15 +539,12 @@ nav {
   font-size: 20px;
   align-items: center;
   cursor: pointer;
-  justify-content: center;
+
   padding-top: 5px;
   position: relative;
-  width: 100px;
+  width: fit-content;
 }
-.notif p {
-  font-size: 12px;
-  font-family: "Roboto";
-}
+
 .ant-input {
   width: 180px;
   border-color: #8c857b;
@@ -570,8 +569,18 @@ nav {
 .ant-input:hover {
   border-color: #cba052;
 }
+.nav-btn-responsive {
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  visibility: hidden;
+  opacity: 0;
+}
 .frm {
   visibility: hidden;
+}
+.f {
+  width: 600px;
 }
 .user {
   display: flex;
@@ -583,8 +592,7 @@ nav {
   width: 50px;
   height: 50px;
 }
-.space {
-}
+
 .notif-read {
   background: #cba052;
   color: white;
@@ -592,10 +600,10 @@ nav {
   height: 20px;
   text-align: center;
   border-radius: 10px;
-  padding: 2px;
+  /* padding: 2px; */
   position: absolute;
   top: 0;
-  left: 16px;
+  left: 5px;
 }
 
 /*-------------------------Resullt Booking---------------------------------*/
@@ -1201,8 +1209,6 @@ footer {
 
 /*---------------Transaction---------------*/
 
-
-
 .wrap-history {
   width: 100%;
   background: #f1efe9;
@@ -1227,10 +1233,15 @@ footer {
 }
 
 /*-------------- Media Screen---------------*/
+@media only screen and (max-width: 1440px) {
+  .swap {
+    left: 47.5%;
+  }
+}
 @media only screen and (max-width: 1280px) {
   /*-------------- Navbar ---------------*/
   .ant-input {
-    width: 150px;
+    width: 165px;
   }
   /*--------------Homepage benefit---------------*/
   .img-large {
@@ -1241,39 +1252,69 @@ footer {
     height: 320px;
     right: 200px;
   }
-/*-------------- booking component homepage---------------*/
-  .inpt-book{
+  /*-------------- booking component homepage---------------*/
+  .inpt-book {
     padding: 8px;
   }
-  .inpt-passenger{
+  .inpt-passenger {
     padding: 8px;
-
   }
-  .wrap-detail-booking{
+  .wrap-detail-booking {
     padding: 15px;
   }
   .swap {
-    left: 45.5%;
-  }
-}
-@media only screen and (max-width: 425px) {
-  /*--------------Header ---------------*/
-  h1{
-    font-size: 2.2rem;
-    line-height: 3rem;
-  }
-  header{
-    height: fit-content;
+    left: 46.5%;
   }
   .wrap-header {
     padding: 0;
   }
+}
+@media only screen and (max-width: 768px) {
+  /*--------------navbar ---------------*/
+  .nav-btn-responsive {
+    visibility: visible;
+    opacity: 1;
+  }
+  .wrap-navbar {
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .menu-navbar {
+    flex-direction: column;
+  }
+  .nav-respon {
+    transform: translateY(-100vh);
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .wrap-navbar {
+    height: 80px;
+  }
+  .wrap-navbar .responsive_nav {
+    transform: none;
+  }
+}
+@media only screen and (max-width: 425px) {
+  /*--------------Header ---------------*/
+  h1 {
+    font-size: 2.2rem;
+    line-height: 3rem;
+  }
+
+  header {
+    height: fit-content;
+  }
+  /* .wrap-header {
+    padding: 0;
+  } */
   .container {
     height: 0;
-    }
-    .header-main{
-      padding: 100px 0;
-    }
+  }
+  .header-main {
+    padding: 100px 0;
+  }
   /*--------------Homepage benefit---------------*/
   /* .img-large {
     width: 300px;
@@ -1283,7 +1324,7 @@ footer {
     height: 320px;
     right: 200px;
   } */
-/*-------------- booking component homepage---------------*/
+  /*-------------- booking component homepage---------------*/
   /* .inpt-book{
     padding: 8px;
   }
