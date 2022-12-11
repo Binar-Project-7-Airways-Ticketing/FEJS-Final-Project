@@ -17,7 +17,7 @@ export default function MainHome() {
           </div>
         </div>
       </section>
-      <section className="w-full h-screen ">
+      <section className="w-full h-fit ">
         <div className="container">
           <div className="py-12">
             <Destination />
@@ -31,7 +31,7 @@ export default function MainHome() {
           </div>
         </div>
       </section>
-      <section className="w-full h-screen">
+      <section className="w-full h-fit">
         <div className="container">
           <div className="py-12">
             <Benefit />

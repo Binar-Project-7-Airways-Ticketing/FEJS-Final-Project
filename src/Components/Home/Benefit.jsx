@@ -14,7 +14,7 @@ export default function Benefit() {
               01
             </span>
             <h4>Get best deals</h4>
-            <h6 className="w-1/2">
+            <h6 className="xl:w-1/2 lg:3/5">
               Find help with your booking and travel plans and see what to
               expect along you journey today with us
             </h6>
@@ -24,7 +24,7 @@ export default function Benefit() {
               02
             </span>
             <h4>100% price transparency</h4>
-            <h6 className="w-1/2">
+            <h6 className="xl:w-1/2 lg:3/5">
               Find help with your booking and travel plans and see what to
               expect along you journey today with us
             </h6>
@@ -34,7 +34,7 @@ export default function Benefit() {
               03
             </span>
             <h4>Travel with more confidence</h4>
-            <h6 className="w-1/2">
+            <h6 className="xl:w-1/2 lg:3/5">
               Find help with your booking and travel plans and see what to
               expect along you journey today with us
             </h6>

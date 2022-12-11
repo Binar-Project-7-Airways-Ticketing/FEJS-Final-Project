@@ -100,7 +100,7 @@ export default function Passenger() {
       {passenger ? (
         <>
           <div onClick={handlePassengerClose} className="inpt-passenger">
-            <p onClick={handlePassengerClose}>Class {seats}</p>
+            <p style={{fontSize:"15px"}} onClick={handlePassengerClose}>Class {seats}</p>
             {adults + childs + infants === 10 ? (
               <p>
                 Adults {adults}, Childs {childs}, Infants {infants}
@@ -198,9 +198,9 @@ export default function Passenger() {
         </>
       ) : (
         <div onClick={handlePassenger} className="inpt-passenger">
-          <p>Passenger/Class</p>
+          <p style={{fontSize:"15px"}}>Passenger/Class</p>
           <p>
-            Class {seats}, Passenger {adults + childs + infants}
+          Passenger {adults + childs + infants}, Class {seats} 
           </p>
         </div>
       )}

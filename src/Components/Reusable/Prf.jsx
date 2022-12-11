@@ -37,7 +37,7 @@ export default function Prf(setIsLogin) {
       <Dropdown placement="bottomRight" arrow menu={{ items }}>
         <a onClick={(e) => e.preventDefault()}>
           <Space>
-            <img style={{borderRadius:"30px"}} src="http://res.cloudinary.com/dwncupcal/image/upload/be781f4f-99d1-4dc4-925d-58072f4de335"></img>
+            <img className="rounded-full h-14 w-14" src="http://res.cloudinary.com/dwncupcal/image/upload/be781f4f-99d1-4dc4-925d-58072f4de335"></img>
           </Space>
         </a>
       </Dropdown>

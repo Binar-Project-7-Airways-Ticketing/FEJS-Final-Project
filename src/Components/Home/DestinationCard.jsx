@@ -3,15 +3,15 @@ import { Card } from "antd";
 const { Meta } = Card;
 export default function Destination() {
   return (
-    <div className="flex flex-col h-fit w-full">
+    <div className="flex flex-col h-full w-full">
       <div>
         <h5>EXPLORE</h5>
         <h2 className=" text-brand-black mb-10">
           Explore your travel destination
         </h2>
       </div>
-      <div className="flex w-full h-full gap-10">
-        <div className="grid xl:grid-cols-3 w-full h-fit gap-5 lg:grid-cols-2">
+      <div className="flex w-full h-fit xl:gap-10 lg:gap-5">
+        <div className="grid xl:grid-cols-3 xl:w-full lg:w-3/5 h-fit gap-5 lg:grid-cols-2">
           <div className="w-full">
             <Card
               hoverable
@@ -20,7 +20,7 @@ export default function Destination() {
               }}
               cover={
                 <img
-                  className="h-60"
+                  className="xl:h-60 lg:h-32"
                   alt="example"
                   src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
                 />
@@ -40,7 +40,7 @@ export default function Destination() {
               }}
               cover={
                 <img
-                  className="h-60"
+                  className="xl:h-60 lg:h-32"
                   alt="example"
                   src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
                 />
@@ -60,7 +60,7 @@ export default function Destination() {
               }}
               cover={
                 <img
-                  className="h-60"
+                  className="xl:h-60 lg:h-32"
                   alt="example"
                   src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
                 />
@@ -80,7 +80,7 @@ export default function Destination() {
               }}
               cover={
                 <img
-                  className="h-60"
+                  className="xl:h-60 lg:h-32"
                   alt="example"
                   src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
                 />
@@ -100,7 +100,7 @@ export default function Destination() {
               }}
               cover={
                 <img
-                  className="h-60"
+                  className="xl:h-60 lg:h-32"
                   alt="example"
                   src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
                 />
@@ -120,7 +120,7 @@ export default function Destination() {
               }}
               cover={
                 <img
-                  className="h-60"
+                  className="xl:h-60 lg:h-32"
                   alt="example"
                   src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
                 />
@@ -143,6 +143,7 @@ export default function Destination() {
             cover={
               <img
                 style={{ height: "600px" }}
+                className='lg:w-full'
                 alt="example"
                 src="https://images.pexels.com/photos/1123982/pexels-photo-1123982.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               />
