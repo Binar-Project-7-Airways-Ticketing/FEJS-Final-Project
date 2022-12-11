@@ -6,6 +6,18 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getRegister } from "../Feature/Models/AuthRegister";
 import { unwrapResult } from "@reduxjs/toolkit";
+import type { DatePickerProps } from 'antd';
+import { DatePicker, Space } from 'antd';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import 'dayjs/locale/zh-cn';
+
+dayjs.extend(customParseFormat);
+const { RangePicker } = DatePicker;
+const dateFormat = 'YYYY/MM/DD';
+const dateFormatList = ['DD-MM-YYYY'];
+const customFormat: DatePickerProps['format'] = (value) =>
+  `custom format: ${value.format(dateFormat)}`;
 
 export const Register = () => {
 
@@ -86,10 +98,10 @@ export const Register = () => {
             alert("Password Tidak Valid")
             return;
         }
-        if (!registerBirth) {
-            alert("Harus ada tanggal lahir")
-            return;
-        }
+        // if (!registerBirth) {
+        //     alert("Harus ada tanggal lahir")
+        //     return;
+        // }
         if (!registerGender) {
             alert("Harus ada gender")
             return;
@@ -101,9 +113,9 @@ export const Register = () => {
             password: registerPassword,
             firstname: registerFirstName,
             lastname: registerLastname,
-            birthday: String(registerBirth),
+            birthday: registerBirth,
             gender: registerGender,
-            role: "buyer",
+            role: registerRole,
         }))
 
         const results = unwrapResult(resultsActions);
@@ -184,6 +196,10 @@ export const Register = () => {
                             </div>
                             <div className="textbox ">
                                 <input onChange={(event) => { setRegisterBirth(event.target.value) }} type="date" placeholder="Date of Birth" />
+                                {/* <Space direction="vertical" size={20}>
+                                    <DatePicker defaultValue={dayjs('01/01/2015', dateFormatList[0])} format={dateFormatList} onChange={(event) => { setRegisterBirth(event.target.value) }} placeholder="Date of Birth" />
+                                    
+                                </Space> */}
                                 <span className="material-symbols-outlined">
                                     <CalendarOutlined style={{ color: '#F2EFEA' }} />
                                 </span>
@@ -197,8 +213,8 @@ export const Register = () => {
                             <div className="textbox-select">
                                 <select onChange={(event) => (setRegisterGender(event.target.value))} type="text">
                                     <option selected>Gender</option>
-                                    <option value="Perempuan">Perempuan</option>
-                                    <option value="Pria">Pria</option>
+                                    <option value="PEREMPUAN">PEREMPUAN</option>
+                                    <option value="PRIA">PRIA</option>
                                 </select>
                                 <span className="material-symbols-outlined">
                                     <UserOutlined style={{ color: '#F2EFEA' }} />

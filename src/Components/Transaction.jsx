@@ -103,8 +103,7 @@ export default function Transaction() {
   const handleBayarCancel = () => {
     setIsModalBayarOpen(false);
   };
-
-
+ 
 
   // method payment
   const dana = () => {
@@ -257,7 +256,7 @@ export default function Transaction() {
                 <h3 className="text-[20px] mt-2">Bagasi</h3>
               </div>
               <div className="flex justify-start items-center gap-4 bg-brand-nude rounded-sm border-2 border-brand-gray p-2">
-                <select onClick={(e) => setBagasi(e.target.value)}>
+                <select className="bg-brand-nude" onClick={(e)=>setBagasi(e.target.value)}>
                   <option >Select Extra Baggage</option>
                   {luggages.map((item) => (
                     <option>
@@ -270,132 +269,7 @@ export default function Transaction() {
                     <option>+5Kg x 5 (875000IDR)</option>
                     <option>+5Kg x 6 (1050000IDR)</option> */}
                 </select>
-
               </div>
-              <div className="flex justify-start items-center mb-4 gap-4">
-                <span>
-                  <ShoppingOutlined />
-                </span>
-                <h3
-                  onClick={showModalSeat}
-                  className="text-[20px] mt-2 cursor-pointer"
-                >
-                  Seats
-                </h3>
-                <ModalSeat
-                  isModalOpen={isModalSeatOpen}
-                  handleCancel={handleCancelSeat}
-                />
-              </div>
-            </div>
-            <div className="parent-d w-full mt-6 flex justify-end">
-              <button
-                className="block rounded-lg cursor-pointer justify-center h-[60px] w-[50%] bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px]"
-                type="submit"
-                onClick={showModalBayar}
-              >
-                LANJUT PEMBAYARAN
-              </button>
-              <Modal
-                title="Select Payment Method"
-                open={isModalBayarOpen}
-                onOk={handleBayarOk}
-                onCancel={handleBayarCancel}
-                footer={[null]}
-              >
-                <div className="p-2 mt-4">
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={bri}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">BRI</h3>
-                  </div>
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={bca}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">BCA</h3>
-                  </div>
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={mandiri}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">Mandiri</h3>
-                  </div>
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={bni}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">BNI</h3>
-                  </div>
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={ovo}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">OVO</h3>
-                  </div>
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={danaa}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">Dana</h3>
-                  </div>
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={linkAja}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">Link Aja</h3>
-                  </div>
-              </Modal>
             </div>
             <div className="flex justify-start items-center mb-4 gap-4">
               <span>
@@ -528,8 +402,8 @@ export default function Transaction() {
         <div className="booking-right">
           <div className="w-full">
             <div className="parent-a w-full bg-brand-whiteLight p-6 rounded-md border-2 border-brand-black">
-              <div className="w-full bg-blue-300 p-2 mb-4 gap-4 rounded-md">
-                <h3 className="text-[20px] text-black font-semibold mb-2">Penerbangan</h3>
+              <div className="w-full bg-brand-black text-white p-2 mb-4 gap-4 rounded-md">
+                <h3 className="text-[20px] font-semibold mb-2">Penerbangan</h3>
               </div>
               <div className="py-2">
                 <div className="flex w-full gap-8 mb-2 p-2 ">
@@ -609,65 +483,41 @@ export default function Transaction() {
                         <p></p>
                       </div>
                     </div>
-                  </Modal >
-                  <div>
-                    <h6>Passenger</h6>
-                    <p>Adults, Childs, Infant</p>
-                  </div>
-                  <div>
-                    <h6>Luggage</h6>
-                    <p>{bagasi}</p>
-                  </div>
-                  <div>
-                    <h6>Number Seats</h6>
-                    <p></p>
-                  </div>
+                  </Modal>
                 </div>
-              </Modal>
-            </div>
-            <div className="w-full my-[2rem]">
-              <h3 className="text-[20px] text-black mb-4">
-                Kebijakan Tiket
-              </h3>
-              <div className="flex justify-start items-center mb-4 gap-4">
-                <span>
-                  <DollarCircleOutlined />
-                </span>
-                <p className="mt-2">Bisa Refund</p>
-              </div >
-              <div className="w-full my-[2rem] border-2 border-brand-gray p-2">
-                <h3 className="text-[20px] text-black mb-4">
-                  Kebijakan Tiket
-                </h3>
-                <div className="flex justify-start items-center mb-4 gap-4">
-                  <span>
-                    <DollarCircleOutlined />
-                  </span>
-                  <p className="mt-2">Bisa Refund</p>
-                </div>
-                <div className="flex justify-start items-center mb-4 gap-4">
-                  <span>
-                    <ScheduleOutlined />
-                  </span>
-                  <p className="mt-2">Bisa Rescedhule</p>
-                </div>
-              </div>
-              <div className="flex justify-end w-full my-[2rem]">
-                <div>
-                  <h3 className="text-[16px] text-black mb-4 font-semibold">
-                    Total Pembayaran
+                <div className="w-full my-[2rem] border-2 border-brand-gray p-2">
+                  <h3 className="text-[20px] text-black mb-4">
+                    Kebijakan Tiket
                   </h3>
-                  <span className="w-full">
-                    Rp. 0,-
-                  </span>
+                  <div className="flex justify-start items-center mb-4 gap-4">
+                    <span>
+                      <DollarCircleOutlined />
+                    </span>
+                    <p className="mt-2">Bisa Refund</p>
+                  </div>
+                  <div className="flex justify-start items-center mb-4 gap-4">
+                    <span>
+                      <ScheduleOutlined />
+                    </span>
+                    <p className="mt-2">Bisa Rescedhule</p>
+                  </div>
+                </div>
+                <div className="flex justify-end w-full my-[2rem]">
+                  <div>
+                    <h3 className="text-[16px] text-black mb-4 font-semibold">
+                      Total Pembayaran
+                    </h3>
+                    <span className="w-full">
+                      Rp. 0,-
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div >
-          </div >
-        </div >
-      </div >
+            </div>
+          </div>
+        </div>
+      </div>
       <Footer />
-    </div >
-    </div >
+    </div>
   );
 }
