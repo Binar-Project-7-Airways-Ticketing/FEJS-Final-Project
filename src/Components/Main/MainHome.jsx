@@ -18,7 +18,7 @@ export default function MainHome() {
         </div>
       </section> */}
       <section className="w-full h-fit ">
-        <div className="container">
+        <div className="container mx-auto">
           <div className="py-12">
             <Destination />
           </div>

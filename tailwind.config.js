@@ -21,13 +21,13 @@ module.exports = {
       }
     },
     screens: {
-      'sm': '375px',
+      'sm': '360px',
       // => @media (min-width: 640px) { ... }
 
-      'md': '768px',
+      'md': '730px',
       // => @media (min-width: 768px) { ... }
 
-      'lg': '1024px',
+      'lg': '968px',
       // => @media (min-width: 1024px) { ... }
 
       'xl': '1280px',
