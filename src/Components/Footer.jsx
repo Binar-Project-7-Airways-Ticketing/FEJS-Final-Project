@@ -5,33 +5,33 @@ export default function Footer() {
   return (
     <footer>
       <div className="container">
-        <div className="wrap-footer">
+        <div className="xl:flex gap-x-16 gap-y-8 w-full h-full text-brand-whiteLight sm:grid grid grid-cols-2 py-10 ">
           <div style={{ width: "100%" }}>
             <img style={{ width: "300px" }} src={logo}></img>
             <p>The general airline Aviation Operator and Services Provider. Delivering World-Class Services in Aircraft sales, completiones, management, flight support, charter and FBO-Indonesia.</p>
           </div>
           <div style={{ width: "100%" }}>
-            <ul className="menu-footer">
-              <li>
+            <ul className="flex flex-col h-full items-start">
+              <li className="h-full">
                 <h6>Home</h6>
               </li>
-              <li>
+              <li className="h-full">
                 <h6>About Us</h6>
               </li>
-              <li>
+              <li className="h-full">
                 <h6>Review</h6>
               </li>
-              <li>
+              <li className="h-full">
                 <h6>Flight Info</h6>
               </li>
-              <li>
+              <li className="h-full">
                 <h6>Contact Us</h6>
               </li>
             </ul>
           </div>
 
-          <div style={{ width: "100%" }}>
-            <h6>FOLLOW US</h6>
+          <div className="flex flex-col gap-1 w-full">
+            <h5>FOLLOW US</h5>
             <svg width="0" height="0">
               <linearGradient id="instagram-gradient" x1="100%" y1="100%" x2="0%" y2="0%">
                 <stop stopColor="#FFDC80" offset="0%" />
@@ -52,18 +52,18 @@ export default function Footer() {
                 <stop stopColor="#1DA1F2" offset="70%" />
               </linearGradient>
             </svg>
-            <div className="social-media">
-              <BsInstagram style={{ fill: "url(#instagram-gradient)", fontSize: "25px" }} />
-              <BsTwitter style={{ fill: "url(#twitter-gradient)", fontSize: "25px" }} />
+            <div className="flex items-center xl:justify-between justify-start xl:gap-0 gap-5">
+              <BsInstagram size={25} style={{ fill: "url(#instagram-gradient)"}} />
+              <BsTwitter size={25} style={{ fill: "url(#twitter-gradient)"}} />
               <BsFacebook className="facebook" />
               <BsYoutube className="youtube" />
             </div>
           </div>
-          <div style={{ width: "100%" }}>
-            <h6>PHONES</h6>
+          <div className="flex w-full">
+            <h5>PHONES</h5>
           </div>
-          <div style={{ width: "100%" }}>
-            <h6>ADDRESS</h6>
+          <div className="flex flex-col gap-1 w-full">
+            <h5>ADDRESS</h5>
             <p>Jl. Asia Afrika No.19, RT.1/RW.3, Gelora, Tanah Abang, Central Jakarta City, Jakarta 10270</p>
           </div>
         </div>

@@ -23,7 +23,7 @@ h5 {
 }
 h6 {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
 }
 p {
   font-size: 0.8rem;
@@ -1297,6 +1297,29 @@ footer {
   }
 }
 @media only screen and (max-width: 425px) {
+    /*--------------navbar ---------------*/
+    .nav-btn-responsive {
+      visibility: visible;
+      opacity: 1;
+    }
+    .wrap-navbar {
+      align-items: flex-start;
+      justify-content: space-between;
+      height: 80px;
+    }
+    .menu-navbar {
+      flex-direction: column;
+    }
+    .nav-respon {
+      transform: translateY(-100vh);
+      flex-direction: column;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+    .wrap-navbar .responsive_nav {
+      transform: none;
+    }
   /*--------------Header ---------------*/
   h1 {
     font-size: 2.2rem;

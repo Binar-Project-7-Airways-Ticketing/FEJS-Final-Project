@@ -10,13 +10,13 @@ const { Meta } = Card;
 export default function MainHome() {
   return (
     <>
-      <section className="w-full ">
+      {/* <section className="w-full ">
         <div className="container">
           <div className="py-12">
             <Booking />
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="w-full h-fit ">
         <div className="container">
           <div className="py-12">
