@@ -1301,7 +1301,8 @@ footer {
     line-height: 1.3;
   }
   h5 {
-    font-size: 1.3rem;
+    font-size: 1rem;
+    font-weight: 400;
   }
   /*--------------navbar ---------------*/
   .nav-btn-responsive {

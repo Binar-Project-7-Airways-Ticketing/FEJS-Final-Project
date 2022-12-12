@@ -10,7 +10,7 @@ const { Meta } = Card;
 export default function ComingServices() {
   return (
     <div>
-      <div className="mb-10 p-5 text-brand-whiteLight">
+      <div className="mb-10  text-brand-whiteLight">
         <h5>SERVICES COMING SOON</h5>
         <h2 className=" mb-5">Our services are coming soon</h2>
         <p className="xl:w-3/4 lg:w-full">
@@ -22,7 +22,7 @@ export default function ComingServices() {
           asperiores. Itaque quae ipsum id earum.
         </p>
       </div>
-      <div className="p-5">
+      <div >
         <Swiper
           spaceBetween={30}
           slidesPerView={6}
@@ -52,8 +52,8 @@ export default function ComingServices() {
               slidesPerView: 2,
             },
             375: {
-              spaceBetween: 30,
-              slidesPerView: 1,
+              spaceBetween: 10,
+              slidesPerView: 2,
             },
           }}
           modules={[Autoplay, Pagination, Navigation]}

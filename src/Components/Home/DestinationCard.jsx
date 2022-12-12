@@ -30,7 +30,7 @@ export default function Destination() {
             <Meta title="Europe Street beat" description="www.instagram.com" />
           </Card>
         </div>
-        <div className="grid xl:grid-cols-3 xl:w-full lg:w-3/5 h-fit gap-5 lg:grid-cols-2 sm:grid-cols-2">
+        <div className="grid xl:grid-cols-3 xl:w-full lg:w-3/5 h-fit gap-5 lg:grid-cols-2 md:grid-cols-3 sm:grid-cols-2">
           <div className="w-full">
             <Card
               hoverable

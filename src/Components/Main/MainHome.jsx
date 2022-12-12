@@ -19,28 +19,28 @@ export default function MainHome() {
       </section> */}
       <section className="w-full h-fit ">
         <div className="container mx-auto">
-          <div className="py-12">
+          <div className="lg:py-12 sm:py-6">
             <Destination />
           </div>
         </div>
       </section>
       <section className="w-full h-fit bg-brand-black">
         <div className="container">
-          <div className="py-12">
+          <div className="lg:py-12 sm:py-6">
             <ComingServices />
           </div>
         </div>
       </section>
       <section className="w-full h-fit">
         <div className="container">
-          <div className="py-12">
+          <div className="lg:py-12 sm:py-6">
             <Benefit />
           </div>
         </div>
       </section>
       <section className="w-full h-fit bg-brand-choco  ">
         <div className="container">
-          <div className="py-12">
+          <div className="lg:py-12 sm:py-6">
             <ReviewCard />
           </div>
         </div>
