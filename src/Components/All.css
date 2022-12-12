@@ -12,6 +12,7 @@ h2 {
   line-height: 4rem;
   font-weight: 600;
 }
+
 h4 {
   font-size: 1.8rem;
   font-weight: 600;
@@ -23,7 +24,7 @@ h5 {
 }
 h6 {
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 600;
 }
 p {
   font-size: 0.8rem;
