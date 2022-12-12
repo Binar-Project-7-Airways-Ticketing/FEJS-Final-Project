@@ -23,7 +23,7 @@ h5 {
 }
 h6 {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
 }
 p {
   font-size: 0.8rem;
@@ -496,12 +496,12 @@ nav {
   display: flex;
   align-items: center;
   gap: 20px;
+  justify-content: space-between;
   padding: 10px 0;
   transition: 1s;
 }
 .logo {
-  width: 30%;
-
+  width: fit-content;
   height: 60px;
   display: flex;
   justify-content: flex-start;
@@ -509,13 +509,13 @@ nav {
 .menu-navbar {
   display: flex;
   width: 100%;
-  list-style: none;
-  margin-block-start: 0;
+  /* list-style: none; */
+  /* margin-block-start: 0;
   margin-block-end: 0;
   margin-inline-start: 0;
   margin-inline-end: 0;
-  padding-inline-start: 0;
-  gap: 20px;
+  padding-inline-start: 0; */
+
   justify-content: flex-start;
   color: #f1efe9;
 }
@@ -531,15 +531,12 @@ nav {
   height: 100%;
   justify-content: flex-end;
 }
-.search a {
-  font-size: 12px;
-}
+
 .notif {
   display: flex;
   font-size: 20px;
   align-items: center;
   cursor: pointer;
-
   padding-top: 5px;
   position: relative;
   width: fit-content;
@@ -592,7 +589,9 @@ nav {
   width: 50px;
   height: 50px;
 }
-
+.user-span {
+  border: 1px solid #cba052;
+}
 .notif-read {
   background: #cba052;
   color: white;
@@ -1243,6 +1242,8 @@ footer {
   .ant-input {
     width: 165px;
   }
+  .logo {
+  }
   /*--------------Homepage benefit---------------*/
   .img-large {
     width: 300px;
@@ -1278,6 +1279,7 @@ footer {
   .wrap-navbar {
     align-items: flex-start;
     justify-content: space-between;
+    height: 80px;
   }
   .menu-navbar {
     flex-direction: column;
@@ -1289,14 +1291,42 @@ footer {
     display: flex;
     justify-content: center;
   }
-  .wrap-navbar {
-    height: 80px;
-  }
   .wrap-navbar .responsive_nav {
     transform: none;
   }
 }
 @media only screen and (max-width: 425px) {
+  h2 {
+    font-size: 2.5rem;
+    line-height: 1.3;
+  }
+  h5 {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  /*--------------navbar ---------------*/
+  .nav-btn-responsive {
+    visibility: visible;
+    opacity: 1;
+  }
+  .wrap-navbar {
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 80px;
+  }
+  .menu-navbar {
+    flex-direction: column;
+  }
+  .nav-respon {
+    transform: translateY(-100vh);
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .wrap-navbar .responsive_nav {
+    transform: none;
+  }
   /*--------------Header ---------------*/
   h1 {
     font-size: 2.2rem;

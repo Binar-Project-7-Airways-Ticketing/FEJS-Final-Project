@@ -97,7 +97,6 @@ export default function Transaction() {
     setIsModalBayarOpen(false);
   };
 
-
   // method booking pending
   const handlerBookingPending = () => {
     navigate('/bookingPending');

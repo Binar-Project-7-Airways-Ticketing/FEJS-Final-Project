@@ -11,7 +11,7 @@ module.exports = {
       colors: {
         brand: {
           yellow: "#CBA052",
-          black: "#404445",
+          black: "#3F4444",
           green: "#01843E",
           choco: "#8C857B",
           gray: "#8C8C8C",
@@ -20,6 +20,22 @@ module.exports = {
         }
       }
     },
+    screens: {
+      'sm': '360px',
+      // => @media (min-width: 640px) { ... }
+
+      'md': '730px',
+      // => @media (min-width: 768px) { ... }
+
+      'lg': '968px',
+      // => @media (min-width: 1024px) { ... }
+
+      'xl': '1280px',
+      // => @media (min-width: 1280px) { ... }
+
+      '2xl': '1536px',
+      // => @media (min-width: 1536px) { ... }
+    }
   },
   plugins: [],
 }
