@@ -14,6 +14,7 @@ export default function Navbar() {
   const [isLogin, setIsLogin] = useState(false);
   const [openNotif, setOpenNotif] = useState(false);
   const [show, setShow] = useState(false);
+  const [showMobile, setShowMobile] = useState(false);
   const navRef = useRef();
   const navigate = useNavigate();
 
@@ -53,19 +54,19 @@ export default function Navbar() {
   return (
     <nav>
       <div className="container">
-        <div className="wrap-navbar text-brand-whiteLight relative">
-          <div className="flex justify-start h-16 ">
+        <div className="flex items-center justify-between h-fit w-full transition gap-1 py-2 text-brand-whiteLight relative">
+          <div className="flex md:w-36 sm:w-60 justify-start h-16 ">
             <img
               onClick={() => navigate("/")}
-              className="flex cursor-pointer xl:w-36 md:w-44 "
+              className="flex cursor-pointer md:w-36 "
               src={logo}
             ></img>
           </div>
-          {show ? (
+          {showMobile ? (
             <div className="flex w-full justify-end items-center gap-4 text-brand-whiteLight">
               {search ? (
                 <Input
-                  className="md:w-full"
+                  className="md:w-full sm:w-full"
                   placeholder="Search Cities or Countries"
                 />
               ) : (
@@ -76,14 +77,14 @@ export default function Navbar() {
               )}
               {search ? (
                 <FaTimes
-                  size={33.5}
+                  size={20}
                   className="flex w-fit items-center"
                   onClick={srchClose}
                 />
               ) : (
                 <BsSearch
                   size={20}
-                  className="flex w-fit items-center"
+                  className="flex w-fit h-full items-center"
                   onClick={srch}
                 />
               )}
@@ -93,7 +94,7 @@ export default function Navbar() {
                   <div className="notif">
                     <Dropdown
                       onMouseEnter={() => setOpenNotif(true)}
-                      placement="bottom"
+                      placement="bottomLeft"
                       arrow
                       menu={{ items }}
                     >
@@ -111,6 +112,61 @@ export default function Navbar() {
                       </a>
                     </Dropdown>
                   </div>
+                </>
+              ) : null}
+            </div>
+          ) : null}
+          {show ? (
+            <div className="flex w-full justify-end items-center gap-4 text-brand-whiteLight">
+              {search ? (
+                <Input
+                  className="lg:w-1/2 md:w-full"
+                  placeholder="Search Cities or Countries"
+                />
+              ) : (
+                <Input
+                  className="md:w-full hidden"
+                  placeholder="Search Cities or Countries"
+                />
+              )}
+              {search ? (
+                <FaTimes
+                  size={20}
+                  className="flex w-fit items-center"
+                  onClick={srchClose}
+                />
+              ) : (
+                <BsSearch
+                  size={20}
+                  className="flex w-fit items-center"
+                  onClick={srch}
+                />
+              )}
+
+              {isLogin ? (
+                <>
+                  <div className="notif">
+                    <Dropdown
+                      onMouseEnter={() => setOpenNotif(true)}
+                      placement="bottomRight"
+                      arrow
+                      menu={{ items }}
+                    >
+                      <a onClick={(e) => e.preventDefault()}>
+                        <Space className="space">
+                          <div className="relative">
+                            <AiOutlineBell size={30} />
+                            {openNotif ? null : (
+                              <div className="text-brand-whiteLight bg-brand-yellow rounded-full absolute top-0 w-5 h-5 text-center">
+                                <p>{items.length}</p>
+                              </div>
+                            )}
+                          </div>
+                        </Space>
+                      </a>
+                    </Dropdown>
+                  </div>
+
                   <Prf />
                 </>
               ) : (
@@ -133,9 +189,9 @@ export default function Navbar() {
           ) : (
             <div
               ref={navRef}
-              className="nav-respon flex w-full items-center justify-center"
+              className="nav-respon lg:flex w-full items-center justify-center md:hidden sm:hidden"
             >
-              <ul className="flex w-full justify-start text-brand-whiteLight">
+              <ul className="flex w-1/2 justify-start text-brand-whiteLight">
                 <li className="hover:bg-brand-whiteLight hover:text-brand-black w-fit py-1 px-4 rounded-md">
                   Home
                 </li>
@@ -153,7 +209,7 @@ export default function Navbar() {
               <div className="flex items-center justify-end w-full gap-3.5">
                 {search ? (
                   <Input
-                    className="w-full"
+                    className="lg:w-full"
                     placeholder="Search Cities or Countries"
                   />
                 ) : (
@@ -180,7 +236,7 @@ export default function Navbar() {
                   {isLogin ? (
                     <Dropdown
                       onMouseEnter={() => setOpenNotif(true)}
-                      placement="bottom"
+                      placement="bottomRight"
                       arrow
                       menu={{ items }}
                     >
@@ -225,12 +281,22 @@ export default function Navbar() {
             </div>
           )}
           {show ? null : (
-            <button
-              className="xl:hidden lg:hidden md:flex sm:h-full sm:visible sm:items-center sm:opacity-100 xl:opacity-0 xl:cursor-none"
-              onClick={() => setShow(true)}
-            >
-              <FaBars />
-            </button>
+            <>
+              <button
+                className="xl:hidden lg:hidden xl:opacity-0 xl:cursor-none sm:hidden md:flex md:w-full md:h-full md:justify-end items-center "
+                onClick={() => setShow(true)}
+              >
+                <FaBars size={25}/>
+              </button>
+              {showMobile ? null : (
+                <button
+                  className="xl:hidden lg:hidden md:hidden sm:flex sm:h-full sm:w-full sm:justify-end items-center sm:visible sm:items-center sm:opacity-100 xl:opacity-0 xl:cursor-none"
+                  onClick={() => setShowMobile(true)}
+                >
+                  <FaBars size={25}/>
+                </button>
+              )}
+            </>
           )}
         </div>
       </div>
@@ -281,6 +347,78 @@ export default function Navbar() {
                     <button
                       className="flex h-full visible opacity-100"
                       onClick={() => setShow(false)}
+                    >
+                      <FaTimes />
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ) : null}
+        {showMobile ? (
+          <div className="container">
+            <div className="flex flex-col w-full h-fit py-5">
+              <div className="flex flex-col w-full">
+                {isLogin ? (
+                  <div className="flex w-full justify-between">
+                    <ul className="flex flex-col gap-1">
+                      <div className="px-4">
+                        <Prf />
+                      </div>
+                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
+                        Home
+                      </li>
+                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
+                        About Us
+                      </li>
+                      <li
+                        className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md cursor-pointer"
+                        onClick={() => navigate("review")}
+                      >
+                        Review
+                      </li>
+                    </ul>
+                    <button
+                      className="flex h-full visible opacity-100"
+                      onClick={() => setShowMobile(false)}
+                    >
+                      <FaTimes />
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex w-full justify-between">
+                    <ul className="flex flex-col gap-1">
+                      <div className="flex w-fit h-14 items-center text-brand-whiteLight relative">
+                        <div className="border-solid border-2 bg-brand-whiteLight text-brand-black border-brand-black w-12 h-12 rounded-full flex items-center absolute justify-center ">
+                          <AiOutlineUser size={25} />
+                        </div>
+                        <div className="flex gap-1 h-7 bg-brand-black text-brand-whiteLight items-center px-3 rounded-md w-40 justify-end ml-2">
+                          <a className="text-sm" href="/login">
+                            Login
+                          </a>
+                          <p>|</p>
+                          <a className="text-sm" href="/register">
+                            Sign up
+                          </a>
+                        </div>
+                      </div>
+                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
+                        Home
+                      </li>
+                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
+                        About Us
+                      </li>
+                      <li
+                        className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md cursor-pointer"
+                        onClick={() => navigate("review")}
+                      >
+                        Review
+                      </li>
+                    </ul>
+                    <button
+                      className="flex h-full visible opacity-100"
+                      onClick={() => setShowMobile(false)}
                     >
                       <FaTimes />
                     </button>

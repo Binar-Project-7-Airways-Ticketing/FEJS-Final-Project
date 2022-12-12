@@ -5,26 +5,26 @@ export default function Footer() {
   return (
     <footer>
       <div className="container">
-        <div className="xl:flex gap-x-16 gap-y-8 w-full h-full text-brand-whiteLight sm:grid grid grid-cols-2 py-10 ">
+        <div className="lg:flex gap-x-16 gap-y-8 w-full h-full text-brand-whiteLight sm:grid grid grid-cols-2 py-10 ">
           <div style={{ width: "100%" }}>
             <img style={{ width: "300px" }} src={logo}></img>
             <p>The general airline Aviation Operator and Services Provider. Delivering World-Class Services in Aircraft sales, completiones, management, flight support, charter and FBO-Indonesia.</p>
           </div>
           <div style={{ width: "100%" }}>
-            <ul className="flex flex-col h-full items-start">
-              <li className="h-full">
+            <ul className="flex flex-col h-full items-start gap-2">
+              <li>
                 <h6>Home</h6>
               </li>
-              <li className="h-full">
+              <li>
                 <h6>About Us</h6>
               </li>
-              <li className="h-full">
+              <li>
                 <h6>Review</h6>
               </li>
-              <li className="h-full">
+              <li>
                 <h6>Flight Info</h6>
               </li>
-              <li className="h-full">
+              <li>
                 <h6>Contact Us</h6>
               </li>
             </ul>
