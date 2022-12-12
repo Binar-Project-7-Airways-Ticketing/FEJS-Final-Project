@@ -10,6 +10,7 @@ import Transaction from "./Components/Transaction";
 import FlightStatusPage from "./Components/Pages/FlightStatusPage";
 import axios from "axios";
 import Review from "./Components/Pages/Review";
+import BookinngPending from "./Components/BookingPending";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/transaction" element={<Transaction />} />
         <Route path="/review" element={<Review/>} />
+        <Route path="/bookingpending" element={<BookinngPending/>} />
       </Routes>
     </BrowserRouter>
   );
