@@ -44,11 +44,11 @@ export default function ComingServices() {
               slidesPerView: 4,
             },
             768: {
-              spaceBetween: 30,
+              spaceBetween: 20,
               slidesPerView: 3,
             },
             425: {
-              spaceBetween: 10,
+              spaceBetween: 20,
               slidesPerView: 2,
             },
             375: {
