@@ -20,13 +20,14 @@ import { useNavigate } from "react-router-dom";
 import { loadLuggages } from "./Feature/Models/LuggageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { loadPayment } from "./Feature/Models/PaymentSlice";
 
 
 export default function Transaction() {
   const navigate = useNavigate();
 
   const [bagasi, setBagasi] = useState("");
-
+  const [payment, setPayment] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalSeatOpen, setIsModalSeatOpen] = useState(false);
   const { luggages } = useSelector((state) => state.luggage);
@@ -45,12 +46,18 @@ export default function Transaction() {
   // method payment
   const dana = () => {
     // navigate('/payment')
-    alert("Transasi akan diproses");
+    // alert("Transasi akan diproses");
     // navigate("/");
+    setPayment(true);
   };
+  
   useEffect(() => {
     dispatch(loadLuggages());
   }, [luggages]);
+
+  useEffect(() => {
+    dispatch(loadPayment());
+  }, [payment]);
 
   return (
     <>
@@ -114,6 +121,7 @@ export default function Transaction() {
                   <div className="grid grid-cols-3 gap-4 p-2 mt">
                     <div
                       onClick={dana}
+                      // onClick={(e) => setPayment(e.target.value)}
                       className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
                     >
                       <img

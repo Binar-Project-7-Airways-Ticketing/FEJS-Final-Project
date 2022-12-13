@@ -98,10 +98,10 @@ export const Register = () => {
             alert("Password Tidak Valid")
             return;
         }
-        // if (!registerBirth) {
-        //     alert("Harus ada tanggal lahir")
-        //     return;
-        // }
+        if (!registerBirth) {
+            alert("Harus ada tanggal lahir")
+            return;
+        }
         if (!registerGender) {
             alert("Harus ada gender")
             return;
@@ -196,10 +196,6 @@ export const Register = () => {
                             </div>
                             <div className="textbox ">
                                 <input onChange={(event) => { setRegisterBirth(event.target.value) }} type="date" placeholder="Date of Birth" />
-                                {/* <Space direction="vertical" size={20}>
-                                    <DatePicker defaultValue={dayjs('01/01/2015', dateFormatList[0])} format={dateFormatList} onChange={(event) => { setRegisterBirth(event.target.value) }} placeholder="Date of Birth" />
-                                    
-                                </Space> */}
                                 <span className="material-symbols-outlined">
                                     <CalendarOutlined style={{ color: '#F2EFEA' }} />
                                 </span>
