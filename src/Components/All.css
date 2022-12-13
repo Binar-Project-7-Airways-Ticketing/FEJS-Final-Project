@@ -12,6 +12,7 @@ h2 {
   line-height: 4rem;
   font-weight: 600;
 }
+
 h4 {
   font-size: 1.8rem;
   font-weight: 600;
@@ -1201,4 +1202,149 @@ footer {
   justify-content: center;
   gap: 7px;
   cursor: pointer;
+}
+
+/*-------------- Media Screen---------------*/
+@media only screen and (max-width: 1440px) {
+  .swap {
+    left: 47.5%;
+  }
+}
+@media only screen and (max-width: 1280px) {
+  /*-------------- Navbar ---------------*/
+  .ant-input {
+    width: 165px;
+  }
+  .logo {
+  }
+  /*--------------Homepage benefit---------------*/
+  .img-large {
+    width: 300px;
+  }
+  .img-small {
+    width: 230px;
+    height: 320px;
+    right: 200px;
+  }
+  /*-------------- booking component homepage---------------*/
+  .inpt-book {
+    padding: 8px;
+  }
+  .inpt-passenger {
+    padding: 8px;
+  }
+  .wrap-detail-booking {
+    padding: 15px;
+  }
+  .swap {
+    left: 46.5%;
+  }
+  .wrap-header {
+    padding: 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  /*--------------navbar ---------------*/
+  .nav-btn-responsive {
+    visibility: visible;
+    opacity: 1;
+  }
+  .wrap-navbar {
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 80px;
+  }
+  .menu-navbar {
+    flex-direction: column;
+  }
+  .nav-respon {
+    transform: translateY(-100vh);
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .wrap-navbar .responsive_nav {
+    transform: none;
+  }
+  /*--------------Homepage benefit---------------*/
+  .img-large {
+    width: 250px;
+  }
+  .img-small {
+    width: 180px;
+    height: 230px;
+    right: 150px;
+    bottom: -20px;
+  }
+}
+@media only screen and (max-width: 425px) {
+  h2 {
+    font-size: 2.5rem;
+    line-height: 1.3;
+  }
+  h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  h5 {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  /*--------------navbar ---------------*/
+  .nav-btn-responsive {
+    visibility: visible;
+    opacity: 1;
+  }
+  .wrap-navbar {
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 80px;
+  }
+  .menu-navbar {
+    flex-direction: column;
+  }
+  .nav-respon {
+    transform: translateY(-100vh);
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .wrap-navbar .responsive_nav {
+    transform: none;
+  }
+  /*--------------Header ---------------*/
+  h1 {
+    font-size: 2.2rem;
+    line-height: 3rem;
+  }
+
+  header {
+    height: fit-content;
+  }
+  /* .wrap-header {
+    padding: 0;
+  } */
+  .container {
+    height: 0;
+  }
+  .header-main {
+    padding: 100px 0;
+  }
+
+  /*-------------- booking component homepage---------------*/
+  /* .inpt-book{
+    padding: 8px;
+  }
+  .inpt-passenger{
+    padding: 8px;
+
+  }
+  .wrap-detail-booking{
+    padding: 15px;
+  }
+  .swap {
+    left: 45.5%;
+  } */
 }

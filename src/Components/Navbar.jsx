@@ -257,7 +257,7 @@ export default function Navbar() {
                 </div>
                 <div className="user">
                   {isLogin ? (
-                    <Prf />
+                    <Prf place={"bottomRight"} />
                   ) : (
                     <>
                       <div className="flex w-fit h-14 items-center text-brand-whiteLight relative">
