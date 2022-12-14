@@ -220,7 +220,7 @@ export default function Transaction() {
               <div className="flex flex-col gap-5 bg-brand-whiteLight p-4  ">
                 <h6>Your Itinerary </h6>
                 <div className="flex gap-5 items-center">
-                  <div className="bg-brand-black w-14 h-14 rounded-full flex items-center justify-center text-brand-whiteLight">
+                  <div className="bg-brand-yellow w-14 h-14 rounded-full flex items-center justify-center text-brand-whiteLight">
                     <MdFlightTakeoff size={30} />
                   </div>
                   <h5>Your Departure Flight</h5>
@@ -233,7 +233,7 @@ export default function Transaction() {
                       <p>Jakarta, Soekarno-Hatta</p>
                     </div>
                     <div className="flex items-center justify-center">
-                      <MdKeyboardArrowRight size={70} />
+                      <MdKeyboardArrowRight  size={70} />
                     </div>
                     <div className="flex flex-col items-center w-full gap-0 ">
                       <p>Arrival</p>
@@ -254,7 +254,7 @@ export default function Transaction() {
                   </div>
                 </div>
                 <div className="flex gap-5 items-center">
-                  <div className="bg-brand-black w-14 h-14 rounded-full flex items-center justify-center text-brand-whiteLight">
+                  <div className="bg-brand-yellow w-14 h-14 rounded-full flex items-center justify-center text-brand-whiteLight">
                     <MdFlightLand size={30} />
                   </div>
                   <h5>Your Return Flight</h5>
@@ -267,7 +267,7 @@ export default function Transaction() {
                       <p>Singapura, Changi</p>
                     </div>
                     <div className="flex items-center justify-center">
-                      <MdKeyboardArrowRight size={70} />
+                      <MdKeyboardArrowRight  size={70} />
                     </div>
                     <div className="flex flex-col items-center w-full gap-0 ">
                       <p>Arrival</p>

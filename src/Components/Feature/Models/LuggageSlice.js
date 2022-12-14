@@ -11,6 +11,7 @@ export const loadLuggages = createAsyncThunk("luggages/loadLuggages", async () =
     const luggages = await axios.get(
       "https://bej-ticketing-production.up.railway.app/api/luggage"
     );
+    
     return luggages.data
   } catch (error) {
     console.error(error);

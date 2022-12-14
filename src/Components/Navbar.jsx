@@ -8,6 +8,10 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../logo3.png";
 import Prf from "./Reusable/Prf";
 import "./All.css";
+import { useDispatch, useSelector } from "react-redux";
+import { loadNotif } from "./Feature/Models/Notification";
+import ModalNotif from "./ModalNotif";
+import { loadNotifDetail } from "./Feature/Models/NotificationDetail";
 
 export default function Navbar() {
   const [search, setSearch] = useState(false);
@@ -15,40 +19,54 @@ export default function Navbar() {
   const [openNotif, setOpenNotif] = useState(false);
   const [show, setShow] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [idNotif, setIdNotif] = useState()
+  const showModal = (e) => {
+    dispatch(loadNotifDetail(e))
+    setIsModalOpen(true);
+
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   const navRef = useRef();
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  const { notif } = useSelector((state) => state.notif);
   const srch = () => {
     setSearch(true);
   };
   const srchClose = () => {
     setSearch(false);
   };
-  const items = [
-    {
-      label: "Selamat anda mendapatkan voucher",
-      key: "0",
-    },
-    {
-      label: "Hari ini ada promo 50% keseluruh wilayah indonesia",
-      key: "1",
-    },
-    {
-      label: "Discount 30% class Business",
-      key: "3",
-    },
-  ];
+
+  const items = 
+  notif.map((item) => ({
+    key: item.message,
+    label: <div onClick={()=>showModal(item.idNotification)}>{item.message}</div>,
+  }))
+
   const showBar = () => {
     console.log("halalo");
     setShow(true);
   };
 
   useEffect(() => {
-    if (localStorage.getItem("auth")) {
+    if (localStorage.getItem("token")) {
       setIsLogin(true);
     } else {
       setIsLogin(false);
     }
+    const notifUser = localStorage.getItem("idUser");
+    
+
+    dispatch(loadNotif(notifUser));
+  
   }, [setIsLogin]);
 
   return (
@@ -286,14 +304,14 @@ export default function Navbar() {
                 className="xl:hidden lg:hidden xl:opacity-0 xl:cursor-none sm:hidden md:flex md:w-full md:h-full md:justify-end items-center "
                 onClick={() => setShow(true)}
               >
-                <FaBars size={25}/>
+                <FaBars size={25} />
               </button>
               {showMobile ? null : (
                 <button
                   className="xl:hidden lg:hidden md:hidden sm:flex sm:h-full sm:w-full sm:justify-end items-center sm:visible sm:items-center sm:opacity-100 xl:opacity-0 xl:cursor-none"
                   onClick={() => setShowMobile(true)}
                 >
-                  <FaBars size={25}/>
+                  <FaBars size={25} />
                 </button>
               )}
             </>
@@ -429,6 +447,7 @@ export default function Navbar() {
           </div>
         ) : null}
       </div>
+      <ModalNotif isModalOpen={isModalOpen} handleCancel={handleCancel}/>
     </nav>
   );
 }

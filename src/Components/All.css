@@ -407,6 +407,9 @@ header {
 .ant-form-vertical .ant-form-item-label > label {
   color: #b6b6b6;
 }
+.ant-select-arrow{
+  display: none;
+}
 
 /*-------------------------Modal Seats---------------------------------*/
 .wrap-detail-seats {
@@ -689,7 +692,7 @@ nav {
 .times {
   width: 100%;
   display: flex;
-  gap: 10px;
+  position: relative;
   height: 100%;
 }
 .time {
@@ -704,17 +707,22 @@ nav {
   align-items: center;
   justify-content: center;
   width: 100%;
-  gap: 10px;
 }
 .time-logo::before {
   border-bottom: 1px solid #000000;
   content: "";
+  position: absolute;
   flex-grow: 1;
+  width: 15%;
+  left: 25%;
 }
 .time-logo::after {
   border-bottom: 1px solid #000000;
   content: "";
+  position: absolute;
   flex-grow: 1;
+  width: 15%;
+  right: 25%;
 }
 .time p {
   font-size: 40px;
@@ -790,7 +798,7 @@ nav {
 .benefit {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 93%;
   gap: 20px;
   border: 1px solid #f1efe9;
   border-radius: 20px;
@@ -1178,7 +1186,7 @@ footer {
 
   /*---------------Transaction---------------*/
   .booking-container {
-    @apply container flex justify-between w-full px-[3rem] py-[3rem];
+    @apply flex justify-between w-full px-[3rem] py-[3rem];
   }
 
   .booking-left,
@@ -1270,9 +1278,30 @@ footer {
   .wrap-header {
     padding: 0;
   }
+   /*-------------- booking component results---------------*/
+  .time-logo::before {
+    border-bottom: 1px solid #000000;
+    content: "";
+    position: absolute;
+    flex-grow: 1;
+    width: 15%;
+    left: 28%;
+  }
+  .time-logo::after {
+    border-bottom: 1px solid #000000;
+    content: "";
+    position: absolute;
+    flex-grow: 1;
+    width: 15%;
+    right: 28%;
+  }
 }
 @media only screen and (max-width: 768px) {
   /*--------------navbar ---------------*/
+  h2 {
+    font-size: 2.5rem;
+    line-height: 1.3;
+  }
   .nav-btn-responsive {
     visibility: visible;
     opacity: 1;

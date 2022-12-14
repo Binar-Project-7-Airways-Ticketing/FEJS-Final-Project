@@ -1,113 +1,63 @@
-import React, { useEffect, useState } from "react";
-import { Form, Input } from "antd";
-import { MdFlightTakeoff, MdFlightLand } from "react-icons/md";
-import { AiOutlineSwap } from "react-icons/ai";
+import React, { useEffect } from "react";
+import { Select, Form } from "antd";
+
 import { useDispatch, useSelector } from "react-redux";
 import { loadAirports } from "../Feature/Models/AirpostSlice";
-import axios from "axios";
 
-export default function FormToFrom() {
+export default function FormToFrom(props) {
   const { airport } = useSelector((state) => state.airport);
-  const [city, setCity] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(false);
-  const handleChange = async (e) => {
-    try {
-      const res = await axios.get(
-        `https://bej-ticketing-production.up.railway.app/api/airport/city/${e}`
-      );
 
-      setCity(res.data);
-      setSearchTerm(e);
-    } catch (error) {
-      console.error(error);
-    }
-  };
   const dispatch = useDispatch();
   useEffect(() => {
-    // handleChange();
     dispatch(loadAirports());
-  });
+  }, [airport]);
 
   return (
-    <>
-      <div className="inpt-book">
+    <div className="flex rounded-lg h-24 w-full py-1.5 pr-5 pl-6 border-brand-gray border gap-3">
+      <div className="flex flex-col gap-2">
+        <p>{props.label}</p>
+        {props.iconFlight}
+      </div>
+      <div className="flex w-full pt-7">
+        {/* <div className="w-full"> */}
         <Form.Item
-          name="from"
-          label="From"
+          name={props.name}
           rules={[
             {
               required: true,
               message: "Cannot Empty",
             },
           ]}
+          className="w-full"
         >
-          <div className="flex w-full items-center gap-2 ">
-            <MdFlightTakeoff size={"25"} color="#cba052" />
-            <div className="relative">
-            {searchTerm ? (
-              <Input
-                onClick={() => setSearchTerm(false)}
-                onChange={(e) => handleChange(e.target.value)}
-              />):(
-                <Input
-                  onClick={() => setSearchTerm(true)}
-                  onChange={(e) => handleChange(e.target.value)}
-                />)}
-              <div>
-                {searchTerm ? (
-                  <div className="result-city ">
-                    {airport.map((item) => (
-                      <>
-                        <h6>{item.city}</h6>
-                        <div className="flex justify-between">
-                          <p>{item.airportName}</p>
-                          <p>{item.airportCode}</p>
-                        </div>
-                        <h6>{item.city}</h6>
-                        <div className="flex justify-between">
-                          <p>{item.airportName}</p>
-                          <p>{item.airportCode}</p>
-                        </div>
-                        <h6>{item.city}</h6>
-                        <div className="flex justify-between">
-                          <p>{item.airportName}</p>
-                          <p>{item.airportCode}</p>
-                        </div>
-                        <h6>{item.city}</h6>
-                        <div className="flex justify-between">
-                          <p>{item.airportName}</p>
-                          <p>{item.airportCode}</p>
-                        </div>
-                      </>
-                    ))}
+          <Select
+            showSearch
+            className="w-full"
+            value={props.value}
+            showArrow={false}
+            filterOption={(input, option) =>
+              (option?.city ?? "").toLowerCase().includes(input.toLowerCase())
+            }
+            onChange={props.handleChange}
+            options={airport.map((item, key) => ({
+              value: item.airportCode,
+              city: item.city,
+              airport: item.airportName,
+              key: item.idAirport,
+              label: (
+                <div className="flex flex-col">
+                  <div className="flex h-full justify-between">
+                    <h6>{item.city}</h6>
+                    <h6>{item.airportCode}</h6>
                   </div>
-                ) : null}
-              </div>
-            </div>
-          </div>
+                  <p>{item.airportName}</p>
+                </div>
+              ),
+            }))}
+          ></Select>
         </Form.Item>
+        {/* </div> */}
       </div>
-      <div className="inpt-book">
-        <Form.Item
-          label="To"
-          name="to"
-          rules={[
-            {
-              required: true,
-              message: "Cannot Empty",
-            },
-          ]}
-        >
-          <div className="flex w-full items-center gap-2">
-            <MdFlightLand size={"25"} color="#cba052" />
-            <Input />
-          </div>
-        </Form.Item>
-      </div>
-      <div className="swap">
-        <AiOutlineSwap />
-      </div>
-      {/* {airport.map((item) => console.log(item))} */}
-    </>
+    </div>
   );
 }

@@ -99,7 +99,7 @@ export default function Transaction() {
 
   // method booking pending
   const handlerBookingPending = () => {
-    navigate('/bookingPending');
+    navigate("/bookingPending");
   };
 
   useEffect(() => {
@@ -108,16 +108,16 @@ export default function Transaction() {
 
   return (
     <>
-      <div className="bg-brand-yellow">
-        <Navbar />
-        <div className="flex justify-center items-center pt-[80px] bg-brand-nude">
-          <div className="flex my-2 gap-2 items-center">
-            <h3 className="text-brand-black">
-              Mohon selesaikan pesanan anda dalam{" "}
-            </h3>
-            <Countdown date={Date.now() + 900000} renderer={renderer} />
-          </div>
+      <Navbar />
+      <div className="flex justify-center items-center pt-[80px] bg-brand-nude">
+        <div className="flex my-2 gap-2 items-center">
+          <h3 className="text-brand-black">
+            Mohon selesaikan pesanan anda dalam{" "}
+          </h3>
+          <Countdown date={Date.now() + 900000} renderer={renderer} />
         </div>
+      </div>
+      <div className="container bg-brand-yellow">
         <div className="booking-container">
           <div className="booking-left">
             <div className="parent-a w-full bg-brand-nude p-6 rounded-md border-2 border-brand-black">
@@ -246,8 +246,11 @@ export default function Transaction() {
                   <h3 className="text-[20px] mt-2">Bagasi</h3>
                 </div>
                 <div className="flex justify-start items-center gap-4 bg-brand-nude rounded-sm border-2 border-brand-gray p-2">
-                  <select className="bg-brand-nude" onClick={(e) => setBagasi(e.target.value)}>
-                    <option >Select Extra Baggage</option>
+                  <select
+                    className="bg-brand-nude"
+                    onClick={(e) => setBagasi(e.target.value)}
+                  >
+                    <option>Select Extra Baggage</option>
                     {luggages.map((item) => (
                       <option>
                         +{item.capacity}kg ({item.price})
@@ -392,7 +395,9 @@ export default function Transaction() {
             <div className="w-full">
               <div className="parent-a w-full bg-brand-whiteLight p-6 rounded-md border-2 border-brand-black">
                 <div className="w-full bg-brand-black text-white p-2 mb-4 gap-4 rounded-md">
-                  <h3 className="text-[20px] font-semibold mb-2">Penerbangan</h3>
+                  <h3 className="text-[20px] font-semibold mb-2">
+                    Penerbangan
+                  </h3>
                 </div>
                 <div className="py-2">
                   <div className="flex w-full gap-8 mb-2 p-2 ">
@@ -404,7 +409,9 @@ export default function Transaction() {
                       <h3>Singapore</h3>
                     </div>
                     <div>
-                      <button className="text-blue-600" onClick={showModal}>Detail</button>
+                      <button className="text-blue-600" onClick={showModal}>
+                        Detail
+                      </button>
                     </div>
                     <Modal
                       title="Flight Detail"
@@ -496,18 +503,16 @@ export default function Transaction() {
                       <h3 className="text-[16px] text-black mb-4 font-semibold">
                         Total Pembayaran
                       </h3>
-                      <span className="w-full">
-                        Rp. 0,-
-                      </span>
+                      <span className="w-full">Rp. 0,-</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          </div>
-          <Footer />
         </div>
-      </>
-      );
+      </div>
+      <Footer />
+    </>
+  );
 }

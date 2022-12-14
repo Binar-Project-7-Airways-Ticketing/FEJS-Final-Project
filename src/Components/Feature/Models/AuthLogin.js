@@ -15,17 +15,12 @@ const initialState = {
 };
 
 export const getLogin = createAsyncThunk("auth/login", async (body) => {
-
-  const results = await axios.post(
-    
-      `${authConfig.baseUrl}/api/auth/signin`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-          ...body
-      }
-  )
+  const results = await axios.post(`${authConfig.baseUrl}/api/auth/signin`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    ...body,
+  });
 
   if (!results) {
     throw new Error("Can't login");
@@ -35,12 +30,12 @@ export const getLogin = createAsyncThunk("auth/login", async (body) => {
   console.log(data);
 
   localStorage.setItem(
-    "auth",
+    "token",
     JSON.stringify({
-      id: data.id,
       token: data.token,
     })
   );
+  localStorage.setItem("idUser", JSON.stringify(data.id));
 
   return data;
 });
