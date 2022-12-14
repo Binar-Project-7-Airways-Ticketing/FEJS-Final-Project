@@ -47,8 +47,8 @@ export default function Navbar() {
 
   const items = 
   notif.map((item) => ({
-    key: item.message,
-    label: <div onClick={()=>showModal(item.idNotification)}>{item.message}</div>,
+    key: item.idNotification,
+    label: <div onClick={()=>showModal(item.idNotification)}>{item.title}</div>,
   }))
 
   const showBar = () => {

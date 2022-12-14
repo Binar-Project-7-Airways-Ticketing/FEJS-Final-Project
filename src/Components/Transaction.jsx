@@ -83,20 +83,6 @@ export default function Transaction() {
     setIsModalOpen(false);
   };
 
-  const [isModalBayarOpen, setIsModalBayarOpen] = useState(false);
-
-  const showModalBayar = () => {
-    setIsModalBayarOpen(true);
-  };
-
-  const handleBayarOk = () => {
-    setIsModalBayarOpen(false);
-  };
-
-  const handleBayarCancel = () => {
-    setIsModalBayarOpen(false);
-  };
-
   // method booking pending
   const handlerBookingPending = () => {
     navigate("/bookingPending");
@@ -108,13 +94,15 @@ export default function Transaction() {
 
   return (
     <>
-      <Navbar />
-      <div className="flex justify-center items-center pt-[80px] bg-brand-nude">
-        <div className="flex my-2 gap-2 items-center">
-          <h3 className="text-brand-black">
-            Mohon selesaikan pesanan anda dalam{" "}
-          </h3>
-          <Countdown date={Date.now() + 900000} renderer={renderer} />
+      <div className="bg-brand-yellow">
+        <Navbar />
+        <div className="block md:flex sm:text-sm justify-center items-center pt-[80px] bg-brand-nude">
+          <div className="flex gap-2 items-center p-2">
+            <h3 className="text-brand-black">
+              Mohon selesaikan pesanan anda dalam{" "}
+            </h3>
+            <Countdown date={Date.now() + 900000} renderer={renderer} />
+          </div>
         </div>
       </div>
       <div className="container bg-brand-yellow">
@@ -280,7 +268,7 @@ export default function Transaction() {
                 />
               </div>
             </div>
-            <div className="parent-d w-full mt-6 flex justify-end">
+            <div className="parent-d w-full mt-6 flex sm:justify-center md:justify-end p-4 mb-4">
               <button
                 className="block rounded-lg cursor-pointer justify-center h-[60px] w-[50%] bg-brand-green text-[#f9f9f9] border-0 font-[600] tracking-[2px]"
                 type="submit"
@@ -288,107 +276,6 @@ export default function Transaction() {
               >
                 LANJUT PEMBAYARAN
               </button>
-              {/* <Modal
-                title="Select Payment Method"
-                open={isModalBayarOpen}
-                onOk={handleBayarOk}
-                onCancel={handleBayarCancel}
-                footer={[null]}
-              >
-                <div className="p-2 mt-4">
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={bri}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">BRI</h3>
-                  </div>
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={bca}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">BCA</h3>
-                  </div>
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={mandiri}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">Mandiri</h3>
-                  </div>
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={bni}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">BNI</h3>
-                  </div>
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={ovo}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">OVO</h3>
-                  </div>
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={danaa}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">Dana</h3>
-                  </div>
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={linkAja}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">Link Aja</h3>
-                  </div>
-                </div>
-              </Modal> */}
             </div>
           </div>
           <div className="booking-right">

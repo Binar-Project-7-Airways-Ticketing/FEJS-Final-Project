@@ -9,6 +9,7 @@ import citiesFrom from "../Feature/Models/AirportFromSlice"
 import citiesTo from "../Feature/Models/AirportToSlice"
 import notifs from "../Feature/Models/Notification"
 import detailsNotif from "../Feature/Models/NotificationDetail"
+import payment from "../Feature/Models/PaymentSlice";
 
 export const store = configureStore({
     reducer: {
@@ -21,6 +22,7 @@ export const store = configureStore({
         cityFrom:citiesFrom,
         cityTo:citiesTo,
         notif:notifs,
-        detailNotif:detailsNotif
+        detailNotif:detailsNotif,
+        payment: payment,
     }
 })
