@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal } from "antd";
+import { useSelector } from "react-redux";
 
 export default function ModalNotif(props) {
   const { notifDetail } = useSelector((state) => state.detailNotif);
