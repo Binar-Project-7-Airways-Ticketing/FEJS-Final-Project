@@ -3,7 +3,7 @@ import { Dropdown, Space, DatePicker, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import { WindowsFilled } from "@ant-design/icons";
 
-export default function Prf(setIsLogin) {
+export default function Prf(setIsLogin, props) {
   const navigate = useNavigate();
   const logOutHandler = () => {
     localStorage.removeItem("auth");
@@ -34,7 +34,7 @@ export default function Prf(setIsLogin) {
   ];
   return (
     <div>
-      <Dropdown placement="bottomRight" arrow menu={{ items }}>
+      <Dropdown placement={props.place} arrow menu={{ items }}>
         <a onClick={(e) => e.preventDefault()}>
           <Space>
             <img className="rounded-full h-14 w-14" src="http://res.cloudinary.com/dwncupcal/image/upload/be781f4f-99d1-4dc4-925d-58072f4de335"></img>
