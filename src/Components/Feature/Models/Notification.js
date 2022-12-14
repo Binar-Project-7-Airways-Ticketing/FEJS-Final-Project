@@ -14,7 +14,7 @@ export const loadNotif = createAsyncThunk(
       const notif = await axios.get(
         `${authConfig.baseUrl}/api/notification/user/${notifUser}`
       );
-  
+      console.log(notif);
      return notif.data
     } catch (error) {
       console.error(error);

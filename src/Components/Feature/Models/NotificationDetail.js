@@ -15,7 +15,7 @@ export const loadNotifDetail = createAsyncThunk(
         `${authConfig.baseUrl}/api/notification/${notifUser}`
       );
 
-      return notif.data;
+      return notif.data.user;
     } catch (error) {
       console.error(error);
     }

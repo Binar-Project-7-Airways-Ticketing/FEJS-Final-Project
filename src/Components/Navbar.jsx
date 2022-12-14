@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineUser, AiOutlineBell } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import { Dropdown, Space, Input } from "antd";
+import { Dropdown, Space, Input, Modal } from "antd";
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../logo3.png";
@@ -14,22 +14,22 @@ import ModalNotif from "./ModalNotif";
 import { loadNotifDetail } from "./Feature/Models/NotificationDetail";
 
 export default function Navbar() {
+  const { notifDetail } = useSelector((state) => state.detailNotif);
+
   const [search, setSearch] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [openNotif, setOpenNotif] = useState(false);
   const [show, setShow] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
-  
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [idNotif, setIdNotif] = useState()
-  const showModal = (e) => {
-    dispatch(loadNotifDetail(e))
-    setIsModalOpen(true);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [idNotif, setIdNotif] = useState({});
+  const showModal = (e) => {
+    dispatch(loadNotifDetail(e));
+    setIdNotif(e);
+    setIsModalOpen(true);
   };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
+
   const handleCancel = () => {
     setIsModalOpen(false);
   };
@@ -45,16 +45,12 @@ export default function Navbar() {
     setSearch(false);
   };
 
-  const items = 
-  notif.map((item) => ({
+  const items = notif.map((item) => ({
     key: item.idNotification,
-    label: <div onClick={()=>showModal(item.idNotification)}>{item.title}</div>,
-  }))
-
-  const showBar = () => {
-    console.log("halalo");
-    setShow(true);
-  };
+    label: (
+      <div onClick={() => showModal(item.idNotification)}>{item.title}</div>
+    ),
+  }));
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -63,11 +59,9 @@ export default function Navbar() {
       setIsLogin(false);
     }
     const notifUser = localStorage.getItem("idUser");
-    
 
     dispatch(loadNotif(notifUser));
-  
-  }, [setIsLogin]);
+  }, [setIsLogin, dispatch]);
 
   return (
     <nav>
@@ -447,7 +441,17 @@ export default function Navbar() {
           </div>
         ) : null}
       </div>
-      <ModalNotif isModalOpen={isModalOpen} handleCancel={handleCancel}/>
+
+      {notif
+        .filter((item) => item.idNotification === idNotif)
+        .map((item) => (
+          <ModalNotif
+            title={item.title}
+            message={item.message}
+            isModalOpen={isModalOpen}
+            handleCancel={handleCancel}
+          />
+        ))}
     </nav>
   );
 }
