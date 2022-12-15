@@ -11,6 +11,7 @@ import { DatePicker, Space } from "antd";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import 'dayjs/locale/zh-cn';
+import { createNotif } from "../Feature/Models/PostNotif";
 
 dayjs.extend(customParseFormat);
 const dateFormatList = ["MM/DD/YYYY", "MM/DD/YY"];
@@ -116,8 +117,10 @@ export const Register = () => {
 
         const results = unwrapResult(resultsActions);
 
-        if (results && results.token) {
-            navigate("/")
+        if (results && results.id) {
+            const userId = localStorage.getItem("idUser")
+            console.log(userId);
+            dispatch(createNotif(userId))
         }
     }
 
