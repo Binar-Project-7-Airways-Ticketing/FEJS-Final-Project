@@ -17,14 +17,13 @@ const initialState = {
 export const getRegister = createAsyncThunk(
   "authRegister/register",
   async (body) => {
-    const results = await axios.post(
-      `${authConfig.baseUrl}/api/auth/signup`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
+    const results = await axios.post(`${authConfig.baseUrl}/api/auth/signup`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
       ...body,
     });
-    console.log("register", results)
+    console.log("register", results);
 
     if (!results) {
       throw new Error("Can't login");
@@ -38,7 +37,7 @@ export const getRegister = createAsyncThunk(
         token: data.token,
       })
     );
-    console.log("register", results.data)
+    console.log("register", results.data);
 
     return data;
   }
