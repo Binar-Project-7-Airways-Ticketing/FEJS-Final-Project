@@ -4,7 +4,8 @@ import { reducer as authRegisterReducer } from "./Models/AuthRegister";
 import seats from "../Feature/Models/SeatsSlice"
 import luggages from "../Feature/Models/LuggageSlice"
 import airports from "../Feature/Models/AirpostSlice"
-import flights from "../Feature/Models/FlightSlice"
+import flightsOneWays from "./Models/FlightSliceReturn"
+import flightsReturns from "./Models/FlightSliceDepart"
 import citiesFrom from "../Feature/Models/AirportFromSlice"
 import citiesTo from "../Feature/Models/AirportToSlice"
 import notifs from "../Feature/Models/Notification"
@@ -18,7 +19,8 @@ export const store = configureStore({
         seat: seats,
         luggage: luggages,
         airport: airports,
-        flight:flights,
+        flightOneWay:flightsOneWays,
+        flightReturn:flightsReturns,
         cityFrom:citiesFrom,
         cityTo:citiesTo,
         notif:notifs,

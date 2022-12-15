@@ -359,7 +359,7 @@ header {
   height: fit-content;
 }
 .swap {
-  left: 46%;
+  left: 47.5%;
   position: absolute;
   background: #f1efe9;
   width: 40px;
@@ -369,7 +369,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 25%;
+  top: 28%;
   color: #cba052;
 }
 .wrap-date {

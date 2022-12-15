@@ -97,7 +97,7 @@ export default function Passenger() {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       {passenger ? (
         <>
           <div

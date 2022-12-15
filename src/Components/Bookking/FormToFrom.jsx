@@ -18,8 +18,8 @@ export default function FormToFrom(props) {
         <p>{props.label}</p>
         {props.iconFlight}
       </div>
-      <div className="flex w-full pt-7">
-        {/* <div className="w-full"> */}
+      <div className="flex w-4/5 pt-7">
+      
         <Form.Item
           name={props.name}
           rules={[
@@ -32,8 +32,8 @@ export default function FormToFrom(props) {
         >
           <Select
             showSearch
-            className="w-full"
-            value={props.value}
+            // className="w-3/4"
+            value={<p>{props.value}</p>}
             showArrow={false}
             filterOption={(input, option) =>
               (option?.city ?? "").toLowerCase().includes(input.toLowerCase())
@@ -47,8 +47,8 @@ export default function FormToFrom(props) {
               label: (
                 <div className="flex flex-col">
                   <div className="flex h-full justify-between">
-                    <h6>{item.city}</h6>
-                    <h6>{item.airportCode}</h6>
+                    <h6>{item.city}, {item.airportCode}</h6>
+                    {/* <h6>{item.airportCode}</h6> */}
                   </div>
                   <p>{item.airportName}</p>
                 </div>
