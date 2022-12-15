@@ -197,10 +197,10 @@ export const Register = () => {
                                         format={dateFormatList}
                                     />
                                 </Space> */}
-                                </input>
+                                {/* </input>
                                 <span className="material-symbols-outlined">
                                     <CalendarOutlined style={{ color: '#F2EFEA' }} />
-                                </span>
+                                </span> */}
                                 {/* <input > */}
                                 {/* <input onChange={(event) => { setRegisterBirth(event.target.value) }}> */}
                                 {/* <Space onChange={(event) => { setRegisterBirth(event.target.value) }} direction="vertical" size={20}>
