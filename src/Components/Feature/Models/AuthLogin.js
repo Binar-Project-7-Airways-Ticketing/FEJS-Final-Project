@@ -36,7 +36,7 @@ export const getLogin = createAsyncThunk("auth/login", async (body) => {
     })
   );
   localStorage.setItem("idUser", JSON.stringify(data.id));
-
+  console.log(data);
   return data;
 });
 

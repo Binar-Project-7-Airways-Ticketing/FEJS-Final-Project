@@ -54,7 +54,7 @@ export default function Book() {
     dispatch(loadFlight(x));
     dispatch(loadCitiesFrom(airportFrom));
     dispatch(loadCitiesTo(airportTo));
-    // navigate(`/booking/`);
+    navigate(`/booking/`);
   };
   const onFinish = (values) => {
     console.log({ values });

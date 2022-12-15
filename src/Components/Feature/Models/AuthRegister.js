@@ -31,13 +31,15 @@ export const getRegister = createAsyncThunk(
 
     const data = await results.data;
     localStorage.setItem(
-      "auth",
+      "token",
       JSON.stringify({
-        id: data.id,
         token: data.token,
       })
     );
     console.log("register", results.data);
+    localStorage.setItem("idUser", JSON.stringify(data.id));
+    
+    console.log("register", results.data)
 
     return data;
   }
