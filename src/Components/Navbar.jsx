@@ -54,13 +54,16 @@ export default function Navbar() {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
+      const notifUser = localStorage.getItem("idUser");
+      dispatch(loadNotif(notifUser));
       setIsLogin(true);
     } else {
       setIsLogin(false);
     }
-    const notifUser = localStorage.getItem("idUser");
 
-    dispatch(loadNotif(notifUser));
+   
+
+
   }, [setIsLogin, dispatch]);
 
   return (
@@ -160,7 +163,7 @@ export default function Navbar() {
                   <div className="notif">
                     <Dropdown
                       onMouseEnter={() => setOpenNotif(true)}
-                      placement="bottomRight"
+                      placement="bottomLeft"
                       arrow
                       menu={{ items }}
                     >
@@ -179,7 +182,7 @@ export default function Navbar() {
                     </Dropdown>
                   </div>
 
-                  <Prf />
+                  <Prf place={"bottomRight"}/>
                 </>
               ) : (
                 <div className="flex w-fit h-14 items-center text-brand-whiteLight relative">
@@ -269,7 +272,7 @@ export default function Navbar() {
                 </div>
                 <div className="user">
                   {isLogin ? (
-                    <Prf place={"bottomRight"} />
+                    <Prf place="bottom" />
                   ) : (
                     <>
                       <div className="flex w-fit h-14 items-center text-brand-whiteLight relative">
@@ -376,7 +379,7 @@ export default function Navbar() {
                   <div className="flex w-full justify-between">
                     <ul className="flex flex-col gap-1">
                       <div className="px-4">
-                        <Prf />
+                        <Prf place="bottomRight" />
                       </div>
                       <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
                         Home

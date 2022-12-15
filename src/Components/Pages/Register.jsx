@@ -11,6 +11,7 @@ import { DatePicker, Space } from 'antd';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import 'dayjs/locale/zh-cn';
+import axios from "axios";
 
 dayjs.extend(customParseFormat);
 const { RangePicker } = DatePicker;
@@ -37,6 +38,10 @@ export const Register = () => {
     const [registerGender, setRegisterGender] = useState(undefined);
     const [registerRole, setRegisterRole] = useState(undefined);
 
+    const [postNotif, setPostNotif] = useState([])
+
+   
+ 
     function validatePassword() {
         const errors = [];
         const p = registerPassword;
@@ -121,13 +126,32 @@ export const Register = () => {
         const results = unwrapResult(resultsActions);
 
         if (results && results.token) {
+            const handlePostNotif = async (e) => {
+                try {
+                  const res = await axios.post(
+                    `https://bej-ticketing-production.up.railway.app/api/notification/create`,{
+                        user:localStorage.getItem("idUser"),
+                        title:"Login",
+                        message:"Selamat anda telah menjadi anggota kami, silahkan pesan penerbangan dengan harga terbaik",
+                        category:"PRIA"
+                    }
+                  );
+                  setPostNotif(res.data);
+                } catch (error) {
+                  console.error(error);
+                }
+              };
+            //   useEffect(()=>{
+            //     handlePostNotif()
+            //   },[])
             navigate("/")
         }
+        
     }
 
     // ketika user login tidak bisa ke halaman login lagi
     useEffect(() => {
-        if (localStorage.getItem("auth")) {
+        if (localStorage.getItem("token")) {
             navigate("/")
         }
     }, [navigate])
