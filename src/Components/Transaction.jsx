@@ -14,10 +14,18 @@ import Countdown from "react-countdown";
 import Select from "react-select";
 import countryList from "react-select-country-list";
 import logo from "../logo.png";
+import bri from "../image/bri.jpg";
+import bca from "../image/bca.jpg";
+import mandiri from "../image/mandiri.jpg";
+import bni from "../image/bni.jpg";
+import ovo from "../image/ovo.jpg";
+import danaa from "../image/dana.jpg";
+import linkAja from "../image/link aja.jpg";
 import { BsCircle } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import ModalSeat from "./Bookking/ModalSeat";
 import { loadLuggages } from "./Feature/Models/LuggageSlice";
+import { loadPayment } from "./Feature/Models/PaymentSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -64,6 +72,7 @@ export default function Transaction() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalSeatOpen, setIsModalSeatOpen] = useState(false);
   const { luggages } = useSelector((state) => state.luggage);
+  const { payment, setIsPayment } = useState(false);
   const dispatch = useDispatch();
   const showModal = () => {
     setIsModalOpen(true);
@@ -83,17 +92,43 @@ export default function Transaction() {
     setIsModalOpen(false);
   };
 
-  // method booking pending
-  const handlerBookingPending = () => {
-    navigate('/bookingPending');
+  const [isModalBayarOpen, setIsModalBayarOpen] = useState(false);
+
+  const showModalBayar = () => {
+    setIsModalBayarOpen(true);
   };
+
+  const handleBayarOk = () => {
+    setIsModalBayarOpen(false);
+  };
+
+  const handleBayarCancel = () => {
+    setIsModalBayarOpen(false);
+  }
+
+  // method payment
+  const dana = () => {
+    // navigate('/payment')
+    alert("Apakah Metode Pembayaran Sudah Sesuai ?");
+    setIsModalBayarOpen(false);
+    navigate("/bookingPending");
+  }
+
+  // // method booking pending
+  // const handlerBookingPending = () => {
+  //   navigate('/bookingPending');
+  // };
 
   useEffect(() => {
     dispatch(loadLuggages());
   }, [luggages]);
 
+  useEffect(() => {
+    dispatch(loadPayment());
+  }, [payment]);
+
   return (
-    <>
+    <React.Fragment>
       <div className="bg-brand-yellow">
         <Navbar />
         <div className="block md:flex sm:text-sm justify-center items-center pt-[80px] bg-brand-nude">
@@ -263,14 +298,116 @@ export default function Transaction() {
                 />
               </div>
             </div>
-            <div className="parent-d w-full mt-6 flex sm:justify-center md:justify-end p-4 mb-4">
+            <div className="parent-d w-full mt-6 flex sm:justify-center md:justify-start lg:justify-end p-4 mb-4">
               <button
                 className="block rounded-lg cursor-pointer justify-center h-[60px] w-[50%] bg-brand-green text-[#f9f9f9] border-0 font-[600] tracking-[2px]"
                 type="submit"
-                onClick={handlerBookingPending}
+                // onClick={handlerBookingPending}
+                onClick={showModalBayar}
               >
                 LANJUT PEMBAYARAN
               </button>
+              <Modal
+                title="Select Payment Method"
+                open={isModalBayarOpen}
+                onOk={handleBayarOk}
+                onCancel={handleBayarCancel}
+                footer={[null]}
+              >
+                <div className="p-2 mt-4">
+                  <div
+                    onClick={dana}
+                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
+                  >
+                    <img
+                      src={bri}
+                      style={{
+                        width: "70px",
+                        height: "70px",
+                      }}
+                    ></img>
+                    <h3 className="p-6 text-black text-bold">BRI</h3>
+                  </div>
+                  <div
+                    onClick={dana}
+                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
+                  >
+                    <img
+                      src={bca}
+                      style={{
+                        width: "70px",
+                        height: "70px",
+                      }}
+                    ></img>
+                    <h3 className="p-6 text-black text-bold">BCA</h3>
+                  </div>
+                  <div
+                    onClick={dana}
+                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
+                  >
+                    <img
+                      src={mandiri}
+                      style={{
+                        width: "70px",
+                        height: "70px",
+                      }}
+                    ></img>
+                    <h3 className="p-6 text-black text-bold">Mandiri</h3>
+                  </div>
+                  <div
+                    onClick={dana}
+                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
+                  >
+                    <img
+                      src={bni}
+                      style={{
+                        width: "70px",
+                        height: "70px",
+                      }}
+                    ></img>
+                    <h3 className="p-6 text-black text-bold">BNI</h3>
+                  </div>
+                  <div
+                    onClick={dana}
+                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
+                  >
+                    <img
+                      src={ovo}
+                      style={{
+                        width: "70px",
+                        height: "70px",
+                      }}
+                    ></img>
+                    <h3 className="p-6 text-black text-bold">OVO</h3>
+                  </div>
+                  <div
+                    onClick={dana}
+                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
+                  >
+                    <img
+                      src={danaa}
+                      style={{
+                        width: "70px",
+                        height: "70px",
+                      }}
+                    ></img>
+                    <h3 className="p-6 text-black text-bold">Dana</h3>
+                  </div>
+                  <div
+                    onClick={dana}
+                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
+                  >
+                    <img
+                      src={linkAja}
+                      style={{
+                        width: "70px",
+                        height: "70px",
+                      }}
+                    ></img>
+                    <h3 className="p-6 text-black text-bold">Link Aja</h3>
+                  </div>
+                </div>
+              </Modal>
             </div>
           </div>
           <div className="booking-right">
@@ -390,9 +527,9 @@ export default function Transaction() {
               </div>
             </div>
           </div>
-          </div>
-          <Footer />
         </div>
-      </>
-      );
+        <Footer />
+      </div>
+    </React.Fragment>
+  );
 }

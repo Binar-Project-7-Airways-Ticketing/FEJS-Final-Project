@@ -15,7 +15,7 @@ import 'dayjs/locale/zh-cn';
 dayjs.extend(customParseFormat);
 const { RangePicker } = DatePicker;
 const dateFormat = 'YYYY/MM/DD';
-const dateFormatList = ['DD-MM-YYYY'];
+const dateFormatList = ['MM/DD/YYYY'];
 const customFormat: DatePickerProps['format'] = (value) =>
   `custom format: ${value.format(dateFormat)}`;
 

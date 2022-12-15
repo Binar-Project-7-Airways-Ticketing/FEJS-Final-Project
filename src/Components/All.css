@@ -1143,7 +1143,7 @@ footer {
 
   /*---------------Transaction---------------*/
   .booking-container {
-    @apply container block lg:flex justify-between w-full sm:py-[1rem] md:py-[2rem] lg:py-[3rem];
+    @apply block lg:flex justify-between w-full sm:py-[1rem] md:py-[2rem] lg:py-[3rem];
   }
 
   .booking-left,
