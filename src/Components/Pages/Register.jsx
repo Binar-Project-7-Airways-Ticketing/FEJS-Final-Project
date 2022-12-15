@@ -6,19 +6,14 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getRegister } from "../Feature/Models/AuthRegister";
 import { unwrapResult } from "@reduxjs/toolkit";
-import type { DatePickerProps } from 'antd';
-import { DatePicker, Space } from 'antd';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import 'dayjs/locale/zh-cn';
 import axios from "axios";
+import { DatePicker, Space } from "antd";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import 'dayjs/locale/zh-cn';
 
 dayjs.extend(customParseFormat);
-const { RangePicker } = DatePicker;
-const dateFormat = 'YYYY/MM/DD';
-const dateFormatList = ['DD-MM-YYYY'];
-const customFormat: DatePickerProps['format'] = (value) =>
-  `custom format: ${value.format(dateFormat)}`;
+const dateFormatList = ["MM/DD/YYYY", "MM/DD/YY"];
 
 export const Register = () => {
 
@@ -38,10 +33,6 @@ export const Register = () => {
     const [registerGender, setRegisterGender] = useState(undefined);
     const [registerRole, setRegisterRole] = useState(undefined);
 
-    const [postNotif, setPostNotif] = useState([])
-
-   
- 
     function validatePassword() {
         const errors = [];
         const p = registerPassword;
@@ -126,32 +117,13 @@ export const Register = () => {
         const results = unwrapResult(resultsActions);
 
         if (results && results.token) {
-            const handlePostNotif = async (e) => {
-                try {
-                  const res = await axios.post(
-                    `https://bej-ticketing-production.up.railway.app/api/notification/create`,{
-                        user:localStorage.getItem("idUser"),
-                        title:"Login",
-                        message:"Selamat anda telah menjadi anggota kami, silahkan pesan penerbangan dengan harga terbaik",
-                        category:"PRIA"
-                    }
-                  );
-                  setPostNotif(res.data);
-                } catch (error) {
-                  console.error(error);
-                }
-              };
-            //   useEffect(()=>{
-            //     handlePostNotif()
-            //   },[])
             navigate("/")
         }
-        
     }
 
     // ketika user login tidak bisa ke halaman login lagi
     useEffect(() => {
-        if (localStorage.getItem("token")) {
+        if (localStorage.getItem("auth")) {
             navigate("/")
         }
     }, [navigate])
@@ -218,11 +190,25 @@ export const Register = () => {
                                         : <></>
                                 }
                             </div>
-                            <div className="textbox ">
-                                <input onChange={(event) => { setRegisterBirth(event.target.value) }} type="date" placeholder="Date of Birth" />
+                            <div className="textbox">
+                                <input onChange={(event) => { setRegisterBirth(event.target.value) }} type="text" placeholder="MM/DD/YY" >
+                                    {/* <Space direction="vertical" size={20}>
+                                    <DatePicker
+                                        format={dateFormatList}
+                                    />
+                                </Space> */}
+                                </input>
                                 <span className="material-symbols-outlined">
                                     <CalendarOutlined style={{ color: '#F2EFEA' }} />
                                 </span>
+                                {/* <input > */}
+                                {/* <input onChange={(event) => { setRegisterBirth(event.target.value) }}> */}
+                                {/* <Space onChange={(event) => { setRegisterBirth(event.target.value) }} direction="vertical" size={20}>
+                                    <DatePicker
+                                        format={dateFormatList}
+                                    />
+                                </Space> */}
+                                {/* </input> */}
                             </div>
                             <div className="textbox ">
                                 <input onChange={(event) => { setRegisterRole(event.target.value) }} type="text" placeholder="Role" />

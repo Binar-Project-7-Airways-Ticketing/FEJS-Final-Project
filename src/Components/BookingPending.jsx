@@ -51,8 +51,8 @@ export default function Transaction() {
   // method payment
   const dana = () => {
     // navigate('/payment')
-    // alert("Transasi akan diproses");
-    // navigate("/");
+    alert("Transasi akan diproses");
+    navigate("/");
     setPayment(true);
   };
   
@@ -68,7 +68,7 @@ export default function Transaction() {
     <>
       <div className="bg-brand-yellow">
         <Navbar />
-        <div className="p-8">
+        <div className="p-8 w-full">
           <div className="booking-container">
             <div className="booking-left flex flex-col gap-5">
               <div className="parent-a w-full bg-brand-nude p-6 rounded-md border-2 border-brand-black">

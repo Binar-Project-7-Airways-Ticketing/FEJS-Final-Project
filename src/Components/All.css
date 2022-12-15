@@ -999,7 +999,7 @@ footer {
   }
 
   .login-account-tittle h1 {
-    @apply text-2xl text-brand-nude text-center md:text-2xl lg:text-4xl m-5 md:pt-28 lg:pt-36;
+    @apply text-2xl text-brand-nude text-center md:text-2xl lg:text-4xl m-5 md:pt-28 lg:pt-24;
   }
 
   .login-account-desc {
@@ -1011,7 +1011,7 @@ footer {
   }
 
   .login-account a {
-    @apply flex cursor-pointer justify-center p-2 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] text-xs rounded-md;
+    @apply flex cursor-pointer justify-center px-16 py-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] text-xl rounded-md;
   }
 
   /*-------------------------REGISTER---------------------------------*/
@@ -1117,7 +1117,7 @@ footer {
   }
 
   .register-form button {
-    @apply cursor-pointer bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px];
+    @apply cursor-pointer bg-brand-yellow  text-[#f9f9f9] border-0 font-[600] tracking-[2px];
   }
 
   .register-form a {
@@ -1146,12 +1146,12 @@ footer {
   }
 
   .register-account a {
-    @apply flex cursor-pointer justify-center p-2 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] text-xs rounded-md;
+    @apply flex cursor-pointer justify-center px-16 py-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] text-xl rounded-md;
   }
 
   /*---------------Transaction---------------*/
   .booking-container {
-    @apply container block lg:flex justify-between w-full sm:py-[1rem] md:py-[2rem] lg:py-[3rem];
+    @apply block lg:flex justify-between w-full sm:py-[1rem] md:py-[2rem] lg:py-[3rem];
   }
 
   .booking-left,
@@ -1179,8 +1179,6 @@ footer {
     @apply p-2;
   }
 }
-
-/*---------------Transaction---------------*/
 
 /*---------------Navbar Media Screen---------------*/
 @media only screen and (max-width: 1280px) {
