@@ -1,9 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { reducer as authLoginReducer } from "./Models/AuthLogin";
 import { reducer as authRegisterReducer } from "./Models/AuthRegister";
-import seats from "../Feature/Models/SeatsSlice";
-import luggages from "../Feature/Models/LuggageSlice";
-import airports from "../Feature/Models/AirpostSlice";
+import seats from "../Feature/Models/SeatsSlice"
+import luggages from "../Feature/Models/LuggageSlice"
+import airports from "../Feature/Models/AirpostSlice"
+import flights from "../Feature/Models/FlightSlice"
+import citiesFrom from "../Feature/Models/AirportFromSlice"
+import citiesTo from "../Feature/Models/AirportToSlice"
+import notifs from "../Feature/Models/Notification"
+import detailsNotif from "../Feature/Models/NotificationDetail"
 import payment from "../Feature/Models/PaymentSlice";
 
 export const store = configureStore({
@@ -13,6 +18,11 @@ export const store = configureStore({
         seat: seats,
         luggage: luggages,
         airport: airports,
+        flight:flights,
+        cityFrom:citiesFrom,
+        cityTo:citiesTo,
+        notif:notifs,
+        detailNotif:detailsNotif,
         payment: payment,
     }
 })

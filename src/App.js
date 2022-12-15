@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/booking" element={<Bookingpage />} />
+        <Route path="/booking/" element={<Bookingpage />} />
         <Route path="/flight status" element={<FlightStatusPage/>} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/transaction" element={<Transaction />} />
@@ -31,3 +31,4 @@ function App() {
 }
 
 export default App;
+// :from/:to/:trip/:codefrom/:codeto"

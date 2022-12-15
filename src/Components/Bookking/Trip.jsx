@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Radio } from "antd";
+import { Radio, Form} from "antd";
 
 export default function Trip(props) {
   return (
@@ -9,11 +9,11 @@ export default function Trip(props) {
         rules={[
           {
             required: true,
-            message: "Cannot empty",
+            message: "Cannot Empty",
           },
         ]}
       >
-        <Radio.Group onChange={props.change} value={props.value}>
+        <Radio.Group onChange={props.change} value={"Return"}>
           <Radio value={"Return"}>Return</Radio>
           <Radio value={"OneWay"}>One Way</Radio>
         </Radio.Group>

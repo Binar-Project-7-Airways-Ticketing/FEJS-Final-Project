@@ -12,6 +12,7 @@ import { Card } from "antd";
 import CardHistory from "../CardHistory";
 import axios from "axios";
 import { authConfig } from "../Feature/Config";
+import moment from "moment";
 
 export const Profile = (setIsLogin) => {
   const [isEmailValid, setIsEmailValid] = useState(true);
@@ -96,7 +97,7 @@ export const Profile = (setIsLogin) => {
         firstName: registerFirstName,
         lastName: registerLastname,
         gender: registerGender,
-        birthday: registerBirth,
+        birthday: moment(registerBirth).format("DD-MM-YYYY"),
         email: registerEmail,
         password: registerPassword,
       })
@@ -112,8 +113,7 @@ export const Profile = (setIsLogin) => {
       setRegisterEmail(response.data.email);
       setRegisterLastName(response.data.lastName);
       setRegisterGender(response.data.gender);
-      setRegisterPassword(response.data.password);
-      setRegisterBirth(response.data.birthday);
+      setRegisterBirth(moment(response.data.birthday).format("YYYY-MM-DD"));
       setRegisterProfilePhoto(response.data.pictureUrl);
     });
   };
@@ -122,6 +122,7 @@ export const Profile = (setIsLogin) => {
   const getHistoryTravel = () => {
     axios.get(authConfig.baseUrl + "/api/history").then((response) => {
       setHistories(response.data.payload);
+      console.log(response.data);
     });
   };
 
@@ -129,6 +130,9 @@ export const Profile = (setIsLogin) => {
   const uploadImage = (e) => {
     let data = new FormData();
     const file = e.target.files[0];
+
+    setRegisterProfilePhoto(URL.createObjectURL(file));
+
     data.append("image", file);
     axios
       .post(authConfig.baseUrl + "/api/user/upload/" + userId, data)

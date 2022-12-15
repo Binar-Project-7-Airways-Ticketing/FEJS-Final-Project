@@ -6,7 +6,8 @@ import { WindowsFilled } from "@ant-design/icons";
 export default function Prf(setIsLogin, props) {
   const navigate = useNavigate();
   const logOutHandler = () => {
-    localStorage.removeItem("auth");
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
     setTimeout(function () {
         window.location.reload(1);
       }, 500);

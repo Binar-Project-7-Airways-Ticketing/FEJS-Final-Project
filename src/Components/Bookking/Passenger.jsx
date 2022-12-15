@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form, Input, Radio, Space, Button } from "antd";
+import { BsFillPersonPlusFill } from "react-icons/bs";
 
 export default function Passenger() {
   const [passenger, setPasenger] = useState(false);
@@ -96,20 +97,30 @@ export default function Passenger() {
   };
 
   return (
-    <>
+    <div className="w-full">
       {passenger ? (
         <>
-          <div onClick={handlePassengerClose} className="inpt-passenger">
-            <p style={{fontSize:"15px"}} onClick={handlePassengerClose}>Class {seats}</p>
-            {adults + childs + infants === 10 ? (
-              <p>
-                Adults {adults}, Childs {childs}, Infants {infants}
-              </p>
-            ) : (
-              <p>
-                Adults {adults}, Childs {childs}, Infants {infants}
-              </p>
-            )}
+          <div
+            onClick={handlePassengerClose}
+            className="flex flex-col rounded-lg h-24 w-full py-1.5 pr-5 pl-6 border-brand-gray border gap-5"
+          >
+            <p style={{ fontSize: "15px" }} onClick={handlePassengerClose}>
+              Class {seats}
+            </p>
+            <div className="flex gap-4 items-center">
+              <BsFillPersonPlusFill size={28} color="#CBA052" />
+              <div>
+                {adults + childs + infants === 10 ? (
+                  <p>
+                    Adults {adults}, Childs {childs}, Infants {infants}
+                  </p>
+                ) : (
+                  <p>
+                    Adults {adults}, Childs {childs}, Infants {infants}
+                  </p>
+                )}
+              </div>
+            </div>
           </div>
           <div onClick={handlePassenger} className="dropdown-passenger">
             <div className="detail-passanger-class">
@@ -121,89 +132,79 @@ export default function Passenger() {
                 <div className="passenger">
                   <p>Adults</p>
 
-                  <Form.Item style={{ width: "100%", margin: "0" }}>
-                    <div className="btn-increment-decrement">
-                      <Button onClick={adultDecrement}>-</Button>
-                      <Input
-                        name={"name"}
-                        readOnly
-                        onChange={handleAdults}
-                        style={{ color: "black" }}
-                        value={adults}
-                      />
-                      <Button onClick={adultIncrement}>+</Button>
-                    </div>
-                  </Form.Item>
+                  <div className="btn-increment-decrement">
+                    <Button onClick={adultDecrement}>-</Button>
+                    <Input
+                      name={"name"}
+                      readOnly
+                      onChange={handleAdults}
+                      style={{ color: "black" }}
+                      value={adults}
+                    />
+                    <Button onClick={adultIncrement}>+</Button>
+                  </div>
                 </div>
                 <div className="passenger">
                   <p>Childs</p>
 
-                  <Form.Item style={{ width: "100%", margin: "0" }}>
-                    <div className="btn-increment-decrement">
-                      <Button onClick={childDecrement}>-</Button>
-                      <Input
-                        name={"name"}
-                        readOnly
-                        onChange={handleChild}
-                        style={{ color: "black" }}
-                        value={childs}
-                      />
-                      <Button onClick={childIncrement}>+</Button>
-                    </div>
-                  </Form.Item>
+                  <div className="btn-increment-decrement">
+                    <Button onClick={childDecrement}>-</Button>
+                    <Input
+                      name={"name"}
+                      readOnly
+                      onChange={handleChild}
+                      style={{ color: "black" }}
+                      value={childs}
+                    />
+                    <Button onClick={childIncrement}>+</Button>
+                  </div>
                 </div>
                 <div className="passenger">
                   <p>Infants</p>
 
-                  <Form.Item style={{ width: "100%", margin: "0" }}>
-                    <div className="btn-increment-decrement">
-                      <Button onClick={infantDecrement}>-</Button>
-                      <Input
-                        name={"name"}
-                        readOnly
-                        onChange={handleInfant}
-                        style={{ color: "black" }}
-                        value={infants}
-                      />
-                      <Button onClick={infantIncrement}>+</Button>
-                    </div>
-                  </Form.Item>
+                  <div className="btn-increment-decrement">
+                    <Button onClick={infantDecrement}>-</Button>
+                    <Input
+                      name={"name"}
+                      readOnly
+                      onChange={handleInfant}
+                      style={{ color: "black" }}
+                      value={infants}
+                    />
+                    <Button onClick={infantIncrement}>+</Button>
+                  </div>
                 </div>
               </div>
               <div className="wrap-class">
                 <div>
                   <p style={{ fontWeight: "700" }}>Class</p>
                 </div>
-                <Form.Item
-                  name="Class"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please Input your username!",
-                    },
-                  ]}
-                >
-                  <Radio.Group onChange={onChange} value={seats}>
-                    <Space>
-                      <Radio value={"Economy"}>Economy</Radio>
-                      <Radio value={"Business"}>Business</Radio>.
-                    </Space>
-                  </Radio.Group>
-                </Form.Item>
+
+                <Radio.Group onChange={onChange} value={seats}>
+                  <Space>
+                    <Radio value={"Economy"}>Economy</Radio>
+                    <Radio value={"Business"}>Business</Radio>.
+                  </Space>
+                </Radio.Group>
               </div>
               <button className="confirm-passenger-class">Confirm</button>
             </div>
           </div>
-          {/* </div> */}
         </>
       ) : (
-        <div onClick={handlePassenger} className="inpt-passenger">
-          <p style={{fontSize:"15px"}}>Passenger/Class</p>
-          <p>
-          Passenger {adults + childs + infants}, Class {seats} 
-          </p>
+        <div
+          onClick={handlePassenger}
+          className="flex flex-col rounded-lg h-24 w-full py-1.5 pr-5 pl-6 border-brand-gray border gap-5"
+        >
+          <p style={{ fontSize: "15px" }}>Passenger/Class</p>
+          <div className="flex gap-4 items-center">
+            <BsFillPersonPlusFill size={28} color="#CBA052" />
+            <p>
+              Passenger {adults + childs + infants}, Class {seats}
+            </p>
+          </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

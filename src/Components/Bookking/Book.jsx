@@ -1,34 +1,63 @@
-import React, { useState } from "react";
-import { Form,} from "antd";
+import React, { useState, useEffect } from "react";
+import { Form } from "antd";
 import { useNavigate } from "react-router-dom";
 import Passenger from "./Passenger";
 import FormToFrom from "./FormToFrom";
 import Trip from "./Trip";
-import ButtonFlindFilght from "../Reusable/ButtonFlindFilght";
+import ButtonFindFlight from "../Reusable/ButtonFindFlight";
 import Date from "./Date";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
+import { MdFlightTakeoff, MdFlightLand } from "react-icons/md";
+import { AiOutlineSwap } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { loadAirports } from "../Feature/Models/AirpostSlice";
+import FlightSlice, { loadFlight } from "../Feature/Models/FlightSlice";
+import { loadCitiesFrom } from "../Feature/Models/AirportFromSlice";
+import { loadCitiesTo } from "../Feature/Models/AirportToSlice";
 
 export default function Book() {
- 
-  const [date, setDate] = useState();
-  const [trip, setTrip] = useState("Return");
+  const { airport } = useSelector((state) => state.airport);
 
+  const [from, setFrom] = useState("");
+  const [fromCode, setFromCode] = useState("");
+  const [to, setTo] = useState("");
+  const [toCode, setToCode] = useState("");
+  const [date, setDate] = useState(null);
+  const [trip, setTrip] = useState("Return");
+  const [airportFrom, setAirportFrom] = useState("");
+  const [airportTo, setAirportTo] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onOk = (value) => {
-    setDate(value);
+  const handleChangeFrom = (e, values) => {
+    setFromCode(e);
+    setFrom(values.city);
+    setAirportFrom(values.airport);
+  };
+  const handleChangeTo = (e, values) => {
+    setToCode(e);
+    setTo(values.city);
+    setAirportTo(values.airport);
+    console.log(values);
   };
   const handleDate = (date, dateString) => {
-    
-    console.log(dateString);
     setDate(dateString);
+    console.log(dateString);
   };
   const handleFindFlight = () => {
-    navigate("/booking");
+    let x = {
+      from: fromCode,
+      to: toCode,
+      date: date,
+    };
+    dispatch(loadFlight(x));
+    dispatch(loadCitiesFrom(airportFrom));
+    dispatch(loadCitiesTo(airportTo));
+    // navigate(`/booking/`);
   };
-  const onFinish = (values, value) => {
-    console.log("Success:", { values, date});
+  const onFinish = (values) => {
+    console.log({ values });
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -37,7 +66,9 @@ export default function Book() {
   const handleChangeTrip = (e) => {
     setTrip(e.target.value);
   };
- 
+  useEffect(() => {
+    dispatch(loadAirports());
+  }, [dispatch]);
 
   return (
     <>
@@ -52,7 +83,7 @@ export default function Book() {
           </div>
         </div>
         <Form
-          layout="vertical"
+          name="basic"
           labelCol={{
             span: 8,
           }}
@@ -67,21 +98,38 @@ export default function Book() {
           autoComplete="off"
         >
           <Trip change={handleChangeTrip} value={trip} />
-          <div className="detail-booking">
+          <div className="flex w-full h-fit mb-5 gap-2 text-brand-black">
             <div className="wrap-input">
-              {/* <div className="input"> */}
-                <FormToFrom />
-              {/* </div> */}
-        
+              <FormToFrom
+                name="flightFrom"
+                label="From"
+                handleChange={handleChangeFrom}
+                value={from}
+                iconFlight={<MdFlightTakeoff size={30} color="#CBA052" />}
+              />
+              <div className="swap">
+                <AiOutlineSwap />
+              </div>
+              <FormToFrom
+                name="flightTo"
+                label="To"
+                handleChange={handleChangeTo}
+                value={to}
+                iconFlight={<MdFlightLand size={30} color="#CBA052" />}
+              />
             </div>
             <div className="input">
-             <Date handleDate={handleDate} trip={trip} date={[dayjs(),dayjs().add(7,'d')]}/>
-            </div>
-            <div className="input">
+              
+              <Date
+                status={date === null ? "error" : null}
+                handleDate={handleDate}
+                trip={trip}
+              />
+
               <Passenger />
             </div>
           </div>
-          <ButtonFlindFilght handle={handleFindFlight} value={"Find Flight"} />
+          <ButtonFindFlight handle={handleFindFlight} value={"Find Flight"} />
         </Form>
       </div>
     </>

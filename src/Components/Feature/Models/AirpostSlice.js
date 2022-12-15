@@ -1,22 +1,24 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { authConfig } from "../Config";
 
 const initialState = {
   airport: [],
   loadSeat: false,
 };
 
-export const loadAirports = createAsyncThunk("airports/loadairport", async () => {
+export const loadAirports = createAsyncThunk("airports/loadAirport", async () => {
   try {
     const airports = await axios.get(
-      "https://bej-ticketing-production.up.railway.app/api/airport"
+      `${authConfig.baseUrl}/api/airport`
     );
-
+   
     return airports.data
   } catch (error) {
     console.error(error);
   }
 });
+
 
 export const postSlice = createSlice(
     {
@@ -35,7 +37,10 @@ export const postSlice = createSlice(
           state.loading = false;
         },
       },
-    }
+      
+    },    
+    
+    
   );
   
   export default postSlice.reducer;

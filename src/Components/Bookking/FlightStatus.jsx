@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ButtonFlindFilght from "../Reusable/ButtonFlindFilght";
+import ButtonFindFlight from "../Reusable/ButtonFindFlight";
 
 import { Space, DatePicker, Form, Input, Button } from "antd";
 
@@ -63,7 +63,7 @@ export default function FlightStatus() {
             />
           </div>
         </div>
-        <ButtonFlindFilght handle={handleFindFlight} value={"Find Flight"} />
+        <ButtonFindFlight handle={handleFindFlight} value={"Find Flight"} />
       </Form>
     </div>
   );

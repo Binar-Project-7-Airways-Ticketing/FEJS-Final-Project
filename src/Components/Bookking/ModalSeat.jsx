@@ -36,7 +36,13 @@ export default function ModalSeat(props) {
     // let y = { id: x[0].id, status: x[0].status };
 
     // let z = seats.seat.push(y);
-  };
+  }
+  const coba=()=>{
+    let x = seats.map((item)=>(item.numberSeat))
+    console.log(x);
+}
+
+  
 
   const HandleDetailSeat = (e) => {
     console.log(e);
