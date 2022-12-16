@@ -191,16 +191,16 @@ export const Register = () => {
                                 }
                             </div>
                             <div className="textbox">
-                                <input onChange={(event) => { setRegisterBirth(event.target.value) }} type="text" placeholder="MM/DD/YY" >
+                                <input onChange={(event) => { setRegisterBirth(event.target.value) }} type="text" placeholder="MM/DD/YY" />
                                     {/* <Space direction="vertical" size={20}>
                                     <DatePicker
                                         format={dateFormatList}
                                     />
                                 </Space> */}
-                                {/* </input>
+                                {/* </input> */}
                                 <span className="material-symbols-outlined">
                                     <CalendarOutlined style={{ color: '#F2EFEA' }} />
-                                </span> */}
+                                </span>
                                 {/* <input > */}
                                 {/* <input onChange={(event) => { setRegisterBirth(event.target.value) }}> */}
                                 {/* <Space onChange={(event) => { setRegisterBirth(event.target.value) }} direction="vertical" size={20}>
