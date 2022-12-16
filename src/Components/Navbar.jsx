@@ -60,10 +60,6 @@ export default function Navbar() {
     } else {
       setIsLogin(false);
     }
-
-   
-
-
   }, [setIsLogin, dispatch]);
 
   return (
@@ -182,7 +178,7 @@ export default function Navbar() {
                     </Dropdown>
                   </div>
 
-                  <Prf place={"bottomRight"}/>
+                  <Prf place={"bottomRight"} />
                 </>
               ) : (
                 <div className="flex w-fit h-14 items-center text-brand-whiteLight relative">
