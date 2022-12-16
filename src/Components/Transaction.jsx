@@ -20,7 +20,6 @@ import mandiri from "../image/mandiri.jpg";
 import bni from "../image/bni.jpg";
 import ovo from "../image/ovo.jpg";
 import danaa from "../image/dana.jpg";
-import linkAja from "../image/link aja.jpg";
 import { BsCircle } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import ModalSeat from "./Bookking/ModalSeat";
@@ -74,8 +73,8 @@ export default function Transaction() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalSeatOpen, setIsModalSeatOpen] = useState(false);
   const { luggages } = useSelector((state) => state.luggage);
-  const { payment, setIsPayment } = useState(false);
 
+  const { payment } = useSelector((state) => state.payment);
   const dispatch = useDispatch();
   const showModal = () => {
     setIsModalOpen(true);
@@ -112,12 +111,12 @@ export default function Transaction() {
   // method payment
   const dana = () => {
     // navigate('/payment')
+    dispatch(loadPayment());
     alert("Apakah Metode Pembayaran Sudah Sesuai ?");
     setIsModalBayarOpen(false);
+
     navigate("/bookingPending");
   };
-
-  const penumpang = () => {};
 
   useEffect(() => {
     const x = JSON.parse(localStorage.getItem("passanger"));
@@ -132,9 +131,9 @@ export default function Transaction() {
     dispatch(loadLuggages());
   }, [luggages]);
 
-  useEffect(() => {
-    dispatch(loadPayment());
-  }, [payment]);
+  // useEffect(() => {
+  //   dispatch(loadPayment());
+  // }, [payment]);
 
   return (
     <React.Fragment>
@@ -408,19 +407,6 @@ export default function Transaction() {
                       }}
                     ></img>
                     <h3 className="p-6 text-black text-bold">Dana</h3>
-                  </div>
-                  <div
-                    onClick={dana}
-                    className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                  >
-                    <img
-                      src={linkAja}
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                      }}
-                    ></img>
-                    <h3 className="p-6 text-black text-bold">Link Aja</h3>
                   </div>
                 </div>
               </Modal>
