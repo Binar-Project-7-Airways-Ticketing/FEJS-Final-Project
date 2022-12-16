@@ -92,7 +92,6 @@ export const Profile = (setIsLogin) => {
 
   // Update user profile
   const handleUpdateProfile = () => {
-<<<<<<< HEAD
     const data = {
       firstName: registerFirstName,
       lastName: registerLastname,
@@ -126,39 +125,6 @@ export const Profile = (setIsLogin) => {
     axios.get(authConfig.baseUrl + "/api/booking").then((response) => {
       console.log(response.data.payload);
       setHistories(response.data.payload);
-=======
-    axios
-      .put(authConfig.baseUrl + "/api/user/update/" + userId, {
-        firstName: registerFirstName,
-        lastName: registerLastname,
-        gender: registerGender,
-        birthday: moment(registerBirth).format("DD-MM-YYYY"),
-        email: registerEmail,
-        password: registerPassword,
-      })
-      .then((response) => {
-        window.location.reload();
-      });
-  };
-
-  // Get data user
-  const getUserIdentity = () => {
-    axios.get(authConfig.baseUrl + "/api/user/" + userId).then((response) => {
-      setRegisterFirstName(response.data.firstName);
-      setRegisterEmail(response.data.email);
-      setRegisterLastName(response.data.lastName);
-      setRegisterGender(response.data.gender);
-      setRegisterBirth(moment(response.data.birthday).format("YYYY-MM-DD"));
-      setRegisterProfilePhoto(response.data.pictureUrl);
-    });
-  };
-
-  // Get data history travel
-  const getHistoryTravel = () => {
-    axios.get(authConfig.baseUrl + "/api/history").then((response) => {
-      setHistories(response.data.payload);
-      console.log(response.data);
->>>>>>> 603c3d1521020c7f994ff3b1c26c67ddadf51359
     });
   };
 
@@ -353,11 +319,7 @@ export const Profile = (setIsLogin) => {
       </main>
 
       <Card style={{ backgroundColor: "#3f4444", width: "100%" }}>
-<<<<<<< HEAD
         <CardHistory histories={histories} />
-=======
-        <CardHistory />
->>>>>>> 603c3d1521020c7f994ff3b1c26c67ddadf51359
       </Card>
       <Footer />
     </React.Fragment>
