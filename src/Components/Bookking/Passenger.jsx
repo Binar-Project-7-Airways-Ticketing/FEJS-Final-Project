@@ -95,6 +95,19 @@ export default function Passenger() {
   const onChange = (e) => {
     setSeats(e.target.value);
   };
+  const handlePassengerClass = () => {
+    setPasenger(true);
+    let passangers = {
+      adults: adults,
+      child: childs,
+      infant: infants,
+    };
+    let classes = {
+      class: seats,
+    };
+    localStorage.setItem("passanger", JSON.stringify(passangers));
+    localStorage.setItem("class", JSON.stringify(classes));
+  };
 
   return (
     <div className="w-full relative">
@@ -129,49 +142,82 @@ export default function Passenger() {
                   <p style={{ fontWeight: "700" }}>Passenger</p>
                 </div>
 
-                <div className="passenger">
-                  <p>Adults</p>
-
-                  <div className="btn-increment-decrement">
-                    <Button onClick={adultDecrement}>-</Button>
-                    <Input
-                      name={"name"}
-                      readOnly
-                      onChange={handleAdults}
-                      style={{ color: "black" }}
-                      value={adults}
-                    />
-                    <Button onClick={adultIncrement}>+</Button>
+                <div className="flex w-full justify-between">
+                  <div className="flex flex-col w-full justify-around">
+                    <p>Adults</p>
+                    <p>Childs</p>
+                    <p>Infants</p>
                   </div>
-                </div>
-                <div className="passenger">
-                  <p>Childs</p>
+                  <div className="flex flex-col w-full justify-around gap-2">
+                    <div className="flex gap-2 w-full">
+                      <div
+                        className="bg-brand-whiteLight w-full flex  text-brand-black items-center justify-center rounded-lg"
+                        onClick={adultDecrement}
+                      >
+                        -
+                      </div>
+                      <Input
+                        name={"name"}
+                        readOnly
+                        className="w-14"
+                        onChange={() => handleAdults()}
+                        style={{ color: "black" }}
+                        value={adults}
+                      />
+                      <div
+                        className="bg-brand-whiteLight w-full flex  text-brand-black items-center justify-center rounded-lg"
+                        onClick={adultIncrement}
+                      >
+                        +
+                      </div>
+                    </div>
 
-                  <div className="btn-increment-decrement">
-                    <Button onClick={childDecrement}>-</Button>
-                    <Input
-                      name={"name"}
-                      readOnly
-                      onChange={handleChild}
-                      style={{ color: "black" }}
-                      value={childs}
-                    />
-                    <Button onClick={childIncrement}>+</Button>
-                  </div>
-                </div>
-                <div className="passenger">
-                  <p>Infants</p>
+                    <div className="flex gap-2 w-full">
+                      <div
+                        className="bg-brand-whiteLight w-full flex  text-brand-black items-center justify-center rounded-lg"
+                        onClick={childDecrement}
+                      >
+                        -
+                      </div>
+                      <Input
+                        name={"name"}
+                        readOnly
+                        className="w-14"
+                        onChange={handleChild}
+                        style={{ color: "black" }}
+                        value={childs}
+                      />
+                      <div
+                        className="bg-brand-whiteLight w-full flex  text-brand-black items-center justify-center rounded-lg"
+                        onClick={childIncrement}
+                      >
+                        +
+                      </div>
+                    </div>
 
-                  <div className="btn-increment-decrement">
-                    <Button onClick={infantDecrement}>-</Button>
-                    <Input
-                      name={"name"}
-                      readOnly
-                      onChange={handleInfant}
-                      style={{ color: "black" }}
-                      value={infants}
-                    />
-                    <Button onClick={infantIncrement}>+</Button>
+                    <div className="flex gap-2 w-full">
+                      <div
+                        className="bg-brand-whiteLight w-full flex  text-brand-black items-center justify-center rounded-lg"
+                        onClick={infantDecrement}
+                      >
+                        -
+                      </div>
+
+                      <Input
+                        name={"name"}
+                        readOnly
+                        className="w-14"
+                        onChange={handleInfant}
+                        style={{ color: "black" }}
+                        value={infants}
+                      />
+                      <div
+                        className="bg-brand-whiteLight w-full flex text-brand-black items-center justify-center rounded-lg"
+                        onClick={infantIncrement}
+                      >
+                        +
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -187,7 +233,12 @@ export default function Passenger() {
                   </Space>
                 </Radio.Group>
               </div>
-              <button className="confirm-passenger-class">Confirm</button>
+              <Button
+                onClick={handlePassengerClass}
+                className="confirm-passenger-class"
+              >
+                Confirm
+              </Button>
             </div>
           </div>
         </>

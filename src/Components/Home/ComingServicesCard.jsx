@@ -51,7 +51,7 @@ export default function ComingServices() {
               spaceBetween: 20,
               slidesPerView: 2,
             },
-            375: {
+            360: {
               spaceBetween: 10,
               slidesPerView: 2,
             },

@@ -17,7 +17,7 @@ export default function CardResultBooking() {
   // const { cityFrom } = useSelector((state) => state.cityFrom);
   // const { cityTo } = useSelector((state) => state.cityTo);
   const { trip } = useParams();
-  console.log(trip);
+
   const [economy, setEconomy] = useState(false);
   const [business, setBusiness] = useState(false);
   const [detail, setDetail] = useState(false);
@@ -80,7 +80,7 @@ export default function CardResultBooking() {
     setResultFlightDepart(flightDepart);
     setResultFlightReturn(flightReturn);
   }, [resultFlightDepart, resultFlightReturn]);
-  console.log(resultFlightDepart);
+
   return (
     <section className="main-result-booking">
       <div className="container">

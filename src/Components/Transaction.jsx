@@ -59,6 +59,8 @@ export default function Transaction() {
   const [value, setValue] = useState("");
   const [bagasi, setBagasi] = useState("");
   const [value1, setValue1] = useState("");
+  const [passenger, setPassenger] = useState("");
+  const [countPassenger, setCountPassenger] = useState([]);
   const options = useMemo(() => countryList().getData(), []);
 
   const changeHandler = (value) => {
@@ -73,6 +75,7 @@ export default function Transaction() {
   const [isModalSeatOpen, setIsModalSeatOpen] = useState(false);
   const { luggages } = useSelector((state) => state.luggage);
   const { payment, setIsPayment } = useState(false);
+
   const dispatch = useDispatch();
   const showModal = () => {
     setIsModalOpen(true);
@@ -104,7 +107,7 @@ export default function Transaction() {
 
   const handleBayarCancel = () => {
     setIsModalBayarOpen(false);
-  }
+  };
 
   // method payment
   const dana = () => {
@@ -112,14 +115,20 @@ export default function Transaction() {
     alert("Apakah Metode Pembayaran Sudah Sesuai ?");
     setIsModalBayarOpen(false);
     navigate("/bookingPending");
-  }
+  };
 
-  // // method booking pending
-  // const handlerBookingPending = () => {
-  //   navigate('/bookingPending');
-  // };
+  const penumpang = () => {};
 
   useEffect(() => {
+    const x = JSON.parse(localStorage.getItem("passanger"));
+    setPassenger(x);
+    const adults = passenger.adults;
+    const child = passenger.child;
+    const infant = passenger.infant;
+    const countArray = [];
+    countArray.push(adults, child, infant);
+    setCountPassenger(countArray);
+
     dispatch(loadLuggages());
   }, [luggages]);
 
@@ -198,62 +207,64 @@ export default function Transaction() {
                 </div>
               </div>
             </div>
-            <div className="parent-b w-full bg-brand-nude p-6 mt-6 rounded-md border-2 border-brand-black">
-              <div className="left-header">
-                <span>
-                  <ContactsOutlined />
-                </span>
-                <h3>Detail Penumpang</h3>
+            {countPassenger.map((item) => (
+              <div className="parent-b w-full bg-brand-nude p-6 mt-6 rounded-md border-2 border-brand-black">
+                <div className="left-header">
+                  <span>
+                    <ContactsOutlined />
+                  </span>
+                  <h3>Detail Penumpang</h3>
+                </div>
+                <div className="left-content">
+                  <div className="flex w-full gap-8 mb-2 ">
+                    <select
+                      className="border-brand-gray p-2 border-2 rounded-md"
+                      type="text"
+                    >
+                      <option value="Tuan">Tuan</option>
+                      <option value="Nyonya">Nyonya</option>
+                      <option value="Nona">Nona</option>
+                    </select>
+                    <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
+                      <input
+                        className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
+                        type="text"
+                        placeholder="Nama Lengkap"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex mb-2 w-full">
+                    <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
+                      <input
+                        className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
+                        type="text"
+                        placeholder="Email"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex mb-2 w-full">
+                    <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
+                      <Select
+                        className="placeholder:text-black"
+                        options={options}
+                        value1={value1}
+                        onChange={changeHandler1}
+                        placeholder="Country"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex w-full">
+                    <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
+                      <input
+                        className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
+                        type="text"
+                        placeholder="No Telepon"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="left-content">
-                <div className="flex w-full gap-8 mb-2 ">
-                  <select
-                    className="border-brand-gray p-2 border-2 rounded-md"
-                    type="text"
-                  >
-                    <option value="Tuan">Tuan</option>
-                    <option value="Nyonya">Nyonya</option>
-                    <option value="Nona">Nona</option>
-                  </select>
-                  <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
-                    <input
-                      className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
-                      type="text"
-                      placeholder="Nama Lengkap"
-                    />
-                  </div>
-                </div>
-                <div className="flex mb-2 w-full">
-                  <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
-                    <input
-                      className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
-                      type="text"
-                      placeholder="Email"
-                    />
-                  </div>
-                </div>
-                <div className="flex mb-2 w-full">
-                  <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
-                    <Select
-                      className="placeholder:text-black"
-                      options={options}
-                      value1={value1}
-                      onChange={changeHandler1}
-                      placeholder="Country"
-                    />
-                  </div>
-                </div>
-                <div className="flex w-full">
-                  <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
-                    <input
-                      className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
-                      type="text"
-                      placeholder="No Telepon"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
             <div className="parent-c w-full bg-brand-nude p-6 mt-6 rounded-md border-2 border-brand-black">
               <div className="left-header">
                 <span>
@@ -535,8 +546,8 @@ export default function Transaction() {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
+      <Footer />
     </React.Fragment>
   );
 }

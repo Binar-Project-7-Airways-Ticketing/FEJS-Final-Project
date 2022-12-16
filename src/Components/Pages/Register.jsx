@@ -195,23 +195,23 @@ export const Register = () => {
                             </div>
                             <div className="textbox">
                                 <input onChange={(event) => { setRegisterBirth(event.target.value) }} type="text" placeholder="MM/DD/YY" >
-                                    {/* <Space direction="vertical" size={20}>
+                                    <Space direction="vertical" size={20}>
                                     <DatePicker
                                         format={dateFormatList}
                                     />
-                                </Space> */}
-                                {/* </input>
+                                </Space>
+                                </input>
                                 <span className="material-symbols-outlined">
                                     <CalendarOutlined style={{ color: '#F2EFEA' }} />
-                                </span> */}
+                                </span>
                                 {/* <input > */}
-                                {/* <input onChange={(event) => { setRegisterBirth(event.target.value) }}> */}
-                                {/* <Space onChange={(event) => { setRegisterBirth(event.target.value) }} direction="vertical" size={20}>
+                                <input onChange={(event) => { setRegisterBirth(event.target.value) }}>
+                                <Space onChange={(event) => { setRegisterBirth(event.target.value) }} direction="vertical" size={20}>
                                     <DatePicker
                                         format={dateFormatList}
                                     />
-                                </Space> */}
-                                {/* </input> */}
+                                </Space>
+                                </input>
                             </div>
                             <div className="textbox ">
                                 <input onChange={(event) => { setRegisterRole(event.target.value) }} type="text" placeholder="Role" />
