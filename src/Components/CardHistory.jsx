@@ -7,7 +7,7 @@ import logo from "../logo.png";
 import { BsCircle } from "react-icons/bs";
 import { Button, Modal } from "antd";
 
-function CardHistory() {
+function CardHistory({ histories }) {
   const navigate = useNavigate();
   const items = [
     {
@@ -46,124 +46,142 @@ function CardHistory() {
             {/* <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, error.</p> */}
           </div>
         </div>
+        {histories.map((item) => (
+          <div>
+            <Modal
+              title="Flight Details"
+              open={isModalOpen}
+              onOk={handleOk}
+              onCancel={handleCancel}
+              footer={[null]}
+            >
+              <div className="wrap-modal-detail-flight">
+                <div className="title-detail-flight">
+                  <p>Bali to Dubai</p>
+                  <p>Monday, Des 12</p>
+                </div>
+                <div className="modal-detail-flight">
+                  <div className="airports">
+                    <div>
+                      <p>Bali</p>
+                      <p>Ngurah Rai Airports</p>
+                    </div>
+                    <div>
+                      <p>NO. PESAWAT</p>
+                      <p>Flight by 7-Airways</p>
+                    </div>
+                    <div>
+                      <p>Dubai</p>
+                      <p>Bandara Internasional Dubais</p>
+                    </div>
+                  </div>
 
-        <Modal title="Flight Details" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[null]}>
-          <div className="wrap-modal-detail-flight">
-            <div className="title-detail-flight">
-              <p>Bali to Dubai</p>
-              <p>Monday, Des 12</p>
-            </div>
-            <div className="modal-detail-flight">
-              <div className="airports">
-                <div>
-                  <p>Bali</p>
-                  <p>Ngurah Rai Airports</p>
-                </div>
-                <div>
-                  <p>NO. PESAWAT</p>
-                  <p>Flight by 7-Airways</p>
-                </div>
-                <div>
-                  <p>Dubai</p>
-                  <p>Bandara Internasional Dubais</p>
+                  <div className="modal-logo">
+                    <div className="circle">
+                      <BsCircle />
+                    </div>
+                    <div className="wrap-logo">
+                      <img
+                        src={logo}
+                        style={{
+                          width: "90px",
+                          height: "90px",
+                          borderRadius: "100%",
+                          border: "1px solid black",
+                        }}
+                      ></img>
+                    </div>
+                    <div className="circle">
+                      <BsCircle />
+                    </div>
+                  </div>
+                  <div className="modal-time">
+                    <p>01:45</p>
+                    <p>9h 20m</p>
+                    <p>11:05</p>
+                  </div>
                 </div>
               </div>
 
-              <div className="modal-logo">
-                <div className="circle">
-                  <BsCircle />
+              <div className="wrap-modal-detail-flight">
+                <div className="title-detail-flight">
+                  <p>Manchester to Doha </p>
+                  <p>Saturday, Apr 26</p>
                 </div>
-                <div className="wrap-logo">
-                  <img
-                    src={logo}
-                    style={{
-                      width: "90px",
-                      height: "90px",
-                      borderRadius: "100%",
-                      border: "1px solid black",
-                    }}
-                  ></img>
-                </div>
-                <div className="circle">
-                  <BsCircle />
+                <div className="modal-detail-flight">
+                  <div className="airports">
+                    <div>
+                      <p>Manchester</p>
+                      <p>Manchester Airport</p>
+                    </div>
+                    <div>
+                      <p>NO. PESAWAT</p>
+                      <p>Flight by 7-Airways</p>
+                    </div>
+                    <div>
+                      <p>Doha</p>
+                      <p>Doha Internasional Airport </p>
+                    </div>
+                  </div>
+
+                  <div className="modal-logo">
+                    <div className="circle">
+                      <BsCircle />
+                    </div>
+                    <div className="wrap-logo">
+                      <img
+                        src={logo}
+                        style={{
+                          width: "90px",
+                          height: "90px",
+                          borderRadius: "100%",
+                          border: "1px solid black",
+                        }}
+                      ></img>
+                    </div>
+                    <div className="circle">
+                      <BsCircle />
+                    </div>
+                  </div>
+                  <div className="modal-time">
+                    <p>03:00</p>
+                    <p>17h 40m</p>
+                    <p>20:40</p>
+                  </div>
                 </div>
               </div>
-              <div className="modal-time">
-                <p>01:45</p>
-                <p>9h 20m</p>
-                <p>11:05</p>
+            </Modal>
+
+            <div className="detail-booking">
+              <div className="wrap-input">
+                <div className="input">
+                  <div className="history">
+                    <p style={{ fontSize: "13px" }}>From</p>
+                    <p>{item?.bookingDetails?.flight?.departureCode}</p>
+                  </div>
+                  <div className="history">
+                    <p style={{ fontSize: "13px" }}>To</p>
+                    <p>{item?.bookingDetails?.flight?.arrivalCode}</p>
+                  </div>
+                </div>
+
+                {/* <Passenger /> */}
+                <div className="history">
+                  <p style={{ fontSize: "13px" }}>Passenger/Class</p>
+                  <div>
+                    <p>
+                      {item?.bookingDetails?.passenger?.firstName}/
+                      {item?.flight?.class}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
+            <button onClick={showModal} className="btn-detail-flight">
+              History Detail
+            </button>
           </div>
-
-          <div className="wrap-modal-detail-flight">
-            <div className="title-detail-flight">
-              <p>Manchester to Doha </p>
-              <p>Saturday, Apr 26</p>
-            </div>
-            <div className="modal-detail-flight">
-              <div className="airports">
-                <div>
-                  <p>Manchester</p>
-                  <p>Manchester Airport</p>
-                </div>
-                <div>
-                  <p>NO. PESAWAT</p>
-                  <p>Flight by 7-Airways</p>
-                </div>
-                <div>
-                  <p>Doha</p>
-                  <p>Doha Internasional Airport </p>
-                </div>
-              </div>
-
-              <div className="modal-logo">
-                <div className="circle">
-                  <BsCircle />
-                </div>
-                <div className="wrap-logo">
-                  <img
-                    src={logo}
-                    style={{
-                      width: "90px",
-                      height: "90px",
-                      borderRadius: "100%",
-                      border: "1px solid black",
-                    }}
-                  ></img>
-                </div>
-                <div className="circle">
-                  <BsCircle />
-                </div>
-              </div>
-              <div className="modal-time">
-                <p>03:00</p>
-                <p>17h 40m</p>
-                <p>20:40</p>
-              </div>
-            </div>
-          </div>
-        </Modal>
-        <div className="detail-booking">
-          <div className="wrap-input">
-            <div className="input">
-              <div className="history">
-                <p style={{ fontSize: "13px" }}>From</p>
-              </div>
-              <div className="history">
-                <p style={{ fontSize: "13px" }}>To</p>
-              </div>
-            </div>
-
-            {/* <Passenger /> */}
-            <div className="history">
-              <p style={{ fontSize: "13px" }}>Passenger/Class</p>
-            </div>
-          </div>
-        </div>
-        <button onClick={showModal} className="btn-detail-flight">
-          History Detail
-        </button>
+        ))}
       </div>
     </>
   );
