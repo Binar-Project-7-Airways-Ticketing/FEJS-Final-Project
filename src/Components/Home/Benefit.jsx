@@ -1,4 +1,6 @@
 import React from "react";
+import benefit2 from "../../image/benefit2.jpg"
+import benefit1 from "../../image/benefit1.avif"
 
 export default function Benefit() {
   return (
@@ -7,8 +9,8 @@ export default function Benefit() {
         <h5>SPECIALS FEATURES</h5>
         <h2>Some Benefit if you flight with us</h2>
       </div>
-      <div className="flex w-full">
-        <div className="flex flex-col gap-10 w-full ">
+      <div className="flex md:flex-row sm:flex-col w-full">
+        <div className="md:flex md:flex-col sm:grid sm:grid-cols-2 gap-10 w-full ">
           <div className="flex flex-col gap-3">
             <span className="flex bg-brand-yellow w-16 h-12 rounded-3xl items-center justify-center text-brand-whiteLight font-bold text-lg">
               01
@@ -40,9 +42,9 @@ export default function Benefit() {
             </h6>
           </div>
         </div>
-        <div className="flex w-full items-end justify-end relative ">
-          <img className="img-small" src="https://images.unsplash.com/photo-1606046604972-77cc76aee944?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"/>
-          <img className="img-large" src="https://images.unsplash.com/photo-1508923567004-3a6b8004f3d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"/>
+        <div className="flex w-full sm:pb-2 items-end justify-end relative ">
+          <img className="img-small" src={benefit2}/>
+          <img className="img-large" src={benefit1}/>
         </div>
       </div>
     </div>

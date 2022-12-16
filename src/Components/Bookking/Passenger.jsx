@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form, Input, Radio, Space, Button } from "antd";
+import { BsFillPersonPlusFill } from "react-icons/bs";
 
 export default function Passenger() {
   const [passenger, setPasenger] = useState(false);
@@ -94,22 +95,45 @@ export default function Passenger() {
   const onChange = (e) => {
     setSeats(e.target.value);
   };
+  const handlePassengerClass = () => {
+    setPasenger(true);
+    let passangers = {
+      adults: adults,
+      child: childs,
+      infant: infants,
+    };
+    let classes = {
+      class: seats,
+    };
+    localStorage.setItem("passanger", JSON.stringify(passangers));
+    localStorage.setItem("class", JSON.stringify(classes));
+  };
 
   return (
-    <>
+    <div className="w-full relative">
       {passenger ? (
         <>
-          <div onClick={handlePassengerClose} className="inpt-passenger">
-            <p style={{fontSize:"15px"}} onClick={handlePassengerClose}>Class {seats}</p>
-            {adults + childs + infants === 10 ? (
-              <p>
-                Adults {adults}, Childs {childs}, Infants {infants}
-              </p>
-            ) : (
-              <p>
-                Adults {adults}, Childs {childs}, Infants {infants}
-              </p>
-            )}
+          <div
+            onClick={handlePassengerClose}
+            className="flex flex-col rounded-lg h-24 w-full py-1.5 pr-5 pl-6 border-brand-gray border gap-5"
+          >
+            <p style={{ fontSize: "15px" }} onClick={handlePassengerClose}>
+              Class {seats}
+            </p>
+            <div className="flex gap-4 items-center">
+              <BsFillPersonPlusFill size={28} color="#CBA052" />
+              <div>
+                {adults + childs + infants === 10 ? (
+                  <p>
+                    Adults {adults}, Childs {childs}, Infants {infants}
+                  </p>
+                ) : (
+                  <p>
+                    Adults {adults}, Childs {childs}, Infants {infants}
+                  </p>
+                )}
+              </div>
+            </div>
           </div>
           <div onClick={handlePassenger} className="dropdown-passenger">
             <div className="detail-passanger-class">
@@ -118,92 +142,120 @@ export default function Passenger() {
                   <p style={{ fontWeight: "700" }}>Passenger</p>
                 </div>
 
-                <div className="passenger">
-                  <p>Adults</p>
-
-                  <Form.Item style={{ width: "100%", margin: "0" }}>
-                    <div className="btn-increment-decrement">
-                      <Button onClick={adultDecrement}>-</Button>
+                <div className="flex w-full justify-between">
+                  <div className="flex flex-col w-full justify-around">
+                    <p>Adults</p>
+                    <p>Childs</p>
+                    <p>Infants</p>
+                  </div>
+                  <div className="flex flex-col w-full justify-around gap-2">
+                    <div className="flex gap-2 w-full">
+                      <div
+                        className="bg-brand-whiteLight w-full flex  text-brand-black items-center justify-center rounded-lg"
+                        onClick={adultDecrement}
+                      >
+                        -
+                      </div>
                       <Input
                         name={"name"}
                         readOnly
-                        onChange={handleAdults}
+                        className="w-14"
+                        onChange={() => handleAdults()}
                         style={{ color: "black" }}
                         value={adults}
                       />
-                      <Button onClick={adultIncrement}>+</Button>
+                      <div
+                        className="bg-brand-whiteLight w-full flex  text-brand-black items-center justify-center rounded-lg"
+                        onClick={adultIncrement}
+                      >
+                        +
+                      </div>
                     </div>
-                  </Form.Item>
-                </div>
-                <div className="passenger">
-                  <p>Childs</p>
 
-                  <Form.Item style={{ width: "100%", margin: "0" }}>
-                    <div className="btn-increment-decrement">
-                      <Button onClick={childDecrement}>-</Button>
+                    <div className="flex gap-2 w-full">
+                      <div
+                        className="bg-brand-whiteLight w-full flex  text-brand-black items-center justify-center rounded-lg"
+                        onClick={childDecrement}
+                      >
+                        -
+                      </div>
                       <Input
                         name={"name"}
                         readOnly
+                        className="w-14"
                         onChange={handleChild}
                         style={{ color: "black" }}
                         value={childs}
                       />
-                      <Button onClick={childIncrement}>+</Button>
+                      <div
+                        className="bg-brand-whiteLight w-full flex  text-brand-black items-center justify-center rounded-lg"
+                        onClick={childIncrement}
+                      >
+                        +
+                      </div>
                     </div>
-                  </Form.Item>
-                </div>
-                <div className="passenger">
-                  <p>Infants</p>
 
-                  <Form.Item style={{ width: "100%", margin: "0" }}>
-                    <div className="btn-increment-decrement">
-                      <Button onClick={infantDecrement}>-</Button>
+                    <div className="flex gap-2 w-full">
+                      <div
+                        className="bg-brand-whiteLight w-full flex  text-brand-black items-center justify-center rounded-lg"
+                        onClick={infantDecrement}
+                      >
+                        -
+                      </div>
+
                       <Input
                         name={"name"}
                         readOnly
+                        className="w-14"
                         onChange={handleInfant}
                         style={{ color: "black" }}
                         value={infants}
                       />
-                      <Button onClick={infantIncrement}>+</Button>
+                      <div
+                        className="bg-brand-whiteLight w-full flex text-brand-black items-center justify-center rounded-lg"
+                        onClick={infantIncrement}
+                      >
+                        +
+                      </div>
                     </div>
-                  </Form.Item>
+                  </div>
                 </div>
               </div>
               <div className="wrap-class">
                 <div>
                   <p style={{ fontWeight: "700" }}>Class</p>
                 </div>
-                <Form.Item
-                  name="Class"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please Input your username!",
-                    },
-                  ]}
-                >
-                  <Radio.Group onChange={onChange} value={seats}>
-                    <Space>
-                      <Radio value={"Economy"}>Economy</Radio>
-                      <Radio value={"Business"}>Business</Radio>.
-                    </Space>
-                  </Radio.Group>
-                </Form.Item>
+
+                <Radio.Group onChange={onChange} value={seats}>
+                  <Space>
+                    <Radio value={"Economy"}>Economy</Radio>
+                    <Radio value={"Business"}>Business</Radio>.
+                  </Space>
+                </Radio.Group>
               </div>
-              <button className="confirm-passenger-class">Confirm</button>
+              <Button
+                onClick={handlePassengerClass}
+                className="confirm-passenger-class"
+              >
+                Confirm
+              </Button>
             </div>
           </div>
-          {/* </div> */}
         </>
       ) : (
-        <div onClick={handlePassenger} className="inpt-passenger">
-          <p style={{fontSize:"15px"}}>Passenger/Class</p>
-          <p>
-          Passenger {adults + childs + infants}, Class {seats} 
-          </p>
+        <div
+          onClick={handlePassenger}
+          className="flex flex-col rounded-lg h-24 w-full py-1.5 pr-5 pl-6 border-brand-gray border gap-5"
+        >
+          <p style={{ fontSize: "15px" }}>Passenger/Class</p>
+          <div className="flex gap-4 items-center">
+            <BsFillPersonPlusFill size={28} color="#CBA052" />
+            <p>
+              Passenger {adults + childs + infants}, Class {seats}
+            </p>
+          </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ButtonFlindFilght(props) {
+export default function ButtonFindFlight(props) {
   return (
     <div className="find">
       <button onClick={props.handle} className="btn-flight">

@@ -6,18 +6,15 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getRegister } from "../Feature/Models/AuthRegister";
 import { unwrapResult } from "@reduxjs/toolkit";
-import type { DatePickerProps } from 'antd';
-import { DatePicker, Space } from 'antd';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
+import axios from "axios";
+import { DatePicker, Space } from "antd";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import 'dayjs/locale/zh-cn';
+import { createNotif } from "../Feature/Models/PostNotif";
 
 dayjs.extend(customParseFormat);
-const { RangePicker } = DatePicker;
-const dateFormat = 'YYYY/MM/DD';
-const dateFormatList = ['DD-MM-YYYY'];
-const customFormat: DatePickerProps['format'] = (value) =>
-  `custom format: ${value.format(dateFormat)}`;
+const dateFormatList = ["MM/DD/YYYY", "MM/DD/YY"];
 
 export const Register = () => {
 
@@ -98,10 +95,10 @@ export const Register = () => {
             alert("Password Tidak Valid")
             return;
         }
-        // if (!registerBirth) {
-        //     alert("Harus ada tanggal lahir")
-        //     return;
-        // }
+        if (!registerBirth) {
+            alert("Harus ada tanggal lahir")
+            return;
+        }
         if (!registerGender) {
             alert("Harus ada gender")
             return;
@@ -120,8 +117,10 @@ export const Register = () => {
 
         const results = unwrapResult(resultsActions);
 
-        if (results && results.token) {
-            navigate("/")
+        if (results && results.id) {
+            const userId = localStorage.getItem("idUser")
+            console.log(userId);
+            dispatch(createNotif(userId))
         }
     }
 
@@ -194,15 +193,25 @@ export const Register = () => {
                                         : <></>
                                 }
                             </div>
-                            <div className="textbox ">
-                                <input onChange={(event) => { setRegisterBirth(event.target.value) }} type="date" placeholder="Date of Birth" />
-                                {/* <Space direction="vertical" size={20}>
-                                    <DatePicker defaultValue={dayjs('01/01/2015', dateFormatList[0])} format={dateFormatList} onChange={(event) => { setRegisterBirth(event.target.value) }} placeholder="Date of Birth" />
-                                    
+                            <div className="textbox">
+                                <input onChange={(event) => { setRegisterBirth(event.target.value) }} type="text" placeholder="MM/DD/YY" />
+                                    {/* <Space direction="vertical" size={20}>
+                                    <DatePicker
+                                        format={dateFormatList}
+                                    />
                                 </Space> */}
+                                {/* </input> */}
                                 <span className="material-symbols-outlined">
                                     <CalendarOutlined style={{ color: '#F2EFEA' }} />
                                 </span>
+                                {/* <input > */}
+                                <input onChange={(event) => { setRegisterBirth(event.target.value) }}>
+                                <Space onChange={(event) => { setRegisterBirth(event.target.value) }} direction="vertical" size={20}>
+                                    <DatePicker
+                                        format={dateFormatList}
+                                    />
+                                </Space>
+                                </input>
                             </div>
                             <div className="textbox ">
                                 <input onChange={(event) => { setRegisterRole(event.target.value) }} type="text" placeholder="Role" />

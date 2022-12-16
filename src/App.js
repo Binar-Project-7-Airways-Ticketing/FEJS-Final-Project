@@ -10,6 +10,7 @@ import Transaction from "./Components/Transaction";
 import FlightStatusPage from "./Components/Pages/FlightStatusPage";
 import axios from "axios";
 import Review from "./Components/Pages/Review";
+import BookinngPending from "./Components/BookingPending";
 
 function App() {
   return (
@@ -18,14 +19,16 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/booking" element={<Bookingpage />} />
+        <Route path="/booking/:trip" element={<Bookingpage />} />
         <Route path="/flight status" element={<FlightStatusPage/>} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/transaction" element={<Transaction />} />
         <Route path="/review" element={<Review/>} />
+        <Route path="/bookingpending" element={<BookinngPending/>} />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+// :from/:to/:trip/:codefrom/:codeto"

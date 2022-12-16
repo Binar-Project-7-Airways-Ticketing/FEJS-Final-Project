@@ -12,6 +12,7 @@ h2 {
   line-height: 4rem;
   font-weight: 600;
 }
+
 h4 {
   font-size: 1.8rem;
   font-weight: 600;
@@ -31,12 +32,13 @@ p {
 
 /*-------------------------Header---------------------------------*/
 header {
+  /* background: #3f4444; */
   background-image: url("https://images.pexels.com/photos/417054/pexels-photo-417054.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   height: 100vh;
   padding-top: 70px;
   background-size: cover;
   width: 100%;
-  opacity: 0.94;
+
 }
 .wrap-header {
   width: 100%;
@@ -214,6 +216,7 @@ header {
   padding: 30px;
 }
 
+
 .wrap-detail-title {
   display: flex;
   justify-content: center;
@@ -261,14 +264,16 @@ header {
   height: 90px;
   border: 1px solid rgb(178, 178, 178);
   border-radius: 10px;
-  padding: 8px;
+  padding: 5px 20px;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  gap: 12px;
+  justify-content: center;
+  gap: 7px;
   cursor: pointer;
 }
+
+
 
 .dropdown-passenger {
   position: absolute;
@@ -304,10 +309,10 @@ header {
   display: flex;
   gap: 5px;
   width: 100%;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
 }
 
-.btn-increment-decrement button {
+/* .btn-increment-decrement button {
   width: 100%;
   color: #cba052;
   background: #f1efe9;
@@ -315,13 +320,13 @@ header {
   width: 35px;
   color: #555;
   padding: 5px;
-}
-.btn-increment-decrement input {
+} */
+/* .btn-increment-decrement input {
   width: 35px;
   border-radius: 10px;
   padding: 2px;
   text-align: center;
-}
+} */
 .wrap-class {
   display: flex;
   width: 100%;
@@ -354,17 +359,17 @@ header {
   height: fit-content;
 }
 .swap {
-  left: 48%;
+  left: 47.5%;
   position: absolute;
   background: #f1efe9;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border: 1px solid rgb(178, 178, 178);
   border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 32%;
+  top: 28%;
   color: #cba052;
 }
 .wrap-date {
@@ -405,6 +410,9 @@ header {
 }
 .ant-form-vertical .ant-form-item-label > label {
   color: #b6b6b6;
+}
+.ant-select-arrow{
+  display: none;
 }
 
 /*-------------------------Modal Seats---------------------------------*/
@@ -456,15 +464,17 @@ header {
   flex-direction: column;
   justify-content: space-around;
 }
-
+.icon-mean {
+  /* display: flex;
+  flex-direction: column; */
+}
 .ant-checkbox-wrapper {
   margin-left: 8px;
 }
 .modal-seat {
-  margin-top: 50px;
-  /* overflow-y: scroll;
-  overflow-x: hidden; */
-  height: 600px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 800px;
 }
 .ant-checkbox-checked .ant-checkbox-inner {
   background: #cba052;
@@ -492,12 +502,11 @@ nav {
 }
 .wrap-navbar {
   width: 100%;
-  height: fit-content;
+  height: 90px;
   display: flex;
   align-items: center;
   gap: 20px;
   padding: 10px 0;
-  transition: 1s;
 }
 .logo {
   width: 30%;
@@ -525,10 +534,9 @@ nav {
 .search {
   color: #f1efe9;
   display: flex;
-  gap: 15px;
+  gap: 10px;
   align-items: center;
   width: 100%;
-  height: 100%;
   justify-content: flex-end;
 }
 .search a {
@@ -539,18 +547,21 @@ nav {
   font-size: 20px;
   align-items: center;
   cursor: pointer;
-
+  justify-content: center;
   padding-top: 5px;
   position: relative;
-  width: fit-content;
+  width: 100px;
 }
-
-.ant-input {
+.notif p {
+  font-size: 12px;
+  font-family: "Roboto";
+}
+/* .ant-input {
   width: 180px;
   border-color: #8c857b;
   transition: none;
   border-radius: 8px;
-}
+} */
 .ant-picker {
   border-color: #8c857b;
   background: transparent;
@@ -569,18 +580,8 @@ nav {
 .ant-input:hover {
   border-color: #cba052;
 }
-.nav-btn-responsive {
-  cursor: pointer;
-  background: transparent;
-  outline: none;
-  visibility: hidden;
-  opacity: 0;
-}
 .frm {
   visibility: hidden;
-}
-.f {
-  width: 600px;
 }
 .user {
   display: flex;
@@ -592,7 +593,8 @@ nav {
   width: 50px;
   height: 50px;
 }
-
+.space {
+}
 .notif-read {
   background: #cba052;
   color: white;
@@ -600,10 +602,10 @@ nav {
   height: 20px;
   text-align: center;
   border-radius: 10px;
-  /* padding: 2px; */
+  padding: 2px;
   position: absolute;
   top: 0;
-  left: 5px;
+  left: 16px;
 }
 
 /*-------------------------Resullt Booking---------------------------------*/
@@ -689,7 +691,7 @@ nav {
 .times {
   width: 100%;
   display: flex;
-  gap: 10px;
+  position: relative;
   height: 100%;
 }
 .time {
@@ -704,17 +706,22 @@ nav {
   align-items: center;
   justify-content: center;
   width: 100%;
-  gap: 10px;
 }
 .time-logo::before {
   border-bottom: 1px solid #000000;
   content: "";
+  position: absolute;
   flex-grow: 1;
+  width: 15%;
+  left: 25%;
 }
 .time-logo::after {
   border-bottom: 1px solid #000000;
   content: "";
+  position: absolute;
   flex-grow: 1;
+  width: 15%;
+  right: 25%;
 }
 .time p {
   font-size: 40px;
@@ -790,7 +797,7 @@ nav {
 .benefit {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 93%;
   gap: 20px;
   border: 1px solid #f1efe9;
   border-radius: 20px;
@@ -804,7 +811,6 @@ nav {
   text-align: center;
   cursor: pointer;
 }
-
 .benefit-detail {
   display: flex;
   gap: 10px;
@@ -840,57 +846,23 @@ nav {
   -o-transform: translate(-50%, -50%) scale(1.5);
   transform: translate(-50%, -50%) scale(1.5);
 }
-.result-city {
-  position: absolute;
-  background: #8c857b;
-  color: #f1efe9;
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-  top: 40px;
-  height: 200px;
-  overflow-y: scroll;
-}
-::-webkit-scrollbar {
-  width: 10px;
-  display: none;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #8c857b;
-  border-radius: 12px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #3f4444;
-  border-radius: 12px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
 .ant-col-16 {
   max-width: none;
 }
 /*-------------------------Some Benefit---------------------------------*/
-.img-small {
-  width: 280px;
-  height: 400px;
-  border-radius: 300px;
-  position: absolute;
-  bottom: -40px;
-  right: 300px;
-  border: 10px solid white;
+.img-small{
+  width:280px;
+  height:400px;
+  border-radius:300PX;
+  position:absolute;
+  bottom:-50px;
+  right:300px;
+  border:10px solid white
 }
-.img-large {
-  width: 400px;
-  border-radius: 300px;
+.img-large{
+  width:400px;
+  border-radius:300px;
 }
-
 /*-------------------------Card Review---------------------------------*/
 .img-review {
   width: 50%;
@@ -960,16 +932,16 @@ footer {
   }
 
   .login-container {
-    @apply container block md:flex justify-between w-full mt-[70px] md:mt-[80px];
+    @apply container block md:flex justify-between w-full mt-[70px] md:mt-[75px] lg:mt-[80px];
   }
 
   .login-container-left {
-    @apply border-r border-brand-gray;
+    @apply md:border-r border-brand-gray;
   }
 
   .login-container-left,
   .login-container-right {
-    @apply block px-[2rem] py-[3rem] md:p-[6rem] w-full;
+    @apply block px-[0] py-[3rem] md:py-[3rem] md:px-[2px] lg:py-[6rem] lg:px-[1rem] w-full;
   }
 
   .login-form {
@@ -981,7 +953,7 @@ footer {
   }
 
   .login-form-tittle h1 {
-    @apply text-3xl md:text-5xl text-brand-nude;
+    @apply text-3xl md:text-4xl lg:text-5xl text-brand-nude;
   }
 
   .textbox {
@@ -1023,11 +995,11 @@ footer {
   }
 
   .login-account-tittle {
-    @apply flex justify-center w-full;
+    @apply flex justify-center w-full ;
   }
 
   .login-account-tittle h1 {
-    @apply text-2xl text-brand-nude text-center lg:text-4xl m-5 lg:pt-36;
+    @apply text-2xl text-brand-nude text-center md:text-2xl lg:text-4xl m-5 md:pt-28 lg:pt-24;
   }
 
   .login-account-desc {
@@ -1039,7 +1011,7 @@ footer {
   }
 
   .login-account a {
-    @apply flex cursor-pointer justify-center p-2 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] text-xs rounded-md;
+    @apply flex cursor-pointer justify-center px-16 py-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] text-xl rounded-md;
   }
 
   /*-------------------------REGISTER---------------------------------*/
@@ -1048,16 +1020,16 @@ footer {
   }
 
   .register-container {
-    @apply container block md:flex justify-between w-full mt-[70px] md:mt-[80px];
+    @apply container block md:flex justify-between w-full mt-[70px] md:mt-[75px] lg:mt-[80px];
   }
 
   .register-container-left {
-    @apply border-r border-brand-gray;
+    @apply md:border-r border-brand-gray;
   }
 
   .register-container-left,
   .register-container-right {
-    @apply block px-[2rem] py-[3rem] md:p-[6rem] w-full;
+    @apply block px-[0] py-[3rem] md:py-[3rem] md:px-[2px] lg:py-[6rem] lg:px-[1rem] w-full;
   }
 
   .register-form {
@@ -1069,7 +1041,7 @@ footer {
   }
 
   .register-form-tittle h1 {
-    @apply text-3xl md:text-5xl text-brand-nude;
+    @apply text-3xl md:text-4xl lg:text-5xl text-brand-nude;
   }
 
   .textbox {
@@ -1115,7 +1087,8 @@ footer {
 
   .register-form input,
   .register-form button,
-  .register-form select {
+  .register-form select,
+  .register-form Space {
     @apply w-full h-[70px] outline-none p-0 text-[16px] rounded-[8px];
   }
 
@@ -1144,7 +1117,7 @@ footer {
   }
 
   .register-form button {
-    @apply cursor-pointer bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px];
+    @apply cursor-pointer bg-brand-yellow  text-[#f9f9f9] border-0 font-[600] tracking-[2px];
   }
 
   .register-form a {
@@ -1161,7 +1134,7 @@ footer {
   }
 
   .register-account-tittle h1 {
-    @apply text-2xl text-brand-nude text-center lg:text-4xl m-5 lg:pt-36;
+    @apply text-2xl text-brand-nude text-center md:text-2xl lg:text-4xl m-5 md:pt-56 lg:pt-64;
   }
 
   .register-account-desc {
@@ -1173,25 +1146,25 @@ footer {
   }
 
   .register-account a {
-    @apply flex cursor-pointer justify-center p-2 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] text-xs rounded-md;
+    @apply flex cursor-pointer justify-center px-16 py-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] text-xl rounded-md;
   }
 
   /*---------------Transaction---------------*/
   .booking-container {
-    @apply container flex justify-between w-full px-[3rem] py-[3rem];
+    @apply block lg:flex justify-between w-full sm:py-[1rem] md:py-[2rem] lg:py-[3rem];
   }
 
   .booking-left,
   .booking-right {
-    @apply block w-full p-6;
+    @apply block w-full md:p-2;
   }
 
   .booking-left {
-    @apply flex-initial w-[65%];
+    @apply block lg:flex-initial sm:w-full lg:w-[65%];
   }
 
   .booking-right {
-    @apply flex-initial w-[35%];
+    @apply block sm:w-full lg:w-[35%];
   }
 
   .left-header {
@@ -1207,7 +1180,12 @@ footer {
   }
 }
 
-/*---------------Transaction---------------*/
+/*---------------Navbar Media Screen---------------*/
+@media only screen and (max-width: 1280px) {
+  .ant-input {
+    width: 150px;
+  }
+}
 
 .wrap-history {
   width: 100%;
@@ -1243,6 +1221,8 @@ footer {
   .ant-input {
     width: 165px;
   }
+  .logo {
+  }
   /*--------------Homepage benefit---------------*/
   .img-large {
     width: 300px;
@@ -1268,9 +1248,30 @@ footer {
   .wrap-header {
     padding: 0;
   }
+   /*-------------- booking component results---------------*/
+  .time-logo::before {
+    border-bottom: 1px solid #000000;
+    content: "";
+    position: absolute;
+    flex-grow: 1;
+    width: 15%;
+    left: 28%;
+  }
+  .time-logo::after {
+    border-bottom: 1px solid #000000;
+    content: "";
+    position: absolute;
+    flex-grow: 1;
+    width: 15%;
+    right: 28%;
+  }
 }
 @media only screen and (max-width: 768px) {
   /*--------------navbar ---------------*/
+  h2 {
+    font-size: 2.5rem;
+    line-height: 1.3;
+  }
   .nav-btn-responsive {
     visibility: visible;
     opacity: 1;
@@ -1278,6 +1279,7 @@ footer {
   .wrap-navbar {
     align-items: flex-start;
     justify-content: space-between;
+    height: 80px;
   }
   .menu-navbar {
     flex-direction: column;
@@ -1289,14 +1291,56 @@ footer {
     display: flex;
     justify-content: center;
   }
+  .wrap-navbar .responsive_nav {
+    transform: none;
+  }
+  /*--------------Homepage benefit---------------*/
+  .img-large {
+    width: 250px;
+  }
+  .img-small {
+    width: 180px;
+    height: 230px;
+    right: 150px;
+    bottom: -20px;
+  }
+}
+@media only screen and (max-width: 425px) {
+  h2 {
+    font-size: 2.5rem;
+    line-height: 1.3;
+  }
+  h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  h5 {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  /*--------------navbar ---------------*/
+  .nav-btn-responsive {
+    visibility: visible;
+    opacity: 1;
+  }
   .wrap-navbar {
+    align-items: flex-start;
+    justify-content: space-between;
     height: 80px;
+  }
+  .menu-navbar {
+    flex-direction: column;
+  }
+  .nav-respon {
+    transform: translateY(-100vh);
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
   }
   .wrap-navbar .responsive_nav {
     transform: none;
   }
-}
-@media only screen and (max-width: 425px) {
   /*--------------Header ---------------*/
   h1 {
     font-size: 2.2rem;
@@ -1315,15 +1359,7 @@ footer {
   .header-main {
     padding: 100px 0;
   }
-  /*--------------Homepage benefit---------------*/
-  /* .img-large {
-    width: 300px;
-  }
-  .img-small {
-    width: 230px;
-    height: 320px;
-    right: 200px;
-  } */
+
   /*-------------- booking component homepage---------------*/
   /* .inpt-book{
     padding: 8px;
