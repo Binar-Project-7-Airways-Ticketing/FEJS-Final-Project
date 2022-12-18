@@ -113,15 +113,9 @@ export default function Transaction() {
     // navigate('/payment')
     alert("Apakah Metode Pembayaran Sudah Sesuai ?");
     setIsModalBayarOpen(false);
-<<<<<<< HEAD
     navigate("/bookingPending");
     
   }
-=======
->>>>>>> ca985c392b13b0721e50bcc046d6522ffd195bd6
-
-    navigate("/bookingPending");
-  };
 
   useEffect(() => {
     const x = JSON.parse(localStorage.getItem("passanger"));

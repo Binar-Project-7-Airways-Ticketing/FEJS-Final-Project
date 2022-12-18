@@ -18,9 +18,13 @@ export const loadPayment = createAsyncThunk("payment/loadPayment", async () => {
 
 export const createPayment = createAsyncThunk(
   "payment/createPayment",
-  async () => {
+  async (idPassenger, body) => {
     try {
-      const payment = await axios.post(`${authConfig.baseUrl}/api/payment/create`);
+      // membutuhkan tag body, relasi ke pasanger id
+      const payment = await axios.post(`${authConfig.baseUrl}/api/payment/create`, {
+        idPassenger, 
+        ...body
+      });
       return payment.data;
     } catch (error) {
       console.error(error);
@@ -30,9 +34,12 @@ export const createPayment = createAsyncThunk(
 
 export const updatePayment = createAsyncThunk(
   "payment/updatePayment",
-  async (idPayment, idPassenger) => {
+  async (idPayment, idPassenger, body) => {
     try {
-      const payment = await axios.put(`${authConfig.baseUrl}/api/payment/update/${idPayment}/passenger/${idPassenger}`);
+      const payment = await axios.put(`${authConfig.baseUrl}/api/payment/update/${idPayment}/passenger/${idPassenger}`, {
+        idPassenger,
+        ...body
+      });
       return payment.data;
     } catch (error) {
       console.error(error);

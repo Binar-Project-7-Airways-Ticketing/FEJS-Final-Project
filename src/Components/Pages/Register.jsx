@@ -24,6 +24,7 @@ export const Register = () => {
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
     const [passwordErrors, setIsPasswordErrors] = useState([]);
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     const [registerDisplayName, setRegisterDisplayName] = useState(undefined);
     const [registerFirstName, setRegisterFirstName] = useState(undefined);
@@ -32,7 +33,6 @@ export const Register = () => {
     const [registerPassword, setRegisterPassword] = useState(undefined);
     const [registerBirth, setRegisterBirth] = useState(undefined);
     const [registerGender, setRegisterGender] = useState(undefined);
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     function validatePassword() {
         const errors = [];
@@ -175,12 +175,18 @@ export const Register = () => {
                                 }
                             </div>
                             <div className="block w-full">
+                                {/* <div className="textbox">
+                                    <input onChange={(event) => { setRegisterPassword(event.target.value) }} type="password" placeholder="Password" />
+                                    <span className="material-symbols-outlined">
+                                        <LockOutlined style={{ color: '#F2EFEA' }} />
+                                    </span>
+                                </div> */}
                                 <div className="textbox">
                                     <span className="material-symbols-outlined">
                                         <LockOutlined style={{ color: '#F2EFEA' }} />
                                     </span>
                                     <input onChange={(event) => { setRegisterPassword(event.target.value) }} type={isPasswordVisible ? "text" : "password"} placeholder="Password" />
-                                    <div onClick={() => { setIsPasswordVisible(!isPasswordVisible) }} className="material-symbols-outlined cursor-pointer absolute top-[50%] right-[64px] translate-x-0 translate-y-[-50%]">
+                                    <div onClick={() => {setIsPasswordVisible(!isPasswordVisible)}} className="material-symbols-outlined cursor-pointer absolute top-[50%] right-[82px] translate-x-0 translate-y-[-50%]">
 
                                         {
                                             isPasswordVisible ?
@@ -218,13 +224,13 @@ export const Register = () => {
                                     <CalendarOutlined style={{ color: '#F2EFEA' }} />
                                 </span>
                                 {/* <input > */}
-                                <input onChange={(event) => { setRegisterBirth(event.target.value) }}>
-                                <Space onChange={(event) => { setRegisterBirth(event.target.value) }} direction="vertical" size={20}>
+                                {/* <input onChange={(event) => { setRegisterBirth(event.target.value) }}> */}
+                                {/* <Space onChange={(event) => { setRegisterBirth(event.target.value) }} direction="vertical" size={20}>
                                     <DatePicker
                                         format={dateFormatList}
                                     />
-                                </Space>
-                                </input>
+                                </Space> */}
+                                {/* </input> */}
                             </div>
                             <div className="textbox-select">
                                 <select onChange={(event) => (setRegisterGender(event.target.value))} type="text">
