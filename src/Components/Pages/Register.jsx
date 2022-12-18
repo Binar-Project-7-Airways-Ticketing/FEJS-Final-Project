@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { UserOutlined, LockOutlined, MailOutlined, CalendarOutlined } from '@ant-design/icons';
+import { UserOutlined, LockOutlined, MailOutlined, CalendarOutlined, EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useDispatch } from "react-redux";
@@ -32,7 +32,7 @@ export const Register = () => {
     const [registerPassword, setRegisterPassword] = useState(undefined);
     const [registerBirth, setRegisterBirth] = useState(undefined);
     const [registerGender, setRegisterGender] = useState(undefined);
-    const [registerRole, setRegisterRole] = useState(undefined);
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     function validatePassword() {
         const errors = [];
@@ -112,7 +112,6 @@ export const Register = () => {
             lastname: registerLastname,
             birthday: registerBirth,
             gender: registerGender,
-            role: registerRole,
         }))
 
         const results = unwrapResult(resultsActions);
@@ -122,6 +121,7 @@ export const Register = () => {
             console.log(userId);
             dispatch(createNotif(userId))
         }
+        alert("REGISTER BERHASIL")
     }
 
     // ketika user login tidak bisa ke halaman login lagi
@@ -176,10 +176,23 @@ export const Register = () => {
                             </div>
                             <div className="block w-full">
                                 <div className="textbox">
-                                    <input onChange={(event) => { setRegisterPassword(event.target.value) }} type="password" placeholder="Password" />
                                     <span className="material-symbols-outlined">
                                         <LockOutlined style={{ color: '#F2EFEA' }} />
                                     </span>
+                                    <input onChange={(event) => { setRegisterPassword(event.target.value) }} type={isPasswordVisible ? "text" : "password"} placeholder="Password" />
+                                    <div onClick={() => { setIsPasswordVisible(!isPasswordVisible) }} className="material-symbols-outlined cursor-pointer absolute top-[50%] right-[64px] translate-x-0 translate-y-[-50%]">
+
+                                        {
+                                            isPasswordVisible ?
+                                                <>
+                                                    <EyeInvisibleOutlined style={{ color: '#F2EFEA' }} />
+                                                </>
+                                                :
+                                                <>
+                                                    <EyeOutlined style={{ color: '#F2EFEA' }} />
+                                                </>
+                                        }
+                                    </div>
                                 </div>
                                 {
                                     !isPasswordValid ?
@@ -195,7 +208,7 @@ export const Register = () => {
                             </div>
                             <div className="textbox">
                                 <input onChange={(event) => { setRegisterBirth(event.target.value) }} type="text" placeholder="MM/DD/YY" />
-                                    {/* <Space direction="vertical" size={20}>
+                                {/* <Space direction="vertical" size={20}>
                                     <DatePicker
                                         format={dateFormatList}
                                     />
@@ -212,12 +225,6 @@ export const Register = () => {
                                     />
                                 </Space> */}
                                 {/* </input> */}
-                            </div>
-                            <div className="textbox ">
-                                <input onChange={(event) => { setRegisterRole(event.target.value) }} type="text" placeholder="Role" />
-                                <span className="material-symbols-outlined">
-                                    <CalendarOutlined style={{ color: '#F2EFEA' }} />
-                                </span>
                             </div>
                             <div className="textbox-select">
                                 <select onChange={(event) => (setRegisterGender(event.target.value))} type="text">

@@ -14,7 +14,6 @@ import mandiri from "../image/mandiri.jpg";
 import bni from "../image/bni.jpg";
 import ovo from "../image/ovo.jpg";
 import danaa from "../image/dana.jpg";
-import linkAja from "../image/link aja.jpg";
 import {
   MdFlightTakeoff,
   MdFlightLand,
@@ -68,7 +67,7 @@ export default function Transaction() {
     <>
       <div className="bg-brand-yellow">
         <Navbar />
-        <div className="p-8 w-full">
+        <div className="lg:p-8 md:p-16 sm:py-20 w-full">
           <div className="booking-container">
             <div className="booking-left flex flex-col gap-5">
               <div className="parent-a w-full bg-brand-nude p-6 rounded-md border-2 border-brand-black">
@@ -129,10 +128,9 @@ export default function Transaction() {
                   </h3>
                 </div>
                 <div>
-                  <div className="grid grid-cols-3 gap-4 p-2 mt">
+                  <div className="grid grid-cols-3 gap-4 p-2 mt sm:grid-cols-2">
                     <div
                       onClick={dana}
-                      // onClick={(e) => setPayment(e.target.value)}
                       className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
                     >
                       <img
@@ -208,19 +206,6 @@ export default function Transaction() {
                         }}
                       ></img>
                       <h3 className="p-6 text-black text-bold">Dana</h3>
-                    </div>
-                    <div
-                      onClick={dana}
-                      className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
-                    >
-                      <img
-                        src={linkAja}
-                        style={{
-                          width: "70px",
-                          height: "70px",
-                        }}
-                      ></img>
-                      <h3 className="p-6 text-black text-bold">Link Aja</h3>
                     </div>
                   </div>
                 </div>
@@ -299,7 +284,7 @@ export default function Transaction() {
             </div>
             <div className="booking-right">
               <div className="w-full">
-                <div className="parent-a w-full bg-brand-whiteLight p-6 rounded-md border-2 border-brand-black">
+                <div className="parent-a w-full bg-brand-whiteLight p-6 rounded-md border-2 border-brand-black sm:mt-8">
                   <div className="w-full bg-brand-black text-white p-2 mb-4 gap-4 rounded-md">
                     <h3 className="text-[20px] font-semibold mb-2">
                       Penerbangan

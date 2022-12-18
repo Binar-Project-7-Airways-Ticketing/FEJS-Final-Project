@@ -108,10 +108,8 @@ export default function Transaction() {
   // method payment
   const dana = () => {
     // navigate('/payment')
-    dispatch(loadPayment());
     alert("Apakah Metode Pembayaran Sudah Sesuai ?");
     setIsModalBayarOpen(false);
-    
     navigate("/bookingPending");
     
   }
@@ -125,9 +123,9 @@ export default function Transaction() {
     dispatch(loadLuggages());
   }, [luggages]);
 
-  // useEffect(() => {
-  //   dispatch(loadPayment());
-  // }, [payment]);
+  useEffect(() => {
+    dispatch(loadPayment());
+  }, [payment]);
 
   return (
     <React.Fragment>
@@ -142,8 +140,8 @@ export default function Transaction() {
           </div>
         </div>
       </div>
-      <div className="container bg-brand-yellow">
-        <div className="booking-container">
+      <div className="bg-brand-yellow">
+        <div className="container booking-container">
           <div className="booking-left">
             <div className="parent-a w-full bg-brand-nude p-6 rounded-md border-2 border-brand-black">
               <div className="left-header">
@@ -305,7 +303,7 @@ export default function Transaction() {
                 />
               </div>
             </div>
-            <div className="parent-d w-full mt-6 flex sm:justify-center md:justify-start lg:justify-end p-4 mb-4">
+            <div className="parent-d w-full mt-6 flex sm:justify-center md:justify-start lg:justify-end mb-4">
               <button
                 className="block rounded-lg cursor-pointer justify-center h-[60px] w-[50%] bg-brand-green text-[#f9f9f9] border-0 font-[600] tracking-[2px]"
                 type="submit"
