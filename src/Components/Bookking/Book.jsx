@@ -29,6 +29,7 @@ export default function Book() {
   const [trip, setTrip] = useState("Return");
   const [airportFrom, setAirportFrom] = useState("");
   const [airportTo, setAirportTo] = useState("");
+  const [btn, setBtn] = useState(false)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -72,6 +73,7 @@ export default function Book() {
     dispatch(loadFlightReturn(x));
     dispatch(loadCitiesFrom(airportFrom));
     dispatch(loadCitiesTo(airportTo));
+   
     navigate(`/booking/${trip}`);
   };
   const onFinishFailed = (errorInfo) => {
@@ -82,6 +84,11 @@ export default function Book() {
     setTrip(e.target.value);
   };
   useEffect(() => {
+    // if (btn===true){
+    //   navigate(`/booking/${trip}`)
+    // }else{
+    //   navigate('/')
+    // }
     dispatch(loadAirports());
   }, [dispatch]);
 

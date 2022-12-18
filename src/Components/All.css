@@ -309,10 +309,10 @@ header {
   display: flex;
   gap: 5px;
   width: 100%;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
 }
 
-.btn-increment-decrement button {
+/* .btn-increment-decrement button {
   width: 100%;
   color: #cba052;
   background: #f1efe9;
@@ -320,13 +320,13 @@ header {
   width: 35px;
   color: #555;
   padding: 5px;
-}
-.btn-increment-decrement input {
+} */
+/* .btn-increment-decrement input {
   width: 35px;
   border-radius: 10px;
   padding: 2px;
   text-align: center;
-}
+} */
 .wrap-class {
   display: flex;
   width: 100%;
@@ -556,12 +556,12 @@ nav {
   font-size: 12px;
   font-family: "Roboto";
 }
-.ant-input {
+/* .ant-input {
   width: 180px;
   border-color: #8c857b;
   transition: none;
   border-radius: 8px;
-}
+} */
 .ant-picker {
   border-color: #8c857b;
   background: transparent;

@@ -9,7 +9,7 @@ export default function Benefit() {
         <h5>SPECIALS FEATURES</h5>
         <h2>Some Benefit if you flight with us</h2>
       </div>
-      <div className="flex md:flex-row sm:flex-col-reverse w-full">
+      <div className="flex md:flex-row sm:flex-col w-full">
         <div className="md:flex md:flex-col sm:grid sm:grid-cols-2 gap-10 w-full ">
           <div className="flex flex-col gap-3">
             <span className="flex bg-brand-yellow w-16 h-12 rounded-3xl items-center justify-center text-brand-whiteLight font-bold text-lg">

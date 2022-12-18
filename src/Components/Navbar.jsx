@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Dropdown, Space, Input, Modal } from "antd";
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import logo from "../logo3.png";
+import logo from "../image/logo5.png";
 import Prf from "./Reusable/Prf";
 import "./All.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -66,10 +66,10 @@ export default function Navbar() {
     <nav>
       <div className="container">
         <div className="flex items-center justify-between h-fit w-full transition gap-1 py-2 text-brand-whiteLight relative">
-          <div className="flex md:w-36 sm:w-60 justify-start h-16 ">
+          <div className="flex lg:w-48 sm:w-60 justify-start h-16 ">
             <img
               onClick={() => navigate("/")}
-              className="flex cursor-pointer md:w-36 "
+              className="flex cursor-pointer "
               src={logo}
             ></img>
           </div>
@@ -102,7 +102,7 @@ export default function Navbar() {
 
               {isLogin ? (
                 <>
-                  <div className="notif">
+                  <div className="flex justify-center pt-1 relative w-fit cursor-pointer items-center">
                     <Dropdown
                       onMouseEnter={() => setOpenNotif(true)}
                       placement="bottomLeft"
@@ -128,10 +128,10 @@ export default function Navbar() {
             </div>
           ) : null}
           {show ? (
-            <div className="flex w-full justify-end items-center gap-4 text-brand-whiteLight">
+            <div className="flex w-full justify-end items-center gap-2 text-brand-whiteLight">
               {search ? (
                 <Input
-                  className="lg:w-1/2 md:w-full"
+                  className="lg:w-1/2 md:w-3/4"
                   placeholder="Search Cities or Countries"
                 />
               ) : (
@@ -156,7 +156,7 @@ export default function Navbar() {
 
               {isLogin ? (
                 <>
-                  <div className="notif">
+                  <div className="flex justify-center pt-1 relative w-fit cursor-pointer items-center">
                     <Dropdown
                       onMouseEnter={() => setOpenNotif(true)}
                       placement="bottomLeft"
@@ -220,7 +220,7 @@ export default function Navbar() {
               <div className="flex items-center justify-end w-full gap-3.5">
                 {search ? (
                   <Input
-                    className="lg:w-full"
+                    className="lg:w-4/5 "
                     placeholder="Search Cities or Countries"
                   />
                 ) : (
@@ -232,13 +232,13 @@ export default function Navbar() {
                 {search ? (
                   <FaTimes
                     size={20}
-                    className="flex items-center"
+                    className="flex items-center cursor-pointer"
                     onClick={srchClose}
                   />
                 ) : (
                   <BsSearch
                     size={20}
-                    className="flex items-center"
+                    className="flex items-center cursor-pointer"
                     onClick={srch}
                   />
                 )}

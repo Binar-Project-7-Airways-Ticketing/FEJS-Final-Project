@@ -218,13 +218,13 @@ export const Register = () => {
                                     <CalendarOutlined style={{ color: '#F2EFEA' }} />
                                 </span>
                                 {/* <input > */}
-                                {/* <input onChange={(event) => { setRegisterBirth(event.target.value) }}> */}
-                                {/* <Space onChange={(event) => { setRegisterBirth(event.target.value) }} direction="vertical" size={20}>
+                                <input onChange={(event) => { setRegisterBirth(event.target.value) }}>
+                                <Space onChange={(event) => { setRegisterBirth(event.target.value) }} direction="vertical" size={20}>
                                     <DatePicker
                                         format={dateFormatList}
                                     />
-                                </Space> */}
-                                {/* </input> */}
+                                </Space>
+                                </input>
                             </div>
                             <div className="textbox-select">
                                 <select onChange={(event) => (setRegisterGender(event.target.value))} type="text">

@@ -50,7 +50,7 @@ export default function ReviewCard() {
                   spaceBetween: 10,
                   slidesPerView: 1,
                 },
-                375: {
+                360: {
                   spaceBetween: 10,
                   slidesPerView: 1,
                 },
