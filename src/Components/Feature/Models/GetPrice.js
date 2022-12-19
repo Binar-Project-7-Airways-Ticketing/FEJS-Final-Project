@@ -4,21 +4,20 @@ import { authConfig } from "../Config";
 
 const initialState = {
 
-  user:[],
+  Price:[],
   loadSeat: false,
 };
 
 
-export const loadUser = createAsyncThunk("user/loadUser", async (users) => {
-  
+export const loadPrice = createAsyncThunk("Price/loadPrice", async (Prices) => {
+
   
   try {
-    const user = await axios.get(
-      `${authConfig.baseUrl}/api/user/${users}`
+    const Price = await axios.get(
+      `${authConfig.baseUrl}/api/flight/price/${Prices}`
     );
-    // localStorage.setItem("User", JSON.stringify(user.data));
-    
-    return user.data
+    // localStorage.setItem("Price", JSON.stringify(Price.data));
+    return Price.data
   } catch (error) {
     console.error(error);
   }
@@ -27,18 +26,18 @@ export const loadUser = createAsyncThunk("user/loadUser", async (users) => {
 export const postSlice = createSlice(
 
     {
-      name: "User",
+      name: "Price",
       initialState,
       reducers: {},
       extraReducers: {
-        [loadUser.pending]: (state) => {
+        [loadPrice.pending]: (state) => {
           state.loading = true;
         },
-        [loadUser.fulfilled]: (state, { payload }) => {
+        [loadPrice.fulfilled]: (state, { payload }) => {
           state.loading = false;
-          state.user = payload;
+          state.Price = payload;
         },
-        [loadUser.rejected]: (state) => {
+        [loadPrice.rejected]: (state) => {
           state.loading = false;
         },
       },

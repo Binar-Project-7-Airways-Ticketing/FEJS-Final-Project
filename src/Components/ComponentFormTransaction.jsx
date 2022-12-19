@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { ContactsOutlined } from "@ant-design/icons";
 
 import Select from "react-select";
 import { Button } from "antd";
+import { useEffect } from "react";
 
 export default function ComponentFormTransaction(props) {
+    const [token, setToken] = useState(false);
+
+  useEffect(()=>{
+     const token = JSON.parse(localStorage.getItem("token"))
+     setToken(token);
+},[])
   return (
     <React.Fragment>
       <div className="parent-b w-full bg-brand-nude p-6 mb-6 rounded-md border-2 border-brand-black">
@@ -12,12 +19,12 @@ export default function ComponentFormTransaction(props) {
           <span>
             <ContactsOutlined />
           </span>
-          <h3>Penumpang</h3>
+          <h3>{token ? props.pass : "Penumpang"}</h3>
         </div>
         <div className="left-content">
           <div className="flex w-full gap-1 mb-2 ">
             <select
-              onChange={props.title}
+              onChange={token? props.title: "Penumpang"}
               className="border-brand-gray p-2 border-2 rounded-md w-full"
               type="text"
             >
@@ -43,6 +50,7 @@ export default function ComponentFormTransaction(props) {
               className="border-brand-gray p-2 border-2 rounded-md w-full"
               onChange={props.gender}
               type="text"
+              value={props.userGender}
             >
               <option selected>Gender</option>
               <option value="PEREMPUAN">PEREMPUAN</option>
@@ -57,6 +65,7 @@ export default function ComponentFormTransaction(props) {
                 className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
                 type="text"
                 placeholder="Firstname"
+                value={props.userFirstName}
               />
             </div>
           </div>
@@ -67,6 +76,7 @@ export default function ComponentFormTransaction(props) {
                 className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
                 type="text"
                 placeholder="Lastname"
+                value={props.userLastName}
               />
             </div>
           </div>
@@ -77,6 +87,7 @@ export default function ComponentFormTransaction(props) {
                 className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
                 type="text"
                 placeholder="MM/DD/YY birthday"
+                value={props.userBirthDay}
               />
             </div>
           </div>

@@ -34,6 +34,7 @@ import { unwrapResult } from "@reduxjs/toolkit";
 import { createPassenger } from "./Feature/Models/CreatePassenger";
 import ComponentFormTransaction from "./ComponentFormTransaction";
 import { createCategories } from "./Feature/Models/CreateCategory";
+import { loadPrice } from "./Feature/Models/GetPrice";
 
 const Completionist = () => <span>You are good to go!</span>;
 
@@ -63,18 +64,18 @@ export default function Transaction() {
   const { luggages } = useSelector((state) => state.luggage);
   const { payment } = useSelector((state) => state.payment);
   const { user } = useSelector((state) => state.getUser);
+  const {Price} = useSelector((state)=> state.getPrice )
 
   const navigate = useNavigate();
 
-
   const [bagasi, setBagasi] = useState("");
- 
+
   const [passenger, setPassenger] = useState("");
   const [countPassenger, setCountPassenger] = useState("");
-  
+  const [classFlight, setClassFlight]= useState("")
   const [departFl, setDepart] = useState([]);
   const [token, setToken] = useState(false);
-  const [returnFl, setReturn] = useState([])
+  const [returnFl, setReturn] = useState([]);
 
   const [value, setValue] = useState("");
   const options = useMemo(() => countryList().getData(), []);
@@ -170,8 +171,6 @@ export default function Transaction() {
   const [prices, setPrices] = useState([]);
   const [price, setPrice] = useState([]);
 
-
-  
   const changeHandler = (value) => {
     setValue(value);
   };
@@ -239,11 +238,13 @@ export default function Transaction() {
     alert("Apakah Metode Pembayaran Sudah Sesuai ?");
     setIsModalBayarOpen(false);
     navigate("/bookingPending");
-    
-  }
+  };
 
+  const coba=()=>{
+
+  }
   const create = () => {
-    alert("Silahkan lanjut pengisian")
+    alert("Silahkan lanjut pengisian");
     const passanger = {
       titleUser: createTitle,
       firstName: createFirstName,
@@ -253,18 +254,18 @@ export default function Transaction() {
       gender: createGender,
       nationality: createNationality,
       specialRequest: "NONE",
-     
     };
-    const category ={
-      nameCategory: createCategory,
-      price: price 
-    }
 
-    dispatch(createCategories(category))
-    dispatch(createPassenger(passanger))
+    const category = {
+      nameCategory: createCategory,
+      price: price,
+    };
+
+    dispatch(createCategories(category));
+    dispatch(createPassenger(passanger));
   };
   const create1 = () => {
-    alert("Silahkan lanjut pengisian")
+    alert("Silahkan lanjut pengisian");
     const passanger1 = {
       titleUser: createTitle1,
       firstName: createFirstName1,
@@ -274,18 +275,19 @@ export default function Transaction() {
       gender: createGender1,
       nationality: createNationality1,
       specialRequest: "NONE",
-     
     };
-    const category1 ={
+   
+    const category1 = {
       nameCategory: createCategory1,
-      price: price 
-    }
+      price: price,
+    };
+    
 
-    dispatch(createCategories(category1))
-    dispatch(createPassenger(passanger1))
+    dispatch(createCategories(category1));
+    dispatch(createPassenger(passanger1));
   };
   const create2 = () => {
-    alert("Silahkan lanjut pengisian")
+    alert("Silahkan lanjut pengisian");
     const passanger2 = {
       titleUser: createTitle2,
       firstName: createFirstName2,
@@ -295,18 +297,17 @@ export default function Transaction() {
       gender: createGender2,
       nationality: createNationality2,
       specialRequest: "NONE",
-     
     };
-    const category2 ={
+    const category2 = {
       nameCategory: createCategory2,
-      price: price 
-    }
+      price: price,
+    };
 
-    dispatch(createCategories(category2))
-    dispatch(createPassenger(passanger2))
+    dispatch(createCategories(category2));
+    dispatch(createPassenger(passanger2));
   };
   const create3 = () => {
-    alert("Silahkan lanjut pengisian")
+    alert("Silahkan lanjut pengisian");
     const passanger3 = {
       titleUser: createTitle3,
       firstName: createFirstName3,
@@ -316,18 +317,17 @@ export default function Transaction() {
       gender: createGender3,
       nationality: createNationality3,
       specialRequest: "NONE",
-     
     };
-    const category3 ={
+    const category3 = {
       nameCategory: createCategory3,
-      price: price 
-    }
+      price: price,
+    };
 
-    dispatch(createCategories(category3))
-    dispatch(createPassenger(passanger3))
+    dispatch(createCategories(category3));
+    dispatch(createPassenger(passanger3));
   };
   const create4 = () => {
-    alert("Silahkan lanjut pengisian")
+    alert("Silahkan lanjut pengisian");
     const passanger4 = {
       titleUser: createTitle4,
       firstName: createFirstName4,
@@ -337,18 +337,17 @@ export default function Transaction() {
       gender: createGender4,
       nationality: createNationality4,
       specialRequest: "NONE",
-     
     };
-    const category4 ={
+    const category4 = {
       nameCategory: createCategory4,
-      price: price 
-    }
+      price: price,
+    };
 
-    dispatch(createCategories(category4))
-    dispatch(createPassenger(passanger4))
+    dispatch(createCategories(category4));
+    dispatch(createPassenger(passanger4));
   };
   const create5 = () => {
-    alert("Silahkan lanjut pengisian")
+    alert("Silahkan lanjut pengisian");
     const passanger5 = {
       titleUser: createTitle5,
       firstName: createFirstName5,
@@ -358,18 +357,17 @@ export default function Transaction() {
       gender: createGender5,
       nationality: createNationality5,
       specialRequest: "NONE",
-     
     };
-    const category5 ={
+    const category5 = {
       nameCategory: createCategory5,
-      price: price 
-    }
+      price: price,
+    };
 
-    dispatch(createCategories(category5))
-    dispatch(createPassenger(passanger5))
+    dispatch(createCategories(category5));
+    dispatch(createPassenger(passanger5));
   };
   const create6 = () => {
-    alert("Silahkan lanjut pengisian")
+    alert("Silahkan lanjut pengisian");
     const passanger6 = {
       titleUser: createTitle6,
       firstName: createFirstName6,
@@ -379,18 +377,17 @@ export default function Transaction() {
       gender: createGender6,
       nationality: createNationality6,
       specialRequest: "NONE",
-     
     };
-    const category6 ={
+    const category6 = {
       nameCategory: createCategory6,
-      price: price 
-    }
+      price: price,
+    };
 
-    dispatch(createCategories(category6))
-    dispatch(createPassenger(passanger6))
+    dispatch(createCategories(category6));
+    dispatch(createPassenger(passanger6));
   };
   const create7 = () => {
-    alert("Silahkan lanjut pengisian")
+    alert("Silahkan lanjut pengisian");
     const passanger7 = {
       titleUser: createTitle7,
       firstName: createFirstName7,
@@ -400,18 +397,15 @@ export default function Transaction() {
       gender: createGender7,
       nationality: createNationality7,
       specialRequest: "NONE",
-     
     };
-    const category7 ={
+    const category7 = {
       nameCategory: createCategory7,
-      price: price 
-    }
+      price: price,
+    };
 
-    dispatch(createCategories(category7))
-    dispatch(createPassenger(passanger7))
+    dispatch(createCategories(category7));
+    dispatch(createPassenger(passanger7));
   };
-
-
 
   const handle = (e) => {
     console.log(e);
@@ -421,15 +415,12 @@ export default function Transaction() {
     setPassenger(
       countPassenger.adults + countPassenger.child + countPassenger.infant
     );
-    const price = JSON.parse(localStorage.getItem("flightDepart"))
-    setPrices(price)
-    prices.map((item)=>(
-      setPrice(item.price)
-    ))
     const token = JSON.parse(localStorage.getItem("token"));
     const departFl = JSON.parse(localStorage.getItem("depart"));
+    const Class = JSON.parse(localStorage.getItem("class"))
     const returnFl = JSON.parse(localStorage.getItem("return"));
     const user = localStorage.getItem("idUser");
+    setClassFlight(Class)
     setToken(token);
     setDepart(departFl);
     setReturn(returnFl);
@@ -438,12 +429,18 @@ export default function Transaction() {
       dispatch(loadUser(user));
     } else {
     }
+    if (classFlight.class==="Business"){
+      setPrice(Price.business)
+    }else if(classFlight.class==="Economy"){
+      setPrice(Price.economy)
+    }
+    console.log(price);
     dispatch(loadLuggages());
-  }, [luggages]);
-
-  useEffect(() => {
+    dispatch(loadPrice(departFl.idFlight))
     dispatch(loadPayment());
-  }, [payment]);
+  }, [luggages,payment]);
+
+
 
   return (
     <React.Fragment>
@@ -463,410 +460,957 @@ export default function Transaction() {
           <div className="container bg-brand-yellow">
             <div className="booking-container">
               <div className="booking-left">
-                {token ?<ComponentFormTransaction
-                  title={(e)=>setCreateTitle(e.target.value)}
-                  category={(e)=>setCreateCategory(e.target.value)}
-                  gender={(e)=>setCreateGender(e.target.value)}
-                  firstName={(e)=>setCreateFirstName(e.target.value)}
-                  lastName={(e)=>setCreateLastName(e.target.value)}
-                  birthDay={(e)=>setCreateBirth(e.target.value)}
-                  contact={(e)=>setCreateContactNumber(e.target.value)}
-                  options={options}
-                  value={value}
-                  country={changeHandler}
-                  confirm={create}
-                /> : null}
-
-                {passenger === 1 && token===null ? (
-                  <ComponentFormTransaction
-                  title={(e)=>setCreateTitle1(e.target.value)}
-                  category={(e)=>setCreateCategory1(e.target.value)}
-                  gender={(e)=>setCreateGender1(e.target.value)}
-                  firstName={(e)=>setCreateFirstName1(e.target.value)}
-                  lastName={(e)=>setCreateLastName1(e.target.value)}
-                  birthDay={(e)=>setCreateBirth1(e.target.value)}
-                  contact={(e)=>setCreateContactNumber1(e.target.value)}
-                  options={options1}
-                  value={value1}
-                  country={changeHandler1}
-                  confirm={create1}
-                />
-                ) : null}
-                {passenger === 2 ? (
+                {token ? (
                   <>
-                    <ComponentFormTransaction
-                  title={(e)=>setCreateTitle1(e.target.value)}
-                  category={(e)=>setCreateCategory1(e.target.value)}
-                  gender={(e)=>setCreateGender1(e.target.value)}
-                  firstName={(e)=>setCreateFirstName1(e.target.value)}
-                  lastName={(e)=>setCreateLastName1(e.target.value)}
-                  birthDay={(e)=>setCreateBirth1(e.target.value)}
-                  contact={(e)=>setCreateContactNumber1(e.target.value)}
-                  options={options1}
-                  value={value1}
-                  country={changeHandler1}
-                  confirm={create1}
-                />
-                    <ComponentFormTransaction
-                  title={(e)=>setCreateTitle2(e.target.value)}
-                  category={(e)=>setCreateCategory2(e.target.value)}
-                  gender={(e)=>setCreateGender2(e.target.value)}
-                  firstName={(e)=>setCreateFirstName2(e.target.value)}
-                  lastName={(e)=>setCreateLastName2(e.target.value)}
-                  birthDay={(e)=>setCreateBirth2(e.target.value)}
-                  contact={(e)=>setCreateContactNumber2(e.target.value)}
-                  options={options2}
-                  value={value2}
-                  country={changeHandler2}
-                  confirm={create2}
-                />
-                  </>
-                ) : null}
-                {passenger === 3 ? (
-                  <>
-                    <ComponentFormTransaction
-                  title={(e)=>setCreateTitle1(e.target.value)}
-                  category={(e)=>setCreateCategory1(e.target.value)}
-                  gender={(e)=>setCreateGender1(e.target.value)}
-                  firstName={(e)=>setCreateFirstName1(e.target.value)}
-                  lastName={(e)=>setCreateLastName1(e.target.value)}
-                  birthDay={(e)=>setCreateBirth1(e.target.value)}
-                  contact={(e)=>setCreateContactNumber1(e.target.value)}
-                  options={options1}
-                  value={value1}
-                  country={changeHandler1}
-                  confirm={create1}
-                />
+                    {passenger === 1 ? (
                       <ComponentFormTransaction
-                  title={(e)=>setCreateTitle2(e.target.value)}
-                  category={(e)=>setCreateCategory2(e.target.value)}
-                  gender={(e)=>setCreateGender2(e.target.value)}
-                  firstName={(e)=>setCreateFirstName2(e.target.value)}
-                  lastName={(e)=>setCreateLastName2(e.target.value)}
-                  birthDay={(e)=>setCreateBirth2(e.target.value)}
-                  contact={(e)=>setCreateContactNumber2(e.target.value)}
-                  options={options2}
-                  value={value2}
-                  country={changeHandler2}
-                  confirm={create2}
-                />
-                      <ComponentFormTransaction
-                  title={(e)=>setCreateTitle3(e.target.value)}
-                  category={(e)=>setCreateCategory3(e.target.value)}
-                  gender={(e)=>setCreateGender3(e.target.value)}
-                  firstName={(e)=>setCreateFirstName3(e.target.value)}
-                  lastName={(e)=>setCreateLastName3(e.target.value)}
-                  birthDay={(e)=>setCreateBirth3(e.target.value)}
-                  contact={(e)=>setCreateContactNumber3(e.target.value)}
-                  options={options3}
-                  value={value3}
-                  country={changeHandler3}
-                  confirm={create3}
-                />
-                  </>
-                ) : null}
-                {passenger === 4 ? (
-                  <>
-                   <ComponentFormTransaction
-                  title={(e)=>setCreateTitle1(e.target.value)}
-                  category={(e)=>setCreateCategory1(e.target.value)}
-                  gender={(e)=>setCreateGender1(e.target.value)}
-                  firstName={(e)=>setCreateFirstName1(e.target.value)}
-                  lastName={(e)=>setCreateLastName1(e.target.value)}
-                  birthDay={(e)=>setCreateBirth1(e.target.value)}
-                  contact={(e)=>setCreateContactNumber1(e.target.value)}
-                  options={options1}
-                  value={value1}
-                  country={changeHandler1}
-                  confirm={create1}
-                />
-                      <ComponentFormTransaction
-                  title={(e)=>setCreateTitle2(e.target.value)}
-                  category={(e)=>setCreateCategory2(e.target.value)}
-                  gender={(e)=>setCreateGender2(e.target.value)}
-                  firstName={(e)=>setCreateFirstName2(e.target.value)}
-                  lastName={(e)=>setCreateLastName2(e.target.value)}
-                  birthDay={(e)=>setCreateBirth2(e.target.value)}
-                  contact={(e)=>setCreateContactNumber2(e.target.value)}
-                  options={options2}
-                  value={value2}
-                  country={changeHandler2}
-                  confirm={create2}
-                />
-                      <ComponentFormTransaction
-                  title={(e)=>setCreateTitle3(e.target.value)}
-                  category={(e)=>setCreateCategory3(e.target.value)}
-                  gender={(e)=>setCreateGender3(e.target.value)}
-                  firstName={(e)=>setCreateFirstName3(e.target.value)}
-                  lastName={(e)=>setCreateLastName3(e.target.value)}
-                  birthDay={(e)=>setCreateBirth3(e.target.value)}
-                  contact={(e)=>setCreateContactNumber3(e.target.value)}
-                  options={options3}
-                  value={value3}
-                  country={changeHandler3}
-                  confirm={create3}
-                />
-                    <ComponentFormTransaction
-                  title={(e)=>setCreateTitle4(e.target.value)}
-                  category={(e)=>setCreateCategory4(e.target.value)}
-                  gender={(e)=>setCreateGender4(e.target.value)}
-                  firstName={(e)=>setCreateFirstName4(e.target.value)}
-                  lastName={(e)=>setCreateLastName4(e.target.value)}
-                  birthDay={(e)=>setCreateBirth4(e.target.value)}
-                  contact={(e)=>setCreateContactNumber4(e.target.value)}
-                  options={options4}
-                  value={value4}
-                  country={changeHandler4}
-                  confirm={create4}
-                />
-                  </>
-                ) : null}
-                {passenger === 5 && token===null  ? (
-                  <>
-                   <ComponentFormTransaction
-                  title={(e)=>setCreateTitle1(e.target.value)}
-                  category={(e)=>setCreateCategory1(e.target.value)}
-                  gender={(e)=>setCreateGender1(e.target.value)}
-                  firstName={(e)=>setCreateFirstName1(e.target.value)}
-                  lastName={(e)=>setCreateLastName1(e.target.value)}
-                  birthDay={(e)=>setCreateBirth1(e.target.value)}
-                  contact={(e)=>setCreateContactNumber1(e.target.value)}
-                  options={options1}
-                  value={value1}
-                  country={changeHandler1}
-                  confirm={create1}
-                />
-                      <ComponentFormTransaction
-                  title={(e)=>setCreateTitle2(e.target.value)}
-                  category={(e)=>setCreateCategory2(e.target.value)}
-                  gender={(e)=>setCreateGender2(e.target.value)}
-                  firstName={(e)=>setCreateFirstName2(e.target.value)}
-                  lastName={(e)=>setCreateLastName2(e.target.value)}
-                  birthDay={(e)=>setCreateBirth2(e.target.value)}
-                  contact={(e)=>setCreateContactNumber2(e.target.value)}
-                  options={options2}
-                  value={value2}
-                  country={changeHandler2}
-                  confirm={create2}
-                />
-                      <ComponentFormTransaction
-                  title={(e)=>setCreateTitle3(e.target.value)}
-                  category={(e)=>setCreateCategory3(e.target.value)}
-                  gender={(e)=>setCreateGender3(e.target.value)}
-                  firstName={(e)=>setCreateFirstName3(e.target.value)}
-                  lastName={(e)=>setCreateLastName3(e.target.value)}
-                  birthDay={(e)=>setCreateBirth3(e.target.value)}
-                  contact={(e)=>setCreateContactNumber3(e.target.value)}
-                  options={options3}
-                  value={value3}
-                  country={changeHandler3}
-                  confirm={create3}
-                />
-                    <ComponentFormTransaction
-                  title={(e)=>setCreateTitle4(e.target.value)}
-                  category={(e)=>setCreateCategory4(e.target.value)}
-                  gender={(e)=>setCreateGender4(e.target.value)}
-                  firstName={(e)=>setCreateFirstName4(e.target.value)}
-                  lastName={(e)=>setCreateLastName4(e.target.value)}
-                  birthDay={(e)=>setCreateBirth4(e.target.value)}
-                  contact={(e)=>setCreateContactNumber4(e.target.value)}
-                  options={options4}
-                  value={value4}
-                  country={changeHandler4}
-                  confirm={create4}
-                />
-                    <ComponentFormTransaction
-                  title={(e)=>setCreateTitle5(e.target.value)}
-                  category={(e)=>setCreateCategory5(e.target.value)}
-                  gender={(e)=>setCreateGender5(e.target.value)}
-                  firstName={(e)=>setCreateFirstName5(e.target.value)}
-                  lastName={(e)=>setCreateLastName5(e.target.value)}
-                  birthDay={(e)=>setCreateBirth5(e.target.value)}
-                  contact={(e)=>setCreateContactNumber5(e.target.value)}
-                  options={options5}
-                  value={value5}
-                  country={changeHandler5}
-                  confirm={create5}
-                />
-                  </>
-                ) : null}
-                {passenger === 6 ? (
-                  <>
+                        pass={"Pemesan"}
+                        title={(e) => setCreateTitle1(e.target.value)}
+                        category={(e) => setCreateCategory1(e.target.value)}
+                        gender={(e) => setCreateGender1(e.target.value)}
+                        firstName={(e) => setCreateFirstName1(e.target.value)}
+                        lastName={(e) => setCreateLastName1(e.target.value)}
+                        birthDay={(e) => setCreateBirth1(e.target.value)}
+                        contact={(e) => setCreateContactNumber1(e.target.value)}
+                        options={options1}
+                        value={value1}
+                        country={changeHandler1}
+                        confirm={create1}
+                        userFirstName={user.firstName}
+                        userLastName={user.lastName}
+                        userBirthDay={user.birthday}
+                        userGender={user.gender}
+                      />
+                    ) : null}
+                    {passenger === 2 ? (
+                      <>
                         <ComponentFormTransaction
-                  title={(e)=>setCreateTitle1(e.target.value)}
-                  category={(e)=>setCreateCategory1(e.target.value)}
-                  gender={(e)=>setCreateGender1(e.target.value)}
-                  firstName={(e)=>setCreateFirstName1(e.target.value)}
-                  lastName={(e)=>setCreateLastName1(e.target.value)}
-                  birthDay={(e)=>setCreateBirth1(e.target.value)}
-                  contact={(e)=>setCreateContactNumber1(e.target.value)}
-                  options={options1}
-                  value={value1}
-                  country={changeHandler1}
-                  confirm={create1}
-                />
-                      <ComponentFormTransaction
-                  title={(e)=>setCreateTitle2(e.target.value)}
-                  category={(e)=>setCreateCategory2(e.target.value)}
-                  gender={(e)=>setCreateGender2(e.target.value)}
-                  firstName={(e)=>setCreateFirstName2(e.target.value)}
-                  lastName={(e)=>setCreateLastName2(e.target.value)}
-                  birthDay={(e)=>setCreateBirth2(e.target.value)}
-                  contact={(e)=>setCreateContactNumber2(e.target.value)}
-                  options={options2}
-                  value={value2}
-                  country={changeHandler2}
-                  confirm={create2}
-                />
-                      <ComponentFormTransaction
-                  title={(e)=>setCreateTitle3(e.target.value)}
-                  category={(e)=>setCreateCategory3(e.target.value)}
-                  gender={(e)=>setCreateGender3(e.target.value)}
-                  firstName={(e)=>setCreateFirstName3(e.target.value)}
-                  lastName={(e)=>setCreateLastName3(e.target.value)}
-                  birthDay={(e)=>setCreateBirth3(e.target.value)}
-                  contact={(e)=>setCreateContactNumber3(e.target.value)}
-                  options={options3}
-                  value={value3}
-                  country={changeHandler3}
-                  confirm={create3}
-                />
-                    <ComponentFormTransaction
-                  title={(e)=>setCreateTitle4(e.target.value)}
-                  category={(e)=>setCreateCategory4(e.target.value)}
-                  gender={(e)=>setCreateGender4(e.target.value)}
-                  firstName={(e)=>setCreateFirstName4(e.target.value)}
-                  lastName={(e)=>setCreateLastName4(e.target.value)}
-                  birthDay={(e)=>setCreateBirth4(e.target.value)}
-                  contact={(e)=>setCreateContactNumber4(e.target.value)}
-                  options={options4}
-                  value={value4}
-                  country={changeHandler4}
-                  confirm={create4}
-                />
-                    <ComponentFormTransaction
-                  title={(e)=>setCreateTitle5(e.target.value)}
-                  category={(e)=>setCreateCategory5(e.target.value)}
-                  gender={(e)=>setCreateGender5(e.target.value)}
-                  firstName={(e)=>setCreateFirstName5(e.target.value)}
-                  lastName={(e)=>setCreateLastName5(e.target.value)}
-                  birthDay={(e)=>setCreateBirth5(e.target.value)}
-                  contact={(e)=>setCreateContactNumber5(e.target.value)}
-                  options={options5}
-                  value={value5}
-                  country={changeHandler5}
-                  confirm={create5}
-                />
-                    <ComponentFormTransaction
-                  title={(e)=>setCreateTitle6(e.target.value)}
-                  category={(e)=>setCreateCategory6(e.target.value)}
-                  gender={(e)=>setCreateGender6(e.target.value)}
-                  firstName={(e)=>setCreateFirstName6(e.target.value)}
-                  lastName={(e)=>setCreateLastName6(e.target.value)}
-                  birthDay={(e)=>setCreateBirth6(e.target.value)}
-                  contact={(e)=>setCreateContactNumber6(e.target.value)}
-                  options={options6}
-                  value={value6}
-                  country={changeHandler6}
-                  confirm={create6}
-                />
+                          pass={"Pemesan"}
+                          title={(e) => setCreateTitle1(e.target.value)}
+                          category={(e) => setCreateCategory1(e.target.value)}
+                          gender={(e) => setCreateGender1(e.target.value)}
+                          firstName={(e) => setCreateFirstName1(e.target.value)}
+                          lastName={(e) => setCreateLastName1(e.target.value)}
+                          birthDay={(e) => setCreateBirth1(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber1(e.target.value)
+                          }
+                          options={options1}
+                          value={value1}
+                          country={changeHandler1}
+                          confirm={create1}
+                          userFirstName={user.firstName}
+                          userLastName={user.lastName}
+                          userBirthDay={user.birthday}
+                          userGender={user.gender}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle2(e.target.value)}
+                          category={(e) => setCreateCategory2(e.target.value)}
+                          gender={(e) => setCreateGender2(e.target.value)}
+                          firstName={(e) => setCreateFirstName2(e.target.value)}
+                          lastName={(e) => setCreateLastName2(e.target.value)}
+                          birthDay={(e) => setCreateBirth2(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber2(e.target.value)
+                          }
+                          options={options2}
+                          value={value2}
+                          country={changeHandler2}
+                          confirm={create2}
+                        />
+                      </>
+                    ) : null}
+                    {passenger === 3 ? (
+                      <>
+                        <ComponentFormTransaction
+                          pass={"Pemesan"}
+                          title={(e) => setCreateTitle1(e.target.value)}
+                          category={(e) => setCreateCategory1(e.target.value)}
+                          gender={(e) => setCreateGender1(e.target.value)}
+                          firstName={(e) => setCreateFirstName1(e.target.value)}
+                          lastName={(e) => setCreateLastName1(e.target.value)}
+                          birthDay={(e) => setCreateBirth1(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber1(e.target.value)
+                          }
+                          options={options1}
+                          value={value1}
+                          country={changeHandler1}
+                          confirm={create1}
+                          userFirstName={user.firstName}
+                          userLastName={user.lastName}
+                          userBirthDay={user.birthday}
+                          userGender={user.gender}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle2(e.target.value)}
+                          category={(e) => setCreateCategory2(e.target.value)}
+                          gender={(e) => setCreateGender2(e.target.value)}
+                          firstName={(e) => setCreateFirstName2(e.target.value)}
+                          lastName={(e) => setCreateLastName2(e.target.value)}
+                          birthDay={(e) => setCreateBirth2(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber2(e.target.value)
+                          }
+                          options={options2}
+                          value={value2}
+                          country={changeHandler2}
+                          confirm={create2}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle3(e.target.value)}
+                          category={(e) => setCreateCategory3(e.target.value)}
+                          gender={(e) => setCreateGender3(e.target.value)}
+                          firstName={(e) => setCreateFirstName3(e.target.value)}
+                          lastName={(e) => setCreateLastName3(e.target.value)}
+                          birthDay={(e) => setCreateBirth3(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber3(e.target.value)
+                          }
+                          options={options3}
+                          value={value3}
+                          country={changeHandler3}
+                          confirm={create3}
+                        />
+                      </>
+                    ) : null}
+                    {passenger === 4 ? (
+                      <>
+                        <ComponentFormTransaction
+                          pass={"Pemesan"}
+                          title={(e) => setCreateTitle1(e.target.value)}
+                          category={(e) => setCreateCategory1(e.target.value)}
+                          gender={(e) => setCreateGender1(e.target.value)}
+                          firstName={(e) => setCreateFirstName1(e.target.value)}
+                          lastName={(e) => setCreateLastName1(e.target.value)}
+                          birthDay={(e) => setCreateBirth1(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber1(e.target.value)
+                          }
+                          options={options1}
+                          value={value1}
+                          country={changeHandler1}
+                          confirm={create1}
+                          userFirstName={user.firstName}
+                          userLastName={user.lastName}
+                          userBirthDay={user.birthday}
+                          userGender={user.gender}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle2(e.target.value)}
+                          category={(e) => setCreateCategory2(e.target.value)}
+                          gender={(e) => setCreateGender2(e.target.value)}
+                          firstName={(e) => setCreateFirstName2(e.target.value)}
+                          lastName={(e) => setCreateLastName2(e.target.value)}
+                          birthDay={(e) => setCreateBirth2(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber2(e.target.value)
+                          }
+                          options={options2}
+                          value={value2}
+                          country={changeHandler2}
+                          confirm={create2}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle3(e.target.value)}
+                          category={(e) => setCreateCategory3(e.target.value)}
+                          gender={(e) => setCreateGender3(e.target.value)}
+                          firstName={(e) => setCreateFirstName3(e.target.value)}
+                          lastName={(e) => setCreateLastName3(e.target.value)}
+                          birthDay={(e) => setCreateBirth3(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber3(e.target.value)
+                          }
+                          options={options3}
+                          value={value3}
+                          country={changeHandler3}
+                          confirm={create3}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle4(e.target.value)}
+                          category={(e) => setCreateCategory4(e.target.value)}
+                          gender={(e) => setCreateGender4(e.target.value)}
+                          firstName={(e) => setCreateFirstName4(e.target.value)}
+                          lastName={(e) => setCreateLastName4(e.target.value)}
+                          birthDay={(e) => setCreateBirth4(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber4(e.target.value)
+                          }
+                          options={options4}
+                          value={value4}
+                          country={changeHandler4}
+                          confirm={create4}
+                        />
+                      </>
+                    ) : null}
+                    {passenger === 5 && token === null ? (
+                      <>
+                        <ComponentFormTransaction
+                          pass={"Pemesan"}
+                          title={(e) => setCreateTitle1(e.target.value)}
+                          category={(e) => setCreateCategory1(e.target.value)}
+                          gender={(e) => setCreateGender1(e.target.value)}
+                          firstName={(e) => setCreateFirstName1(e.target.value)}
+                          lastName={(e) => setCreateLastName1(e.target.value)}
+                          birthDay={(e) => setCreateBirth1(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber1(e.target.value)
+                          }
+                          options={options1}
+                          value={value1}
+                          country={changeHandler1}
+                          confirm={create1}
+                          userFirstName={user.firstName}
+                          userLastName={user.lastName}
+                          userBirthDay={user.birthday}
+                          userGender={user.gender}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle2(e.target.value)}
+                          category={(e) => setCreateCategory2(e.target.value)}
+                          gender={(e) => setCreateGender2(e.target.value)}
+                          firstName={(e) => setCreateFirstName2(e.target.value)}
+                          lastName={(e) => setCreateLastName2(e.target.value)}
+                          birthDay={(e) => setCreateBirth2(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber2(e.target.value)
+                          }
+                          options={options2}
+                          value={value2}
+                          country={changeHandler2}
+                          confirm={create2}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle3(e.target.value)}
+                          category={(e) => setCreateCategory3(e.target.value)}
+                          gender={(e) => setCreateGender3(e.target.value)}
+                          firstName={(e) => setCreateFirstName3(e.target.value)}
+                          lastName={(e) => setCreateLastName3(e.target.value)}
+                          birthDay={(e) => setCreateBirth3(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber3(e.target.value)
+                          }
+                          options={options3}
+                          value={value3}
+                          country={changeHandler3}
+                          confirm={create3}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle4(e.target.value)}
+                          category={(e) => setCreateCategory4(e.target.value)}
+                          gender={(e) => setCreateGender4(e.target.value)}
+                          firstName={(e) => setCreateFirstName4(e.target.value)}
+                          lastName={(e) => setCreateLastName4(e.target.value)}
+                          birthDay={(e) => setCreateBirth4(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber4(e.target.value)
+                          }
+                          options={options4}
+                          value={value4}
+                          country={changeHandler4}
+                          confirm={create4}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle5(e.target.value)}
+                          category={(e) => setCreateCategory5(e.target.value)}
+                          gender={(e) => setCreateGender5(e.target.value)}
+                          firstName={(e) => setCreateFirstName5(e.target.value)}
+                          lastName={(e) => setCreateLastName5(e.target.value)}
+                          birthDay={(e) => setCreateBirth5(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber5(e.target.value)
+                          }
+                          options={options5}
+                          value={value5}
+                          country={changeHandler5}
+                          confirm={create5}
+                        />
+                      </>
+                    ) : null}
+                    {passenger === 6 ? (
+                      <>
+                        <ComponentFormTransaction
+                          pass={"Pemesan"}
+                          title={(e) => setCreateTitle1(e.target.value)}
+                          category={(e) => setCreateCategory1(e.target.value)}
+                          gender={(e) => setCreateGender1(e.target.value)}
+                          firstName={(e) => setCreateFirstName1(e.target.value)}
+                          lastName={(e) => setCreateLastName1(e.target.value)}
+                          birthDay={(e) => setCreateBirth1(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber1(e.target.value)
+                          }
+                          options={options1}
+                          value={value1}
+                          country={changeHandler1}
+                          confirm={create1}
+                          userFirstName={user.firstName}
+                          userLastName={user.lastName}
+                          userBirthDay={user.birthday}
+                          userGender={user.gender}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle2(e.target.value)}
+                          category={(e) => setCreateCategory2(e.target.value)}
+                          gender={(e) => setCreateGender2(e.target.value)}
+                          firstName={(e) => setCreateFirstName2(e.target.value)}
+                          lastName={(e) => setCreateLastName2(e.target.value)}
+                          birthDay={(e) => setCreateBirth2(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber2(e.target.value)
+                          }
+                          options={options2}
+                          value={value2}
+                          country={changeHandler2}
+                          confirm={create2}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle3(e.target.value)}
+                          category={(e) => setCreateCategory3(e.target.value)}
+                          gender={(e) => setCreateGender3(e.target.value)}
+                          firstName={(e) => setCreateFirstName3(e.target.value)}
+                          lastName={(e) => setCreateLastName3(e.target.value)}
+                          birthDay={(e) => setCreateBirth3(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber3(e.target.value)
+                          }
+                          options={options3}
+                          value={value3}
+                          country={changeHandler3}
+                          confirm={create3}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle4(e.target.value)}
+                          category={(e) => setCreateCategory4(e.target.value)}
+                          gender={(e) => setCreateGender4(e.target.value)}
+                          firstName={(e) => setCreateFirstName4(e.target.value)}
+                          lastName={(e) => setCreateLastName4(e.target.value)}
+                          birthDay={(e) => setCreateBirth4(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber4(e.target.value)
+                          }
+                          options={options4}
+                          value={value4}
+                          country={changeHandler4}
+                          confirm={create4}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle5(e.target.value)}
+                          category={(e) => setCreateCategory5(e.target.value)}
+                          gender={(e) => setCreateGender5(e.target.value)}
+                          firstName={(e) => setCreateFirstName5(e.target.value)}
+                          lastName={(e) => setCreateLastName5(e.target.value)}
+                          birthDay={(e) => setCreateBirth5(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber5(e.target.value)
+                          }
+                          options={options5}
+                          value={value5}
+                          country={changeHandler5}
+                          confirm={create5}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle6(e.target.value)}
+                          category={(e) => setCreateCategory6(e.target.value)}
+                          gender={(e) => setCreateGender6(e.target.value)}
+                          firstName={(e) => setCreateFirstName6(e.target.value)}
+                          lastName={(e) => setCreateLastName6(e.target.value)}
+                          birthDay={(e) => setCreateBirth6(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber6(e.target.value)
+                          }
+                          options={options6}
+                          value={value6}
+                          country={changeHandler6}
+                          confirm={create6}
+                        />
+                      </>
+                    ) : null}
+                    {passenger === 7 ? (
+                      <>
+                        <ComponentFormTransaction
+                          pass={"Pemesan"}
+                          title={(e) => setCreateTitle1(e.target.value)}
+                          category={(e) => setCreateCategory1(e.target.value)}
+                          gender={(e) => setCreateGender1(e.target.value)}
+                          firstName={(e) => setCreateFirstName1(e.target.value)}
+                          lastName={(e) => setCreateLastName1(e.target.value)}
+                          birthDay={(e) => setCreateBirth1(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber1(e.target.value)
+                          }
+                          options={options1}
+                          value={value1}
+                          country={changeHandler1}
+                          confirm={create1}
+                          userFirstName={user.firstName}
+                          userLastName={user.lastName}
+                          userBirthDay={user.birthday}
+                          userGender={user.gender}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle2(e.target.value)}
+                          category={(e) => setCreateCategory2(e.target.value)}
+                          gender={(e) => setCreateGender2(e.target.value)}
+                          firstName={(e) => setCreateFirstName2(e.target.value)}
+                          lastName={(e) => setCreateLastName2(e.target.value)}
+                          birthDay={(e) => setCreateBirth2(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber2(e.target.value)
+                          }
+                          options={options2}
+                          value={value2}
+                          country={changeHandler2}
+                          confirm={create2}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle3(e.target.value)}
+                          category={(e) => setCreateCategory3(e.target.value)}
+                          gender={(e) => setCreateGender3(e.target.value)}
+                          firstName={(e) => setCreateFirstName3(e.target.value)}
+                          lastName={(e) => setCreateLastName3(e.target.value)}
+                          birthDay={(e) => setCreateBirth3(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber3(e.target.value)
+                          }
+                          options={options3}
+                          value={value3}
+                          country={changeHandler3}
+                          confirm={create3}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle4(e.target.value)}
+                          category={(e) => setCreateCategory4(e.target.value)}
+                          gender={(e) => setCreateGender4(e.target.value)}
+                          firstName={(e) => setCreateFirstName4(e.target.value)}
+                          lastName={(e) => setCreateLastName4(e.target.value)}
+                          birthDay={(e) => setCreateBirth4(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber4(e.target.value)
+                          }
+                          options={options4}
+                          value={value4}
+                          country={changeHandler4}
+                          confirm={create4}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle5(e.target.value)}
+                          category={(e) => setCreateCategory5(e.target.value)}
+                          gender={(e) => setCreateGender5(e.target.value)}
+                          firstName={(e) => setCreateFirstName5(e.target.value)}
+                          lastName={(e) => setCreateLastName5(e.target.value)}
+                          birthDay={(e) => setCreateBirth5(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber5(e.target.value)
+                          }
+                          options={options5}
+                          value={value5}
+                          country={changeHandler5}
+                          confirm={create5}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle6(e.target.value)}
+                          category={(e) => setCreateCategory6(e.target.value)}
+                          gender={(e) => setCreateGender6(e.target.value)}
+                          firstName={(e) => setCreateFirstName6(e.target.value)}
+                          lastName={(e) => setCreateLastName6(e.target.value)}
+                          birthDay={(e) => setCreateBirth6(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber6(e.target.value)
+                          }
+                          options={options6}
+                          value={value6}
+                          country={changeHandler6}
+                          confirm={create6}
+                        />
+                        <ComponentFormTransaction
+                          pass={"Penumpang"}
+                          title={(e) => setCreateTitle7(e.target.value)}
+                          category={(e) => setCreateCategory7(e.target.value)}
+                          gender={(e) => setCreateGender7(e.target.value)}
+                          firstName={(e) => setCreateFirstName7(e.target.value)}
+                          lastName={(e) => setCreateLastName7(e.target.value)}
+                          birthDay={(e) => setCreateBirth7(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber7(e.target.value)
+                          }
+                          options={options7}
+                          value={value7}
+                          country={changeHandler7}
+                          confirm={create7}
+                        />
+                      </>
+                    ) : null}
                   </>
-                ) : null}
-                {passenger === 7 ? (
+                ) : (
                   <>
-                    <ComponentFormTransaction
-                  title={(e)=>setCreateTitle1(e.target.value)}
-                  category={(e)=>setCreateCategory1(e.target.value)}
-                  gender={(e)=>setCreateGender1(e.target.value)}
-                  firstName={(e)=>setCreateFirstName1(e.target.value)}
-                  lastName={(e)=>setCreateLastName1(e.target.value)}
-                  birthDay={(e)=>setCreateBirth1(e.target.value)}
-                  contact={(e)=>setCreateContactNumber1(e.target.value)}
-                  options={options1}
-                  value={value1}
-                  country={changeHandler1}
-                  confirm={create1}
-                />
+                    {passenger === 1 ? (
                       <ComponentFormTransaction
-                  title={(e)=>setCreateTitle2(e.target.value)}
-                  category={(e)=>setCreateCategory2(e.target.value)}
-                  gender={(e)=>setCreateGender2(e.target.value)}
-                  firstName={(e)=>setCreateFirstName2(e.target.value)}
-                  lastName={(e)=>setCreateLastName2(e.target.value)}
-                  birthDay={(e)=>setCreateBirth2(e.target.value)}
-                  contact={(e)=>setCreateContactNumber2(e.target.value)}
-                  options={options2}
-                  value={value2}
-                  country={changeHandler2}
-                  confirm={create2}
-                />
-                      <ComponentFormTransaction
-                  title={(e)=>setCreateTitle3(e.target.value)}
-                  category={(e)=>setCreateCategory3(e.target.value)}
-                  gender={(e)=>setCreateGender3(e.target.value)}
-                  firstName={(e)=>setCreateFirstName3(e.target.value)}
-                  lastName={(e)=>setCreateLastName3(e.target.value)}
-                  birthDay={(e)=>setCreateBirth3(e.target.value)}
-                  contact={(e)=>setCreateContactNumber3(e.target.value)}
-                  options={options3}
-                  value={value3}
-                  country={changeHandler3}
-                  confirm={create3}
-                />
-                    <ComponentFormTransaction
-                  title={(e)=>setCreateTitle4(e.target.value)}
-                  category={(e)=>setCreateCategory4(e.target.value)}
-                  gender={(e)=>setCreateGender4(e.target.value)}
-                  firstName={(e)=>setCreateFirstName4(e.target.value)}
-                  lastName={(e)=>setCreateLastName4(e.target.value)}
-                  birthDay={(e)=>setCreateBirth4(e.target.value)}
-                  contact={(e)=>setCreateContactNumber4(e.target.value)}
-                  options={options4}
-                  value={value4}
-                  country={changeHandler4}
-                  confirm={create4}
-                />
-                    <ComponentFormTransaction
-                  title={(e)=>setCreateTitle5(e.target.value)}
-                  category={(e)=>setCreateCategory5(e.target.value)}
-                  gender={(e)=>setCreateGender5(e.target.value)}
-                  firstName={(e)=>setCreateFirstName5(e.target.value)}
-                  lastName={(e)=>setCreateLastName5(e.target.value)}
-                  birthDay={(e)=>setCreateBirth5(e.target.value)}
-                  contact={(e)=>setCreateContactNumber5(e.target.value)}
-                  options={options5}
-                  value={value5}
-                  country={changeHandler5}
-                  confirm={create5}
-                />
-                    <ComponentFormTransaction
-                  title={(e)=>setCreateTitle6(e.target.value)}
-                  category={(e)=>setCreateCategory6(e.target.value)}
-                  gender={(e)=>setCreateGender6(e.target.value)}
-                  firstName={(e)=>setCreateFirstName6(e.target.value)}
-                  lastName={(e)=>setCreateLastName6(e.target.value)}
-                  birthDay={(e)=>setCreateBirth6(e.target.value)}
-                  contact={(e)=>setCreateContactNumber6(e.target.value)}
-                  options={options6}
-                  value={value6}
-                  country={changeHandler6}
-                  confirm={create6}
-                />
-                    <ComponentFormTransaction
-                  title={(e)=>setCreateTitle7(e.target.value)}
-                  category={(e)=>setCreateCategory7(e.target.value)}
-                  gender={(e)=>setCreateGender7(e.target.value)}
-                  firstName={(e)=>setCreateFirstName7(e.target.value)}
-                  lastName={(e)=>setCreateLastName7(e.target.value)}
-                  birthDay={(e)=>setCreateBirth7(e.target.value)}
-                  contact={(e)=>setCreateContactNumber7(e.target.value)}
-                  options={options7}
-                  value={value7}
-                  country={changeHandler7}
-                  confirm={create7}
-                />
+                        title={(e) => setCreateTitle1(e.target.value)}
+                        category={(e) => setCreateCategory1(e.target.value)}
+                        gender={(e) => setCreateGender1(e.target.value)}
+                        firstName={(e) => setCreateFirstName1(e.target.value)}
+                        lastName={(e) => setCreateLastName1(e.target.value)}
+                        birthDay={(e) => setCreateBirth1(e.target.value)}
+                        contact={(e) => setCreateContactNumber1(e.target.value)}
+                        options={options1}
+                        value={value1}
+                        country={changeHandler1}
+                        confirm={create1}
+                      />
+                    ) : null}
+                    {passenger === 2 ? (
+                      <>
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle1(e.target.value)}
+                          category={(e) => setCreateCategory1(e.target.value)}
+                          gender={(e) => setCreateGender1(e.target.value)}
+                          firstName={(e) => setCreateFirstName1(e.target.value)}
+                          lastName={(e) => setCreateLastName1(e.target.value)}
+                          birthDay={(e) => setCreateBirth1(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber1(e.target.value)
+                          }
+                          options={options1}
+                          value={value1}
+                          country={changeHandler1}
+                          confirm={create1}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle2(e.target.value)}
+                          category={(e) => setCreateCategory2(e.target.value)}
+                          gender={(e) => setCreateGender2(e.target.value)}
+                          firstName={(e) => setCreateFirstName2(e.target.value)}
+                          lastName={(e) => setCreateLastName2(e.target.value)}
+                          birthDay={(e) => setCreateBirth2(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber2(e.target.value)
+                          }
+                          options={options2}
+                          value={value2}
+                          country={changeHandler2}
+                          confirm={create2}
+                        />
+                      </>
+                    ) : null}
+                    {passenger === 3 ? (
+                      <>
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle1(e.target.value)}
+                          category={(e) => setCreateCategory1(e.target.value)}
+                          gender={(e) => setCreateGender1(e.target.value)}
+                          firstName={(e) => setCreateFirstName1(e.target.value)}
+                          lastName={(e) => setCreateLastName1(e.target.value)}
+                          birthDay={(e) => setCreateBirth1(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber1(e.target.value)
+                          }
+                          options={options1}
+                          value={value1}
+                          country={changeHandler1}
+                          confirm={create1}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle2(e.target.value)}
+                          category={(e) => setCreateCategory2(e.target.value)}
+                          gender={(e) => setCreateGender2(e.target.value)}
+                          firstName={(e) => setCreateFirstName2(e.target.value)}
+                          lastName={(e) => setCreateLastName2(e.target.value)}
+                          birthDay={(e) => setCreateBirth2(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber2(e.target.value)
+                          }
+                          options={options2}
+                          value={value2}
+                          country={changeHandler2}
+                          confirm={create2}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle3(e.target.value)}
+                          category={(e) => setCreateCategory3(e.target.value)}
+                          gender={(e) => setCreateGender3(e.target.value)}
+                          firstName={(e) => setCreateFirstName3(e.target.value)}
+                          lastName={(e) => setCreateLastName3(e.target.value)}
+                          birthDay={(e) => setCreateBirth3(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber3(e.target.value)
+                          }
+                          options={options3}
+                          value={value3}
+                          country={changeHandler3}
+                          confirm={create3}
+                        />
+                      </>
+                    ) : null}
+                    {passenger === 4 ? (
+                      <>
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle1(e.target.value)}
+                          category={(e) => setCreateCategory1(e.target.value)}
+                          gender={(e) => setCreateGender1(e.target.value)}
+                          firstName={(e) => setCreateFirstName1(e.target.value)}
+                          lastName={(e) => setCreateLastName1(e.target.value)}
+                          birthDay={(e) => setCreateBirth1(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber1(e.target.value)
+                          }
+                          options={options1}
+                          value={value1}
+                          country={changeHandler1}
+                          confirm={create1}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle2(e.target.value)}
+                          category={(e) => setCreateCategory2(e.target.value)}
+                          gender={(e) => setCreateGender2(e.target.value)}
+                          firstName={(e) => setCreateFirstName2(e.target.value)}
+                          lastName={(e) => setCreateLastName2(e.target.value)}
+                          birthDay={(e) => setCreateBirth2(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber2(e.target.value)
+                          }
+                          options={options2}
+                          value={value2}
+                          country={changeHandler2}
+                          confirm={create2}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle3(e.target.value)}
+                          category={(e) => setCreateCategory3(e.target.value)}
+                          gender={(e) => setCreateGender3(e.target.value)}
+                          firstName={(e) => setCreateFirstName3(e.target.value)}
+                          lastName={(e) => setCreateLastName3(e.target.value)}
+                          birthDay={(e) => setCreateBirth3(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber3(e.target.value)
+                          }
+                          options={options3}
+                          value={value3}
+                          country={changeHandler3}
+                          confirm={create3}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle4(e.target.value)}
+                          category={(e) => setCreateCategory4(e.target.value)}
+                          gender={(e) => setCreateGender4(e.target.value)}
+                          firstName={(e) => setCreateFirstName4(e.target.value)}
+                          lastName={(e) => setCreateLastName4(e.target.value)}
+                          birthDay={(e) => setCreateBirth4(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber4(e.target.value)
+                          }
+                          options={options4}
+                          value={value4}
+                          country={changeHandler4}
+                          confirm={create4}
+                        />
+                      </>
+                    ) : null}
+                    {passenger === 5 && token === null ? (
+                      <>
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle1(e.target.value)}
+                          category={(e) => setCreateCategory1(e.target.value)}
+                          gender={(e) => setCreateGender1(e.target.value)}
+                          firstName={(e) => setCreateFirstName1(e.target.value)}
+                          lastName={(e) => setCreateLastName1(e.target.value)}
+                          birthDay={(e) => setCreateBirth1(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber1(e.target.value)
+                          }
+                          options={options1}
+                          value={value1}
+                          country={changeHandler1}
+                          confirm={create1}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle2(e.target.value)}
+                          category={(e) => setCreateCategory2(e.target.value)}
+                          gender={(e) => setCreateGender2(e.target.value)}
+                          firstName={(e) => setCreateFirstName2(e.target.value)}
+                          lastName={(e) => setCreateLastName2(e.target.value)}
+                          birthDay={(e) => setCreateBirth2(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber2(e.target.value)
+                          }
+                          options={options2}
+                          value={value2}
+                          country={changeHandler2}
+                          confirm={create2}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle3(e.target.value)}
+                          category={(e) => setCreateCategory3(e.target.value)}
+                          gender={(e) => setCreateGender3(e.target.value)}
+                          firstName={(e) => setCreateFirstName3(e.target.value)}
+                          lastName={(e) => setCreateLastName3(e.target.value)}
+                          birthDay={(e) => setCreateBirth3(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber3(e.target.value)
+                          }
+                          options={options3}
+                          value={value3}
+                          country={changeHandler3}
+                          confirm={create3}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle4(e.target.value)}
+                          category={(e) => setCreateCategory4(e.target.value)}
+                          gender={(e) => setCreateGender4(e.target.value)}
+                          firstName={(e) => setCreateFirstName4(e.target.value)}
+                          lastName={(e) => setCreateLastName4(e.target.value)}
+                          birthDay={(e) => setCreateBirth4(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber4(e.target.value)
+                          }
+                          options={options4}
+                          value={value4}
+                          country={changeHandler4}
+                          confirm={create4}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle5(e.target.value)}
+                          category={(e) => setCreateCategory5(e.target.value)}
+                          gender={(e) => setCreateGender5(e.target.value)}
+                          firstName={(e) => setCreateFirstName5(e.target.value)}
+                          lastName={(e) => setCreateLastName5(e.target.value)}
+                          birthDay={(e) => setCreateBirth5(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber5(e.target.value)
+                          }
+                          options={options5}
+                          value={value5}
+                          country={changeHandler5}
+                          confirm={create5}
+                        />
+                      </>
+                    ) : null}
+                    {passenger === 6 ? (
+                      <>
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle1(e.target.value)}
+                          category={(e) => setCreateCategory1(e.target.value)}
+                          gender={(e) => setCreateGender1(e.target.value)}
+                          firstName={(e) => setCreateFirstName1(e.target.value)}
+                          lastName={(e) => setCreateLastName1(e.target.value)}
+                          birthDay={(e) => setCreateBirth1(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber1(e.target.value)
+                          }
+                          options={options1}
+                          value={value1}
+                          country={changeHandler1}
+                          confirm={create1}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle2(e.target.value)}
+                          category={(e) => setCreateCategory2(e.target.value)}
+                          gender={(e) => setCreateGender2(e.target.value)}
+                          firstName={(e) => setCreateFirstName2(e.target.value)}
+                          lastName={(e) => setCreateLastName2(e.target.value)}
+                          birthDay={(e) => setCreateBirth2(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber2(e.target.value)
+                          }
+                          options={options2}
+                          value={value2}
+                          country={changeHandler2}
+                          confirm={create2}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle3(e.target.value)}
+                          category={(e) => setCreateCategory3(e.target.value)}
+                          gender={(e) => setCreateGender3(e.target.value)}
+                          firstName={(e) => setCreateFirstName3(e.target.value)}
+                          lastName={(e) => setCreateLastName3(e.target.value)}
+                          birthDay={(e) => setCreateBirth3(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber3(e.target.value)
+                          }
+                          options={options3}
+                          value={value3}
+                          country={changeHandler3}
+                          confirm={create3}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle4(e.target.value)}
+                          category={(e) => setCreateCategory4(e.target.value)}
+                          gender={(e) => setCreateGender4(e.target.value)}
+                          firstName={(e) => setCreateFirstName4(e.target.value)}
+                          lastName={(e) => setCreateLastName4(e.target.value)}
+                          birthDay={(e) => setCreateBirth4(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber4(e.target.value)
+                          }
+                          options={options4}
+                          value={value4}
+                          country={changeHandler4}
+                          confirm={create4}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle5(e.target.value)}
+                          category={(e) => setCreateCategory5(e.target.value)}
+                          gender={(e) => setCreateGender5(e.target.value)}
+                          firstName={(e) => setCreateFirstName5(e.target.value)}
+                          lastName={(e) => setCreateLastName5(e.target.value)}
+                          birthDay={(e) => setCreateBirth5(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber5(e.target.value)
+                          }
+                          options={options5}
+                          value={value5}
+                          country={changeHandler5}
+                          confirm={create5}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle6(e.target.value)}
+                          category={(e) => setCreateCategory6(e.target.value)}
+                          gender={(e) => setCreateGender6(e.target.value)}
+                          firstName={(e) => setCreateFirstName6(e.target.value)}
+                          lastName={(e) => setCreateLastName6(e.target.value)}
+                          birthDay={(e) => setCreateBirth6(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber6(e.target.value)
+                          }
+                          options={options6}
+                          value={value6}
+                          country={changeHandler6}
+                          confirm={create6}
+                        />
+                      </>
+                    ) : null}
+                    {passenger === 7 ? (
+                      <>
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle1(e.target.value)}
+                          category={(e) => setCreateCategory1(e.target.value)}
+                          gender={(e) => setCreateGender1(e.target.value)}
+                          firstName={(e) => setCreateFirstName1(e.target.value)}
+                          lastName={(e) => setCreateLastName1(e.target.value)}
+                          birthDay={(e) => setCreateBirth1(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber1(e.target.value)
+                          }
+                          options={options1}
+                          value={value1}
+                          country={changeHandler1}
+                          confirm={create1}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle2(e.target.value)}
+                          category={(e) => setCreateCategory2(e.target.value)}
+                          gender={(e) => setCreateGender2(e.target.value)}
+                          firstName={(e) => setCreateFirstName2(e.target.value)}
+                          lastName={(e) => setCreateLastName2(e.target.value)}
+                          birthDay={(e) => setCreateBirth2(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber2(e.target.value)
+                          }
+                          options={options2}
+                          value={value2}
+                          country={changeHandler2}
+                          confirm={create2}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle3(e.target.value)}
+                          category={(e) => setCreateCategory3(e.target.value)}
+                          gender={(e) => setCreateGender3(e.target.value)}
+                          firstName={(e) => setCreateFirstName3(e.target.value)}
+                          lastName={(e) => setCreateLastName3(e.target.value)}
+                          birthDay={(e) => setCreateBirth3(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber3(e.target.value)
+                          }
+                          options={options3}
+                          value={value3}
+                          country={changeHandler3}
+                          confirm={create3}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle4(e.target.value)}
+                          category={(e) => setCreateCategory4(e.target.value)}
+                          gender={(e) => setCreateGender4(e.target.value)}
+                          firstName={(e) => setCreateFirstName4(e.target.value)}
+                          lastName={(e) => setCreateLastName4(e.target.value)}
+                          birthDay={(e) => setCreateBirth4(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber4(e.target.value)
+                          }
+                          options={options4}
+                          value={value4}
+                          country={changeHandler4}
+                          confirm={create4}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle5(e.target.value)}
+                          category={(e) => setCreateCategory5(e.target.value)}
+                          gender={(e) => setCreateGender5(e.target.value)}
+                          firstName={(e) => setCreateFirstName5(e.target.value)}
+                          lastName={(e) => setCreateLastName5(e.target.value)}
+                          birthDay={(e) => setCreateBirth5(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber5(e.target.value)
+                          }
+                          options={options5}
+                          value={value5}
+                          country={changeHandler5}
+                          confirm={create5}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle6(e.target.value)}
+                          category={(e) => setCreateCategory6(e.target.value)}
+                          gender={(e) => setCreateGender6(e.target.value)}
+                          firstName={(e) => setCreateFirstName6(e.target.value)}
+                          lastName={(e) => setCreateLastName6(e.target.value)}
+                          birthDay={(e) => setCreateBirth6(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber6(e.target.value)
+                          }
+                          options={options6}
+                          value={value6}
+                          country={changeHandler6}
+                          confirm={create6}
+                        />
+                        <ComponentFormTransaction
+                          title={(e) => setCreateTitle7(e.target.value)}
+                          category={(e) => setCreateCategory7(e.target.value)}
+                          gender={(e) => setCreateGender7(e.target.value)}
+                          firstName={(e) => setCreateFirstName7(e.target.value)}
+                          lastName={(e) => setCreateLastName7(e.target.value)}
+                          birthDay={(e) => setCreateBirth7(e.target.value)}
+                          contact={(e) =>
+                            setCreateContactNumber7(e.target.value)
+                          }
+                          options={options7}
+                          value={value7}
+                          country={changeHandler7}
+                          confirm={create7}
+                        />
+                      </>
+                    ) : null}
                   </>
-                ) : null}
+                )}
 
                 <div className="parent-c w-full bg-brand-nude p-6 mt-6 rounded-md border-2 border-brand-black">
                   <div className="left-header">
@@ -911,6 +1455,7 @@ export default function Transaction() {
                       handleCancel={handleCancelSeat}
                     />
                   </div>
+                  <button onClick={coba}>klik</button>
                 </div>
                 <div className="parent-d w-full mt-6 flex sm:justify-center md:justify-start lg:justify-end p-4 mb-4">
                   <button
