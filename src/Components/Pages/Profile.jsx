@@ -4,6 +4,8 @@ import {
   LockOutlined,
   MailOutlined,
   CalendarOutlined,
+  EyeInvisibleOutlined,
+  EyeOutlined,
 } from "@ant-design/icons";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
@@ -14,11 +16,12 @@ import axios from "axios";
 import { authConfig } from "../Feature/Config";
 import moment from "moment";
 
+
 export const Profile = (setIsLogin) => {
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [passwordErrors, setIsPasswordErrors] = useState([]);
-
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [histories, setHistories] = useState([]);
   const [user, setUser] = useState(Object);
   const [registerFirstName, setRegisterFirstName] = useState("");
@@ -204,19 +207,37 @@ export const Profile = (setIsLogin) => {
                   <></>
                 )}
               </div>
-              <div className="block w-full">
+          
+
+<div className="block w-full">
+                
                 <div className="textbox">
+                  <span className="material-symbols-outlined">
+                    <LockOutlined style={{ color: "#000000" }} />
+                  </span>
                   <input
                     onChange={(event) => {
                       setRegisterPassword(event.target.value);
                     }}
-                    value={registerPassword}
-                    type="password"
+                    type={isPasswordVisible ? "text" : "password"}
                     placeholder="Password"
                   />
-                  <span className="material-symbols-outlined">
-                    <LockOutlined />
-                  </span>
+                  <div
+                    onClick={() => {
+                      setIsPasswordVisible(!isPasswordVisible);
+                    }}
+                    className="material-symbols-outlined cursor-pointer absolute top-[50%] right-[82px] translate-x-0 translate-y-[-50%]"
+                  >
+                    {isPasswordVisible ? (
+                      <>
+                        <EyeInvisibleOutlined style={{ color: "#F2EFEA" }} />
+                      </>
+                    ) : (
+                      <>
+                        <EyeOutlined style={{ color: "#F2EFEA" }} />
+                      </>
+                    )}
+                  </div>
                 </div>
                 {!isPasswordValid ? (
                   passwordErrors.map((value, index) => (

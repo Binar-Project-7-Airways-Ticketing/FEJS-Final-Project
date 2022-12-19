@@ -57,7 +57,9 @@ function CardHistory({ histories }) {
             >
               <div className="wrap-modal-detail-flight">
                 <div className="title-detail-flight">
-                  <p>Bali to Dubai</p>
+                  <p>{item?.bookingDetails?.flight?.departureCode}</p>
+                  <p>to</p>
+                  <p>{item?.bookingDetails?.flight?.arrivalCode}</p>
                   <p>Monday, Des 12</p>
                 </div>
                 <div className="modal-detail-flight">
