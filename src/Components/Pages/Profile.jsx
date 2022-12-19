@@ -92,15 +92,17 @@ export const Profile = (setIsLogin) => {
 
   // Update user profile
   const handleUpdateProfile = () => {
+    const data = {
+      firstName: registerFirstName,
+      lastName: registerLastname,
+      gender: registerGender,
+      birthday: moment(registerBirth).format("MM/DD/YYYY"),
+      email: registerEmail,
+      password: registerPassword,
+    };
+
     axios
-      .put(authConfig.baseUrl + "/api/user/update/" + userId, {
-        firstName: registerFirstName,
-        lastName: registerLastname,
-        gender: registerGender,
-        birthday: moment(registerBirth).format("DD-MM-YYYY"),
-        email: registerEmail,
-        password: registerPassword,
-      })
+      .put(authConfig.baseUrl + "/api/user/update/" + userId, data)
       .then((response) => {
         window.location.reload();
       });
@@ -120,9 +122,9 @@ export const Profile = (setIsLogin) => {
 
   // Get data history travel
   const getHistoryTravel = () => {
-    axios.get(authConfig.baseUrl + "/api/history").then((response) => {
+    axios.get(authConfig.baseUrl + "/api/booking").then((response) => {
+      console.log(response.data.payload);
       setHistories(response.data.payload);
-      console.log(response.data);
     });
   };
 
@@ -317,7 +319,7 @@ export const Profile = (setIsLogin) => {
       </main>
 
       <Card style={{ backgroundColor: "#3f4444", width: "100%" }}>
-        <CardHistory />
+        <CardHistory histories={histories} />
       </Card>
       <Footer />
     </React.Fragment>

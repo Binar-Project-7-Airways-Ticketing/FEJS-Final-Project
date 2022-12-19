@@ -236,12 +236,11 @@ export default function Transaction() {
   // method payment
   const dana = () => {
     // navigate('/payment')
-    dispatch(loadPayment());
     alert("Apakah Metode Pembayaran Sudah Sesuai ?");
     setIsModalBayarOpen(false);
-
     navigate("/bookingPending");
-  };
+    
+  }
 
   const create = () => {
     alert("Silahkan lanjut pengisian")
@@ -442,9 +441,9 @@ export default function Transaction() {
     dispatch(loadLuggages());
   }, [luggages]);
 
-  // useEffect(() => {
-  //   dispatch(loadPayment());
-  // }, [payment]);
+  useEffect(() => {
+    dispatch(loadPayment());
+  }, [payment]);
 
   return (
     <React.Fragment>
