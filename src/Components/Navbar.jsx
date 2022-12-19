@@ -203,18 +203,18 @@ export default function Navbar() {
               className="nav-respon lg:flex w-full items-center justify-center md:hidden sm:hidden"
             >
               <ul className="flex w-1/2 justify-start text-brand-whiteLight">
-                <li className="hover:bg-brand-whiteLight hover:text-brand-black w-fit py-1 px-4 rounded-md">
+                <li onClick={()=>navigate('/')} className="hover:bg-brand-whiteLight hover:text-brand-black w-fit py-1 px-4 rounded-md cursor-pointer">
                   Home
                 </li>
                 <li className="hover:bg-brand-whiteLight hover:text-brand-black w-fit py-1 px-4 rounded-md">
                   About Us
                 </li>
-                <li
+                {/* <li
                   className="hover:bg-brand-whiteLight hover:text-brand-black w-fit py-1 px-4 rounded-md cursor-pointer"
                   onClick={() => navigate("review")}
                 >
                   Review
-                </li>
+                </li> */}
               </ul>
 
               <div className="flex items-center justify-end w-full gap-3.5">

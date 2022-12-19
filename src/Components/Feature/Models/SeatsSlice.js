@@ -2,17 +2,17 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  seats: [],
+  Seats: [],
   loadSeat: false,
 };
 
 export const loadSeats = createAsyncThunk("seasts/loadSeats", async () => {
   try {
-    const seats = await axios.get(
+    const Seats = await axios.get(
       "https://bej-ticketing-production.up.railway.app/api/seat"
     );
 
-    return seats.data
+    return Seats.data
   } catch (error) {
     console.error(error);
   }
@@ -29,7 +29,7 @@ export const postSlice = createSlice(
         },
         [loadSeats.fulfilled]: (state, { payload }) => {
           state.loading = false;
-          state.seats = payload;
+          state.Seats = payload;
         },
         [loadSeats.rejected]: (state) => {
           state.loading = false;

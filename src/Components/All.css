@@ -38,7 +38,6 @@ header {
   padding-top: 70px;
   background-size: cover;
   width: 100%;
-
 }
 .wrap-header {
   width: 100%;
@@ -216,7 +215,6 @@ header {
   padding: 30px;
 }
 
-
 .wrap-detail-title {
   display: flex;
   justify-content: center;
@@ -272,8 +270,6 @@ header {
   gap: 7px;
   cursor: pointer;
 }
-
-
 
 .dropdown-passenger {
   position: absolute;
@@ -352,14 +348,13 @@ header {
   width: 100%;
 }
 .input {
-  position: relative;
   display: flex;
   gap: 6px;
   width: 100%;
   height: fit-content;
 }
 .swap {
-  left: 47.5%;
+  right: 47.5%;
   position: absolute;
   background: #f1efe9;
   width: 40px;
@@ -378,10 +373,10 @@ header {
   gap: 2px;
 }
 .find {
-  width: 100%;
+  width: 15%;
 }
 .btn-flight {
-  width: 15%;
+  width: 100%;
   background: #cba052;
   color: #f1efe9;
   height: 50px;
@@ -411,7 +406,7 @@ header {
 .ant-form-vertical .ant-form-item-label > label {
   color: #b6b6b6;
 }
-.ant-select-arrow{
+.ant-select-arrow {
   display: none;
 }
 
@@ -746,10 +741,10 @@ nav {
   gap: 30px;
 }
 .detail-economy-class {
-  display: flex;
-  width: 100%;
+  /* display: flex;
+  width: 100%; */
   animation: class 1s ease-in-out;
-  gap: 20px;
+  /* gap: 20px; */
 }
 @keyframes class {
   0% {
@@ -822,6 +817,7 @@ nav {
   gap: 7px;
 }
 .text-benefit {
+  justify-content:flex-start;
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -850,18 +846,18 @@ nav {
   max-width: none;
 }
 /*-------------------------Some Benefit---------------------------------*/
-.img-small{
-  width:280px;
-  height:400px;
-  border-radius:300PX;
-  position:absolute;
-  bottom:-50px;
-  right:300px;
-  border:10px solid white
+.img-small {
+  width: 280px;
+  height: 400px;
+  border-radius: 300px;
+  position: absolute;
+  bottom: -50px;
+  right: 300px;
+  border: 10px solid white;
 }
-.img-large{
-  width:400px;
-  border-radius:300px;
+.img-large {
+  width: 400px;
+  border-radius: 300px;
 }
 /*-------------------------Card Review---------------------------------*/
 .img-review {
@@ -995,7 +991,7 @@ footer {
   }
 
   .login-account-tittle {
-    @apply flex justify-center w-full ;
+    @apply flex justify-center w-full;
   }
 
   .login-account-tittle h1 {
@@ -1209,11 +1205,17 @@ footer {
   gap: 7px;
   cursor: pointer;
 }
+.gggg {
+  height: 600px;
+}
 
 /*-------------- Media Screen---------------*/
 @media only screen and (max-width: 1440px) {
   .swap {
-    left: 47.5%;
+    right: 44.5%;
+  }
+  .ant-picker {
+    padding: 2px;
   }
 }
 @media only screen and (max-width: 1280px) {
@@ -1243,12 +1245,12 @@ footer {
     padding: 15px;
   }
   .swap {
-    left: 46.5%;
+    right: 44.5%;
   }
   .wrap-header {
     padding: 0;
   }
-   /*-------------- booking component results---------------*/
+  /*-------------- booking component results---------------*/
   .time-logo::before {
     border-bottom: 1px solid #000000;
     content: "";
@@ -1264,6 +1266,11 @@ footer {
     flex-grow: 1;
     width: 15%;
     right: 28%;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .swap {
+    right: 43%;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -1304,10 +1311,14 @@ footer {
     right: 150px;
     bottom: -20px;
   }
+  /*-------------- booking component homepage---------------*/
+  .swap {
+    right: 47.5%;
+  }
 }
 @media only screen and (max-width: 425px) {
   h2 {
-    font-size: 2.5rem;
+    font-size: 1.7rem;
     line-height: 1.3;
   }
   h4 {
@@ -1315,8 +1326,19 @@ footer {
     font-weight: 600;
   }
   h5 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 400;
+  }
+  h6{
+    font-size: 0.7rem;
+  }
+
+  /*-------------- booking component homepage---------------*/
+  .swap {
+    right: 0;
+    left: 85%;
+    top: 39%;
+
   }
   /*--------------navbar ---------------*/
   .nav-btn-responsive {
@@ -1358,6 +1380,9 @@ footer {
   }
   .header-main {
     padding: 100px 0;
+  }
+  .img-benefit img {
+    width: 120%;
   }
 
   /*-------------- booking component homepage---------------*/

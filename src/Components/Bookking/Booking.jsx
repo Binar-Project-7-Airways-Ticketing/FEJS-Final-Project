@@ -42,10 +42,6 @@ export default function Booking() {
                 <SlPlane />
                 <h6>Book</h6>
               </div>
-              <div className="my-trip-cst" onClick={mytrip}>
-                <AiFillFolderOpen />
-                <h6>My Trip</h6>
-              </div>
 
               <div className="flight-status-cst" onClick={flightstatus}>
                 <MdOutlineFlightTakeoff />
@@ -55,27 +51,6 @@ export default function Booking() {
           </div>
           <Book />
         </>
-      ) : myTrip ? (
-        <>
-          <div className="wrap-booking">
-            <div className="booking">
-              <div className="book-cst" onClick={book}>
-                <SlPlane />
-                <h6>Book</h6>
-              </div>
-              <div className="my-trip-default">
-                <AiFillFolderOpen />
-                <h6>My Trip</h6>
-              </div>
-
-              <div className="flight-status-cst" onClick={flightstatus}>
-                <MdOutlineFlightTakeoff />
-                <h6>Flight Status</h6>
-              </div>
-            </div>
-          </div>
-          <MyTrip />
-        </>
       ) : flightStatus ? (
         <>
           <div className="wrap-booking">
@@ -83,10 +58,6 @@ export default function Booking() {
               <div className="book-cst" onClick={book}>
                 <SlPlane />
                 <h6>Book</h6>
-              </div>
-              <div className="my-trip-cst" onClick={mytrip}>
-                <AiFillFolderOpen />
-                <h6>My Trip</h6>
               </div>
 
               <div className="flight-status-default">

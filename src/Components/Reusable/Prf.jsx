@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 export default function Prf(setIsLogin, props) {
   const {login}=useSelector((state)=>state.authLogin)
-  console.log(login);
   const navigate = useNavigate();
   const logOutHandler = () => {
     localStorage.removeItem("token");

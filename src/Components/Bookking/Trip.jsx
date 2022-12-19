@@ -15,7 +15,7 @@ export default function Trip(props) {
       >
         <Radio.Group onChange={props.change} value={"Return"}>
           <Radio value={"Return"}>Return</Radio>
-          <Radio value={"OneWay"}>One Way</Radio>
+          <Radio value={"Oneway"}>One Way</Radio>
         </Radio.Group>
       </Form.Item>
     </div>

@@ -7,6 +7,7 @@ export default function Passenger() {
   const [adults, setAdults] = useState(1);
   const [childs, setChilds] = useState(0);
   const [infants, setInfants] = useState(0);
+  const [adultsArray, setAdultsArray] = useState();
 
   const [seats, setSeats] = useState("Economy");
 
@@ -16,6 +17,13 @@ export default function Passenger() {
   const handlePassengerClose = () => {
     setPasenger(false);
   };
+  // console.log(adultsArray);
+ {
+
+ 
+  // console.log(arrayAdults);
+  // setAdultsArray(arrayAdults)
+  }
   const adultIncrement = () => {
     let value = 6;
     if (adults >= value) {
@@ -23,7 +31,9 @@ export default function Passenger() {
     } else {
       value = adults;
     }
+  
     setAdults(value + 1);
+
     let valueChild = 6;
     if (childs + adults <= valueChild) {
       valueChild = childs;
@@ -96,7 +106,6 @@ export default function Passenger() {
     setSeats(e.target.value);
   };
   const handlePassengerClass = () => {
-    setPasenger(true);
     let passangers = {
       adults: adults,
       child: childs,
@@ -107,15 +116,16 @@ export default function Passenger() {
     };
     localStorage.setItem("passanger", JSON.stringify(passangers));
     localStorage.setItem("class", JSON.stringify(classes));
+    setPasenger(false);
   };
 
   return (
-    <div className="w-full relative">
+    <div>
       {passenger ? (
         <>
           <div
             onClick={handlePassengerClose}
-            className="flex flex-col rounded-lg h-24 w-full py-1.5 pr-5 pl-6 border-brand-gray border gap-5"
+            className="flex flex-col rounded-lg h-24 w-full xl:py-1.5 xl:pr-5 xl:pl-6 lg:p-2 sm:p-3 border-brand-gray border gap-5"
           >
             <p style={{ fontSize: "15px" }} onClick={handlePassengerClose}>
               Class {seats}
@@ -135,7 +145,7 @@ export default function Passenger() {
               </div>
             </div>
           </div>
-          <div onClick={handlePassenger} className="dropdown-passenger">
+          <div className="dropdown-passenger">
             <div className="detail-passanger-class">
               <div className="wrap-passenger">
                 <div>
@@ -159,7 +169,7 @@ export default function Passenger() {
                       <Input
                         name={"name"}
                         readOnly
-                        className="w-14"
+                        className="lg:w-14 md:w-9"
                         onChange={() => handleAdults()}
                         style={{ color: "black" }}
                         value={adults}
@@ -182,7 +192,7 @@ export default function Passenger() {
                       <Input
                         name={"name"}
                         readOnly
-                        className="w-14"
+                        className="lg:w-14 md:w-9"
                         onChange={handleChild}
                         style={{ color: "black" }}
                         value={childs}
@@ -206,7 +216,7 @@ export default function Passenger() {
                       <Input
                         name={"name"}
                         readOnly
-                        className="w-14"
+                        className="lg:w-14 md:w-9"
                         onChange={handleInfant}
                         style={{ color: "black" }}
                         value={infants}
@@ -234,7 +244,7 @@ export default function Passenger() {
                 </Radio.Group>
               </div>
               <Button
-                onClick={handlePassengerClass}
+                onClick={() => handlePassengerClass()}
                 className="confirm-passenger-class"
               >
                 Confirm
@@ -245,7 +255,7 @@ export default function Passenger() {
       ) : (
         <div
           onClick={handlePassenger}
-          className="flex flex-col rounded-lg h-24 w-full py-1.5 pr-5 pl-6 border-brand-gray border gap-5"
+          className="flex flex-col relative rounded-lg h-24 w-full xl:py-1.5 xl:pr-5 xl:pl-6 lg:p-2 sm:p-3 border-brand-gray border gap-5"
         >
           <p style={{ fontSize: "15px" }}>Passenger/Class</p>
           <div className="flex gap-4 items-center">

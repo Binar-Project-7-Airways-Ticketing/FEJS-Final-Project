@@ -10,26 +10,11 @@ export default function Footer() {
             <img style={{ width: "300px" }} src={logo}></img>
             <p>The general airline Aviation Operator and Services Provider. Delivering World-Class Services in Aircraft sales, completiones, management, flight support, charter and FBO-Indonesia.</p>
           </div>
-          <div style={{ width: "100%" }}>
-            <ul className="flex flex-col h-full items-start gap-2">
-              <li>
-                <h6>Home</h6>
-              </li>
-              <li>
-                <h6>About Us</h6>
-              </li>
-              <li>
-                <h6>Review</h6>
-              </li>
-              <li>
-                <h6>Flight Info</h6>
-              </li>
-              <li>
-                <h6>Contact Us</h6>
-              </li>
-            </ul>
-          </div>
 
+          <div className="flex flex-col gap-1 w-full">
+            <h5>ADDRESS</h5>
+            <p>Jl. Asia Afrika No.19, RT.1/RW.3, Gelora, Tanah Abang, Central Jakarta City, Jakarta 10270</p>
+          </div>
           <div className="flex flex-col gap-1 w-full">
             <h5>FOLLOW US</h5>
             <svg width="0" height="0">
@@ -61,10 +46,6 @@ export default function Footer() {
           </div>
           <div className="flex w-full">
             <h5>PHONES</h5>
-          </div>
-          <div className="flex flex-col gap-1 w-full">
-            <h5>ADDRESS</h5>
-            <p>Jl. Asia Afrika No.19, RT.1/RW.3, Gelora, Tanah Abang, Central Jakarta City, Jakarta 10270</p>
           </div>
         </div>
       </div>

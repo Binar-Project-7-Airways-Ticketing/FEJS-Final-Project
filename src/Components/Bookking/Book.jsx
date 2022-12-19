@@ -6,7 +6,8 @@ import FormToFrom from "./FormToFrom";
 import Trip from "./Trip";
 import ButtonFindFlight from "../Reusable/ButtonFindFlight";
 import Date from "./Date";
-import dayjs from "dayjs";
+import { MdOutlineSwapVert } from "react-icons/md";
+
 
 import { MdFlightTakeoff, MdFlightLand } from "react-icons/md";
 import { AiOutlineSwap } from "react-icons/ai";
@@ -29,7 +30,7 @@ export default function Book() {
   const [trip, setTrip] = useState("Return");
   const [airportFrom, setAirportFrom] = useState("");
   const [airportTo, setAirportTo] = useState("");
-  const [btn, setBtn] = useState(false)
+  const [btn, setBtn] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -73,7 +74,7 @@ export default function Book() {
     dispatch(loadFlightReturn(x));
     dispatch(loadCitiesFrom(airportFrom));
     dispatch(loadCitiesTo(airportTo));
-   
+
     navigate(`/booking/${trip}`);
   };
   const onFinishFailed = (errorInfo) => {
@@ -120,8 +121,8 @@ export default function Book() {
           autoComplete="off"
         >
           <Trip change={handleChangeTrip} value={trip} />
-          <div className="flex w-full h-fit mb-5 gap-2 text-brand-black">
-            <div className="wrap-input">
+          <div className="flex lg:flex-row md:flex-col w-full h-fit mb-5 gap-2 text-brand-black sm:flex-col">
+            <div className="lg:flex lg:flex-row md:gap-2 w-full h-fit md:grid md:grid-cols-2 sm:flex-col relative">
               <FormToFrom
                 name="flightFrom"
                 label="From"
@@ -130,46 +131,44 @@ export default function Book() {
                 iconFlight={<MdFlightTakeoff size={30} color="#CBA052" />}
               />
               <div className="swap">
-                <AiOutlineSwap />
+                <AiOutlineSwap className="sm:hidden md:block" />
+                <MdOutlineSwapVert className="md:hidden" size={25}/>
               </div>
+              <div className="w-full md:pt-0 sm:pt-2">
+
               <FormToFrom
+             
                 name="flightTo"
                 label="To"
                 handleChange={handleChangeTo}
                 value={to}
                 iconFlight={<MdFlightLand size={30} color="#CBA052" />}
               />
+              </div>
             </div>
-            <div className="input">
-              <div className="flex flex-col  rounded-lg h-24 w-full py-1.5 pr-5 pl-6 border-brand-gray border gap-3">
-                <div className="flex justify-start w-full h-fit gap-2">
+            <div className="lg:flex lg:flex-row gap-2 w-full h-fit md:grid md:grid-cols-2 sm:flex-col ">
+              <div className="flex flex-col  rounded-lg h-24 w-full xl:py-1.5 xl:pr-5 xl:pl-6 lg:p-2 sm:p-3 border-brand-gray border gap-3">
+                <div className="flex justify-start w-full h-fit xl:gap-2 gap-1">
                   <div className="flex flex-col w-full gap-2">
                     <p>Departure Date</p>
-                    <Date
-                      date="dateDeparture"
-                      handleDate={handleDateFrom}
-                    
-                    />
+                    <Date date="dateDeparture" handleDate={handleDateFrom} />
                   </div>
                   {trip === "Return" ? (
                     <div className="flex flex-col w-full gap-2">
                       <p>Return Date</p>
-                      <Date
-                        date="dateReturn"
-                        handleDate={handleDateTo}
-                      
-                      />
+                      <Date date="dateReturn" handleDate={handleDateTo} />
                     </div>
-                  ) : (
-                    null
-                  )}
+                  ) : null}
                 </div>
               </div>
-
-              <Passenger />
+              <div className="w-full relative md:pt-0 sm:pt-2">
+                <Passenger />
+              </div>
             </div>
           </div>
-          <ButtonFindFlight value={"Find Flight"} />
+          <div className="find md:w-1/4 sm:w-full">
+            <ButtonFindFlight value={"Find Flight"} />
+          </div>
         </Form>
       </div>
     </>

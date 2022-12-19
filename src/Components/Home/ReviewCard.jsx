@@ -60,7 +60,7 @@ export default function ReviewCard() {
             >
               <div className="flex w-full gap-5">
                 <SwiperSlide>
-                  <div className="flex w-full flex-col gap-5  text-brand-black bg-brand-whiteLight p-5 rounded-2xl">
+                  <div className="flex w-full  gap-5  text-brand-black bg-brand-whiteLight p-5 rounded-2xl">
                     <img
                       style={{
                         borderRadius: "50px",
@@ -78,7 +78,7 @@ export default function ReviewCard() {
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className="flex w-full flex-col gap-5  text-brand-black bg-brand-whiteLight p-5 rounded-2xl">
+                  <div className="flex w-full  gap-5  text-brand-black bg-brand-whiteLight p-5 rounded-2xl">
                     <img
                       style={{
                         borderRadius: "50px",
@@ -96,7 +96,7 @@ export default function ReviewCard() {
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className="flex w-full flex-col gap-5  text-brand-black bg-brand-whiteLight p-5 rounded-2xl">
+                  <div className="flex w-full  gap-5  text-brand-black bg-brand-whiteLight p-5 rounded-2xl">
                     <img
                       style={{
                         borderRadius: "50px",
@@ -114,7 +114,7 @@ export default function ReviewCard() {
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className="flex w-full flex-col gap-5  text-brand-black bg-brand-whiteLight p-5 rounded-2xl">
+                  <div className="flex w-full  gap-5  text-brand-black bg-brand-whiteLight p-5 rounded-2xl">
                     <img
                       style={{
                         borderRadius: "50px",
@@ -132,7 +132,7 @@ export default function ReviewCard() {
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className="flex w-full flex-col gap-5  text-brand-black bg-brand-whiteLight p-5 rounded-2xl">
+                  <div className="flex w-full  gap-5  text-brand-black bg-brand-whiteLight p-5 rounded-2xl">
                     <img
                       style={{
                         borderRadius: "50px",
@@ -150,7 +150,7 @@ export default function ReviewCard() {
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className="flex w-full flex-col gap-5  text-brand-black bg-brand-whiteLight p-5 rounded-2xl">
+                  <div className="flex w-full  gap-5  text-brand-black bg-brand-whiteLight p-5 rounded-2xl">
                     <img
                       style={{
                         borderRadius: "50px",

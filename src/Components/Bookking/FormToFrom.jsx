@@ -10,10 +10,10 @@ export default function FormToFrom(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAirports());
-  }, [airport]);
+  }, [dispatch]);
 
   return (
-    <div className="flex rounded-lg h-24 w-full py-1.5 pr-5 pl-6 border-brand-gray border gap-3">
+    <div className="flex rounded-lg h-24 w-full lg:py-1.5 lg:pr-5 lg:pl-6 sm:p-3 border-brand-gray border gap-3">
       <div className="flex flex-col gap-2">
         <p>{props.label}</p>
         {props.iconFlight}

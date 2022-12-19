@@ -22,7 +22,7 @@ export default function ComingServices() {
           asperiores. Itaque quae ipsum id earum.
         </p>
       </div>
-      <div >
+      <div>
         <Swiper
           spaceBetween={30}
           slidesPerView={6}
@@ -49,23 +49,21 @@ export default function ComingServices() {
             },
             425: {
               spaceBetween: 20,
-              slidesPerView: 2,
+              slidesPerView: 1,
             },
             360: {
               spaceBetween: 10,
-              slidesPerView: 2,
+              slidesPerView: 1,
             },
           }}
           modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper"
         >
-          <div className="w-full ">
+          <div className="w-fit ">
             <SwiperSlide>
               <Card
                 hoverable
-                style={{
-                  width: "100%",
-                }}
+                className="md:w-full sm:w-56"
                 cover={
                   <img
                     className="2xl:h-full xl:h-3/4 lg:h-1/2 sm:h-1/4 h-48  "
@@ -75,8 +73,8 @@ export default function ComingServices() {
                 }
               >
                 <Meta
-                  title="Europe Street beat"
-                  description="www.instagram.com"
+                  title="Hotel bookings"
+                  // description="www.instagram.com"
                 />
               </Card>
             </SwiperSlide>
@@ -84,9 +82,7 @@ export default function ComingServices() {
             <SwiperSlide>
               <Card
                 hoverable
-                style={{
-                  width: "100%",
-                }}
+               className="md:w-full sm:w-56"
                 cover={
                   <img
                     className="2xl:h-full xl:h-3/4 lg:h-1/2 sm:h-1/4 h-48"
@@ -96,8 +92,8 @@ export default function ComingServices() {
                 }
               >
                 <Meta
-                  title="Europe Street beat"
-                  description="www.instagram.com"
+                  title="Bus ticket booking"
+                  // description="www.instagram.com"
                 />
               </Card>
             </SwiperSlide>
@@ -105,9 +101,7 @@ export default function ComingServices() {
             <SwiperSlide>
               <Card
                 hoverable
-                style={{
-                  width: "100%",
-                }}
+               className="md:w-full sm:w-56"
                 cover={
                   <img
                     className="2xl:h-full xl:h-3/4 lg:h-1/2 sm:h-1/4 h-48"
@@ -117,8 +111,8 @@ export default function ComingServices() {
                 }
               >
                 <Meta
-                  title="Europe Street beat"
-                  description="www.instagram.com"
+                  title="Train ticket booking"
+                  // description="www.instagram.com"
                 />
               </Card>
             </SwiperSlide>
@@ -126,9 +120,7 @@ export default function ComingServices() {
             <SwiperSlide>
               <Card
                 hoverable
-                style={{
-                  width: "100%",
-                }}
+               className="md:w-full sm:w-56"
                 cover={
                   <img
                     className="2xl:h-full xl:h-3/4 lg:h-1/2 sm:h-1/4 h-48"
@@ -138,8 +130,8 @@ export default function ComingServices() {
                 }
               >
                 <Meta
-                  title="Europe Street beat"
-                  description="www.instagram.com"
+                  title="Car rental bookings"
+                  // description="www.instagram.com"
                 />
               </Card>
             </SwiperSlide>
@@ -147,9 +139,7 @@ export default function ComingServices() {
             <SwiperSlide>
               <Card
                 hoverable
-                style={{
-                  width: "100%",
-                }}
+               className="md:w-full sm:w-56"
                 cover={
                   <img
                     className="2xl:h-full xl:h-3/4 lg:h-1/2 sm:h-1/4 h-48"
@@ -159,8 +149,8 @@ export default function ComingServices() {
                 }
               >
                 <Meta
-                  title="Europe Street beat"
-                  description="www.instagram.com"
+                  title="Concert ticket booking"
+                  // description="www.instagram.com"
                 />
               </Card>
             </SwiperSlide>
@@ -168,9 +158,7 @@ export default function ComingServices() {
             <SwiperSlide>
               <Card
                 hoverable
-                style={{
-                  width: "100%",
-                }}
+               className="md:w-full sm:w-56"
                 cover={
                   <img
                     className="2xl:h-full xl:h-3/4 lg:h-1/2 sm:h-1/4 h-48"
@@ -180,8 +168,8 @@ export default function ComingServices() {
                 }
               >
                 <Meta
-                  title="Europe Street beat"
-                  description="www.instagram.com"
+                  title="Cruise ticket booking"
+                  // description="www.instagram.com"
                 />
               </Card>
             </SwiperSlide>
