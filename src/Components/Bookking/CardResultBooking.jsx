@@ -12,7 +12,6 @@ import { VscVm } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadPrice } from "../Feature/Models/GetPrice";
-import { loadPagination } from "../Feature/Models/PaginationSlice";
 import CardResultBookingOneWay from "./CardResultBookingOneWay";
 import CardResultBookingReturn from "./CardResultBookingReturn";
 
@@ -23,7 +22,6 @@ export default function CardResultBooking() {
   const { trip } = useParams();
 
   const { Price } = useSelector((state) => state.getPrice);
-  const { pagination } = useSelector((state) => state.getPagination);
   const [priceEconomy, setPriceEconomy] = useState("");
   const [priceBusiness, setPriceBusiness] = useState("");
   const [economy, setEconomy] = useState(false);
@@ -187,31 +185,6 @@ export default function CardResultBooking() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
-  // PAGINATION
-  const [aktifPage, setAktifPage] = useState(1);
-
-  useEffect(() => {
-    dispatch(loadPagination(aktifPage));
-  }, [dispatch])
-
-  const handlePrev = () => {
-    const prevPage = aktifPage !== 1 ? (aktifPage - 1) : aktifPage;
-    dispatch(loadPagination(prevPage));
-    setAktifPage(prevPage);
-  }
-
-  const handleNext = () => {
-    const nextPage = aktifPage !== 5 ? (aktifPage + 1) : aktifPage;
-    dispatch(loadPagination(nextPage));
-    setAktifPage(nextPage);
-  }
-
-  const handlePageNumber = (index) => {
-    dispatch(loadPagination(index));
-    setAktifPage(index);
-  }
-
   useEffect(() => {
     const cityTo = JSON.parse(localStorage.getItem("cityTo"));
     const cityFrom = JSON.parse(localStorage.getItem("cityFrom"));

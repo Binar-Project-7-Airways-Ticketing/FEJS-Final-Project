@@ -265,6 +265,38 @@ export default function TransactionEconomy() {
     dispatch(createPassenger(passanger));
   };
   const create1 = () => {
+    if (!createTitle1) {
+      alert("Harus ada title user");
+        return;
+    }
+    if (!createCategory1) {
+      alert("Harus ada category");
+        return;
+    }
+    if (!createGender1) {
+      alert("Harus ada gender");
+        return;
+    }
+    if (!createFirstName1) {
+      alert("Harus ada firstName");
+        return;
+    }
+    if (!createLastname1) {
+      alert("Harus ada lastName");
+        return;
+    }
+    if (!createContactNumber1) {
+      alert("Harus ada contactNumber");
+        return;
+    }
+    if (!createBirth1) {
+      alert("Harus ada birthday");
+        return;
+    }
+    if (!createNationality1) {
+      alert("Harus ada nationality");
+        return;
+    }
     alert("Silahkan lanjut pengisian");
     const passanger1 = {
       titleUser: createTitle1,
@@ -287,6 +319,38 @@ export default function TransactionEconomy() {
     dispatch(createPassenger(passanger1));
   };
   const create2 = () => {
+    if (!createTitle2) {
+      alert("Harus ada title user");
+        return;
+    }
+    if (!createCategory2) {
+      alert("Harus ada category");
+        return;
+    }
+    if (!createGender2) {
+      alert("Harus ada gender");
+        return;
+    }
+    if (!createFirstName2) {
+      alert("Harus ada firstName");
+        return;
+    }
+    if (!createLastname2) {
+      alert("Harus ada lastName");
+        return;
+    }
+    if (!createContactNumber2) {
+      alert("Harus ada contactNumber");
+        return;
+    }
+    if (!createBirth2) {
+      alert("Harus ada birthday");
+        return;
+    }
+    if (!createNationality2) {
+      alert("Harus ada nationality");
+        return;
+    }
     alert("Silahkan lanjut pengisian");
     const passanger2 = {
       titleUser: createTitle2,
@@ -307,6 +371,38 @@ export default function TransactionEconomy() {
     dispatch(createPassenger(passanger2));
   };
   const create3 = () => {
+    if (!createTitle3) {
+      alert("Harus ada title user");
+        return;
+    }
+    if (!createCategory3) {
+      alert("Harus ada category");
+        return;
+    }
+    if (!createGender3) {
+      alert("Harus ada gender");
+        return;
+    }
+    if (!createFirstName3) {
+      alert("Harus ada firstName");
+        return;
+    }
+    if (!createLastname3) {
+      alert("Harus ada lastName");
+        return;
+    }
+    if (!createContactNumber3) {
+      alert("Harus ada contactNumber");
+        return;
+    }
+    if (!createBirth3) {
+      alert("Harus ada birthday");
+        return;
+    }
+    if (!createNationality3) {
+      alert("Harus ada nationality");
+        return;
+    }
     alert("Silahkan lanjut pengisian");
     const passanger3 = {
       titleUser: createTitle3,
@@ -327,6 +423,38 @@ export default function TransactionEconomy() {
     dispatch(createPassenger(passanger3));
   };
   const create4 = () => {
+    if (!createTitle4) {
+      alert("Harus ada title user");
+        return;
+    }
+    if (!createCategory4) {
+      alert("Harus ada category");
+        return;
+    }
+    if (!createGender4) {
+      alert("Harus ada gender");
+        return;
+    }
+    if (!createFirstName4) {
+      alert("Harus ada firstName");
+        return;
+    }
+    if (!createLastname4) {
+      alert("Harus ada lastName");
+        return;
+    }
+    if (!createContactNumber4) {
+      alert("Harus ada contactNumber");
+        return;
+    }
+    if (!createBirth4) {
+      alert("Harus ada birthday");
+        return;
+    }
+    if (!createNationality4) {
+      alert("Harus ada nationality");
+        return;
+    }
     alert("Silahkan lanjut pengisian");
     const passanger4 = {
       titleUser: createTitle4,
@@ -347,6 +475,38 @@ export default function TransactionEconomy() {
     dispatch(createPassenger(passanger4));
   };
   const create5 = () => {
+    if (!createTitle5) {
+      alert("Harus ada title user");
+        return;
+    }
+    if (!createCategory5) {
+      alert("Harus ada category");
+        return;
+    }
+    if (!createGender5) {
+      alert("Harus ada gender");
+        return;
+    }
+    if (!createFirstName5) {
+      alert("Harus ada firstName");
+        return;
+    }
+    if (!createLastname5) {
+      alert("Harus ada lastName");
+        return;
+    }
+    if (!createContactNumber5) {
+      alert("Harus ada contactNumber");
+        return;
+    }
+    if (!createBirth5) {
+      alert("Harus ada birthday");
+        return;
+    }
+    if (!createNationality5) {
+      alert("Harus ada nationality");
+        return;
+    }
     alert("Silahkan lanjut pengisian");
     const passanger5 = {
       titleUser: createTitle5,
@@ -367,6 +527,38 @@ export default function TransactionEconomy() {
     dispatch(createPassenger(passanger5));
   };
   const create6 = () => {
+    if (!createTitle6) {
+      alert("Harus ada title user");
+        return;
+    }
+    if (!createCategory6) {
+      alert("Harus ada category");
+        return;
+    }
+    if (!createGender6) {
+      alert("Harus ada gender");
+        return;
+    }
+    if (!createFirstName6) {
+      alert("Harus ada firstName");
+        return;
+    }
+    if (!createLastname6) {
+      alert("Harus ada lastName");
+        return;
+    }
+    if (!createContactNumber6) {
+      alert("Harus ada contactNumber");
+        return;
+    }
+    if (!createBirth6) {
+      alert("Harus ada birthday");
+        return;
+    }
+    if (!createNationality6) {
+      alert("Harus ada nationality");
+        return;
+    }
     alert("Silahkan lanjut pengisian");
     const passanger6 = {
       titleUser: createTitle6,
@@ -387,6 +579,38 @@ export default function TransactionEconomy() {
     dispatch(createPassenger(passanger6));
   };
   const create7 = () => {
+    if (!createTitle7) {
+      alert("Harus ada title user");
+        return;
+    }
+    if (!createCategory7) {
+      alert("Harus ada category");
+        return;
+    }
+    if (!createGender7) {
+      alert("Harus ada gender");
+        return;
+    }
+    if (!createFirstName7) {
+      alert("Harus ada firstName");
+        return;
+    }
+    if (!createLastname7) {
+      alert("Harus ada lastName");
+        return;
+    }
+    if (!createContactNumber7) {
+      alert("Harus ada contactNumber");
+        return;
+    }
+    if (!createBirth7) {
+      alert("Harus ada birthday");
+        return;
+    }
+    if (!createNationality7) {
+      alert("Harus ada nationality");
+        return;
+    }
     alert("Silahkan lanjut pengisian");
     const passanger7 = {
       titleUser: createTitle7,
