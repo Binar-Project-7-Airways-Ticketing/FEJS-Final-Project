@@ -12,6 +12,7 @@ import { VscVm } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadPrice } from "../Feature/Models/GetPrice";
+import { loadPagination } from "../Feature/Models/PaginationSlice";
 
 export default function CardResultBooking() {
   // const { flight } = useSelector((state) => state.flight);
@@ -20,6 +21,7 @@ export default function CardResultBooking() {
   const { trip } = useParams();
 
   const { Price } = useSelector((state) => state.getPrice);
+  const { pagination } = useSelector((state) => state.getPagination);
   const [priceEconomy, setPriceEconomy] = useState("");
   const [priceBusiness, setPriceBusiness] = useState("");
   const [economy, setEconomy] = useState(false);
@@ -134,6 +136,31 @@ export default function CardResultBooking() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  // PAGINATION
+  const [aktifPage, setAktifPage] = useState(1);
+
+  useEffect(() => {
+    dispatch(loadPagination(aktifPage));
+  }, [dispatch])
+
+  const handlePrev = () => {
+    const prevPage = aktifPage !== 1 ? (aktifPage - 1) : aktifPage;
+    dispatch(loadPagination(prevPage));
+    setAktifPage(prevPage);
+  }
+
+  const handleNext = () => {
+    const nextPage = aktifPage !== 5 ? (aktifPage + 1) : aktifPage;
+    dispatch(loadPagination(nextPage));
+    setAktifPage(nextPage);
+  }
+
+  const handlePageNumber = (index) => {
+    dispatch(loadPagination(index));
+    setAktifPage(index);
+  }
+
   useEffect(() => {
     const cityTo = JSON.parse(localStorage.getItem("cityTo"));
     const cityFrom = JSON.parse(localStorage.getItem("cityFrom"));
@@ -331,70 +358,70 @@ export default function CardResultBooking() {
                               </div>
                               {modal === item.idFlight
                                 ? resultFlightDepart
-                                    .filter((item) => item.idFlight === modal)
-                                    .map((item) => (
-                                      <Modal
-                                        title="Flight Details"
-                                        open={isModalOpen}
-                                        onOk={handleOk}
-                                        onCancel={handleCancel}
-                                        footer={[null]}
-                                      >
-                                        <div className="wrap-modal-detail-flight">
-                                          <div className="title-detail-flight">
-                                            <p>
-                                              {resultFrom.city} to{" "}
-                                              {resultTo.city}
-                                            </p>
-                                            <p>Saturday, Nov 26</p>
+                                  .filter((item) => item.idFlight === modal)
+                                  .map((item) => (
+                                    <Modal
+                                      title="Flight Details"
+                                      open={isModalOpen}
+                                      onOk={handleOk}
+                                      onCancel={handleCancel}
+                                      footer={[null]}
+                                    >
+                                      <div className="wrap-modal-detail-flight">
+                                        <div className="title-detail-flight">
+                                          <p>
+                                            {resultFrom.city} to{" "}
+                                            {resultTo.city}
+                                          </p>
+                                          <p>Saturday, Nov 26</p>
+                                        </div>
+                                        <div className="flex w-full gap-7 ">
+                                          <div className="flex w-full flex-col justify-between gap-5">
+                                            <div>
+                                              <p>{resultFrom.city}</p>
+                                              <p>{resultFrom.airportName}</p>
+                                            </div>
+                                            <div>
+                                              <p>
+                                                {item.flightNumber}{" "}
+                                                {item.plane.planeType}
+                                              </p>
+                                              <p>Flight by 7-Airways</p>
+                                            </div>
+                                            <div>
+                                              <p>{resultTo.city}</p>
+                                              <p>{resultTo.airportName}</p>
+                                            </div>
                                           </div>
-                                          <div className="flex w-full gap-7 ">
-                                            <div className="flex w-full flex-col justify-between gap-5">
-                                              <div>
-                                                <p>{resultFrom.city}</p>
-                                                <p>{resultFrom.airportName}</p>
-                                              </div>
-                                              <div>
-                                                <p>
-                                                  {item.flightNumber}{" "}
-                                                  {item.plane.planeType}
-                                                </p>
-                                                <p>Flight by 7-Airways</p>
-                                              </div>
-                                              <div>
-                                                <p>{resultTo.city}</p>
-                                                <p>{resultTo.airportName}</p>
-                                              </div>
-                                            </div>
 
-                                            <div className="flex flex-col items-center w-full">
-                                              <div className="circle">
-                                                <BsCircle />
-                                              </div>
-                                              <div className="wrap-logo">
-                                                <img
-                                                  src={logo}
-                                                  style={{
-                                                    width: "90px",
-                                                    height: "90px",
-                                                    borderRadius: "100%",
-                                                    border: "1px solid black",
-                                                  }}
-                                                ></img>
-                                              </div>
-                                              <div className="circle">
-                                                <BsCircle />
-                                              </div>
+                                          <div className="flex flex-col items-center w-full">
+                                            <div className="circle">
+                                              <BsCircle />
                                             </div>
-                                            <div className="flex flex-col justify-between w-full">
-                                              <p>{item.departureTime} WIB</p>
+                                            <div className="wrap-logo">
+                                              <img
+                                                src={logo}
+                                                style={{
+                                                  width: "90px",
+                                                  height: "90px",
+                                                  borderRadius: "100%",
+                                                  border: "1px solid black",
+                                                }}
+                                              ></img>
+                                            </div>
+                                            <div className="circle">
+                                              <BsCircle />
+                                            </div>
+                                          </div>
+                                          <div className="flex flex-col justify-between w-full">
+                                            <p>{item.departureTime} WIB</p>
 
-                                              <p>{item.arrivalTime} WIB</p>
-                                            </div>
+                                            <p>{item.arrivalTime} WIB</p>
                                           </div>
                                         </div>
-                                      </Modal>
-                                    ))
+                                      </div>
+                                    </Modal>
+                                  ))
                                 : null}
                             </div>
                           </div>
@@ -659,79 +686,79 @@ export default function CardResultBooking() {
                                   </div>
                                   {modal === item.idFlight
                                     ? resultFlightReturn
-                                        .filter(
-                                          (item) => item.idFlight === modal
-                                        )
-                                        .map((item) => (
-                                          <Modal
-                                            title="Flight Details"
-                                            open={isModalOpen}
-                                            onOk={handleOk}
-                                            onCancel={handleCancel}
-                                            footer={[null]}
-                                          >
-                                            <div className="wrap-modal-detail-flight">
-                                              <div className="title-detail-flight">
-                                                <p>
-                                                  {resultFrom.city} to{" "}
-                                                  {resultTo.city}
-                                                </p>
-                                                <p>Saturday, Nov 26</p>
-                                              </div>
-                                              <div className="flex w-full gap-7 ">
-                                                <div className="flex w-full flex-col justify-between gap-5">
-                                                  <div>
-                                                    <p>{resultTo.city}</p>
-                                                    <p>
-                                                      {resultTo.airportName}
-                                                    </p>
-                                                  </div>
-                                                  <div>
-                                                    <p>
-                                                      {item.flightNumber}{" "}
-                                                      {item.plane.planeType}
-                                                    </p>
-                                                    <p>Flight by 7-Airways</p>
-                                                  </div>
-                                                  <div>
-                                                    <p>{resultFrom.city}</p>
-                                                    <p>
-                                                      {resultFrom.airportName}
-                                                    </p>
-                                                  </div>
-                                                </div>
-
-                                                <div className="flex flex-col items-center w-full">
-                                                  <div className="circle">
-                                                    <BsCircle />
-                                                  </div>
-                                                  <div className="wrap-logo">
-                                                    <img
-                                                      src={logo}
-                                                      style={{
-                                                        width: "90px",
-                                                        height: "90px",
-                                                        borderRadius: "100%",
-                                                        border:
-                                                          "1px solid black",
-                                                      }}
-                                                    ></img>
-                                                  </div>
-                                                  <div className="circle">
-                                                    <BsCircle />
-                                                  </div>
-                                                </div>
-                                                <div className="flex flex-col justify-between w-full">
+                                      .filter(
+                                        (item) => item.idFlight === modal
+                                      )
+                                      .map((item) => (
+                                        <Modal
+                                          title="Flight Details"
+                                          open={isModalOpen}
+                                          onOk={handleOk}
+                                          onCancel={handleCancel}
+                                          footer={[null]}
+                                        >
+                                          <div className="wrap-modal-detail-flight">
+                                            <div className="title-detail-flight">
+                                              <p>
+                                                {resultFrom.city} to{" "}
+                                                {resultTo.city}
+                                              </p>
+                                              <p>Saturday, Nov 26</p>
+                                            </div>
+                                            <div className="flex w-full gap-7 ">
+                                              <div className="flex w-full flex-col justify-between gap-5">
+                                                <div>
+                                                  <p>{resultTo.city}</p>
                                                   <p>
-                                                    {item.departureTime} WIB
+                                                    {resultTo.airportName}
                                                   </p>
-
-                                                  <p>{item.arrivalTime} WIB</p>
                                                 </div>
+                                                <div>
+                                                  <p>
+                                                    {item.flightNumber}{" "}
+                                                    {item.plane.planeType}
+                                                  </p>
+                                                  <p>Flight by 7-Airways</p>
+                                                </div>
+                                                <div>
+                                                  <p>{resultFrom.city}</p>
+                                                  <p>
+                                                    {resultFrom.airportName}
+                                                  </p>
+                                                </div>
+                                              </div>
+
+                                              <div className="flex flex-col items-center w-full">
+                                                <div className="circle">
+                                                  <BsCircle />
+                                                </div>
+                                                <div className="wrap-logo">
+                                                  <img
+                                                    src={logo}
+                                                    style={{
+                                                      width: "90px",
+                                                      height: "90px",
+                                                      borderRadius: "100%",
+                                                      border:
+                                                        "1px solid black",
+                                                    }}
+                                                  ></img>
+                                                </div>
+                                                <div className="circle">
+                                                  <BsCircle />
+                                                </div>
+                                              </div>
+                                              <div className="flex flex-col justify-between w-full">
+                                                <p>
+                                                  {item.departureTime} WIB
+                                                </p>
+
+                                                <p>{item.arrivalTime} WIB</p>
                                               </div>
                                             </div>
-                                          </Modal>
-                                        ))
+                                          </div>
+                                        </Modal>
+                                      ))
                                     : null}
                                 </div>
                               </div>
@@ -864,7 +891,7 @@ export default function CardResultBooking() {
                       {resultFlightDepart.map((item, i) => (
                         <>
                           {economy === item.idFlight ||
-                          business === item.idFlight
+                            business === item.idFlight
                             ? null
                             : null}
                           {economy === item.idFlight ? (
@@ -1048,69 +1075,69 @@ export default function CardResultBooking() {
                             </div>
                             {modal === item.idFlight
                               ? resultFlightDepart
-                                  .filter((item) => item.idFlight === modal)
-                                  .map((item) => (
-                                    <Modal
-                                      title="Flight Details"
-                                      open={isModalOpen}
-                                      onOk={handleOk}
-                                      onCancel={handleCancel}
-                                      footer={[null]}
-                                    >
-                                      <div className="wrap-modal-detail-flight">
-                                        <div className="title-detail-flight">
-                                          <p>
-                                            {resultFrom.city} to {resultTo.city}
-                                          </p>
-                                          <p>Saturday, Nov 26</p>
+                                .filter((item) => item.idFlight === modal)
+                                .map((item) => (
+                                  <Modal
+                                    title="Flight Details"
+                                    open={isModalOpen}
+                                    onOk={handleOk}
+                                    onCancel={handleCancel}
+                                    footer={[null]}
+                                  >
+                                    <div className="wrap-modal-detail-flight">
+                                      <div className="title-detail-flight">
+                                        <p>
+                                          {resultFrom.city} to {resultTo.city}
+                                        </p>
+                                        <p>Saturday, Nov 26</p>
+                                      </div>
+                                      <div className="flex w-full gap-7 ">
+                                        <div className="flex w-full flex-col justify-between gap-5">
+                                          <div>
+                                            <p>{resultFrom.city}</p>
+                                            <p>{resultFrom.airportName}</p>
+                                          </div>
+                                          <div>
+                                            <p>
+                                              {item.flightNumber}{" "}
+                                              {item.plane.planeType}
+                                            </p>
+                                            <p>Flight by 7-Airways</p>
+                                          </div>
+                                          <div>
+                                            <p>{resultTo.city}</p>
+                                            <p>{resultTo.airportName}</p>
+                                          </div>
                                         </div>
-                                        <div className="flex w-full gap-7 ">
-                                          <div className="flex w-full flex-col justify-between gap-5">
-                                            <div>
-                                              <p>{resultFrom.city}</p>
-                                              <p>{resultFrom.airportName}</p>
-                                            </div>
-                                            <div>
-                                              <p>
-                                                {item.flightNumber}{" "}
-                                                {item.plane.planeType}
-                                              </p>
-                                              <p>Flight by 7-Airways</p>
-                                            </div>
-                                            <div>
-                                              <p>{resultTo.city}</p>
-                                              <p>{resultTo.airportName}</p>
-                                            </div>
-                                          </div>
 
-                                          <div className="flex flex-col items-center w-full">
-                                            <div className="circle">
-                                              <BsCircle />
-                                            </div>
-                                            <div className="wrap-logo">
-                                              <img
-                                                src={logo}
-                                                style={{
-                                                  width: "90px",
-                                                  height: "90px",
-                                                  borderRadius: "100%",
-                                                  border: "1px solid black",
-                                                }}
-                                              ></img>
-                                            </div>
-                                            <div className="circle">
-                                              <BsCircle />
-                                            </div>
+                                        <div className="flex flex-col items-center w-full">
+                                          <div className="circle">
+                                            <BsCircle />
                                           </div>
-                                          <div className="flex flex-col justify-between w-full">
-                                            <p>{item.departureTime} WIB</p>
+                                          <div className="wrap-logo">
+                                            <img
+                                              src={logo}
+                                              style={{
+                                                width: "90px",
+                                                height: "90px",
+                                                borderRadius: "100%",
+                                                border: "1px solid black",
+                                              }}
+                                            ></img>
+                                          </div>
+                                          <div className="circle">
+                                            <BsCircle />
+                                          </div>
+                                        </div>
+                                        <div className="flex flex-col justify-between w-full">
+                                          <p>{item.departureTime} WIB</p>
 
-                                            <p>{item.arrivalTime} WIB</p>
-                                          </div>
+                                          <p>{item.arrivalTime} WIB</p>
                                         </div>
                                       </div>
-                                    </Modal>
-                                  ))
+                                    </div>
+                                  </Modal>
+                                ))
                               : null}
                           </div>
                         </div>
