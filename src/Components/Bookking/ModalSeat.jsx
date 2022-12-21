@@ -12,6 +12,8 @@ import ButtonFindFlight from "../Reusable/ButtonFindFlight";
 
 export default function ModalSeat(props) {
   const { Seats } = useSelector((state) => state.seat);
+  const [planeType, setPlaneType] = useState(undefined);
+  const [planeNumber, setPlaneNumber] = useState(undefined);
   const [detailSeat, setDetailSeat] = useState("");
   const [detailSea, setDetailSea] = useState(false);
   const [arrowSeat, setArrowSeat] = useState(true);
@@ -119,7 +121,6 @@ export default function ModalSeat(props) {
     };
 
     dispatch(updateSeats(updateSeat));
-    // console.log(e);
   };
 
   const onFinish = (values) => {
@@ -133,10 +134,13 @@ export default function ModalSeat(props) {
     setPassenger(countPassenger);
     const cityTo = JSON.parse(localStorage.getItem("cityTo"));
     const cityFrom = JSON.parse(localStorage.getItem("cityFrom"));
+    const planeType = JSON.parse(localStorage.getItem("depart"));
+    setPlaneType(planeType.plane.planeType);
+    setPlaneNumber(planeType.flightNumber);
     setResultTo(cityTo);
     setResultFrom(cityFrom);
     dispatch(loadSeats());
-  }, [Seats]);
+  }, [dispatch, Seats]);
 
   return (
     <>
@@ -157,12 +161,12 @@ export default function ModalSeat(props) {
             footer={[null]}
             width={"fit-content"}
           >
-            <div>
+            <div className="h-screen sm:overflow-scroll">
               <div className="flex w-full">
-                <div className="flex w-full gap-10">
-                  <div className="flex w-fit flex-col gap-5">
-                    <div className="flex w-60 flex-col rounded-md bg-brand-whiteLight text-brand-whiteLight h-fit">
-                      <div className="flex gap-2 items-center bg-brand-black h-fit p-2 justify-between rounded-md">
+                <div className="flex sm:flex-col w-full gap-10">
+                  <div className="flex md:w-fit flex-col gap-5 sm:w-full">
+                    <div className="flex md:w-60 sm:w-full flex-col rounded-md bg-brand-whiteLight text-brand-whiteLight h-fit">
+                      <div className="flex gap-2 items-center  bg-brand-black h-fit p-2 justify-between rounded-md">
                         <div className="flex gap-2 items-center">
                           <h6>{resultFrom.city}</h6>
                           <BsArrowRightCircle />
@@ -186,7 +190,9 @@ export default function ModalSeat(props) {
                           <div className="w-full">
                             <div className=" p-2 ">
                               <h6>Passenger</h6>
-
+                              <div className="flex gap-1 justify-between">
+                                
+                              <p>{props.penumpang}</p>
                               <Form
                                 name="basic"
                                 labelCol={{
@@ -241,6 +247,7 @@ export default function ModalSeat(props) {
                                   Confirm
                                 </Button>
                               </Form>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -280,7 +287,9 @@ export default function ModalSeat(props) {
                     </div>
                   </div>
                   <div className="flex flex-col w-full gap-2">
-                    <h5>G40 AIRBUS 200</h5>
+                    <h5>
+                      {planeNumber}, {planeType}
+                    </h5>
 
                     <div className="flex w-fit gap-2">
                       <div className="flex w-fit gap-2">
