@@ -261,9 +261,7 @@ export default function TransactionBusiness() {
 
   const [isModalBayarOpen, setIsModalBayarOpen] = useState(false);
 
-  const showModalBayar = () => {
-    setIsModalBayarOpen(true);
-  };
+ 
 
   const handleBayarOk = () => {
     setIsModalBayarOpen(false);
@@ -441,6 +439,11 @@ export default function TransactionBusiness() {
     alert("Apakah Metode Pembayaran Sudah Sesuai ?");
     console.log(payment1);
     setIsModalBayarOpen(false);
+   
+
+    navigate("/bookingPending");
+  };
+  const showModalBayar = () => {
     if (passenger === 1) {
       dispatch(createPayment(payment1));
     }
@@ -486,8 +489,7 @@ export default function TransactionBusiness() {
       dispatch(createPayment(payment6));
       dispatch(createPayment(payment7));
     }
-
-    navigate("/bookingPending");
+    setIsModalBayarOpen(true);
   };
 
   useEffect(() => {
