@@ -2,43 +2,44 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  luggages: [],
 
+  category: [],
   loadLuggage: false,
 };
 
-export const loadLuggages = createAsyncThunk("luggages/loadLuggages", async () => {
+
+export const loadCategory = createAsyncThunk("luggages/loadCategory", async () => {
+
   try {
-    const luggages = await axios.get(
-      "https://bej-ticketing-production.up.railway.app/api/luggage"
-    );
+    const category = await axios.get(
+      `https://bej-ticketing-production.up.railway.app/api/passenger/age-category`
+    )
     
-    return luggages.data
+    return category.data
   } catch (error) {
     console.error(error);
   }
 });
 
-
 export const postSlice = createSlice(
+    
     {
-      name: "luggage",
+      name: "category",
       initialState,
       reducers: {},
       extraReducers: {
-        [loadLuggages.pending]: (state) => {
+        [loadCategory.pending]: (state) => {
           state.loading = true;
         },
-        [loadLuggages.fulfilled]: (state, { payload }) => {
+        [loadCategory.fulfilled]: (state, { payload }) => {
           state.loading = false;
-          state.luggages = payload;
+          state.category = payload;
         },
-        [loadLuggages.rejected]: (state) => {
+        [loadCategory.rejected]: (state) => {
           state.loading = false;
         },
       },
     },
-
   );
   
   export default postSlice.reducer;

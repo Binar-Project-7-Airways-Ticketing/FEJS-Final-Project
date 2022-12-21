@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { reducer as authLoginReducer } from "./Models/AuthLogin";
 import { reducer as authRegisterReducer } from "./Models/AuthRegister";
 import seats from "../Feature/Models/SeatsSlice"
+import seatsPlaneCount from "./Models/SeatsSlicePlaneCount"
 import luggages from "../Feature/Models/LuggageSlice"
 import airports from "../Feature/Models/AirpostSlice"
 import flightsOneWays from "./Models/FlightSliceReturn"
@@ -13,6 +14,8 @@ import detailsNotif from "../Feature/Models/NotificationDetail"
 import payment from "../Feature/Models/PaymentSlice";
 import getUser from "../Feature/Models/GetUser"
 import getPrice from "./Models/GetPrice";
+import luggagesPlane from "./Models/LuggageSliceIdPlane"
+import category from "./Models/GetCategory"
 
 export const store = configureStore({
     reducer: {
@@ -29,6 +32,9 @@ export const store = configureStore({
         detailNotif:detailsNotif,
         payment: payment,
         getUser:getUser,
-        getPrice:getPrice
+        getPrice:getPrice,
+        luggagePlane: luggagesPlane,
+        seatsPlaneCount:seatsPlaneCount,
+        category:category,
     }
 })

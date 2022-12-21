@@ -25,7 +25,7 @@ import { useNavigate } from "react-router-dom";
 import { loadLuggages } from "./Feature/Models/LuggageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { loadPayment } from "./Feature/Models/PaymentSlice";
+// import { loadPayment } from "./Feature/Models/PaymentSlice";
 
 export default function Transaction() {
   const navigate = useNavigate();
@@ -60,7 +60,7 @@ export default function Transaction() {
   }, [luggages]);
 
   useEffect(() => {
-    dispatch(loadPayment());
+    // dispatch(loadPayment());
   }, [payment]);
 
   return (

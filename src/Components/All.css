@@ -793,7 +793,7 @@ nav {
   display: flex;
   flex-direction: column;
   width: 93%;
-  gap: 20px;
+  gap: 10px;
   border: 1px solid #f1efe9;
   border-radius: 20px;
   padding: 20px;
@@ -1331,6 +1331,9 @@ footer {
   }
   h6{
     font-size: 0.7rem;
+  }
+  p{
+    font-size: 10px;
   }
 
   /*-------------- booking component homepage---------------*/

@@ -4,14 +4,19 @@ import { ContactsOutlined } from "@ant-design/icons";
 import Select from "react-select";
 import { Button } from "antd";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadCategory } from "./Feature/Models/GetCategory";
 
 export default function ComponentFormTransaction(props) {
-    const [token, setToken] = useState(false);
+  const dispatch = useDispatch();
+  const [token, setToken] = useState(false);
+  const { category } = useSelector((state) => state.category);
 
-  useEffect(()=>{
-     const token = JSON.parse(localStorage.getItem("token"))
-     setToken(token);
-},[])
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("token"));
+    dispatch(loadCategory());
+    setToken(token);
+  }, [category]);
   return (
     <React.Fragment>
       <div className="parent-b w-full bg-brand-nude p-6 mb-6 rounded-md border-2 border-brand-black">
@@ -24,7 +29,7 @@ export default function ComponentFormTransaction(props) {
         <div className="left-content">
           <div className="flex w-full gap-1 mb-2 ">
             <select
-              onChange={token? props.title: "Penumpang"}
+              onChange={props.title}
               className="border-brand-gray p-2 border-2 rounded-md w-full"
               type="text"
             >
@@ -35,7 +40,7 @@ export default function ComponentFormTransaction(props) {
               <option value="MS">MS</option>
             </select>
 
-            <select
+            {/* <select
               onChange={props.category}
               className="border-brand-gray p-2 border-2 rounded-md w-full"
               type="text"
@@ -43,7 +48,17 @@ export default function ComponentFormTransaction(props) {
               <option value="CHILDREN">CHILDREN</option>
               <option value="ADULTS">ADULTS</option>
               <option value="INFANT">INFANT</option>
-            </select>
+            </select> */}
+            <Select
+              className="w-full"
+              value={props.valueCategory}
+              onChange={props.category}
+              options={category.map((item, key) => ({
+                value: item.idCategory,
+                price: item.price,
+                label: item.nameCategory,
+              }))}
+            ></Select>
           </div>
           <div className="flex mb-2 w-full">
             <select

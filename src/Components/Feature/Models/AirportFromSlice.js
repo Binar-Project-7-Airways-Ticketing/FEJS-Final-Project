@@ -15,7 +15,7 @@ export const loadCitiesFrom = createAsyncThunk(
         `${authConfig.baseUrl}/api/airport/name/${name}`
       );
       localStorage.setItem("cityFrom", JSON.stringify(cityFrom.data));
-      console.log(cityFrom.data);
+
       return cityFrom.data;
     } catch (error) {
       console.error(error);

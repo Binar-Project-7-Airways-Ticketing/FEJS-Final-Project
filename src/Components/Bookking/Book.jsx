@@ -70,6 +70,7 @@ export default function Book() {
       dateto: dateTo,
     };
 
+  
     dispatch(loadFlightDepart(x));
     dispatch(loadFlightReturn(x));
     dispatch(loadCitiesFrom(airportFrom));

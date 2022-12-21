@@ -10,13 +10,13 @@ const initialState = {
 
 
 export const loadFlightDepart = createAsyncThunk("flight/loadFlightDepart", async (dataFlight) => {
-  console.log(dataFlight);
+
   try {
     const flight = await axios.get(
       `${authConfig.baseUrl}/api/flight/${dataFlight.from}/${dataFlight.to}/date?date=${dataFlight.datefrom}`
     );
     localStorage.setItem("flightDepart", JSON.stringify(flight.data));
-    console.log(flight)
+
     return flight
   } catch (error) {
     console.error(error);
