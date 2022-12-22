@@ -9,11 +9,11 @@ import { store } from "./Components/Feature/Store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+ 
     <ReduxProvider store={store}>
       <App />
     </ReduxProvider>
-  </React.StrictMode>
+   
 );
 
 

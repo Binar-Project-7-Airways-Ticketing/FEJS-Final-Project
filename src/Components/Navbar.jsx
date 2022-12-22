@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineUser, AiOutlineBell } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Dropdown, Space, Input, Modal } from "antd";
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -186,9 +186,12 @@ export default function Navbar() {
                     <AiOutlineUser size={25} />
                   </div>
                   <div className="flex gap-1 h-7 bg-brand-whiteLight text-brand-black items-center px-3 rounded-md w-40 justify-end ml-2">
-                    <a className="text-sm" href="/login">
+                   <Link>
+                   <a className="text-sm" to={"/login"}>
                       Login
                     </a>
+                   </Link>
+                  
                     <p>|</p>
                     <a className="text-sm" href="/register">
                       Sign up
