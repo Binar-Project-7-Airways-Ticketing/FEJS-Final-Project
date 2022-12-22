@@ -167,7 +167,7 @@ export const Profile = (setIsLogin) => {
 
     data.append("image", file);
     axios.post(authConfig.baseUrl + "/api/user/upload/" + userId, data).then((response) => {
-      console.log(response);
+      
     });
   };
 
