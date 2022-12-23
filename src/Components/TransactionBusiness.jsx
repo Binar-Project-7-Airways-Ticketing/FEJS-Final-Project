@@ -231,9 +231,9 @@ export default function TransactionBusiness() {
         price:
           Price.business * passenger +
           (passenger1.ageCategory.price + bagasi1.price),
-        payment:{
+        payment: {
           paymentMethod: "BRI",
-        }
+        },
       };
       dispatch(createBooking(x));
     }
@@ -255,10 +255,13 @@ export default function TransactionBusiness() {
         ],
         price:
           Price.business * passenger +
-          (passenger1.ageCategory.price+passenger2.ageCategory.price+bagasi1.price+bagasi2.price),
-        payment:{
+          (passenger1.ageCategory.price +
+            passenger2.ageCategory.price +
+            bagasi1.price +
+            bagasi2.price),
+        payment: {
           paymentMethod: "BRI",
-        }
+        },
       };
       dispatch(createBooking(x));
     }
@@ -286,10 +289,15 @@ export default function TransactionBusiness() {
         ],
         price:
           Price.business * passenger +
-          (passenger1.ageCategory.price+passenger2.ageCategory.price+bagasi1.price+bagasi2.price+passenger3.ageCategory.price + bagasi3.price),
-        payment:{
+          (passenger1.ageCategory.price +
+            passenger2.ageCategory.price +
+            bagasi1.price +
+            bagasi2.price +
+            passenger3.ageCategory.price +
+            bagasi3.price),
+        payment: {
           paymentMethod: "BRI",
-        }
+        },
       };
       dispatch(createBooking(x));
     }
@@ -323,10 +331,17 @@ export default function TransactionBusiness() {
         ],
         price:
           Price.business * passenger +
-          (passenger4.ageCategory.price + bagasi4.price+passenger1.ageCategory.price+passenger2.ageCategory.price+bagasi1.price+bagasi2.price+passenger3.ageCategory.price + bagasi3.price),
-        payment:{
+          (passenger4.ageCategory.price +
+            bagasi4.price +
+            passenger1.ageCategory.price +
+            passenger2.ageCategory.price +
+            bagasi1.price +
+            bagasi2.price +
+            passenger3.ageCategory.price +
+            bagasi3.price),
+        payment: {
           paymentMethod: "BRI",
-        }
+        },
       };
       dispatch(createBooking(x));
     }
@@ -366,10 +381,19 @@ export default function TransactionBusiness() {
         ],
         price:
           Price.business * passenger +
-          (passenger5.ageCategory.price + bagasi5.price+passenger4.ageCategory.price + bagasi4.price+passenger1.ageCategory.price+passenger2.ageCategory.price+bagasi1.price+bagasi2.price+passenger3.ageCategory.price + bagasi3.price),
-        payment:{
+          (passenger5.ageCategory.price +
+            bagasi5.price +
+            passenger4.ageCategory.price +
+            bagasi4.price +
+            passenger1.ageCategory.price +
+            passenger2.ageCategory.price +
+            bagasi1.price +
+            bagasi2.price +
+            passenger3.ageCategory.price +
+            bagasi3.price),
+        payment: {
           paymentMethod: "BRI",
-        }
+        },
       };
       dispatch(createBooking(x));
     }
@@ -415,10 +439,21 @@ export default function TransactionBusiness() {
         ],
         price:
           Price.business * passenger +
-          (passenger6.ageCategory.price + bagasi6.price + passenger1.ageCategory.price + bagasi1.price+passenger4.ageCategory.price + bagasi4.price+passenger1.ageCategory.price+passenger2.ageCategory.price+bagasi1.price+bagasi2.price+passenger3.ageCategory.price + bagasi3.price),
-        payment:{
+          (passenger6.ageCategory.price +
+            bagasi6.price +
+            passenger1.ageCategory.price +
+            bagasi1.price +
+            passenger4.ageCategory.price +
+            bagasi4.price +
+            passenger1.ageCategory.price +
+            passenger2.ageCategory.price +
+            bagasi1.price +
+            bagasi2.price +
+            passenger3.ageCategory.price +
+            bagasi3.price),
+        payment: {
           paymentMethod: "BRI",
-        }
+        },
       };
       dispatch(createBooking(x));
     }
@@ -470,11 +505,23 @@ export default function TransactionBusiness() {
         ],
         price:
           Price.business * passenger +
-          (passenger7.ageCategory.price + bagasi7.price+passenger6.ageCategory.price + bagasi6.price + passenger1.ageCategory.price + bagasi1.price+passenger4.ageCategory.price + bagasi4.price+passenger1.ageCategory.price+passenger2.ageCategory.price+bagasi1.price+bagasi2.price+passenger3.ageCategory.price + bagasi3.price),
-        payment:{
+          (passenger7.ageCategory.price +
+            bagasi7.price +
+            passenger6.ageCategory.price +
+            bagasi6.price +
+            passenger1.ageCategory.price +
+            bagasi1.price +
+            passenger4.ageCategory.price +
+            bagasi4.price +
+            passenger1.ageCategory.price +
+            passenger2.ageCategory.price +
+            bagasi1.price +
+            bagasi2.price +
+            passenger3.ageCategory.price +
+            bagasi3.price),
+        payment: {
           paymentMethod: "BRI",
-        }
-        
+        },
       };
       dispatch(createBooking(x));
     }
@@ -848,7 +895,6 @@ export default function TransactionBusiness() {
                       <h3 className="text-[20px] mt-2">Bagasi</h3>
                     </div>
                     <div className="flex w-full gap-2 flex-col">
-                      <button onClick={ssss}>klik</button>
                       {passNum.map((item, i) => (
                         <div className="flex flex-col gap-2">
                           <p>Penumpang {i + 1}</p>
