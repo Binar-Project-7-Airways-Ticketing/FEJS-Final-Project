@@ -462,7 +462,7 @@ export default function TransactionBusiness() {
       };
       dispatch(createBooking(x));
     }
-    // navigate("/bookingPending");
+    navigate("/bookingPending");
   };
   const dateFormat = "MM/DD/YYYY";
 
