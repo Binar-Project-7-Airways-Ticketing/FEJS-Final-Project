@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { loadPrice } from "../Feature/Models/GetPrice";
 import dateFormat, { masks } from "dateformat";
 import { loadSeatsIdPlaneCount } from "../Feature/Models/SeatsSlicePlaneCount";
+import { loadPagination } from "../Feature/Models/PaginationSlice";
 
 export default function CardResultBookingOneWay() {
   // const { flight } = useSelector((state) => state.flight);
@@ -21,7 +22,8 @@ export default function CardResultBookingOneWay() {
   // const { cityTo } = useSelector((state) => state.cityTo);
   const { trip } = useParams();
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
-  
+  // const { pagination } = useSelector((state) => state.loadPagination);
+
   const { Price } = useSelector((state) => state.getPrice);
   const [priceEconomy, setPriceEconomy] = useState("");
   const [passanger, setPassenger] = useState("");
@@ -38,8 +40,28 @@ export default function CardResultBookingOneWay() {
   const [resultFlightReturn, setResultFlightReturn] = useState([]);
   const [resultFlightDepart, setResultFlightDepart] = useState([]);
 
+  const [aktifPage, setAktifPage] = useState(1);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const handlePrev = () => {
+    const prevPage = aktifPage !== 1 ? (aktifPage - 1) : aktifPage;
+    dispatch(loadPagination({departure_code:"CGK", arrival_code:"DPS", date:"12/30/2022", size:2, page:1}));
+    setAktifPage(prevPage);
+  }
+  console.log("loadPagination", loadPagination)
+
+  const handleNext = () => {
+    const nextPage = aktifPage !== 5 ? (aktifPage + 1) : aktifPage;
+    dispatch(loadPagination(10, nextPage));
+    setAktifPage(nextPage);
+  }
+
+  const handlePageNumber = (index) => {
+    dispatch(loadPagination(index));
+    setAktifPage(index);
+  }
 
   const handleDepartOneWay = (e) => {
     localStorage.setItem("depart", JSON.stringify(e));
@@ -145,36 +167,36 @@ export default function CardResultBookingOneWay() {
               <b className="text-brand-yellow">{resultFrom.city}</b> to{" "}
               <b className="text-brand-yellow">{resultTo.city}</b>
             </h2>
-            <div className="flex justify-between">
-              <h6>Result {resultFlightDepart.length} Flight for you </h6>
-              <div className="bg-brand-yellow p-2 rounded-lg text-brand-whiteLight w-40 h-fit">
-                {priceTotal ? (
-                  <>
-                    {resultFlightDepart.map((item, i) => (
-                      <>
-                        {economy === item.idFlight ? (
-                          <>
-                            <h6>Total Harga Rp. {Price.economy}</h6>
-                            <p>Harga untuk setiap wisatawan sekali jalan</p>
-                          </>
-                        ) : // .toString()
+          </div>
+          <div className="flex justify-between w-full pb-2">
+            <h6 className="py-2">Result {resultFlightDepart.length} Flight for you </h6>
+            <div className="block justify-center bg-brand-yellow p-2 rounded-lg text-brand-whiteLight sm:w-[40%] lg:w-[25%] h-fit">
+              {priceTotal ? (
+                <>
+                  {resultFlightDepart.map((item, i) => (
+                    <>
+                      {economy === item.idFlight ? (
+                        <>
+                          <h6 className="p-2">Total Harga Rp. {Price.economy}</h6>
+                          <p className="p-2">Harga untuk setiap wisatawan sekali jalan</p>
+                        </>
+                      ) : // .toString()
                         // .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")
                         null}
-                        {business === item.idFlight ? (
-                          <>
-                            <h6>Total Harga Rp. {Price.business}</h6>
-                            <p>Harga untuk setiap wisatawan sekali jalan</p>
-                          </>
-                        ) : // .toString()
+                      {business === item.idFlight ? (
+                        <>
+                          <h6 className="p-2">Total Harga Rp. {Price.business}</h6>
+                          <p className="p-2">Harga untuk setiap wisatawan sekali jalan</p>
+                        </>
+                      ) : // .toString()
                         // .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")
                         null}
-                      </>
-                    ))}
-                  </>
-                ) : (
-                  <h6>Total Harga Rp.</h6>
-                )}
-              </div>
+                    </>
+                  ))}
+                </>
+              ) : (
+                <h6>Total Harga Rp.</h6>
+              )}
             </div>
           </div>
           <div className="flex flex-col gap-5">
@@ -308,69 +330,69 @@ export default function CardResultBookingOneWay() {
                       </div>
                       {modal === item.idFlight
                         ? resultFlightDepart
-                            .filter((item) => item.idFlight === modal)
-                            .map((item) => (
-                              <Modal
-                                title="Flight Details"
-                                open={isModalOpen}
-                                onOk={handleOk}
-                                onCancel={handleCancel}
-                                footer={[null]}
-                              >
-                                <div className="wrap-modal-detail-flight">
-                                  <div className="title-detail-flight">
-                                    <p>
-                                      {resultFrom.city} to {resultTo.city}
-                                    </p>
-                                    <p>Saturday, Nov 26</p>
+                          .filter((item) => item.idFlight === modal)
+                          .map((item) => (
+                            <Modal
+                              title="Flight Details"
+                              open={isModalOpen}
+                              onOk={handleOk}
+                              onCancel={handleCancel}
+                              footer={[null]}
+                            >
+                              <div className="wrap-modal-detail-flight">
+                                <div className="title-detail-flight">
+                                  <p>
+                                    {resultFrom.city} to {resultTo.city}
+                                  </p>
+                                  <p>Saturday, Nov 26</p>
+                                </div>
+                                <div className="flex w-full gap-7 ">
+                                  <div className="flex w-full flex-col justify-between gap-5">
+                                    <div>
+                                      <p>{resultFrom.city}</p>
+                                      <p>{resultFrom.airportName}</p>
+                                    </div>
+                                    <div>
+                                      <p>
+                                        {item.flightNumber}{" "}
+                                        {item.plane.planeType}
+                                      </p>
+                                      <p>Flight by 7-Airways</p>
+                                    </div>
+                                    <div>
+                                      <p>{resultTo.city}</p>
+                                      <p>{resultTo.airportName}</p>
+                                    </div>
                                   </div>
-                                  <div className="flex w-full gap-7 ">
-                                    <div className="flex w-full flex-col justify-between gap-5">
-                                      <div>
-                                        <p>{resultFrom.city}</p>
-                                        <p>{resultFrom.airportName}</p>
-                                      </div>
-                                      <div>
-                                        <p>
-                                          {item.flightNumber}{" "}
-                                          {item.plane.planeType}
-                                        </p>
-                                        <p>Flight by 7-Airways</p>
-                                      </div>
-                                      <div>
-                                        <p>{resultTo.city}</p>
-                                        <p>{resultTo.airportName}</p>
-                                      </div>
-                                    </div>
 
-                                    <div className="flex flex-col items-center w-full">
-                                      <div className="circle">
-                                        <BsCircle />
-                                      </div>
-                                      <div className="wrap-logo">
-                                        <img
-                                          src={logo}
-                                          style={{
-                                            width: "90px",
-                                            height: "90px",
-                                            borderRadius: "100%",
-                                            border: "1px solid black",
-                                          }}
-                                        ></img>
-                                      </div>
-                                      <div className="circle">
-                                        <BsCircle />
-                                      </div>
+                                  <div className="flex flex-col items-center w-full">
+                                    <div className="circle">
+                                      <BsCircle />
                                     </div>
-                                    <div className="flex flex-col justify-between w-full">
-                                      <p>{item.departureTime} WIB</p>
+                                    <div className="wrap-logo">
+                                      <img
+                                        src={logo}
+                                        style={{
+                                          width: "90px",
+                                          height: "90px",
+                                          borderRadius: "100%",
+                                          border: "1px solid black",
+                                        }}
+                                      ></img>
+                                    </div>
+                                    <div className="circle">
+                                      <BsCircle />
+                                    </div>
+                                  </div>
+                                  <div className="flex flex-col justify-between w-full">
+                                    <p>{item.departureTime} WIB</p>
 
-                                      <p>{item.arrivalTime} WIB</p>
-                                    </div>
+                                    <p>{item.arrivalTime} WIB</p>
                                   </div>
                                 </div>
-                              </Modal>
-                            ))
+                              </div>
+                            </Modal>
+                          ))
                         : null}
                     </div>
                   </div>
@@ -379,8 +401,8 @@ export default function CardResultBookingOneWay() {
                       <div className="benefit sm:w-full">
                         <h2>Economy Class Flight</h2>
                         <div className="bg-brand-yellow w-fit p-2 rounded-lg">
-                        
-                          <p>{SeatsPlaneCount.filter((item)=> item.planeDetails.planeClass==="ECONOMY").length} Kursi tersisa</p>
+
+                          <p>{SeatsPlaneCount.filter((item) => item.planeDetails.planeClass === "ECONOMY").length} Kursi tersisa</p>
                         </div>
                         <p>The benefits you get in economy class</p>
                         <div className="benefit-detail">
@@ -400,15 +422,15 @@ export default function CardResultBookingOneWay() {
                           </div>
                         </div>
                         <div className="bg-brand-yellow rounded-md lg:w-1/4 w-1/3 sm:w-full  text-center cursor-pointer py-1.5 px-2.5 ">
-                        {SeatsPlaneCount.filter((item)=> item.planeDetails.planeClass==="ECONOMY").length===0 && SeatsPlaneCount.filter((item)=> item.planeDetails.planeClass==="ECONOMY").length<=passanger?
-                          <p >
-                          Seats Not Available
-                        </p>:(
+                          {SeatsPlaneCount.filter((item) => item.planeDetails.planeClass === "ECONOMY").length === 0 && SeatsPlaneCount.filter((item) => item.planeDetails.planeClass === "ECONOMY").length <= passanger ?
+                            <p >
+                              Seats Not Available
+                            </p> : (
 
-                          <p onClick={() => handleDepartOneWay(item)}>
-                            Select Class
-                          </p>
-                          )}
+                              <p onClick={() => handleDepartOneWay(item)}>
+                                Select Class
+                              </p>
+                            )}
                         </div>
                       </div>
                       <div className="img-benefit">
@@ -421,7 +443,7 @@ export default function CardResultBookingOneWay() {
                       <div className="benefit  sm:w-full">
                         <h2>Business Class Flight</h2>
                         <div className="bg-brand-yellow w-fit p-2 rounded-lg">
-                        <p>{SeatsPlaneCount.filter((item)=> item.planeDetails.planeClass==="BUSINESS").length} kursi tersedia</p>
+                          <p>{SeatsPlaneCount.filter((item) => item.planeDetails.planeClass === "BUSINESS").length} kursi tersedia</p>
                         </div>
                         <p>The benefits you get in economy class</p>
                         <div className="benefit-detail">
@@ -447,17 +469,17 @@ export default function CardResultBookingOneWay() {
                           </div>
                         </div>
                         <div className="bg-brand-yellow rounded-md lg:w-1/4 w-1/3 sm:w-full  text-center cursor-pointer py-1.5 px-2.5 ">
-                          {SeatsPlaneCount.filter((item)=> item.planeDetails.planeClass==="BUSINESS").length===0 && SeatsPlaneCount.filter((item)=> item.planeDetails.planeClass==="BUSINESS").length<=passanger?
-                          <p >
-                          Seats Not Available
-                        </p>:(
+                          {SeatsPlaneCount.filter((item) => item.planeDetails.planeClass === "BUSINESS").length === 0 && SeatsPlaneCount.filter((item) => item.planeDetails.planeClass === "BUSINESS").length <= passanger ?
+                            <p >
+                              Seats Not Available
+                            </p> : (
 
-                          <p onClick={() => handleDepartOneWay(item)}>
-                            Select Class
-                          </p>
-                          )
-                        }
-                 
+                              <p onClick={() => handleDepartOneWay(item)}>
+                                Select Class
+                              </p>
+                            )
+                          }
+
                         </div>
                       </div>
                       <div className="img-benefit ">
@@ -468,6 +490,21 @@ export default function CardResultBookingOneWay() {
                 </div>
               </div>
             ))}
+          </div>
+          <div className='flex gap-x-2 mt-6 justify-center'>
+            <button disabled={aktifPage === 1} onClick={handlePrev} className='w-10 h-10 border-2 border-gray-500 hover:border-brand-yellow text-black hover:text-brand-yellow duration-300'>{'<'}</button>
+            {new Array(5).fill().map((value, index) => {
+              const isActive = index + 1 === aktifPage;
+              if (isActive) return <button onClick={() => handlePageNumber(index + 1)} className='w-10 h-10 border-2 border-brand-yellow text-brand-yellow '>{index + 1}</button>
+              return <button onClick={() => handlePageNumber(index + 1)} className='w-10 h-10 border-2 border-gray-500 hover:border-brand-yellow text-black hover:text-brand-yellow duration-300'>{index + 1}</button>
+            })}
+            <button disabled={aktifPage === 5} onClick={handleNext} className='w-10 h-10 border-2 border-gray-500 hover:border-brand-yellow text-black hover:text-brand-yellow duration-300'>{'>'}</button>
+           
+            {/* <button className='w-10 h-10 border-2 border-black hover:border-brand-yellow text-black hover:text-brand-yellow duration-300'>{'<'}</button>
+            <button className='w-10 h-10 border-2 border-black hover:border-brand-yellow text-black hover:text-brand-yellow duration-300'>1</button>
+            <button className='w-10 h-10 border-2 border-black hover:border-brand-yellow text-black hover:text-brand-yellow duration-300'>2</button>
+            <button className='w-10 h-10 border-2 border-black hover:border-brand-yellow text-black hover:text-brand-yellow duration-300'>3</button>
+            <button className='w-10 h-10 border-2 border-black hover:border-brand-yellow text-black hover:text-brand-yellow duration-300'>{'>'}</button> */}
           </div>
         </div>
       ) : (

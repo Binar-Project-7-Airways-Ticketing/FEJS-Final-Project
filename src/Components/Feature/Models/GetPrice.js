@@ -18,6 +18,7 @@ export const loadPrice = createAsyncThunk("Price/loadPrice", async (Prices) => {
     console.error(error);
   }
 });
+console.log("PRICE", loadPrice)
 
 export const postSlice = createSlice({
   name: "Price",

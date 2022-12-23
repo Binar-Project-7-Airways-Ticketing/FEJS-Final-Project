@@ -14,8 +14,9 @@ import detailsNotif from "../Feature/Models/NotificationDetail"
 import payment from "../Feature/Models/PaymentSlice";
 import getUser from "../Feature/Models/GetUser"
 import getPrice from "./Models/GetPrice";
-import luggagesPlane from "./Models/LuggageSliceIdPlane"
-import category from "./Models/GetCategory"
+import luggagesPlane from "./Models/LuggageSliceIdPlane";
+import category from "./Models/GetCategory";
+import pagination from "./Models/PaginationSlice";
 
 export const store = configureStore({
     reducer: {
@@ -36,5 +37,6 @@ export const store = configureStore({
         luggagePlane: luggagesPlane,
         seatsPlaneCount:seatsPlaneCount,
         category:category,
+        pagination:pagination,
     }
 })

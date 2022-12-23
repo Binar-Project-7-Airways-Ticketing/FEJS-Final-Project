@@ -8,18 +8,20 @@ const initialState = {
 };
 
 export const loadPagination = createAsyncThunk("pagination/loadPagination", 
-async (size, page) => {
+async (payload) => {
   try {
+    console.log("SIZE", payload)
     const pagination = await axios.get(
-        `${authConfig.baseUrl}/api/flight/paging/${size}/${page}`
+        `${authConfig.baseUrl}/api/flight/paging/${payload.size}/${payload.page}?departure-code=${payload.departure_code}&arrival-code=${payload.arrival_code}&date=${payload.date}`, {
+          ...payload
+        }
     );
-
     return pagination.data
   } catch (error) {
     console.error(error);
   }
 });
-
+console.log("PAGINATION", loadPagination)
 export const postSlice = createSlice(
     {
       name: "pagination",

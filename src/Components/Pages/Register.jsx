@@ -72,19 +72,6 @@ export const Register = () => {
     return true;
   }
 
-  useEffect(() => {
-    const emailRegexp =
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    if (registerEmail) {
-      setIsEmailValid(emailRegexp.test(registerEmail));
-    }
-  }, [registerEmail]);
-
-  useEffect(() => {
-    const validate = validatePassword();
-    setIsPasswordValid(validate);
-  }, [registerPassword]);
-
   const registerHandler = async () => {
     if (!registerFirstName) {
       alert("Harus ada first name");
@@ -135,10 +122,19 @@ export const Register = () => {
 
   // ketika user login tidak bisa ke halaman login lagi
   useEffect(() => {
+    const emailRegexp =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (registerEmail) {
+      setIsEmailValid(emailRegexp.test(registerEmail));
+    }
+
+    const validate = validatePassword();
+    setIsPasswordValid(validate);
+
     if (localStorage.getItem("auth")) {
       navigate("/");
     }
-  }, [navigate]);
+  }, [registerEmail, registerPassword, navigate]);
 
   return (
     <React.Fragment>

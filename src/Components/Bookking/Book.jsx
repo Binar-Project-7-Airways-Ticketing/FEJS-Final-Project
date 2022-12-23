@@ -92,7 +92,7 @@ export default function Book() {
     //   navigate('/')
     // }
     dispatch(loadAirports());
-  }, [dispatch]);
+  }, []);
 
   return (
     <>

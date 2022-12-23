@@ -12,6 +12,7 @@ import { VscVm } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadPrice } from "../Feature/Models/GetPrice";
+import { loadPagination } from "../Feature/Models/PaginationSlice";
 import CardResultBookingOneWay from "./CardResultBookingOneWay";
 import CardResultBookingReturn from "./CardResultBookingReturn";
 
@@ -34,6 +35,8 @@ export default function CardResultBooking() {
   const [resultFrom, setResultFrom] = useState([]);
   const [resultFlightReturn, setResultFlightReturn] = useState([]);
   const [resultFlightDepart, setResultFlightDepart] = useState([]);
+
+  const [aktifPage, setAktifPage] = useState(1);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
