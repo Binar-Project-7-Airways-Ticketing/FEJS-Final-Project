@@ -12,7 +12,7 @@ import { updateSeats } from "../Feature/Models/SeatUpdate";
 import ButtonFindFlight from "../Reusable/ButtonFindFlight";
 import { loadSeatsIdPlaneCount } from "../Feature/Models/SeatsSlicePlaneCount";
 
-export default function ModalSeatBussines(props) {
+export default function ModalSeatBusiness(props) {
   const { Seats } = useSelector((state) => state.seat);
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
   const [planeType, setPlaneType] = useState(undefined);
@@ -21,13 +21,10 @@ export default function ModalSeatBussines(props) {
   const [detailSea, setDetailSea] = useState(false);
   const [arrowSeat, setArrowSeat] = useState(true);
   const [arrowPassenger, setArrowPassenger] = useState(true);
-  const [sortIdSeat, setSortIdSeat] = useState();
   const [numberSeat, setNumberSeat] = useState([]);
   const [resultTo, setResultTo] = useState([]);
   const [resultFrom, setResultFrom] = useState([]);
   const [passenger, setPassenger] = useState("");
-  const [arrayPassenger, setArrayPassenger] = useState([1, 2, 3, 4, 5, 6, 7]);
-  const [seatPassenger, setSeatPassenger] = useState(0);
   const [adults, setAdults] = useState(1);
 
   const dispatch = useDispatch();
@@ -53,21 +50,7 @@ export default function ModalSeatBussines(props) {
     dispatch(updateSeats(updateSeat));
   };
 
-  const seatDelete = (e) => {
-    console.log(e);
-    let seat = e.stateSeat;
-
-    if (seat === "BOOKED") {
-      seat = "AVAILABLE";
-    }
-
-    let updateSeat = {
-      id: e.idSeat,
-      state: seat,
-    };
-
-    dispatch(updateSeats(updateSeat));
-  };
+ 
 
   const HandleDetailSeat = (e) => {
     setDetailSeat(e);
@@ -85,82 +68,7 @@ export default function ModalSeatBussines(props) {
       </div>
     ) : null;
   };
-  const adultIncrement = () => {
-    let value = 6;
-    if (adults >= value) {
-      value = 6;
-    } else {
-      value = adults;
-    }
 
-    setAdults(value + 1);
-  };
-  const adultDecrement = () => {
-    let value = 1;
-    if (adults <= value) {
-      value = 2;
-    } else {
-      value = adults;
-    }
-    setAdults(value - 1);
-  };
-  const [adultsSeat, setAdultSeat] = useState("Coba");
-  const onChange = (e) => {
-    // let count = e.target.value;
-    // let i = passenger.adults + passenger.child + passenger.infant;
-    // setPassenger(count.idSeat);
-    // console.log(count.idSeat);
-    setAdultSeat(e.target.value);
-  };
-  const coba = (e) => {
-    // let value =  passenger.adults + passenger.child + passenger.infant
-    // if (seatPassenger >= value) {
-    //   value =  passenger.adults + passenger.child + passenger.infant
-    // } else {
-    //   value = seatPassenger;
-    // }
-
-    // setSeatPassenger(value+1)
-    let seat = e.stateSeat;
-
-    if (seat === "NOT_AVAILABLE") {
-      seat = "NOT_AVAILABLE";
-    } else {
-      if (seat === "AVAILABLE") {
-        seat = "BOOKED";
-        setNumberSeat(e.numberSeat);
-      } else {
-        seat = "AVAILABLE";
-        setNumberSeat("");
-      }
-    }
-    let updateSeat = {
-      id: e.idSeat,
-      state: seat,
-    };
-
-    dispatch(updateSeats(updateSeat));
-  };
-
-  const onFinish = (values) => {
-    console.log(values);
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
-  const pas = () => {
-    let temp = [];
-    for (let i = 0; i < passenger; i++) {
-      temp.push({
-        seat: "Number Seat",
-      });
-    }
-    return temp;
-  };
-  const penumpang = pas();
-  const [pen, setPen] = useState();
-  const countPenumpang = () => {};
 
   useEffect(() => {
     const countPass = JSON.parse(localStorage.getItem("passanger"));
@@ -223,52 +131,11 @@ export default function ModalSeatBussines(props) {
                           <div className="w-full">
                             <div className=" p-2 ">
                               <h6>Passenger</h6>
-
                               <div className="flex w-full">
-                                {/* <div className="flex w-fit flex-col">
-                                  {penumpang.map((item, i) => (
-                                    <p>{item.seat}</p>
-                                  ))}
-                                </div> */}
-                                {/* <Form
-                                  name="basic"
-                                  labelCol={{
-                                    span: 8,
-                                  }}
-                                  wrapperCol={{
-                                    span: 16,
-                                  }}
-                                  initialValues={{
-                                    remember: true,
-                                  }}
-                                  onFinish={onFinish}
-                                  onFinishFailed={onFinishFailed}
-                                  autoComplete="off"
-                                > */}
                                 <div className="flex w-fit flex-col">
-                                  {SeatsPlaneCount.filter(
-                                    (item) => item.stateSeat === "BOOKED"
-                                  )
-                                    .slice(0, passenger)
-                                    .map((item) => (
-                                      <div className="flex items-center gap-2">
-                                        <p>Number Seat</p>
-                                        <p>{item.numberSeat} </p>
-                                        <FaTrashAlt
-                                          onClick={() => seatDelete(item)}
-                                          color="red"
-                                        />
-                                      </div>
-                                    ))}
+                                  {props.numberSeat}
                                 </div>
-                                {/* </Form> */}
                               </div>
-                              <Button
-                                htmlType="submit"
-                                className="confirm-passenger-class"
-                              >
-                                Confirm
-                              </Button>
                             </div>
                           </div>
                         </div>

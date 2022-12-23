@@ -225,13 +225,15 @@ export default function TransactionBusiness() {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            departFlight,
+            flight: departFlight,
           },
         ],
         price:
-          Price.economy * passenger +
+          Price.business * passenger +
           (passenger1.ageCategory.price + bagasi1.price),
-        paymentMethod: "BRI",
+        payment:{
+          paymentMethod: "BRI",
+        }
       };
       dispatch(createBooking(x));
     }
@@ -242,19 +244,21 @@ export default function TransactionBusiness() {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            departFlight,
+            flight: departFlight,
           },
         ],
         price:
-          Price.economy * passenger +
+          Price.business * passenger +
           (passenger1.ageCategory.price+passenger2.ageCategory.price+bagasi1.price+bagasi2.price),
-        paymentMethod: "BRI",
+        payment:{
+          paymentMethod: "BRI",
+        }
       };
       dispatch(createBooking(x));
     }
@@ -265,25 +269,27 @@ export default function TransactionBusiness() {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            departFlight,
+            flight: departFlight,
           },
         ],
         price:
-          Price.economy * passenger +
+          Price.business * passenger +
           (passenger1.ageCategory.price+passenger2.ageCategory.price+bagasi1.price+bagasi2.price+passenger3.ageCategory.price + bagasi3.price),
-        paymentMethod: "BRI",
+        payment:{
+          paymentMethod: "BRI",
+        }
       };
       dispatch(createBooking(x));
     }
@@ -294,31 +300,33 @@ export default function TransactionBusiness() {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi4,
             passenger: passenger4,
             seat: seatNumber4,
-            departFlight,
+            flight: departFlight,
           },
         ],
         price:
-          Price.economy * passenger +
+          Price.business * passenger +
           (passenger4.ageCategory.price + bagasi4.price+passenger1.ageCategory.price+passenger2.ageCategory.price+bagasi1.price+bagasi2.price+passenger3.ageCategory.price + bagasi3.price),
-        paymentMethod: "BRI",
+        payment:{
+          paymentMethod: "BRI",
+        }
       };
       dispatch(createBooking(x));
     }
@@ -329,37 +337,39 @@ export default function TransactionBusiness() {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi4,
             passenger: passenger4,
             seat: seatNumber4,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi5,
             passenger: passenger5,
             seat: seatNumber5,
-            departFlight,
+            flight: departFlight,
           },
         ],
         price:
-          Price.economy * passenger +
+          Price.business * passenger +
           (passenger5.ageCategory.price + bagasi5.price+passenger4.ageCategory.price + bagasi4.price+passenger1.ageCategory.price+passenger2.ageCategory.price+bagasi1.price+bagasi2.price+passenger3.ageCategory.price + bagasi3.price),
-        paymentMethod: "BRI",
+        payment:{
+          paymentMethod: "BRI",
+        }
       };
       dispatch(createBooking(x));
     }
@@ -370,43 +380,45 @@ export default function TransactionBusiness() {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi4,
             passenger: passenger4,
             seat: seatNumber4,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi5,
             passenger: passenger5,
             seat: seatNumber5,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi6,
             passenger: passenger6,
             seat: seatNumber6,
-            departFlight,
+            flight: departFlight,
           },
         ],
         price:
-          Price.economy * passenger +
+          Price.business * passenger +
           (passenger6.ageCategory.price + bagasi6.price + passenger1.ageCategory.price + bagasi1.price+passenger4.ageCategory.price + bagasi4.price+passenger1.ageCategory.price+passenger2.ageCategory.price+bagasi1.price+bagasi2.price+passenger3.ageCategory.price + bagasi3.price),
-        paymentMethod: "BRI",
+        payment:{
+          paymentMethod: "BRI",
+        }
       };
       dispatch(createBooking(x));
     }
@@ -417,49 +429,52 @@ export default function TransactionBusiness() {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi4,
             passenger: passenger4,
             seat: seatNumber4,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi5,
             passenger: passenger5,
             seat: seatNumber5,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi6,
             passenger: passenger6,
             seat: seatNumber6,
-            departFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi7,
             passenger: passenger7,
             seat: seatNumber7,
-            departFlight,
+            flight: departFlight,
           },
         ],
         price:
-          Price.economy * passenger +
+          Price.business * passenger +
           (passenger7.ageCategory.price + bagasi7.price+passenger6.ageCategory.price + bagasi6.price + passenger1.ageCategory.price + bagasi1.price+passenger4.ageCategory.price + bagasi4.price+passenger1.ageCategory.price+passenger2.ageCategory.price+bagasi1.price+bagasi2.price+passenger3.ageCategory.price + bagasi3.price),
-        paymentMethod: "BRI",
+        payment:{
+          paymentMethod: "BRI",
+        }
+        
       };
       dispatch(createBooking(x));
     }

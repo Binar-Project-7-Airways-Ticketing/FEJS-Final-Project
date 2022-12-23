@@ -417,7 +417,7 @@ export default function CardResultBookingOneWay() {
                     </div>
                   ) : null}
                   {business === item.idFlight ? (
-                    <div className="detail-economy-class flex w-full gap-5 sm:grid sm:grid-rows-2">
+                    <div className="detail-economy-class md:flex md:flex-row w-full gap-5 sm:grid sm:grid-rows-2">
                       <div className="benefit  sm:w-full">
                         <h2>Business Class Flight</h2>
                         <div className="bg-brand-yellow w-fit p-2 rounded-lg">
