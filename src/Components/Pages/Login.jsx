@@ -8,8 +8,8 @@ import { useDispatch } from "react-redux";
 import { unwrapResult } from "@reduxjs/toolkit";
 
 export const Login = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
@@ -18,61 +18,61 @@ export const Login = () => {
     const [loginPassword, setLoginPassword] = useState(undefined);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  function validatePassword() {
-    const errors = [];
-    const p = loginPassword;
+    function validatePassword() {
+        const errors = [];
+        const p = loginPassword;
 
-    if (p) {
-      if (p.length === 0) {
+        if (p) {
+            if (p.length === 0) {
+                return true;
+            }
+            if (p.length < 8) {
+                errors.push("Password Harus 8 Karakter");
+            }
+            if (p.search(/[A-Z]/) < 0) {
+                errors.push("Password Harus Ada Huruf kapital");
+            }
+            if (p.search(/[a-z]/) < 0) {
+                errors.push("Password Harus Ada Huruf");
+            }
+            if (p.search(/[0-9]/) < 0) {
+                errors.push("Password Harus Memuat Angka");
+            }
+            if (errors.length > 0) {
+                setIsPasswordErrors(errors);
+                return false;
+            }
+
+            setIsPasswordErrors([]);
+
+            return true;
+        }
         return true;
-      }
-      if (p.length < 8) {
-        errors.push("Password Harus 8 Karakter");
-      }
-      if (p.search(/[A-Z]/) < 0) {
-        errors.push("Password Harus Ada Huruf kapital");
-      }
-      if (p.search(/[a-z]/) < 0) {
-        errors.push("Password Harus Ada Huruf");
-      }
-      if (p.search(/[0-9]/) < 0) {
-        errors.push("Password Harus Memuat Angka");
-      }
-      if (errors.length > 0) {
-        setIsPasswordErrors(errors);
-        return false;
-      }
-
-      setIsPasswordErrors([]);
-
-      return true;
     }
-    return true;
-  }
 
-  useEffect(() => {
-    const emailRegexp =
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    if (loginEmail) {
-      setIsEmailValid(emailRegexp.test(loginEmail));
-    }
-  }, [loginEmail]);
+    useEffect(() => {
+        const emailRegexp =
+            /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        if (loginEmail) {
+            setIsEmailValid(emailRegexp.test(loginEmail));
+        }
+    }, [loginEmail]);
 
-  useEffect(() => {
-    const validate = validatePassword();
-    setIsPasswordValid(validate);
-  }, [loginPassword]);
+    useEffect(() => {
+        const validate = validatePassword();
+        setIsPasswordValid(validate);
+    }, [loginPassword]);
 
-  const loginHandler = async () => {
-    if (!isEmailValid || !loginEmail) {
-      alert("Email Tidak Valid");
-      return;
-    }
-    if (!isPasswordValid || !loginPassword) {
-      alert("Password Tidak Valid");
-      return;
-    }
-    // console.log(loginEmail);
+    const loginHandler = async () => {
+        if (!isEmailValid || !loginEmail) {
+            alert("Email Tidak Valid");
+            return;
+        }
+        if (!isPasswordValid || !loginPassword) {
+            alert("Password Tidak Valid");
+            return;
+        }
+        // console.log(loginEmail);
 
         const resultsActions = await dispatch(getLogin({
             email: loginEmail,
@@ -127,7 +127,7 @@ export const Login = () => {
                                         <LockOutlined style={{ color: '#F2EFEA' }} />
                                     </span>
                                     <input onChange={(event) => { setLoginPassword(event.target.value) }} type={isPasswordVisible ? "text" : "password"} placeholder="Password" />
-                                    <div onClick={() => {setIsPasswordVisible(!isPasswordVisible)}} className="material-symbols-outlined cursor-pointer absolute top-[50%] right-[64px] translate-x-0 translate-y-[-50%]">
+                                    <div onClick={() => { setIsPasswordVisible(!isPasswordVisible) }} className="material-symbols-outlined cursor-pointer absolute top-[50%] right-[64px] translate-x-0 translate-y-[-50%]">
 
                                         {
                                             isPasswordVisible ?
@@ -176,6 +176,4 @@ export const Login = () => {
             <Footer />
         </React.Fragment>
     );
-
-   
 };

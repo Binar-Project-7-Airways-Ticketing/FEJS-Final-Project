@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Dropdown, Space, DatePicker, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import { WindowsFilled } from "@ant-design/icons";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import { authConfig } from "../Feature/Config";
+import { useState } from "react";
 
 export default function Prf(setIsLogin, props) {
-  const {login}=useSelector((state)=>state.authLogin)
+  const { login } = useSelector((state) => state.authLogin);
   const navigate = useNavigate();
+  let userId = localStorage.getItem("idUser");
+  const [imageUser, setImageUser] = useState("");
   const logOutHandler = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("id");
     setTimeout(function () {
-        window.location.reload(1);
-      }, 500);
-      navigate("/")
+      window.location.reload(1);
+    }, 500);
+    navigate("/");
     return setIsLogin(false);
   };
   const items = [
@@ -21,7 +26,7 @@ export default function Prf(setIsLogin, props) {
       label: <a onClick={() => navigate("/profile")}>Akun Saya</a>,
       key: "0",
     },
-  
+
     {
       label: (
         <a
@@ -35,12 +40,24 @@ export default function Prf(setIsLogin, props) {
       key: "1",
     },
   ];
+  useEffect(() => {
+    axios
+      .get(authConfig.baseUrl + "/api/user/" + userId)
+      .then((res) => {
+        console.log(res.data);
+        setImageUser(res.data.pictureUrl);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div>
       <Dropdown placement={props.place} arrow menu={{ items }}>
         <a onClick={(e) => e.preventDefault()}>
           <Space>
-            <img className="rounded-full h-14 w-14" src="http://res.cloudinary.com/dwncupcal/image/upload/be781f4f-99d1-4dc4-925d-58072f4de335"></img>
+            <img className="rounded-full h-14 w-14" src={imageUser}></img>
           </Space>
         </a>
       </Dropdown>
