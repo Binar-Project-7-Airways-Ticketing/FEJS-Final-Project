@@ -142,7 +142,7 @@ export default function CardResultBookingOneWay() {
     const cityFrom = JSON.parse(localStorage.getItem("cityFrom"));
     const flightDepart = JSON.parse(localStorage.getItem("flightDepart"));
     setDepartDate(flightDepart[0]);
-
+    console.log(resultFlightDepart);
     setResultTo(cityTo);
     setResultFrom(cityFrom);
     setResultFlightDepart(flightDepart);
@@ -401,8 +401,7 @@ export default function CardResultBookingOneWay() {
                       <div className="benefit sm:w-full">
                         <h2>Economy Class Flight</h2>
                         <div className="bg-brand-yellow w-fit p-2 rounded-lg">
-
-                          <p>{SeatsPlaneCount.filter((item) => item.planeDetails.planeClass === "ECONOMY").length} Kursi tersisa</p>
+                          <p>{SeatsPlaneCount.filter((item) => item.stateSeat === "AVAILABLE").filter((item)=> item.planeDetails.planeClass==="ECONOMY").length} Kursi tersisa</p>
                         </div>
                         <p>The benefits you get in economy class</p>
                         <div className="benefit-detail">
@@ -439,7 +438,7 @@ export default function CardResultBookingOneWay() {
                     </div>
                   ) : null}
                   {business === item.idFlight ? (
-                    <div className="detail-economy-class flex w-full gap-5 sm:grid sm:grid-rows-2">
+                    <div className="detail-economy-class md:flex md:flex-row w-full gap-5 sm:grid sm:grid-rows-2">
                       <div className="benefit  sm:w-full">
                         <h2>Business Class Flight</h2>
                         <div className="bg-brand-yellow w-fit p-2 rounded-lg">

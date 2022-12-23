@@ -15,11 +15,11 @@ export const loadSeatsIdPlaneCount = createAsyncThunk(
         `${authConfig.baseUrl}/api/seat/plane-detail/${idPlane}`
       );
 
-      const length = Seats.data.filter(
-        (item) => item.stateSeat === "AVAILABLE"
-      );
+      // const length = Seats.data.filter(
+      //   (item) => item.stateSeat === "AVAILABLE"
+      // );
 
-      return length;
+      return Seats.data
     } catch (error) {
       // console.error(error);
     }

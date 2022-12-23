@@ -559,11 +559,10 @@ nav {
 } */
 .ant-picker {
   border-color: #8c857b;
-  background: transparent;
+  background: white;
 }
 .ant-picker:hover {
   border-color: #cba052;
-  background: transparent;
 }
 .ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
   border-color: #cba052;

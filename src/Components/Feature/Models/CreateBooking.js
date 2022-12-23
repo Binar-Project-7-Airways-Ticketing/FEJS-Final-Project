@@ -3,21 +3,21 @@ import axios from "axios";
 import { authConfig } from "../Config";
 
 const initialState = {
-  Categories: [],
+  Booking: [],
   loadSeat: false,
 };
 
-export const createCategories = createAsyncThunk("Categories/createCategories", async (Categories) => {
-    console.log(Categories);
+export const createBooking = createAsyncThunk("Booking/createBooking", async (Bookings) => {
+    // console.log(Bookings);
   try {
-    const CategorY = await axios.post(
-      `${authConfig.baseUrl}/api/passenger/create/age-category`,
+    const Booking = await axios.post(
+      `${authConfig.baseUrl}/api/booking/create/`,
       {
-        ...Categories
+        ...Bookings
       }
     );
    
-    return Categories.data
+    return Booking.data
   } catch (error) {
     console.error(error);
   }
@@ -26,18 +26,18 @@ export const createCategories = createAsyncThunk("Categories/createCategories", 
 
 export const postSlice = createSlice(
     {
-      name: "Categories",
+      name: "Booking",
       initialState,
       reducers: {},
       extraReducers: {
-        [createCategories.pending]: (state) => {
+        [createBooking.pending]: (state) => {
           state.loading = true;
         },
-        [createCategories.fulfilled]: (state, { payload }) => {
+        [createBooking.fulfilled]: (state, { payload }) => {
           state.loading = false;
-          state.Categories = payload;
+          state.Booking = payload;
         },
-        [createCategories.rejected]: (state) => {
+        [createBooking.rejected]: (state) => {
           state.loading = false;
         },
       },
