@@ -23,19 +23,14 @@ const dispatch = useDispatch()
   return (
     <Select
     className="w-full"
-    // value={bagasi}
     onChange={props.handleChange}
     options={
       luggagesPlane &&
       luggagesPlane
-        // .filter(
-        //   (item) =>
-        //     item.planeDetails.planeClass ===
-        //     classFlight.class
-        // )
         .map((item, key) => ({
           key: item.idLuggage,
           price: item.price,
+          item:item,
           label: (
             <div className="flex w-full sm:justify-between md:justify-end">
               <div>+{item.capacity}kg</div>

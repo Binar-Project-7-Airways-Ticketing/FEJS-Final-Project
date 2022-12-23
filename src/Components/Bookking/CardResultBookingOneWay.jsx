@@ -120,7 +120,7 @@ export default function CardResultBookingOneWay() {
     const cityFrom = JSON.parse(localStorage.getItem("cityFrom"));
     const flightDepart = JSON.parse(localStorage.getItem("flightDepart"));
     setDepartDate(flightDepart[0]);
-
+    console.log(resultFlightDepart);
     setResultTo(cityTo);
     setResultFrom(cityFrom);
     setResultFlightDepart(flightDepart);
@@ -380,7 +380,7 @@ export default function CardResultBookingOneWay() {
                         <h2>Economy Class Flight</h2>
                         <div className="bg-brand-yellow w-fit p-2 rounded-lg">
                         
-                          <p>{SeatsPlaneCount.filter((item)=> item.planeDetails.planeClass==="ECONOMY").length} Kursi tersisa</p>
+                          <p>{SeatsPlaneCount.filter((item) => item.stateSeat === "AVAILABLE").filter((item)=> item.planeDetails.planeClass==="ECONOMY").length} Kursi tersisa</p>
                         </div>
                         <p>The benefits you get in economy class</p>
                         <div className="benefit-detail">

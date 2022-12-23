@@ -19,7 +19,7 @@ const initialState = {
 export const createPayment = createAsyncThunk(
   "payment/createPayment",
   async (payments) => {
-    console.log(payments);
+
     try {
       // membutuhkan tag body, relasi ke pasanger id
       const payment = await axios.post(

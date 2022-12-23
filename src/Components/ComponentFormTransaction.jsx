@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ContactsOutlined } from "@ant-design/icons";
 
 import Select from "react-select";
-import { Button } from "antd";
+import { Button, Input, DatePicker } from "antd";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadCategory } from "./Feature/Models/GetCategory";
@@ -24,119 +24,153 @@ export default function ComponentFormTransaction(props) {
           <span>
             <ContactsOutlined />
           </span>
-          <h3>{token ? props.pass : "Penumpang"}</h3>
+          <h3>{token ? "Pemesan" : props.penumpang}</h3>
         </div>
+
         <div className="left-content">
           <div className="flex w-full gap-1 mb-2 ">
-            <select
-              onChange={props.title}
-              className="border-brand-gray p-2 border-2 rounded-md w-full"
-              type="text"
-            >
-              <option value="MR">MR</option>
-              <option value="MRS">MRS</option>
-              <option value="MISS">MISS</option>
-              <option value="DR">DR</option>
-              <option value="MS">MS</option>
-            </select>
-
-            {/* <select
-              onChange={props.category}
-              className="border-brand-gray p-2 border-2 rounded-md w-full"
-              type="text"
-            >
-              <option value="CHILDREN">CHILDREN</option>
-              <option value="ADULTS">ADULTS</option>
-              <option value="INFANT">INFANT</option>
-            </select> */}
             <Select
-              className="w-full"
-              value={props.valueCategory}
-              onChange={props.category}
+              className="border-brand-gray border-2 rounded-md w-full"
+              type="text"
+              defaultValue="MR"
+              onChange={props.handleChangeUserTitle}
+              options={[
+                {
+                  value: "MR",
+                  label: "MR",
+                },
+                {
+                  value: "MRS",
+                  label: "MRS",
+                },
+                {
+                  value: "MISS",
+                  label: "MISS",
+                },
+                {
+                  value: "DR",
+                  label: "DR",
+                },
+                {
+                  value: "MS",
+                  label: "MS",
+                },
+              ]}
+            ></Select>
+
+            <Select
+              className="border-brand-gray border-2 rounded-md w-full h-full"
+              type="text"
+              placeholder="Category"
+              onChange={props.handleChangeCategory}
               options={category.map((item, key) => ({
                 value: item.idCategory,
                 price: item.price,
                 label: item.nameCategory,
               }))}
             ></Select>
-          </div>
-          <div className="flex mb-2 w-full">
-            <select
-              className="border-brand-gray p-2 border-2 rounded-md w-full"
-              onChange={props.gender}
-              type="text"
-              value={props.userGender}
-            >
-              <option selected>Gender</option>
-              <option value="PEREMPUAN">PEREMPUAN</option>
-              <option value="PRIA">PRIA</option>
-            </select>
-          </div>
 
+            <Select
+              onChange={props.handleChangeGender}
+              className="border-brand-gray border-2 rounded-md w-full h-full"
+              placeholder="gender"
+              type="text"
+              options={[
+                {
+                  value: "PEREMPUAN",
+                  label: "PEREMPUAN",
+                },
+                {
+                  value: "PRIA",
+                  label: "PRIA",
+                },
+              ]}
+            ></Select>
+          </div>
           <div className="flex mb-2 w-full">
-            <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
-              <input
-                onChange={props.firstName}
-                className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
+            <div className="textbox flex !mb-0 h-full gap-1">
+              <Input
+               
+                onChange={props.handleChangeFirstName}
+                className=" sm:w-full p-2 focus:outline-none text-black placeholder:text-brand-gray  border-brand-gray border-2 rounded-md"
                 type="text"
                 placeholder="Firstname"
-                value={props.userFirstName}
               />
-            </div>
-          </div>
-          <div className="flex mb-2 w-full">
-            <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
-              <input
-                onChange={props.lastName}
-                className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
+
+              <Input
+               
+                onChange={props.handleChangeLastName}
+                className=" sm:w-full p-2 focus:outline-none text-black placeholder:text-brand-gray  border-brand-gray border-2 rounded-md"
                 type="text"
                 placeholder="Lastname"
-                value={props.userLastName}
               />
             </div>
           </div>
-          <div className="flex mb-2 w-full">
-            <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
-              <input
-                onChange={props.birthDay}
-                className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
-                type="text"
-                placeholder="MM/DD/YY birthday"
-                value={props.userBirthDay}
-              />
-            </div>
+          <div className="flex w-full gap-1 mb-2 ">
+            <DatePicker
+              className="bg-brand-black sm:p-2 border-brand-gray border-2 rounded-md w-full"
+              format={props.dateFormat}
+              onChange={props.handleChangeBirtday}
+              placeholder="Birthday"
+            />
+
+            <Input
+             
+              onChange={props.handleChangePassport}
+              className=" border-brand-gray border-2 rounded-md w-full"
+              type="number"
+              placeholder="Passport"
+            />
           </div>
-          <div className="flex mb-2 w-full">
+          <div className="flex w-full gap-1 mb-2 ">
+            <Select
+              onChange={props.handleChangeNationality}
+              className="border-brand-gray border-2 rounded-md w-full placeholder:text-black"
+              options={props.options}
+              value1={props.value}
+              placeholder="Nationality"
+            />
+
+            <Select
+              onChange={props.handleChangeSpecialRequest}
+              className="border-brand-gray border-2 rounded-md w-full h-full"
+              placeholder="request"
+              type="text"
+              options={[
+                {
+                  value: "WHEELCHAIR",
+                  label: "WHEELCHAIR",
+                },
+                {
+                  value: "NONE",
+                  label: "NONE",
+                },
+              ]}
+            ></Select>
+          </div>
+
+          <div className="flex mb-2 w-1/2">
             <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
-              <input
-                onChange={props.contact}
-                className="w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
+              <Input
+               
+                onChange={props.handleChangeContactNumber}
+                className=" sm:w-full p-2 focus:outline-none text-black placeholder:text-brand-gray"
                 type="number"
                 placeholder="Contact Number"
               />
             </div>
           </div>
-          <div className="flex mb-2 w-full">
-            <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
-              <Select
-                className="placeholder:text-black"
-                options={props.options}
-                value1={props.value}
-                onChange={props.country}
-                placeholder="Nationality"
-              />
-            </div>
-          </div>
-          <div className="">
-            <Button
-              onClick={props.confirm}
-              htmlType="submit"
-              className="parent-b w-full justify-center bg-brand-nude mt-1 rounded-md border-2 border-brand-black"
-            >
-              Confirm
-            </Button>
-          </div>
+
+          <div className=""></div>
         </div>
+
+        <Button
+          onClick={props.pay}
+          htmlType="submit"
+          className="bg-brand-yellow text-brand-whiteLight rounded-md "
+        >
+          Confirm
+        </Button>
       </div>
     </React.Fragment>
   );
