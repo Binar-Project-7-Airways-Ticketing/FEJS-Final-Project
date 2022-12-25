@@ -7,7 +7,6 @@ import Countdown from "react-countdown";
 import countryList from "react-select-country-list";
 import { useNavigate } from "react-router-dom";
 import { loadLuggagesIdPlane } from "./Feature/Models/LuggageSliceIdPlane";
-import { createPayment } from "./Feature/Models/PaymentSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ButtonFindFlight from "./Reusable/ButtonFindFlight";
@@ -18,8 +17,7 @@ import Luggages from "./Luggages";
 import { loadCategory } from "./Feature/Models/GetCategory";
 import ModalMethodPayment from "./ModalMethodPayment";
 import DetailPayment from "./DetailPayment";
-import ModalSeatEconomy from "./Bookking/ModalSeatEconomy";
-import { updateSeats } from "./Feature/Models/SeatUpdate";
+import { updateSeats } from "./Feature/Models/Seat";
 import { FaTrashAlt } from "react-icons/fa";
 import { createBooking } from "./Feature/Models/CreateBooking";
 import ModalSeatBussines from "./Bookking/ModalSeatBussines";
@@ -51,7 +49,6 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 export default function TransactionBusiness() {
   const { luggagesPlane } = useSelector((state) => state.luggagePlane);
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
-  const { payment } = useSelector((state) => state.payment);
   const { category } = useSelector((state) => state.category);
   const { user } = useSelector((state) => state.getUser);
   const { Price } = useSelector((state) => state.getPrice);
@@ -525,7 +522,7 @@ export default function TransactionBusiness() {
       };
       dispatch(createBooking(x));
     }
-    navigate("/bookingPending");
+    // navigate("/bookingPending");
   };
   const dateFormat = "MM/DD/YYYY";
 
@@ -824,7 +821,7 @@ export default function TransactionBusiness() {
                           handleChangeNationality={(e) =>
                             handleChangeNationality(e, i)
                           }
-                          handleChangeRequest={(e) =>
+                          handleChangeSpecialRequest={(e) =>
                             handleChangeSpecialRequest(e, i)
                           }
                           handleChangeContactNumber={(e) =>

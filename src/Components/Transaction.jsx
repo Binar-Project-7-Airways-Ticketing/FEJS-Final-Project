@@ -37,6 +37,7 @@ export default function Transaction() {
 
   return (
     <React.Fragment>
+      {/* <TransactionBusiness/> */}
       {classFlight.class === "BUSINESS" ? <TransactionBusiness /> : null}
       {classFlight.class === "ECONOMY" ? <TransactionEconomy /> : null}
     </React.Fragment>

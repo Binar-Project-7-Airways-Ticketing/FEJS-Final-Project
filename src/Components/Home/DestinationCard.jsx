@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Empty } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { loadAirports } from "../Feature/Models/AirpostSlice";
+import { loadAirports } from "../Feature/Models/AirportSlice";
 const { Meta } = Card;
 export default function Destination() {
   const { airport } = useSelector((state) => state.airport);
@@ -26,7 +26,7 @@ export default function Destination() {
             .map((item) => (
               <Card
                 hoverable
-                className="w-full "
+                className="w-full"
                 cover={<img alt="example" src={item.urlPhoto} />}
               >
                 <Meta title={item.city} description="Destinasi wisata" />

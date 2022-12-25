@@ -7,7 +7,6 @@ import Countdown from "react-countdown";
 import countryList from "react-select-country-list";
 import { useNavigate } from "react-router-dom";
 import { loadLuggagesIdPlane } from "./Feature/Models/LuggageSliceIdPlane";
-import { createPayment } from "./Feature/Models/PaymentSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ButtonFindFlight from "./Reusable/ButtonFindFlight";
@@ -19,8 +18,7 @@ import { loadCategory } from "./Feature/Models/GetCategory";
 import ModalMethodPayment from "./ModalMethodPayment";
 import DetailPayment from "./DetailPayment";
 import ModalSeatEconomy from "./Bookking/ModalSeatEconomy";
-import { updateSeats } from "./Feature/Models/SeatUpdate";
-import { FaTrashAlt } from "react-icons/fa";
+import { updateSeats } from "./Feature/Models/Seat";
 import { createBooking } from "./Feature/Models/CreateBooking";
 
 const Completionist = () => <span>You are good to go!</span>;
@@ -50,7 +48,6 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 export default function TransactionBusiness() {
   const { luggagesPlane } = useSelector((state) => state.luggagePlane);
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
-  const { payment } = useSelector((state) => state.payment);
   const { category } = useSelector((state) => state.category);
   const { user } = useSelector((state) => state.getUser);
   const { Price } = useSelector((state) => state.getPrice);
@@ -234,6 +231,7 @@ export default function TransactionBusiness() {
           paymentMethod: "BRI",
         },
       };
+    
       dispatch(createBooking(x));
     }
     if (passenger === 2) {
@@ -524,7 +522,7 @@ export default function TransactionBusiness() {
       };
       dispatch(createBooking(x));
     }
-    navigate("/bookingPending");
+    // navigate("/bookingPending");
   };
   const dateFormat = "MM/DD/YYYY";
 
@@ -683,18 +681,18 @@ export default function TransactionBusiness() {
     dispatch(updateSeats(updateSeat));
   };
   const seatNumber = () => {
-    return SeatsPlaneCount.filter((item) => item.stateSeat === "BOOKED")
-      .slice(0, passenger)
-      .map((item, i) => (
-        <div className="flex items-center gap-2">
-          <p>Number Seat</p>
-          <Radio onClick={(e) => handleChangeSeat(item, i)}>
-            {item.numberSeat}
-          </Radio>
+    // return SeatsPlaneCount.filter((item) => item.stateSeat === "BOOKED")
+    //   .slice(0, passenger)
+    //   .map((item, i) => (
+    //     <div className="flex items-center gap-2">
+    //       <p>Number Seat</p>
+    //       <Radio onClick={(e) => handleChangeSeat(item, i)}>
+    //         {item.numberSeat}
+    //       </Radio>
 
-          <FaTrashAlt onClick={() => seatDelete(item)} color="red" />
-        </div>
-      ));
+    //       <FaTrashAlt onClick={() => seatDelete(item)} color="red" />
+    //     </div>
+    //   ));
   };
   const harga = () => {
     return (

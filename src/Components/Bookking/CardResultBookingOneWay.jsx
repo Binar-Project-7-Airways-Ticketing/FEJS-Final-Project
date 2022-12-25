@@ -12,8 +12,8 @@ import { VscVm } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadPrice } from "../Feature/Models/GetPrice";
-import dateFormat, { masks } from "dateformat";
-import { loadSeatsIdPlaneCount } from "../Feature/Models/SeatsSlicePlaneCount";
+import dateFormat from "dateformat";
+import { loadSeatsIdPlaneCount } from "../Feature/Models/Seat";
 
 export default function CardResultBookingOneWay() {
   // const { flight } = useSelector((state) => state.flight);
@@ -120,7 +120,6 @@ export default function CardResultBookingOneWay() {
     const cityFrom = JSON.parse(localStorage.getItem("cityFrom"));
     const flightDepart = JSON.parse(localStorage.getItem("flightDepart"));
     setDepartDate(flightDepart[0]);
-    console.log(resultFlightDepart);
     setResultTo(cityTo);
     setResultFrom(cityFrom);
     setResultFlightDepart(flightDepart);

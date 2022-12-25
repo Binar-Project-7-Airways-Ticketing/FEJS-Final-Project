@@ -1,40 +1,34 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { reducer as authLoginReducer } from "./Models/AuthLogin";
 import { reducer as authRegisterReducer } from "./Models/AuthRegister";
-import seats from "../Feature/Models/SeatsSlice"
-import seatsPlaneCount from "./Models/SeatsSlicePlaneCount"
-import luggages from "../Feature/Models/LuggageSlice"
-import airports from "../Feature/Models/AirpostSlice"
-import flightsOneWays from "./Models/FlightSliceReturn"
-import flightsReturns from "./Models/FlightSliceDepart"
-import citiesFrom from "../Feature/Models/AirportFromSlice"
-import citiesTo from "../Feature/Models/AirportToSlice"
-import notifs from "../Feature/Models/Notification"
-import detailsNotif from "../Feature/Models/NotificationDetail"
-import payment from "../Feature/Models/PaymentSlice";
-import getUser from "../Feature/Models/GetUser"
+import seatsPlaneCount from "./Models/Seat";
+import airports from "./Models/AirportSlice";
+import flightsOneWays from "./Models/FlightSliceReturn";
+import flightsReturns from "./Models/FlightSliceReturn";
+import citiesFrom from "../Feature/Models/AirportSlice";
+import citiesTo from "../Feature/Models/AirportSlice";
+import notifs from "../Feature/Models/Notification";
+import detailsNotif from "../Feature/Models/Notification";
+import getUser from "../Feature/Models/GetUser";
 import getPrice from "./Models/GetPrice";
-import luggagesPlane from "./Models/LuggageSliceIdPlane"
-import category from "./Models/GetCategory"
+import luggagesPlane from "./Models/LuggageSliceIdPlane";
+import category from "./Models/GetCategory";
 
 export const store = configureStore({
-    reducer: {
-        authLogin: authLoginReducer,
-        authRegister: authRegisterReducer,
-        seat: seats,
-        luggage: luggages,
-        airport: airports,
-        flightOneWay:flightsOneWays,
-        flightReturn:flightsReturns,
-        cityFrom:citiesFrom,
-        cityTo:citiesTo,
-        notif:notifs,
-        detailNotif:detailsNotif,
-        payment: payment,
-        getUser:getUser,
-        getPrice:getPrice,
-        luggagePlane: luggagesPlane,
-        seatsPlaneCount:seatsPlaneCount,
-        category:category,
-    }
-})
+  reducer: {
+    authLogin: authLoginReducer,
+    authRegister: authRegisterReducer,
+    airport: airports,
+    flightOneWay: flightsOneWays,
+    flightReturn: flightsReturns,
+    cityFrom: citiesFrom,
+    cityTo: citiesTo,
+    notif: notifs,
+    detailNotif: detailsNotif,
+    getUser: getUser,
+    getPrice: getPrice,
+    luggagePlane: luggagesPlane,
+    seatsPlaneCount: seatsPlaneCount,
+    category: category,
+  },
+});

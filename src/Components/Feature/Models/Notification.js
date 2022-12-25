@@ -4,9 +4,42 @@ import { authConfig } from "../Config";
 
 const initialState = {
   notif: [],
+  notifDetail: [],
+  notifCreate: [],
   loadSeat: false,
-};
+}
 
+export const createNotif = createAsyncThunk("notif/createNotif", async (id) => {
+try {
+  const notif = await axios.post(
+    `${authConfig.baseUrl}/api/notification/create`,
+    {
+      user:id,
+      title:"LOGIN",
+      message: "Login Berhasil, silahkan pesan penerbangan dengan harga bersahabat",
+      category:"PRIA"
+    }
+  );
+ 
+  return notif.data
+} catch (error) {
+  console.error(error);
+}
+})
+export const loadNotifDetail = createAsyncThunk(
+  "notifDeatil/loadNotifDetail",
+  async (notifUser) => {
+    try {
+      const notif = await axios.get(
+        `${authConfig.baseUrl}/api/notification/${notifUser}`
+      );
+
+      return notif.data.user;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
 export const loadNotif = createAsyncThunk(
   "notif/loadNotif",
   async (notifUser) => {
@@ -21,8 +54,44 @@ export const loadNotif = createAsyncThunk(
   }
 );
 
-export const postSlice = createSlice({
-  name: "notif",
+export const postSlice = createSlice(
+  {
+    name: "detailNotif",
+    initialState,
+    reducers: {},
+    extraReducers: {
+      [loadNotifDetail.pending]: (state) => {
+        state.loading = true;
+      },
+      [loadNotifDetail.fulfilled]: (state, { payload }) => {
+        state.loading = false;
+        state.notifDetail = payload;
+      },
+      [loadNotifDetail.rejected]: (state) => {
+        state.loading = false;
+      },
+    },
+  },
+  {
+    name: "createnotif",
+    initialState,
+    reducers: {},
+    extraReducers: {
+      [createNotif.pending]: (state) => {
+        state.loading = true;
+      },
+      [createNotif.fulfilled]: (state, { payload }) => {
+        state.loading = false;
+        state.notifCreate = payload;
+      },
+      [createNotif.rejected]: (state) => {
+        state.loading = false;
+      },
+    },
+    
+  },    
+  {
+  name: "loadNotif",
   initialState,
   reducers: {},
   extraReducers: {

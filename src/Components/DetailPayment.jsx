@@ -6,53 +6,12 @@ import {
 } from "@ant-design/icons";
 import { Modal } from "antd";
 
-import countryList from "react-select-country-list";
 import logo from "../logo.png";
 
 import { BsCircle } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
-
-import { useDispatch, useSelector } from "react-redux";
 
 export default function DetailPayment(props) {
-  const { luggagesPlane } = useSelector((state) => state.luggagePlane);
-  const { payment } = useSelector((state) => state.payment);
-  const { category } = useSelector((state) => state.category);
-  const { user } = useSelector((state) => state.getUser);
-  const { Price } = useSelector((state) => state.getPrice);
-
-  const navigate = useNavigate();
-
-  const [passenger, setPassenger] = useState("");
-
-
-
-
-  const [bagasi1, setBagasi1] = useState("");
-  const [bagasi2, setBagasi2] = useState("");
-  const [bagasi3, setBagasi3] = useState("");
-  const [bagasi4, setBagasi4] = useState("");
-  const [bagasi5, setBagasi5] = useState("");
-  const [bagasi6, setBagasi6] = useState("");
-  const [bagasi7, setBagasi7] = useState("");
   const [bagasi, setBagasi] = useState("");
-
-
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
- 
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
-  const [isModalBayarOpen, setIsModalBayarOpen] = useState(false);
-
-
 
   return (
     <div className="booking-right">
@@ -163,10 +122,7 @@ export default function DetailPayment(props) {
                 <h3 className="text-[16px] text-black mb-4 font-semibold">
                   Total Pembayaran
                 </h3>
-                <span className="w-full">
-                 {props.harga}
-                  
-                </span>
+                <span className="w-full">{props.harga}</span>
               </div>
             </div>
           </div>
