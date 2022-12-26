@@ -238,7 +238,10 @@ export const Profile = (setIsLogin) => {
 
                   <div className="textbox-select ">
                     <select onChange={(event) => setRegisterGender(event.target.value)} type="text">
-                      <option selected>Gender</option>
+                    {/* <option selected className="text-black">
+                    Gender
+                  </option> */}
+                 
                       {registerGender === "WANITA" ? (
                         <option selected className="text-black" value="Wanita">
                           Wanita

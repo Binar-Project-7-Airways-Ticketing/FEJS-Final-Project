@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  UserOutlined,
-  LockOutlined,
-  MailOutlined,
-  CalendarOutlined,
-  EyeInvisibleOutlined,
-  EyeOutlined,
-} from "@ant-design/icons";
+import { UserOutlined, LockOutlined, MailOutlined, CalendarOutlined, EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useDispatch } from "react-redux";
@@ -73,8 +66,7 @@ export const Register = () => {
   }
 
   useEffect(() => {
-    const emailRegexp =
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    const emailRegexp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     if (registerEmail) {
       setIsEmailValid(emailRegexp.test(registerEmail));
     }
@@ -199,11 +191,7 @@ export const Register = () => {
                     <MailOutlined style={{ color: "#F2EFEA" }} />
                   </span>
                 </div>
-                {!isEmailValid ? (
-                  <span className="text-red-500">email tidak valid</span>
-                ) : (
-                  <></>
-                )}
+                {!isEmailValid ? <span className="text-red-500">email tidak valid</span> : <></>}
               </div>
               <div className="block w-full">
                 {/* <div className="textbox">
@@ -277,13 +265,16 @@ export const Register = () => {
                 {/* </input> */}
               </div>
               <div className="textbox-select">
-                <select
-                  onChange={(event) => setRegisterGender(event.target.value)}
-                  type="text"
-                >
-                  <option selected>Gender</option>
-                  <option value="PEREMPUAN">PEREMPUAN</option>
-                  <option value="PRIA">PRIA</option>
+                <select onChange={(event) => setRegisterGender(event.target.value)} type="text">
+                  {/* <option selected className="text-black">
+                    Gender
+                  </option> */}
+                  <option selected className="text-black" value="PEREMPUAN">
+                    PEREMPUAN
+                  </option>
+                  <option selected className="text-black" value="PRIA">
+                    PRIA
+                  </option>
                 </select>
                 <span className="material-symbols-outlined">
                   <UserOutlined style={{ color: "#F2EFEA" }} />
@@ -306,10 +297,7 @@ export const Register = () => {
                   <h1>Have account</h1>
                 </div>
                 <div className="register-account-desc">
-                  <p>
-                    Manage your bookings and receive our latest news and offers
-                    just for you
-                  </p>
+                  <p>Manage your bookings and receive our latest news and offers just for you</p>
                 </div>
                 <a href="/login" type="button">
                   Login

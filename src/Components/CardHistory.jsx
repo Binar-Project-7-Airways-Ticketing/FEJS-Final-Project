@@ -49,117 +49,94 @@ function CardHistory({ histories }) {
         {histories.map((item) => (
           <div key={item.idBooking}>
             <p>{console.log(item)}</p>
-            
 
-            {item?.bookingDetails.map((data)=> (
-              
-               <div className="detail-booking">
-               <div className="wrap-input">
-                 <div className="input">
-                 
-                   <div className="history">
-                     
-                     <p style={{ fontSize: "13px" }}>From</p>
-                    <p>{data.flight.departureCode}</p>
-                     
-
-                     
-                   </div>
-                   <div className="history">
-                     <p style={{ fontSize: "13px" }}>To</p>
-                     <p>{data.flight.arrivalCode}</p>
-                   </div>
-                 </div>
- 
-                 <Modal
-              title="Flight Details"
-              open={isModalOpen}
-              onOk={handleOk}
-              onCancel={handleCancel}
-              footer={[null]}
-            >
-              <div className="wrap-modal-detail-flight">
-                <div className="title-detail-flight">
-                 
-                  <p>{console.log(data.flight)}</p>
-                  {/* <p>{data.flight.departureCode}</p>
-                  <p>to</p>
-                  <p>{data.flight.arrivalCode}</p> */}
-                  <p>{data.flight.departureDate}</p>
-                </div>
-                <div className="modal-detail-flight">
-                  <div className="airports">
-                    <div>
-                    <p>Depature Code</p>
+            {item?.bookingDetails.map((data) => (
+              <div className="detail-booking">
+                <div className="wrap-input">
+                  <div className="input">
+                    <div className="history">
+                      <p style={{ fontSize: "13px" }}>From</p>
                       <p>{data.flight.departureCode}</p>
-                      
                     </div>
-                    <div>
-                      <p>NO. PESAWAT</p>
-                      <p>{data.flight.flightNumber}</p>
-                    </div>
-                    <div>
-                      <p>Arrival Code</p>
+                    <div className="history">
+                      <p style={{ fontSize: "13px" }}>To</p>
                       <p>{data.flight.arrivalCode}</p>
                     </div>
                   </div>
 
-                  <div className="modal-logo">
-                    <div className="circle">
-                      <BsCircle />
+                  <Modal title="Flight Details" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[null]}>
+                    <div className="wrap-modal-detail-flight">
+                      <div className="title-detail-flight">
+                        <p>{console.log(data.flight)}</p>
+                        {/* <p>{data.flight.departureCode}</p>
+                  <p>to</p>
+                  <p>{data.flight.arrivalCode}</p> */}
+                        <p>{data.flight.departureDate}</p>
+                      </div>
+                      <div className="modal-detail-flight">
+                        <div className="airports">
+                          <div>
+                            <p>Depature Code</p>
+                            <p>{data.flight.departureCode}</p>
+                          </div>
+                          <div>
+                            <p>NO. PESAWAT</p>
+                            <p>{data.flight.flightNumber}</p>
+                          </div>
+                          <div>
+                            <p>Arrival Code</p>
+                            <p>{data.flight.arrivalCode}</p>
+                          </div>
+                        </div>
+
+                        <div className="modal-logo">
+                          <div className="circle">
+                            <BsCircle />
+                          </div>
+                          <div className="wrap-logo">
+                            <img
+                              src={logo}
+                              style={{
+                                width: "90px",
+                                height: "90px",
+                                borderRadius: "100%",
+                                border: "1px solid black",
+                              }}
+                            ></img>
+                          </div>
+                          <div className="circle">
+                            <BsCircle />
+                          </div>
+                        </div>
+                        <div className="modal-time">
+                          <p>{data.flight.arrivalTime}</p>
+
+                          <p>{data.flight.departureTime}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="wrap-logo">
-                      <img
-                        src={logo}
-                        style={{
-                          width: "90px",
-                          height: "90px",
-                          borderRadius: "100%",
-                          border: "1px solid black",
-                        }}
-                      ></img>
-                    </div>
-                    <div className="circle">
-                      <BsCircle />
-                    </div>
-                  </div>
-                  <div className="modal-time">
-                  <p>{data.flight.arrivalTime}</p>
-                    
-                  <p>{data.flight.departureTime}</p>
+                  </Modal>
+
+                  <div className="history">
+                    <p style={{ fontSize: "20px" }}>Class</p>
+                    {data.flight.plane.planeClass.map((kelas) => (
+                      <>
+                        <p>{console.log(kelas)}</p>
+                        <p style={{ fontsize: "20px" }}>{kelas.planeClass}</p>
+                      </>
+                    ))}
+
+                    <div>{/* <p>{console.log(data)}</p> */}</div>
                   </div>
                 </div>
               </div>
+            ))}
 
-              
-            </Modal>
-                 
-                 <div className="history">
-                  <p style={{ fontSize: "13px" }}>Class</p>
-                 {data.flight.plane.planeClass.map((kelas)=>(
-                  <>
-                  
-                  <p>{console.log(kelas)}</p>
-                  <p>{kelas.planeClass}</p>
-                  
-
-                  </>
-                   
-                ))}
-                  
-                   <div>
-                   
-                   {/* <p>{console.log(data)}</p> */}
-                   </div>
-                 </div>
-               </div>
-             </div>       
-                      
-                      ))}
-            
             <button onClick={showModal} className="btn-detail-flight">
               History Detail
             </button>
+            
+            {/* <button className="btn-detail-flight">Delete History</button> */}
           </div>
         ))}
       </div>
