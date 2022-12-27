@@ -4,7 +4,7 @@ import axios from "axios";
 const initialState = {
 
   category: [],
-  loadLuggage: false,
+  loadCategory: false,
 };
 
 

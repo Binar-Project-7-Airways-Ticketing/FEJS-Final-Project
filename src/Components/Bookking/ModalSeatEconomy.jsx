@@ -1,19 +1,16 @@
 import React from "react";
-import { Button, Checkbox, Form, Input, Modal, Radio } from "antd";
+import { Modal } from "antd";
 import { CaretDownOutlined, CaretUpOutlined } from "@ant-design/icons";
 import { MdEventSeat, MdOutlineAirlineSeatReclineExtra } from "react-icons/md";
 import { useState } from "react";
 import { useEffect } from "react";
 import { BsArrowRightCircle } from "react-icons/bs";
-import { FaTrashAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { loadSeats } from "../Feature/Models/SeatsSlice";
-import { updateSeats } from "../Feature/Models/SeatUpdate";
-import ButtonFindFlight from "../Reusable/ButtonFindFlight";
-import { loadSeatsIdPlaneCount } from "../Feature/Models/SeatsSlicePlaneCount";
+import { updateSeats } from "../Feature/Models/Seat";
+import { loadSeatsIdPlaneCount } from "../Feature/Models/Seat";
 
 export default function ModalSeatEconomy(props) {
-  const { Seats } = useSelector((state) => state.seat);
+
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
   const [planeType, setPlaneType] = useState(undefined);
   const [planeNumber, setPlaneNumber] = useState(undefined);
@@ -25,7 +22,6 @@ export default function ModalSeatEconomy(props) {
   const [resultTo, setResultTo] = useState([]);
   const [resultFrom, setResultFrom] = useState([]);
   const [passenger, setPassenger] = useState("");
-  const [adults, setAdults] = useState(1);
 
   const dispatch = useDispatch();
   const handleSeat = (e) => {
@@ -50,8 +46,6 @@ export default function ModalSeatEconomy(props) {
     dispatch(updateSeats(updateSeat));
   };
 
- 
-
   const HandleDetailSeat = (e) => {
     setDetailSeat(e);
     setDetailSea(true);
@@ -69,7 +63,6 @@ export default function ModalSeatEconomy(props) {
     ) : null;
   };
 
-
   useEffect(() => {
     const countPass = JSON.parse(localStorage.getItem("passanger"));
     setPassenger(countPass.adults + countPass.child + countPass.infant);
@@ -81,11 +74,11 @@ export default function ModalSeatEconomy(props) {
     setResultTo(cityTo);
     setResultFrom(cityFrom);
     dispatch(loadSeatsIdPlaneCount(planeType.plane.idPlane));
-  }, [dispatch, Seats, SeatsPlaneCount]);
+  }, [dispatch, SeatsPlaneCount]);
 
   return (
     <>
-      {Seats ? (
+      {SeatsPlaneCount ? (
         <>
           <Modal
             title={
@@ -178,9 +171,9 @@ export default function ModalSeatEconomy(props) {
                     <h5>
                       {planeNumber}, {planeType}
                     </h5>
-                    {SeatsPlaneCount.filter(
+                    {/* {SeatsPlaneCount.filter(
                       (item) => item.stateSeat === "BOOKED"
-                    ).length < passenger ? (
+                    ).length <= passenger ? ( */}
                       <div className="flex w-fit gap-2">
                         <div className="flex w-fit gap-2">
                           <div className="flex items-center relative gap-1 flex-col">
@@ -334,9 +327,9 @@ export default function ModalSeatEconomy(props) {
                           </div>
                         </div>
                       </div>
-                    ) : (
+                    {/* ) : (
                       <h6>Anda Sudah Memilih Kursi</h6>
-                    )}
+                    )} */}
                   </div>
                 </div>
                 {/* <div className="w-6/12">

@@ -23,16 +23,12 @@ export const getRegister = createAsyncThunk(
       },
       ...body,
     });
-    console.log("register", results);
 
     if (!results) {
       throw new Error("Can't login");
     }
 
     const data = await results.data;
-
-    localStorage.setItem("idUser", JSON.stringify(data.id));
-
     return data;
   }
 );
@@ -49,7 +45,7 @@ export const authRegisterSlice = createSlice({
       state.register = payload.register;
       state.authRegister = {
         status: true,
-        data: payload.user,
+        data: payload,
         type: "local",
       };
     },

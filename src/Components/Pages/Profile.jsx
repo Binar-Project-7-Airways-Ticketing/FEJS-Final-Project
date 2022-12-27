@@ -152,9 +152,9 @@ export const Profile = (setIsLogin) => {
 
   // Get data history travel
   const getHistoryTravel = () => {
-    axios.get(authConfig.baseUrl + "/api/booking").then((response) => {
+    axios.get(authConfig.baseUrl + "/api/booking/" + userId).then((response) => {
       console.log(response.data.payload);
-      setHistories(response.data.payload);
+      setHistories([response.data.payload]);
     });
   };
 
@@ -166,9 +166,7 @@ export const Profile = (setIsLogin) => {
     setRegisterProfilePhoto(URL.createObjectURL(file));
 
     data.append("image", file);
-    axios.post(authConfig.baseUrl + "/api/user/upload/" + userId, data).then((response) => {
-      
-    });
+    axios.post(authConfig.baseUrl + "/api/user/upload/" + userId, data).then((response) => {});
   };
 
   useEffect(() => {
@@ -240,7 +238,10 @@ export const Profile = (setIsLogin) => {
 
                   <div className="textbox-select ">
                     <select onChange={(event) => setRegisterGender(event.target.value)} type="text">
-                      <option selected>Gender</option>
+                    {/* <option selected className="text-black">
+                    Gender
+                  </option> */}
+                 
                       {registerGender === "WANITA" ? (
                         <option selected className="text-black" value="Wanita">
                           Wanita

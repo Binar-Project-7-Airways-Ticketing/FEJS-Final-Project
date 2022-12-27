@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {
-  UserOutlined,
-  LockOutlined,
-  MailOutlined,
-  CalendarOutlined,
-  EyeInvisibleOutlined,
-  EyeOutlined,
-} from "@ant-design/icons";
+import { UserOutlined, LockOutlined, MailOutlined, CalendarOutlined, EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getRegister } from "../Feature/Models/AuthRegister";
 import { unwrapResult } from "@reduxjs/toolkit";
@@ -18,7 +11,7 @@ import { DatePicker, Space } from "antd";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import "dayjs/locale/zh-cn";
-import { createNotif } from "../Feature/Models/PostNotif";
+import { createNotif } from "../Feature/Models/Notification";
 
 dayjs.extend(customParseFormat);
 const dateFormatList = ["MM/DD/YYYY", "MM/DD/YY"];
@@ -26,7 +19,11 @@ const dateFormatList = ["MM/DD/YYYY", "MM/DD/YY"];
 export const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { authRegister } = useSelector((state) => state.authRegister)
+  // console.log(authRegister.data.id);
+  // const [id, setId] = useState({data:{
+  //   id:""
+  // }})
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [passwordErrors, setIsPasswordErrors] = useState([]);
@@ -72,6 +69,18 @@ export const Register = () => {
     return true;
   }
 
+  useEffect(() => {
+    const emailRegexp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (registerEmail) {
+      setIsEmailValid(emailRegexp.test(registerEmail));
+    }
+  }, [registerEmail]);
+
+  useEffect(() => {
+    const validate = validatePassword();
+    setIsPasswordValid(validate);
+  }, [registerPassword]);
+
   const registerHandler = async () => {
     if (!registerFirstName) {
       alert("Harus ada first name");
@@ -108,33 +117,29 @@ export const Register = () => {
         birthday: registerBirth,
         gender: registerGender,
       })
+
     );
 
     const results = unwrapResult(resultsActions);
-
-    if (results && results.id) {
-      const userId = localStorage.getItem("idUser");
-      console.log(userId);
-      dispatch(createNotif(userId));
-    }
+    console.log(results);
     alert("REGISTER BERHASIL");
+    let createNotifs = {
+      user: results.id,
+      title: "LOGIN",
+      message: "Login Berhasil, silahkan pesan penerbangan yang sesuai dengan keinginan anda",
+      category: "PRIA"
+    }
+    if (results && results.id) {
+      dispatch(createNotif(createNotifs));
+    }
   };
 
   // ketika user login tidak bisa ke halaman login lagi
   useEffect(() => {
-    const emailRegexp =
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    if (registerEmail) {
-      setIsEmailValid(emailRegexp.test(registerEmail));
-    }
-
-    const validate = validatePassword();
-    setIsPasswordValid(validate);
-
     if (localStorage.getItem("auth")) {
       navigate("/");
     }
-  }, [registerEmail, registerPassword, navigate]);
+  }, [navigate, dispatch,]);
 
   return (
     <React.Fragment>
@@ -195,11 +200,7 @@ export const Register = () => {
                     <MailOutlined style={{ color: "#F2EFEA" }} />
                   </span>
                 </div>
-                {!isEmailValid ? (
-                  <span className="text-red-500">email tidak valid</span>
-                ) : (
-                  <></>
-                )}
+                {!isEmailValid ? <span className="text-red-500">email tidak valid</span> : <></>}
               </div>
               <div className="block w-full">
                 {/* <div className="textbox">
@@ -273,13 +274,16 @@ export const Register = () => {
                 {/* </input> */}
               </div>
               <div className="textbox-select">
-                <select
-                  onChange={(event) => setRegisterGender(event.target.value)}
-                  type="text"
-                >
-                  <option selected>Gender</option>
-                  <option value="PEREMPUAN">PEREMPUAN</option>
-                  <option value="PRIA">PRIA</option>
+                <select onChange={(event) => setRegisterGender(event.target.value)} type="text">
+                  {/* <option selected className="text-black">
+                    Gender
+                  </option> */}
+                  <option selected className="text-black" value="PEREMPUAN">
+                    PEREMPUAN
+                  </option>
+                  <option selected className="text-black" value="PRIA">
+                    PRIA
+                  </option>
                 </select>
                 <span className="material-symbols-outlined">
                   <UserOutlined style={{ color: "#F2EFEA" }} />
@@ -302,10 +306,7 @@ export const Register = () => {
                   <h1>Have account</h1>
                 </div>
                 <div className="register-account-desc">
-                  <p>
-                    Manage your bookings and receive our latest news and offers
-                    just for you
-                  </p>
+                  <p>Manage your bookings and receive our latest news and offers just for you</p>
                 </div>
                 <a href="/login" type="button">
                   Login

@@ -1,7 +1,8 @@
-import React, { useState,useEffect, useMemo } from "react";
-import Countdown from "react-countdown";
+import React, { useState, useEffect, useMemo } from "react";
+import { useParams } from "react-router-dom";
 import TransactionBusiness from "./TransactionBusiness";
 import TransactionEconomy from "./TransactionEconomy";
+import TransactionReturn from "./TransactionReturn";
 
 const Completionist = () => <span>You are good to go!</span>;
 
@@ -29,17 +30,27 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 
 export default function Transaction() {
   const [classFlight, setClassFlight] = useState("");
+  const [depart, setClassDepart] = useState(false);
+  const [returnn, setClassReturn] = useState(false);
 
   useEffect(() => {
-    const Class = JSON.parse(localStorage.getItem("class"));
-
-    setClassFlight(Class);
+    setClassDepart(JSON.parse(localStorage.getItem("classDepart")));
+    setClassReturn(JSON.parse(localStorage.getItem("classReturn")));
+    setClassFlight(JSON.parse(localStorage.getItem("class")));
   }, []);
 
   return (
     <React.Fragment>
-      {classFlight.class === "BUSINESS" ? <TransactionBusiness /> : null}
-      {classFlight.class === "ECONOMY" ? <TransactionEconomy /> : null}
+      {depart && returnn ? (
+        <>
+         <TransactionReturn/>
+        </>
+      ) : (
+        <>
+          {classFlight.class === "BUSINESS" ? <TransactionBusiness /> : null}
+          {classFlight.class === "ECONOMY" ? <TransactionEconomy /> : null}
+        </>
+      )}
     </React.Fragment>
   );
 }

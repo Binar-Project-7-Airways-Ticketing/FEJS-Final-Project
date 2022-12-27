@@ -7,16 +7,14 @@ import Trip from "./Trip";
 import ButtonFindFlight from "../Reusable/ButtonFindFlight";
 import Date from "./Date";
 import { MdOutlineSwapVert } from "react-icons/md";
-
-
 import { MdFlightTakeoff, MdFlightLand } from "react-icons/md";
 import { AiOutlineSwap } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { loadAirports } from "../Feature/Models/AirpostSlice";
+import { loadAirports, loadCitiesFrom, loadCitiesTo } from "../Feature/Models/AirportSlice";
 import { loadFlightReturn } from "../Feature/Models/FlightSliceReturn";
-import { loadCitiesFrom } from "../Feature/Models/AirportFromSlice";
-import { loadCitiesTo } from "../Feature/Models/AirportToSlice";
-import { loadFlightDepart } from "../Feature/Models/FlightSliceDepart";
+// import { loadCitiesFrom } from "../Feature/Models/AirportFromSlice";
+// import { loadCitiesTo } from "../Feature/Models/AirportToSlice";
+import { loadFlightDepart } from "../Feature/Models/FlightSliceReturn";
 
 export default function Book() {
   const { airport } = useSelector((state) => state.airport);
@@ -51,17 +49,7 @@ export default function Book() {
   const handleDateTo = (date, dateString) => {
     setDateTo(dateString);
   };
-  const handleFindFlight = () => {
-    // let x = {
-    //   from: fromCode,
-    //   to: toCode,
-    //   date: date,
-    // };
-    // dispatch(loadFlight(x));
-    // dispatch(loadCitiesFrom(airportFrom));
-    // dispatch(loadCitiesTo(airportTo));
-    // navigate(`/booking/`);
-  };
+
   const onFinish = (values) => {
     let x = {
       from: values.flightFrom,
@@ -86,11 +74,7 @@ export default function Book() {
     setTrip(e.target.value);
   };
   useEffect(() => {
-    // if (btn===true){
-    //   navigate(`/booking/${trip}`)
-    // }else{
-    //   navigate('/')
-    // }
+
     dispatch(loadAirports());
   }, []);
 

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Select, Form } from "antd";
 
 import { useDispatch, useSelector } from "react-redux";
-import { loadAirports } from "../Feature/Models/AirpostSlice";
+import { loadAirports } from "../Feature/Models/AirportSlice";
 
 export default function FormToFrom(props) {
   const { airport } = useSelector((state) => state.airport);

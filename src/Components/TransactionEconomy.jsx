@@ -1,13 +1,13 @@
 import React, { useState, useMemo } from "react";
 import { ShoppingOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import { Empty, Radio } from "antd";
+import { FaTrashAlt } from "react-icons/fa";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Countdown from "react-countdown";
 import countryList from "react-select-country-list";
 import { useNavigate } from "react-router-dom";
 import { loadLuggagesIdPlane } from "./Feature/Models/LuggageSliceIdPlane";
-import { createPayment } from "./Feature/Models/PaymentSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ButtonFindFlight from "./Reusable/ButtonFindFlight";
@@ -19,9 +19,10 @@ import { loadCategory } from "./Feature/Models/GetCategory";
 import ModalMethodPayment from "./ModalMethodPayment";
 import DetailPayment from "./DetailPayment";
 import ModalSeatEconomy from "./Bookking/ModalSeatEconomy";
-import { updateSeats } from "./Feature/Models/SeatUpdate";
-import { FaTrashAlt } from "react-icons/fa";
+import { updateSeats } from "./Feature/Models/Seat";
 import { createBooking } from "./Feature/Models/CreateBooking";
+import TransactionEconomyReturn from "./TransactionEconomyReturn";
+import TransactionBusinessReturn from "./TransactionBusinessReturn";
 
 const Completionist = () => <span>You are good to go!</span>;
 
@@ -47,21 +48,24 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
   }
 };
 
-export default function TransactionBusiness() {
+export default function TransactionEconomy() {
   const { luggagesPlane } = useSelector((state) => state.luggagePlane);
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
-  const { payment } = useSelector((state) => state.payment);
   const { category } = useSelector((state) => state.category);
   const { user } = useSelector((state) => state.getUser);
   const { Price } = useSelector((state) => state.getPrice);
 
   const navigate = useNavigate();
 
+  const [showReturnnEconomy, setShowReturnEconomy] = useState(false);
+  const [showReturnnBusiness, setShowReturnBusiness] = useState(false);
   const [passenger, setPassenger] = useState("");
   const [classFlight, setClassFlight] = useState("");
   const [departFlight, setDepart] = useState([]);
   const [token, setToken] = useState(false);
   const [returnFlight, setReturn] = useState([]);
+  const [classReturn, setClassReturn] = useState();
+  const [oneWay, setOneWay] = useState(true);
 
   const [value, setValue] = useState("");
   const options = useMemo(() => countryList().getData(), []);
@@ -234,6 +238,7 @@ export default function TransactionBusiness() {
           paymentMethod: "BRI",
         },
       };
+
       dispatch(createBooking(x));
     }
     if (passenger === 2) {
@@ -524,7 +529,17 @@ export default function TransactionBusiness() {
       };
       dispatch(createBooking(x));
     }
-    navigate("/bookingPending");
+    if (classReturn) {
+      if (classReturn === "ECONOMY") {
+        setShowReturnEconomy(true);
+        setOneWay(false);
+      } else {
+        setShowReturnBusiness(true);
+        setOneWay(false);
+      }
+    } else {
+      navigate("/bookingPending");
+    }
   };
   const dateFormat = "MM/DD/YYYY";
 
@@ -1047,7 +1062,6 @@ export default function TransactionBusiness() {
           <Radio onClick={(e) => handleChangeSeat(item, i)}>
             {item.numberSeat}
           </Radio>
-
           <FaTrashAlt onClick={() => seatDelete(item)} color="red" />
         </div>
       ));
@@ -1120,6 +1134,7 @@ export default function TransactionBusiness() {
     const Class = JSON.parse(localStorage.getItem("class"));
     const returnFl = JSON.parse(localStorage.getItem("return"));
     const users = localStorage.getItem("idUser");
+    setClassReturn(JSON.parse(localStorage.getItem("classReturn")));
     setPassenger(countPass.adults + countPass.child + countPass.infant);
     setClassFlight(Class);
     setToken(tokenn);
@@ -1138,183 +1153,195 @@ export default function TransactionBusiness() {
 
   return (
     <React.Fragment>
-      {departFlight ? (
+      {showReturnnBusiness ? <TransactionBusinessReturn /> : null}
+      {showReturnnEconomy ? <TransactionEconomyReturn /> : null}
+      {oneWay ? (
         <>
-          <div className="bg-brand-yellow">
-            <Navbar />
-            <div className="block md:flex sm:text-sm justify-center items-center pt-[80px] bg-brand-nude">
-              <div className="flex gap-2 items-center p-2">
-                <h3 className="text-brand-black">
-                  Mohon selesaikan pesanan anda dalam{" "}
-                </h3>
-                <Countdown date={Date.now() + 900000} renderer={renderer} />
-              </div>
-            </div>
-          </div>
-          <div className="bg-brand-yellow">
-            <div className="container booking-container">
-              <div className="booking-left">
-                {token ? (
-                  <>
-                    {penumpang.map((item, i) => (
-                      <div key={i}>
-                        <ComponentFormTransaction
-                          handleChangeUserTitle={(e) =>
-                            handleChangeUserTitle(e, i)
-                          }
-                          handleChangeCategory={(e) =>
-                            handleChangeCategory(e, i)
-                          }
-                          handleChangeGender={(e) => 
-                            handleChangeGender(e, i)
-                          }
-                          handleChangeFirstName={(e) =>
-                            handleChangeFirstName(e, i)
-                          }
-                          handleChangeLastName={(e) =>
-                            handleChangeLastName(e, i)
-                          }
-                          handleChangeBirtday={handleChangeBirtday}
-                          handleChangePassport={(e) =>
-                            handleChangePassport(e, i)
-                          }
-                          handleChangeNationality={(e) =>
-                            handleChangeNationality(e, i)
-                          }
-                          handleChangeRequest={(e) =>
-                            handleChangeSpecialRequest(e, i)
-                          }
-                          handleChangeContactNumber={(e) =>
-                            handleChangeContactNumber(e, i)
-                          }
-                          dateFormat={dateFormat}
-                          options={options}
-                          value={value}
-                          pay={() => clik(i)}
-                        />
-                      </div>
-                    ))}
-                  </>
-                ) : (
-                  <>
-                    {penumpang.map((item, i) => (
-                      <div key={i}>
-                        <ComponentFormTransaction
-                          penumpang={`Penumpang ${i + 1}`}
-                          handleChangeUserTitle={(e) =>
-                            handleChangeUserTitle(e, i)
-                          }
-                          handleChangeCategory={(e) =>
-                            handleChangeCategory(e, i)
-                          }
-                          handleChangeGender={(e) => 
-                            handleChangeGender(e, i)
-                          }
-                          handleChangeFirstName={(e) =>
-                            handleChangeFirstName(e, i)
-                          }
-                          handleChangeLastName={(e) =>
-                            handleChangeLastName(e, i)
-                          }
-                          handleChangeBirtday={handleChangeBirtday}
-                          handleChangePassport={(e) =>
-                            handleChangePassport(e, i)
-                          }
-                          handleChangeNationality={(e) =>
-                            handleChangeNationality(e, i)
-                          }
-                          handleChangeSpecialRequest={(e) =>
-                            handleChangeSpecialRequest(e, i)
-                          }
-                          handleChangeContactNumber={(e) =>
-                            handleChangeContactNumber(e, i)
-                          }
-                          dateFormat={dateFormat}
-                          options={options}
-                          value={value}
-                          pay={() => clik(i)}
-                        />
-                      </div>
-                    ))}
-                  </>
-                )}
-
-                <div className="parent-c w-full bg-brand-nude p-6 mt-6 rounded-md border-2 border-brand-black">
-                  <div className="left-header">
-                    <span>
-                      <UnorderedListOutlined />
-                    </span>
-                    <h3>Extra Fasilitas</h3>
-                  </div>
-                  <div className="flex flex-col justify-between  mb-4 gap-1">
-                    <div className="flex h-fit items-center mb-4 gap-4">
-                      <span>
-                        <ShoppingOutlined />
-                      </span>
-                      <h3 className="text-[20px] mt-2">Bagasi</h3>
-                    </div>
-                    <div className="flex w-full gap-2 flex-col">
-                      {passNum.map((item, i) => (
-                        <div className="flex flex-col gap-2">
-                          <p>Penumpang {i + 1}</p>
-                          <Luggages
-                            handleChange={(e) => handleChangeBag1(e, i)}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="flex justify-start items-center mb-4 gap-4">
-                    <span>
-                      <ShoppingOutlined />
-                    </span>
-                    <h3
-                      onClick={showModalSeat}
-                      className="text-[20px] mt-2 cursor-pointer"
-                    >
-                      Seats
+          {departFlight ? (
+            <>
+              <div className="bg-brand-yellow">
+                <Navbar />
+                <div className="block md:flex sm:text-sm justify-center items-center pt-[80px] bg-brand-nude">
+                  <div className="flex gap-2 items-center p-2">
+                    <h3 className="text-brand-black">
+                      Mohon selesaikan pesanan anda dalam{" "}
                     </h3>
-                    <ModalSeatEconomy
-                      isModalOpen={isModalSeatOpen}
-                      handleCancel={handleCancelSeat}
-                      numberSeat={seatNumber()}
+                    <Countdown date={Date.now() + 900000} renderer={renderer} />
+                  </div>
+                </div>
+              </div>
+              <div className="bg-brand-yellow">
+                <div className="text-brand-whiteLight pt-5 pl-3">
+                  <h4>KeBerangkatan</h4>
+                </div>
+                <div className="booking-container">
+                  <div className="booking-left">
+                    {token ? (
+                      <>
+                        {penumpang.map((item, i) => (
+                          <div key={i}>
+                            <ComponentFormTransaction
+                              handleChangeUserTitle={(e) =>
+                                handleChangeUserTitle(e, i)
+                              }
+                              handleChangeCategory={(e) =>
+                                handleChangeCategory(e, i)
+                              }
+                              handleChangeGender={(e) =>
+                                handleChangeGender(e, i)
+                              }
+                              handleChangeFirstName={(e) =>
+                                handleChangeFirstName(e, i)
+                              }
+                              handleChangeLastName={(e) =>
+                                handleChangeLastName(e, i)
+                              }
+                              handleChangeBirtday={handleChangeBirtday}
+                              handleChangePassport={(e) =>
+                                handleChangePassport(e, i)
+                              }
+                              handleChangeNationality={(e) =>
+                                handleChangeNationality(e, i)
+                              }
+                              handleChangeRequest={(e) =>
+                                handleChangeSpecialRequest(e, i)
+                              }
+                              handleChangeContactNumber={(e) =>
+                                handleChangeContactNumber(e, i)
+                              }
+                              dateFormat={dateFormat}
+                              options={options}
+                              value={value}
+                              pay={() => clik(i)}
+                            />
+                          </div>
+                        ))}
+                      </>
+                    ) : (
+                      <>
+                        {penumpang.map((item, i) => (
+                          <div key={i}>
+                            <ComponentFormTransaction
+                              penumpang={`Penumpang ${i + 1}`}
+                              handleChangeUserTitle={(e) =>
+                                handleChangeUserTitle(e, i)
+                              }
+                              handleChangeCategory={(e) =>
+                                handleChangeCategory(e, i)
+                              }
+                              handleChangeGender={(e) =>
+                                handleChangeGender(e, i)
+                              }
+                              handleChangeFirstName={(e) =>
+                                handleChangeFirstName(e, i)
+                              }
+                              handleChangeLastName={(e) =>
+                                handleChangeLastName(e, i)
+                              }
+                              handleChangeBirtday={handleChangeBirtday}
+                              handleChangePassport={(e) =>
+                                handleChangePassport(e, i)
+                              }
+                              handleChangeNationality={(e) =>
+                                handleChangeNationality(e, i)
+                              }
+                              handleChangeSpecialRequest={(e) =>
+                                handleChangeSpecialRequest(e, i)
+                              }
+                              handleChangeContactNumber={(e) =>
+                                handleChangeContactNumber(e, i)
+                              }
+                              dateFormat={dateFormat}
+                              options={options}
+                              value={value}
+                              pay={() => clik(i)}
+                            />
+                          </div>
+                        ))}
+                      </>
+                    )}
+
+                    <div className="parent-c w-full bg-brand-nude p-6 mt-6 rounded-md border-2 border-brand-black">
+                      <div className="left-header">
+                        <span>
+                          <UnorderedListOutlined />
+                        </span>
+                        <h3>Extra Fasilitas</h3>
+                      </div>
+                      <div className="flex flex-col justify-between  mb-4 gap-1">
+                        <div className="flex h-fit items-center mb-4 gap-4">
+                          <span>
+                            <ShoppingOutlined />
+                          </span>
+                          <h3 className="text-[20px] mt-2">Bagasi</h3>
+                        </div>
+                        <div className="flex w-full gap-2 flex-col">
+                          {passNum.map((item, i) => (
+                            <div className="flex flex-col gap-2">
+                              <p>Penumpang {i + 1}</p>
+                              <Luggages
+                                handleChange={(e) => handleChangeBag1(e, i)}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex justify-start items-center mb-4 gap-4">
+                        <span>
+                          <ShoppingOutlined />
+                        </span>
+                        <h3
+                          onClick={showModalSeat}
+                          className="text-[20px] mt-2 cursor-pointer"
+                        >
+                          Seats
+                        </h3>
+                        <ModalSeatEconomy
+                          isModalOpen={isModalSeatOpen}
+                          handleCancel={handleCancelSeat}
+                          numberSeat={seatNumber()}
+                        />
+                      </div>
+                    </div>
+                    <ModalMethodPayment
+                      showModalBayar={showModalBayar}
+                      dana={dana}
+                      isModalBayarOpen={isModalBayarOpen}
+                      handleBayarOk={handleBayarOk}
+                      handleBayarCancel={handleBayarCancel}
                     />
                   </div>
+                  <DetailPayment
+                    showModal={showModal}
+                    isModalOpen={isModalOpen}
+                    handleCancel={handleCancel}
+                    handleOk={handleOk}
+                    harga={harga()}
+                  />
                 </div>
-                <ModalMethodPayment
-                  showModalBayar={showModalBayar}
-                  dana={dana}
-                  isModalBayarOpen={isModalBayarOpen}
-                  handleBayarOk={handleBayarOk}
-                  handleBayarCancel={handleBayarCancel}
-                />
               </div>
-              <DetailPayment
-                showModal={showModal}
-                isModalOpen={isModalOpen}
-                handleCancel={handleCancel}
-                handleOk={handleOk}
-                harga={harga()}
-              />
+              <Footer />
+            </>
+          ) : (
+            <div className="container">
+              <div className="flex h-screen items-center justify-center">
+                <div className="flex items-center bg-brand-whiteLight h-fit rounded-2xl p-5">
+                  <div className="flex w-full flex-col">
+                    <h4>Halaman Tidak Ditemukan</h4>
+                    <Empty />
+                    <div className="flex w-full justify-center ">
+                      <ButtonFindFlight
+                        handle={() => navigate("/")}
+                        value="Back"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <Footer />
+          )}
         </>
-      ) : (
-        <div className="container">
-          <div className="flex h-screen items-center justify-center">
-            <div className="flex items-center bg-brand-whiteLight h-fit rounded-2xl p-5">
-              <div className="flex w-full flex-col">
-                <h4>Halaman Tidak Ditemukan</h4>
-                <Empty />
-                <div className="flex w-full justify-center ">
-                  <ButtonFindFlight handle={() => navigate("/")} value="Back" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      ) : null}
     </React.Fragment>
   );
 }

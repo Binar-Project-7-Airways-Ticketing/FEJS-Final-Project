@@ -9,12 +9,11 @@ import logo from "../image/logo5.png";
 import Prf from "./Reusable/Prf";
 import "./All.css";
 import { useDispatch, useSelector } from "react-redux";
-import { loadNotif } from "./Feature/Models/Notification";
+import { loadNotif, loadNotifDetail } from "./Feature/Models/Notification";
 import ModalNotif from "./ModalNotif";
-import { loadNotifDetail } from "./Feature/Models/NotificationDetail";
 
 export default function Navbar() {
-  const { notifDetail } = useSelector((state) => state.detailNotif);
+
 
   const [search, setSearch] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
