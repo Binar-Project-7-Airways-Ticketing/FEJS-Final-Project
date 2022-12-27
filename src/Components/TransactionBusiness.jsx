@@ -623,6 +623,51 @@ export default function TransactionBusiness() {
       passport,
     };
 
+    if (!titleUser){
+      alert("harus ada title");
+      return
+    }
+
+    if (!ageCategory){
+      alert("harus ada age category");
+      return
+    }
+
+    if (!gender){
+      alert("harus ada gender");
+      return
+    }
+
+    if (!firstName){
+      alert("harus ada first name");
+      return
+    }
+
+    if (!lastName){
+      alert("harus ada lastname");
+      return
+    }
+
+    if (!birthday){
+      alert("harus ada birthday");
+      return
+    }
+
+    if (!nationality){
+      alert("harus ada nationality");
+      return
+    }
+
+    if (!contactNumber){
+      alert("harus ada contact number");
+      return
+    }
+
+    if (!passport){
+      alert("harus ada passport");
+      return
+    }
+
     if (i === 0) {
       setPassenger1(passenger);
     }

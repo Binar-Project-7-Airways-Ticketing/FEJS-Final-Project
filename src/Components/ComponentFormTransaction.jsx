@@ -17,6 +17,12 @@ export default function ComponentFormTransaction(props) {
     dispatch(loadCategory());
     setToken(token);
   }, [category]);
+
+  if(!props.handleChangeUserTitle) {
+    alert("harus ada tittle");
+    return
+  }
+
   return (
     <React.Fragment>
       <div className="parent-b w-full bg-brand-nude p-6 mb-6 rounded-md border-2 border-brand-black">

@@ -45,21 +45,30 @@ export default function CardResultBookingOneWay() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(loadPagination(aktifPage));
+}, [dispatch])
+
   const handlePrev = () => {
     const prevPage = aktifPage !== 1 ? (aktifPage - 1) : aktifPage;
-    dispatch(loadPagination({departure_code:"CGK", arrival_code:"DPS", date:"12/30/2022", size:2, page:1}));
+    // dispatch(loadPagination({departure_code:"CGK", arrival_code:"DPS", date:"12/30/2022", size:2, page:1}));
+    dispatch(loadPagination(prevPage))
+    // resultFlightDepart(prevPage)
     setAktifPage(prevPage);
   }
   console.log("loadPagination", loadPagination)
 
   const handleNext = () => {
     const nextPage = aktifPage !== 5 ? (aktifPage + 1) : aktifPage;
-    dispatch(loadPagination(10, nextPage));
+    // dispatch(loadPagination({departure_code:"CGK", arrival_code:"DPS", date:"12/30/2022", size:2, page:2}));
+    dispatch(loadPagination(nextPage))
+    // resultFlightDepart(nextPage)
     setAktifPage(nextPage);
   }
 
   const handlePageNumber = (index) => {
     dispatch(loadPagination(index));
+    // resultFlightDepart(index)
     setAktifPage(index);
   }
 
@@ -146,6 +155,7 @@ export default function CardResultBookingOneWay() {
     setResultTo(cityTo);
     setResultFrom(cityFrom);
     setResultFlightDepart(flightDepart);
+    dispatch(loadPagination())
   }, [Price, SeatsPlaneCount]);
 
   return (
@@ -200,7 +210,7 @@ export default function CardResultBookingOneWay() {
             </div>
           </div>
           <div className="flex flex-col gap-5">
-            {resultFlightDepart.map((item, i) => (
+            {resultFlightDepart.filter((item, index) => index < 2).map((item, i) => (
               <div key={i} className="card-result-booking">
                 <div className="wrap-card-result-booking">
                   <div className="flex w-full lg:flex-row gap-5 sm:flex-col-reverse">
