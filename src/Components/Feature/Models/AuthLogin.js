@@ -35,12 +35,7 @@ export const getLogin = createAsyncThunk("auth/login", async (body) => {
       token: data.token,
     })
   );
-  localStorage.setItem("idUser", JSON.stringify(data.id));
-  console.log(data);
-  // return data;
-  setTimeout(function () {
-    window.location.reload(1);
-  }, 200);
+  return data
 });
 
 export const authSlice = createSlice({

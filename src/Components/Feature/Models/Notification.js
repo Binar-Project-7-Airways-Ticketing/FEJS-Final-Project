@@ -9,19 +9,18 @@ const initialState = {
   loadSeat: false,
 }
 
-export const createNotif = createAsyncThunk("notif/createNotif", async (id) => {
+export const createNotif = createAsyncThunk("notif/createNotif", async (notifs) => {
+  console.log(notifs);
 try {
   const notif = await axios.post(
     `${authConfig.baseUrl}/api/notification/create`,
     {
-      user:id,
-      title:"LOGIN",
-      message: "Login Berhasil, silahkan pesan penerbangan dengan harga bersahabat",
-      category:"PRIA"
+      ...notifs
     }
+    
   );
  
-  return notif.data
+  return(notif.data)
 } catch (error) {
   console.error(error);
 }

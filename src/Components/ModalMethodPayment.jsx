@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Modal } from "antd";
+import { Button, Modal } from "antd";
 
 import bri from "../image/bri.jpg";
 import bca from "../image/bca.jpg";

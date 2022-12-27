@@ -14,6 +14,7 @@ import ModalNotif from "./ModalNotif";
 
 export default function Navbar() {
 
+
   const [search, setSearch] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [openNotif, setOpenNotif] = useState(false);

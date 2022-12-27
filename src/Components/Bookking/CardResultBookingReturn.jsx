@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadPrice } from "../Feature/Models/GetPrice";
 import dateFormat, { masks } from "dateformat";
+import { loadSeatsIdPlaneCount } from "../Feature/Models/Seat";
 
 export default function CardResultBookingReturn() {
   // const { flight } = useSelector((state) => state.flight);
@@ -46,6 +47,7 @@ export default function CardResultBookingReturn() {
     setBusiness(false);
     setEconomy(false);
     setShowReturn(true);
+    localStorage.removeItem("class");
   };
 
   const handleReturn = (e) => {
@@ -56,61 +58,71 @@ export default function CardResultBookingReturn() {
     navigate("/transaction");
   };
   const detailClassEconomy = (e) => {
-    dispatch(loadPrice(e));
+    let idFlight = e.idFlight;
+    let idPlane = e.plane.idPlane;
+    let classDepart = {
+      class: "ECONOMY",
+    };
 
-    if (resultFlightReturn.filter((item) => item.idFlight === e)) {
+    if (resultFlightReturn.filter((item) => item.idFlight === idFlight)) {
       setDetail(true);
-      setEconomy(e);
-    } else {
+      setEconomy(idFlight);
     }
 
-    let Class = {
-      class: "Economy",
-    };
-    setPriceTotal(Price.economy)
-    // setPriceEconomyDepart(Price.economy);
-    localStorage.setItem("class", JSON.stringify(Class));
+    localStorage.setItem("classDepart", JSON.stringify(classDepart));
+    setPriceTotal(Price.economy);
+    dispatch(loadSeatsIdPlaneCount(idPlane));
+
+    dispatch(loadPrice(idFlight));
   };
   const detailClassBusiness = (e) => {
+    let idFlight = e.idFlight;
+    let idPlane = e.plane.idPlane;
+    let classDepart = {
+      class: "BUSINESS",
+    };
     if (resultFlightReturn.filter((item) => item.idFlight === e)) {
       setDetail(true);
-      setBusiness(e);
+      setBusiness(idFlight);
     }
-    let Class = {
-      class: "Economy",
-    };
-    setPriceTotal(Price.business)
-    // setPriceBusinessDepart(Price.business);
-    localStorage.setItem("class", JSON.stringify(Class));
-    localStorage.setItem("priceDepart", JSON.stringify(Price.business));
+    localStorage.setItem("classDepart", JSON.stringify(classDepart));
+    dispatch(loadSeatsIdPlaneCount(idPlane));
+    setPriceTotal(Price.business);
+    dispatch(loadPrice(idFlight));
   };
   const detailClassEconomyReturn = (e) => {
-    dispatch(loadPrice(e));
-    if (resultFlightReturn.filter((item) => item.idFlight === e)) {
-      setDetail(true);
-      setEconomy(e);
-    }
-    let Class = {
-      class: "Economy",
+    let idFlight = e.idFlight;
+    let idPlane = e.plane.idPlane;
+    let classReturn = {
+      class: "ECONOMY",
     };
- 
+
+    if (resultFlightReturn.filter((item) => item.idFlight === idFlight)) {
+      setDetail(true);
+      setEconomy(idFlight);
+    }
+
+    dispatch(loadSeatsIdPlaneCount(idPlane));
+    dispatch(loadPrice(idFlight));
     setPriceEconomyReturn(Price.economy);
-    console.log(e);
-    localStorage.setItem("class", JSON.stringify(Class));
-    localStorage.setItem("priceReturn", JSON.stringify(Price.economy));
+    localStorage.setItem("classReturn", JSON.stringify(classReturn));
   };
   const detailClassBusinessReturn = (e) => {
-    if (resultFlightReturn.filter((item) => item.idFlight === e)) {
-      setDetail(true);
-      setBusiness(e);
-    }
-    let Class = {
-      class: "Economy",
+    let idFlight = e.idFlight;
+    let idPlane = e.plane.idPlane;
+    let classReturn = {
+      class: "BUSINESS",
     };
-  
+
+    if (resultFlightReturn.filter((item) => item.idFlight === idFlight)) {
+      setDetail(true);
+      setEconomy(idFlight);
+    }
+    console.log(idPlane);
+    dispatch(loadSeatsIdPlaneCount(idPlane));
+    dispatch(loadPrice(idFlight));
     setPriceBusinessReturn(Price.business);
-    localStorage.setItem("class", JSON.stringify(Class));
-    localStorage.setItem("priceReturn", JSON.stringify(Price.business));
+    localStorage.setItem("classReturn", JSON.stringify(classReturn));
   };
 
   const detailClassClose = (e) => {
@@ -156,7 +168,7 @@ export default function CardResultBookingReturn() {
     setResultFrom(cityFrom);
     setResultFlightDepart(flightDepart);
     setResultFlightReturn(flightReturn);
-  }, [dispatch, Price]);
+  }, [dispatch, Price, SeatsPlaneCount]);
 
   return (
     <>
@@ -233,7 +245,7 @@ export default function CardResultBookingReturn() {
                           ) : (
                             <div
                               className="flex flex-col bg-brand-whiteLight cursor-pointer sm:gap-7 text-brand-black rounded-lg w-full md:p-5 sm:p-2 md:h-44 sm:h-fit"
-                              onClick={() => detailClassEconomy(item.idFlight)}
+                              onClick={() => detailClassEconomy(item)}
                             >
                               {item.plane.planeClass
                                 .filter((item) => item.planeClass === "ECONOMY")
@@ -289,7 +301,7 @@ export default function CardResultBookingReturn() {
                           ) : (
                             <div
                               className="flex flex-col bg-brand-whiteLight cursor-pointer sm:gap-7 text-brand-black rounded-lg w-full md:p-5 sm:p-2 md:h-44 sm:h-fit"
-                              onClick={() => detailClassBusiness(item.idFlight)}
+                              onClick={() => detailClassBusiness(item)}
                             >
                               {item.plane.planeClass
                                 .filter((item) => item.idPlaneClass === 2)
@@ -409,9 +421,22 @@ export default function CardResultBookingReturn() {
                       </div>
                     </div>
                     {economy === item.idFlight ? (
-                      <div className="detail-economy-class flex w-full gap-5 sm:grid sm:grid-rows-2">
+                      <div className="detail-economy-class md:flex md:flex-row w-full gap-5 sm:grid sm:grid-rows-2">
                         <div className="benefit sm:w-full">
                           <h2>Economy Class Flight</h2>
+                          <div className="bg-brand-yellow w-fit p-2 rounded-lg">
+                            <p>
+                              {
+                                SeatsPlaneCount.filter(
+                                  (item) => item.stateSeat === "AVAILABLE"
+                                ).filter(
+                                  (item) =>
+                                    item.planeDetails.planeClass === "ECONOMY"
+                                ).length
+                              }{" "}
+                              Kursi tersisa
+                            </p>
+                          </div>
                           <p>The benefits you get in economy class</p>
                           <div className="benefit-detail">
                             <div className="icon-benefit">
@@ -430,9 +455,20 @@ export default function CardResultBookingReturn() {
                             </div>
                           </div>
                           <div className="bg-brand-yellow rounded-md lg:w-1/4 w-1/3 sm:w-full  text-center cursor-pointer py-1.5 px-2.5 ">
-                            <p onClick={() => handleDepart(item)}>
-                              Select Class
-                            </p>
+                            {SeatsPlaneCount.filter(
+                              (item) =>
+                                item.planeDetails.planeClass === "ECONOMY"
+                            ).length === 0 &&
+                            SeatsPlaneCount.filter(
+                              (item) =>
+                                item.planeDetails.planeClass === "ECONOMY"
+                            ).length <= passanger ? (
+                              <p>Seats Not Available</p>
+                            ) : (
+                              <p onClick={() => handleDepart(item)}>
+                                Select Class
+                              </p>
+                            )}
                           </div>
                         </div>
                         <div className="img-benefit">
@@ -441,9 +477,22 @@ export default function CardResultBookingReturn() {
                       </div>
                     ) : null}
                     {business === item.idFlight ? (
-                      <div className="detail-economy-class flex w-full gap-5 sm:grid sm:grid-rows-2">
+                      <div className="detail-economy-class md:flex md:flex-row w-full gap-5 sm:grid sm:grid-rows-2">
                         <div className="benefit  sm:w-full">
                           <h2>Business Class Flight</h2>
+                          <div className="bg-brand-yellow w-fit p-2 rounded-lg">
+                            <p>
+                            {
+                                SeatsPlaneCount.filter(
+                                  (item) => item.stateSeat === "AVAILABLE"
+                                ).filter(
+                                  (item) =>
+                                    item.planeDetails.planeClass === "BUSINESS"
+                                ).length
+                              }{" "}
+                              Kursi tersisa
+                            </p>
+                          </div>
                           <p>The benefits you get in economy class</p>
                           <div className="benefit-detail">
                             <div className="icon-benefit">
@@ -470,9 +519,20 @@ export default function CardResultBookingReturn() {
                             </div>
                           </div>
                           <div className="bg-brand-yellow rounded-md lg:w-1/4 w-1/3 sm:w-full  text-center cursor-pointer py-1.5 px-2.5 ">
-                            <p onClick={() => handleDepart(item)}>
-                              Select Class
-                            </p>
+                            {SeatsPlaneCount.filter(
+                              (item) =>
+                                item.planeDetails.planeClass === "BUSINESS"
+                            ).length === 0 &&
+                            SeatsPlaneCount.filter(
+                              (item) =>
+                                item.planeDetails.planeClass === "BUSINESS"
+                            ).length <= passanger ? (
+                              <p>Seats Not Available</p>
+                            ) : (
+                              <p onClick={() => handleDepart(item)}>
+                                Select Class
+                              </p>
+                            )}
                           </div>
                         </div>
                         <div className="img-benefit ">
@@ -512,13 +572,13 @@ export default function CardResultBookingReturn() {
                           {economy === item.idFlight ? (
                             <p>
                               Total Harga Rp.
-                              {priceEconomyReturn+priceTotal}
+                              {priceEconomyReturn + priceTotal}
                             </p>
                           ) : null}
                           {business === item.idFlight ? (
                             <p>
                               Total Harga Rp.
-                              {priceBusinessReturn+priceTotal}
+                              {priceBusinessReturn + priceTotal}
                             </p>
                           ) : null}
                         </>
@@ -566,9 +626,7 @@ export default function CardResultBookingReturn() {
                               ) : (
                                 <div
                                   className="flex flex-col bg-brand-whiteLight cursor-pointer sm:gap-7 text-brand-black rounded-lg w-full md:p-5 sm:p-2 md:h-44 sm:h-fit"
-                                  onClick={() =>
-                                    detailClassEconomyReturn(item.idFlight)
-                                  }
+                                  onClick={() => detailClassEconomyReturn(item)}
                                 >
                                   {item.plane.planeClass
                                     .filter(
@@ -633,7 +691,7 @@ export default function CardResultBookingReturn() {
                                 <div
                                   className="flex flex-col bg-brand-whiteLight cursor-pointer sm:gap-7 text-brand-black rounded-lg w-full md:p-5 sm:p-2 md:h-44 sm:h-fit"
                                   onClick={() =>
-                                    detailClassBusinessReturn(item.idFlight)
+                                    detailClassBusinessReturn(item)
                                   }
                                 >
                                   {item.plane.planeClass
@@ -760,6 +818,20 @@ export default function CardResultBookingReturn() {
                           <div className="detail-economy-class flex w-full gap-5 sm:grid sm:grid-rows-2">
                             <div className="benefit sm:w-full">
                               <h2>Economy Class Flight</h2>
+                              <div className="bg-brand-yellow w-fit p-2 rounded-lg">
+                                <p>
+                                  {
+                                    SeatsPlaneCount.filter(
+                                      (item) => item.stateSeat === "AVAILABLE"
+                                    ).filter(
+                                      (item) =>
+                                        item.planeDetails.planeClass ===
+                                        "ECONOMY"
+                                    ).length
+                                  }{" "}
+                                  Kursi tersisa
+                                </p>
+                              </div>
                               <p>The benefits you get in economy class</p>
                               <div className="benefit-detail">
                                 <div className="icon-benefit">
@@ -779,9 +851,20 @@ export default function CardResultBookingReturn() {
                                 </div>
                               </div>
                               <div className="bg-brand-yellow rounded-md lg:w-1/4 w-1/3 sm:w-full text-center cursor-pointer py-1.5 px-2.5 ">
-                                <p onClick={() => handleReturn(item)}>
-                                  Select Class
-                                </p>
+                              {SeatsPlaneCount.filter(
+                                  (item) =>
+                                    item.planeDetails.planeClass === "ECONOMY"
+                                ).length === 0 &&
+                                SeatsPlaneCount.filter(
+                                  (item) =>
+                                    item.planeDetails.planeClass === "ECONOMY"
+                                ).length <= passanger ? (
+                                  <p>Seats Not Available</p>
+                                ) : (
+                                  <p onClick={() => handleReturn(item)}>
+                                    Select Class
+                                  </p>
+                                )}
                               </div>
                             </div>
                             <div className="img-benefit">
@@ -793,6 +876,20 @@ export default function CardResultBookingReturn() {
                           <div className="detail-economy-class flex w-full gap-5 sm:grid sm:grid-rows-2">
                             <div className="benefit sm:w-full">
                               <h2>Business Class Flight</h2>
+                              <div className="bg-brand-yellow w-fit p-2 rounded-lg">
+                                <p>
+                                  {
+                                    SeatsPlaneCount.filter(
+                                      (item) => item.stateSeat === "AVAILABLE"
+                                    ).filter(
+                                      (item) =>
+                                        item.planeDetails.planeClass ===
+                                        "BUSINESS"
+                                    ).length
+                                  }
+                                  Kursi tersisa
+                                </p>
+                              </div>
                               <p>The benefits you get in economy class</p>
                               <div className="benefit-detail">
                                 <div className="flex flex-col justify-around gap-2">
@@ -820,13 +917,27 @@ export default function CardResultBookingReturn() {
                                 </div>
                               </div>
                               <div className="bg-brand-yellow rounded-md lg:w-1/4 w-1/3 sm:w-full text-center cursor-pointer py-1.5 px-2.5 ">
-                                {item.plane.planeClass
+                                {SeatsPlaneCount.filter(
+                                  (item) =>
+                                    item.planeDetails.planeClass === "BUSINESS"
+                                ).length === 0 &&
+                                SeatsPlaneCount.filter(
+                                  (item) =>
+                                    item.planeDetails.planeClass === "BUSINESS"
+                                ).length <= passanger ? (
+                                  <p>Seats Not Available</p>
+                                ) : (
+                                  <p onClick={() => handleReturn(item)}>
+                                    Select Class
+                                  </p>
+                                )}
+                                {/* {item.plane.planeClass
                                   .filter((item) => item.idPlaneClass === 2)
                                   .map((item) => (
                                     <p onClick={() => handleReturn(item)}>
                                       Select Class
                                     </p>
-                                  ))}
+                                  ))} */}
                               </div>
                             </div>
                             <div className="img-benefit">

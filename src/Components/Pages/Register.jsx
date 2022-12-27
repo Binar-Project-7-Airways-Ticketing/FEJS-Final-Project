@@ -9,7 +9,7 @@ import {
 } from "@ant-design/icons";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getRegister } from "../Feature/Models/AuthRegister";
 import { unwrapResult } from "@reduxjs/toolkit";
@@ -18,7 +18,7 @@ import { DatePicker, Space } from "antd";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import "dayjs/locale/zh-cn";
-import { createNotif } from "../Feature/Models/PostNotif";
+import { createNotif } from "../Feature/Models/Notification";
 
 dayjs.extend(customParseFormat);
 const dateFormatList = ["MM/DD/YYYY", "MM/DD/YY"];
@@ -26,7 +26,11 @@ const dateFormatList = ["MM/DD/YYYY", "MM/DD/YY"];
 export const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const{authRegister} = useSelector((state)=>state.authRegister)
+  // console.log(authRegister.data.id);
+  // const [id, setId] = useState({data:{
+  //   id:""
+  // }})
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [passwordErrors, setIsPasswordErrors] = useState([]);
@@ -121,16 +125,21 @@ export const Register = () => {
         birthday: registerBirth,
         gender: registerGender,
       })
+  
     );
 
     const results = unwrapResult(resultsActions);
-
-    if (results && results.id) {
-      const userId = localStorage.getItem("idUser");
-      console.log(userId);
-      dispatch(createNotif(userId));
-    }
+    console.log(results);
     alert("REGISTER BERHASIL");
+    let createNotifs = {
+      user:results.id,
+      title:"LOGIN",
+      message: "Login Berhasil, silahkan pesan penerbangan yang sesuai dengan keinginan anda",
+      category:"PRIA"
+    }
+    if (results && results.id) {
+      dispatch(createNotif(createNotifs));
+    }
   };
 
   // ketika user login tidak bisa ke halaman login lagi
@@ -138,7 +147,7 @@ export const Register = () => {
     if (localStorage.getItem("auth")) {
       navigate("/");
     }
-  }, [navigate]);
+  }, [navigate, dispatch,]);
 
   return (
     <React.Fragment>
