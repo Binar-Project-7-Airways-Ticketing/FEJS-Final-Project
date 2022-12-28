@@ -55,12 +55,12 @@ function CardHistory({ histories }) {
                 <div className="wrap-input">
                   <div className="input">
                     <div className="history">
-                      <p style={{ fontSize: "13px" }}>From</p>
-                      <p>{data.flight.departureCode}</p>
+                      <p style={{ fontSize: "18px" }}>Depature From</p> 
+                      <p style={{ fontSize: "18px" }}>{data.flight.departureCode}</p>
                     </div>
                     <div className="history">
-                      <p style={{ fontSize: "13px" }}>To</p>
-                      <p>{data.flight.arrivalCode}</p>
+                      <p style={{ fontSize: "18px" }}>Destination To</p>
+                      <p style={{ fontSize: "18px" }}>{data.flight.arrivalCode}</p>
                     </div>
                   </div>
 
@@ -118,21 +118,27 @@ function CardHistory({ histories }) {
                   </Modal>
 
                   <div className="history">
-                    <p style={{ fontSize: "20px" }}>Class</p>
+                    <p style={{ fontSize: "18px" }}>Class</p>
+                    
+                    <div>
                     {data.flight.plane.planeClass.map((kelas) => (
                       <>
                         <p>{console.log(kelas)}</p>
-                        <p style={{ fontsize: "20px" }}>{kelas.planeClass}</p>
+                        
+                        <p style={{ fontSize: "18px" }}>{kelas.planeClass}</p>
+                        
                       </>
                     ))}
+                    </div>
 
-                    <div>{/* <p>{console.log(data)}</p> */}</div>
+                    
                   </div>
+                  
                 </div>
               </div>
             ))}
 
-            <button onClick={showModal} className="btn-detail-flight">
+            <button onClick={showModal} className="btn-detail-history">
               History Detail
             </button>
             
