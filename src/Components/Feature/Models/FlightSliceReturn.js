@@ -14,6 +14,7 @@ export const loadFlightDepart = createAsyncThunk("flight/loadFlightDepart", asyn
   try {
     const flight = await axios.get(
       `${authConfig.baseUrl}/api/flight/${dataFlight.from}/${dataFlight.to}/date?date=${dataFlight.datefrom}`
+      // `${authConfig.baseUrl}/api/flight/paging/${1}/${2}?departure-code=${dataFlight.from}&arrival-code=${dataFlight.to}&date=${dataFlight.datefrom}`
     );
     localStorage.setItem("flightDepart", JSON.stringify(flight.data));
 
@@ -22,6 +23,7 @@ export const loadFlightDepart = createAsyncThunk("flight/loadFlightDepart", asyn
     console.error(error);
   }
 });
+
 export const loadFlightReturn = createAsyncThunk("flight/loadFlightReturn", async (dataFlight) => {
 
   try {

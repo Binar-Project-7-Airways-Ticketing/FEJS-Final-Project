@@ -14,6 +14,10 @@ const initialState = {
   login: [],
 };
 
+// export const getLoginAdmin = createAsyncThunk("auth/login", async (body) => {
+//   const results = await axios.delete(`${authConfig.baseUrl}/api/auth/signin`)
+// })
+
 export const getLogin = createAsyncThunk("auth/login", async (body) => {
   const results = await axios.post(`${authConfig.baseUrl}/api/auth/signin`, {
     headers: {
@@ -35,7 +39,12 @@ export const getLogin = createAsyncThunk("auth/login", async (body) => {
       token: data.token,
     })
   );
-  return data
+  localStorage.setItem("idUser", JSON.stringify(data.id));
+  console.log(data);
+  // return data;
+  setTimeout(function () {
+    window.location.reload(1);
+  }, 200);
 });
 
 export const authSlice = createSlice({
