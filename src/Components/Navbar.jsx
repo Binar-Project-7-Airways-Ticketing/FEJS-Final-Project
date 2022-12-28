@@ -9,12 +9,9 @@ import logo from "../image/logo5.png";
 import Prf from "./Reusable/Prf";
 import "./All.css";
 import { useDispatch, useSelector } from "react-redux";
-import { loadNotif, loadNotifDetail } from "./Feature/Models/Notification";
 import ModalNotif from "./ModalNotif";
 
 export default function Navbar() {
-
-
   const [search, setSearch] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [openNotif, setOpenNotif] = useState(false);
@@ -24,9 +21,9 @@ export default function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [idNotif, setIdNotif] = useState({});
   const showModal = (e) => {
-    dispatch(loadNotifDetail(e));
     setIdNotif(e);
     setIsModalOpen(true);
+    console.log(e);
   };
 
   const handleCancel = () => {
@@ -37,6 +34,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { notif } = useSelector((state) => state.notif);
+  // console.log(notif);
   const srch = () => {
     setSearch(true);
   };
@@ -53,8 +51,6 @@ export default function Navbar() {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      const notifUser = localStorage.getItem("idUser");
-      dispatch(loadNotif(notifUser));
       setIsLogin(true);
     } else {
       setIsLogin(false);
@@ -185,12 +181,12 @@ export default function Navbar() {
                     <AiOutlineUser size={25} />
                   </div>
                   <div className="flex gap-1 h-7 bg-brand-whiteLight text-brand-black items-center px-3 rounded-md w-40 justify-end ml-2">
-                   <Link>
-                   <a className="text-sm" to={"/login"}>
-                      Login
-                    </a>
-                   </Link>
-                  
+                    <Link>
+                      <a className="text-sm" to={"/login"}>
+                        Login
+                      </a>
+                    </Link>
+
                     <p>|</p>
                     <a className="text-sm" href="/register">
                       Sign up
@@ -205,7 +201,10 @@ export default function Navbar() {
               className="nav-respon lg:flex w-full items-center justify-center md:hidden sm:hidden"
             >
               <ul className="flex w-1/2 justify-start text-brand-whiteLight">
-                <li onClick={()=>navigate('/')} className="hover:bg-brand-whiteLight hover:text-brand-black w-fit py-1 px-4 rounded-md cursor-pointer">
+                <li
+                  onClick={() => navigate("/")}
+                  className="hover:bg-brand-whiteLight hover:text-brand-black w-fit py-1 px-4 rounded-md cursor-pointer"
+                >
                   Home
                 </li>
                 <li className="hover:bg-brand-whiteLight hover:text-brand-black w-fit py-1 px-4 rounded-md">

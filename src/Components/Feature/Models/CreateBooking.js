@@ -16,7 +16,7 @@ export const createBooking = createAsyncThunk("Booking/createBooking", async (Bo
         ...Bookings
       }
     );
-   
+    localStorage.setItem("booking", JSON.stringify(Booking.data.payload.bookingDetails))
     return Booking.data
   } catch (error) {
     console.error(error);

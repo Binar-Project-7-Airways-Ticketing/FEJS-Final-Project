@@ -540,6 +540,7 @@ export default function TransactionEconomy() {
     } else {
       navigate("/bookingPending");
     }
+    localStorage.clear()
   };
   const dateFormat = "MM/DD/YYYY";
 

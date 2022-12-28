@@ -13,6 +13,9 @@ import getUser from "../Feature/Models/GetUser";
 import getPrice from "./Models/GetPrice";
 import luggagesPlane from "./Models/LuggageSliceIdPlane";
 import category from "./Models/GetCategory";
+import ticket from "./Models/GetTicket";
+import booking from "./Models/CreateBooking"
+import city from "./Models/AirportSlice"
 
 export const store = configureStore({
   reducer: {
@@ -30,5 +33,8 @@ export const store = configureStore({
     luggagePlane: luggagesPlane,
     seatsPlaneCount: seatsPlaneCount,
     category: category,
+    ticket:ticket,
+    booking:booking,
+    city:city
   },
 });

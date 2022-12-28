@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { getLogin } from "../Feature/Models/AuthLogin";
 import { useDispatch } from "react-redux";
 import { unwrapResult } from "@reduxjs/toolkit";
+import { loadNotif } from "../Feature/Models/Notification";
 
 export const Login = () => {
     const dispatch = useDispatch();
@@ -81,9 +82,12 @@ export const Login = () => {
 
 
         const results = unwrapResult(resultsActions);
+
+      dispatch(loadNotif(results.id));
         console.log(results);
         if (results && results.token) {
             if (results.token) {
+                dispatch(loadNotif(localStorage.getItem("id")));
                 navigate("/")
             }
         };
