@@ -17,6 +17,7 @@ import ticket from "./Models/GetTicket";
 import booking from "./Models/CreateBooking"
 import city from "./Models/AirportSlice"
 import pagination from "./Models/PaginationSlice";
+import paginationReturn from "./Models/PaginationSlice";
 
 export const store = configureStore({
   reducer: {
@@ -38,5 +39,6 @@ export const store = configureStore({
     booking:booking,
     city:city,
     pagination: pagination,
+    paginationReturn: paginationReturn,
   },
 });

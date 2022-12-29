@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
-import { Modal, Empty } from "antd";
+import { Modal, Empty, Pagination } from "antd";
 import logo from "../../logo.png";
 import { BsCircle } from "react-icons/bs";
 import { useNavigate, useParams } from "react-router-dom";
@@ -14,11 +14,15 @@ import { useEffect } from "react";
 import { loadPrice } from "../Feature/Models/GetPrice";
 import dateFormat, { masks } from "dateformat";
 import { loadSeatsIdPlaneCount } from "../Feature/Models/Seat";
+import { Depart } from "../Feature/Models/PaginationSlice";
+import { DepartReturn } from "../Feature/Models/PaginationSlice"
 
 export default function CardResultBookingReturn() {
   // const { flight } = useSelector((state) => state.flight);
   // const { cityFrom } = useSelector((state) => state.cityFrom);
   // const { cityTo } = useSelector((state) => state.cityTo);
+  const { pagination } = useSelector((state) => state.pagination);
+  const { paginationReturn } = useSelector((state) => state.paginationReturn);
   const { trip } = useParams();
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
   const { Price } = useSelector((state) => state.getPrice);
@@ -37,6 +41,8 @@ export default function CardResultBookingReturn() {
   const [resultFrom, setResultFrom] = useState([]);
   const [resultFlightReturn, setResultFlightReturn] = useState([]);
   const [resultFlightDepart, setResultFlightDepart] = useState([]);
+  const [page, setIsPage] = useState([]);
+  const [page1, setIsPage1] = useState([])
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -153,6 +159,29 @@ export default function CardResultBookingReturn() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  const paging = (pages, pageSize) => {
+    const halaman = {
+      page: pages,
+      flight: departDate,
+    }
+    dispatch(Depart(halaman))
+    console.log("ONE", pages, pageSize)
+  }
+
+  const pagingReturn = (pages1, pageSize1) => {
+    const halamanReturn = {
+      page: pages1,
+      flight: returnDate,
+    }
+    dispatch(DepartReturn(halamanReturn))
+    console.log("RETURN", pages1, pageSize1)
+  }
+
+  const [pages, setTotalPages] = useState(0);
+  const [number, setNumber] = useState(0);
+  const [pages1, setTotalPages1] = useState(0);
+  const [number1, setNumber1] = useState(0);
   useEffect(() => {
     const countPassenger = JSON.parse(localStorage.getItem("passanger"));
     setPassenger(
@@ -167,9 +196,27 @@ export default function CardResultBookingReturn() {
     setResultTo(cityTo);
     setResultFrom(cityFrom);
     setResultFlightDepart(flightDepart);
+    const pages = {
+      page: 1,
+      flight: flightDepart[0]
+    }
+    setTotalPages(localStorage.getItem("page"))
+    setNumber(localStorage.getItem("number"))
+    dispatch(Depart(pages));
+    setIsPage(page);
     setResultFlightReturn(flightReturn);
+    const pages1 = {
+      page: 1,
+      flight: flightReturn[0]
+    }
+    setTotalPages1(localStorage.getItem("page"))
+    setNumber1(localStorage.getItem("number"))
+    dispatch(DepartReturn(pages1));
+    setIsPage1(page1)
   }, [dispatch, Price, SeatsPlaneCount]);
 
+  console.log("PAGINATION", pagination);
+  console.log("PAGINATIONRETURN", paginationReturn)
   return (
     <>
       {resultFlightDepart.length && resultFlightReturn.length !== 0 ? (
@@ -191,7 +238,7 @@ export default function CardResultBookingReturn() {
                 <h6>Result {resultFlightDepart.length} Flight for you </h6>
                 {showReturn === true ? null : (
                   <div className="bg-brand-yellow p-2 rounded-lg text-brand-whiteLight w-60 h-8">
-                    {resultFlightDepart.map((item, i) => (
+                    {pagination.map((item, i) => (
                       <>
                         {economy === item.idFlight || business === item.idFlight
                           ? null
@@ -215,7 +262,7 @@ export default function CardResultBookingReturn() {
               </div>
             </div>
             <div className="flex flex-col gap-5">
-              {resultFlightDepart.map((item, i) => (
+              {pagination.map((item, i) => (
                 <div key={i} className="card-result-booking">
                   <div className="wrap-card-result-booking">
                     <div className="flex w-full lg:flex-row gap-5 sm:flex-col-reverse">
@@ -354,69 +401,69 @@ export default function CardResultBookingReturn() {
                         </div>
                         {modal === item.idFlight
                           ? resultFlightDepart
-                              .filter((item) => item.idFlight === modal)
-                              .map((item) => (
-                                <Modal
-                                  title="Flight Details"
-                                  open={isModalOpen}
-                                  onOk={handleOk}
-                                  onCancel={handleCancel}
-                                  footer={[null]}
-                                >
-                                  <div className="wrap-modal-detail-flight">
-                                    <div className="title-detail-flight">
-                                      <p>
-                                        {resultFrom.city} to {resultTo.city}
-                                      </p>
-                                      <p>Saturday, Nov 26</p>
+                            .filter((item) => item.idFlight === modal)
+                            .map((item) => (
+                              <Modal
+                                title="Flight Details"
+                                open={isModalOpen}
+                                onOk={handleOk}
+                                onCancel={handleCancel}
+                                footer={[null]}
+                              >
+                                <div className="wrap-modal-detail-flight">
+                                  <div className="title-detail-flight">
+                                    <p>
+                                      {resultFrom.city} to {resultTo.city}
+                                    </p>
+                                    <p>Saturday, Nov 26</p>
+                                  </div>
+                                  <div className="flex w-full gap-7 ">
+                                    <div className="flex w-full flex-col justify-between gap-5">
+                                      <div>
+                                        <p>{resultFrom.city}</p>
+                                        <p>{resultFrom.airportName}</p>
+                                      </div>
+                                      <div>
+                                        <p>
+                                          {item.flightNumber}{" "}
+                                          {item.plane.planeType}
+                                        </p>
+                                        <p>Flight by 7-Airways</p>
+                                      </div>
+                                      <div>
+                                        <p>{resultTo.city}</p>
+                                        <p>{resultTo.airportName}</p>
+                                      </div>
                                     </div>
-                                    <div className="flex w-full gap-7 ">
-                                      <div className="flex w-full flex-col justify-between gap-5">
-                                        <div>
-                                          <p>{resultFrom.city}</p>
-                                          <p>{resultFrom.airportName}</p>
-                                        </div>
-                                        <div>
-                                          <p>
-                                            {item.flightNumber}{" "}
-                                            {item.plane.planeType}
-                                          </p>
-                                          <p>Flight by 7-Airways</p>
-                                        </div>
-                                        <div>
-                                          <p>{resultTo.city}</p>
-                                          <p>{resultTo.airportName}</p>
-                                        </div>
-                                      </div>
 
-                                      <div className="flex flex-col items-center w-full">
-                                        <div className="circle">
-                                          <BsCircle />
-                                        </div>
-                                        <div className="wrap-logo">
-                                          <img
-                                            src={logo}
-                                            style={{
-                                              width: "90px",
-                                              height: "90px",
-                                              borderRadius: "100%",
-                                              border: "1px solid black",
-                                            }}
-                                          ></img>
-                                        </div>
-                                        <div className="circle">
-                                          <BsCircle />
-                                        </div>
+                                    <div className="flex flex-col items-center w-full">
+                                      <div className="circle">
+                                        <BsCircle />
                                       </div>
-                                      <div className="flex flex-col justify-between w-full">
-                                        <p>{item.departureTime} WIB</p>
+                                      <div className="wrap-logo">
+                                        <img
+                                          src={logo}
+                                          style={{
+                                            width: "90px",
+                                            height: "90px",
+                                            borderRadius: "100%",
+                                            border: "1px solid black",
+                                          }}
+                                        ></img>
+                                      </div>
+                                      <div className="circle">
+                                        <BsCircle />
+                                      </div>
+                                    </div>
+                                    <div className="flex flex-col justify-between w-full">
+                                      <p>{item.departureTime} WIB</p>
 
-                                        <p>{item.arrivalTime} WIB</p>
-                                      </div>
+                                      <p>{item.arrivalTime} WIB</p>
                                     </div>
                                   </div>
-                                </Modal>
-                              ))
+                                </div>
+                              </Modal>
+                            ))
                           : null}
                       </div>
                     </div>
@@ -459,10 +506,10 @@ export default function CardResultBookingReturn() {
                               (item) =>
                                 item.planeDetails.planeClass === "ECONOMY"
                             ).length === 0 &&
-                            SeatsPlaneCount.filter(
-                              (item) =>
-                                item.planeDetails.planeClass === "ECONOMY"
-                            ).length <= passanger ? (
+                              SeatsPlaneCount.filter(
+                                (item) =>
+                                  item.planeDetails.planeClass === "ECONOMY"
+                              ).length <= passanger ? (
                               <p>Seats Not Available</p>
                             ) : (
                               <p onClick={() => handleDepart(item)}>
@@ -482,7 +529,7 @@ export default function CardResultBookingReturn() {
                           <h2>Business Class Flight</h2>
                           <div className="bg-brand-yellow w-fit p-2 rounded-lg">
                             <p>
-                            {
+                              {
                                 SeatsPlaneCount.filter(
                                   (item) => item.stateSeat === "AVAILABLE"
                                 ).filter(
@@ -523,10 +570,10 @@ export default function CardResultBookingReturn() {
                               (item) =>
                                 item.planeDetails.planeClass === "BUSINESS"
                             ).length === 0 &&
-                            SeatsPlaneCount.filter(
-                              (item) =>
-                                item.planeDetails.planeClass === "BUSINESS"
-                            ).length <= passanger ? (
+                              SeatsPlaneCount.filter(
+                                (item) =>
+                                  item.planeDetails.planeClass === "BUSINESS"
+                              ).length <= passanger ? (
                               <p>Seats Not Available</p>
                             ) : (
                               <p onClick={() => handleDepart(item)}>
@@ -543,6 +590,9 @@ export default function CardResultBookingReturn() {
                   </div>
                 </div>
               ))}
+            </div>
+            <div className='flex gap-x-2 mt-6 justify-center'>
+              <Pagination onChange={paging} current={number} total={pages * 10} />
             </div>
           </div>
           <div className="pt-14">
@@ -563,10 +613,10 @@ export default function CardResultBookingReturn() {
                   <div className="flex justify-between">
                     <h6>Result {resultFlightReturn.length} Flight for you </h6>
                     <div className="bg-brand-yellow p-2 rounded-lg text-brand-whiteLight w-60 h-8">
-                      {resultFlightReturn.map((item, i) => (
+                      {pagination.map((item, i) => (
                         <>
                           {economy === item.idFlight ||
-                          business === item.idFlight
+                            business === item.idFlight
                             ? null
                             : null}
                           {economy === item.idFlight ? (
@@ -591,7 +641,7 @@ export default function CardResultBookingReturn() {
                   </div>
                 </div>
                 <div className="flex flex-col gap-5">
-                  {resultFlightReturn.map((item, i) => (
+                  {pagination.map((item, i) => (
                     <div key={i} className="card-result-booking">
                       <div className="wrap-card-result-booking">
                         <div className="flex w-full lg:flex-row gap-5 sm:flex-col-reverse">
@@ -748,69 +798,69 @@ export default function CardResultBookingReturn() {
                             </div>
                             {modal === item.idFlight
                               ? resultFlightReturn
-                                  .filter((item) => item.idFlight === modal)
-                                  .map((item) => (
-                                    <Modal
-                                      title="Flight Details"
-                                      open={isModalOpen}
-                                      onOk={handleOk}
-                                      onCancel={handleCancel}
-                                      footer={[null]}
-                                    >
-                                      <div className="wrap-modal-detail-flight">
-                                        <div className="title-detail-flight">
-                                          <p>
-                                            {resultFrom.city} to {resultTo.city}
-                                          </p>
-                                          <p>Saturday, Nov 26</p>
+                                .filter((item) => item.idFlight === modal)
+                                .map((item) => (
+                                  <Modal
+                                    title="Flight Details"
+                                    open={isModalOpen}
+                                    onOk={handleOk}
+                                    onCancel={handleCancel}
+                                    footer={[null]}
+                                  >
+                                    <div className="wrap-modal-detail-flight">
+                                      <div className="title-detail-flight">
+                                        <p>
+                                          {resultFrom.city} to {resultTo.city}
+                                        </p>
+                                        <p>Saturday, Nov 26</p>
+                                      </div>
+                                      <div className="flex w-full gap-7 ">
+                                        <div className="flex w-full flex-col justify-between gap-5">
+                                          <div>
+                                            <p>{resultTo.city}</p>
+                                            <p>{resultTo.airportName}</p>
+                                          </div>
+                                          <div>
+                                            <p>
+                                              {item.flightNumber}{" "}
+                                              {item.plane.planeType}
+                                            </p>
+                                            <p>Flight by 7-Airways</p>
+                                          </div>
+                                          <div>
+                                            <p>{resultFrom.city}</p>
+                                            <p>{resultFrom.airportName}</p>
+                                          </div>
                                         </div>
-                                        <div className="flex w-full gap-7 ">
-                                          <div className="flex w-full flex-col justify-between gap-5">
-                                            <div>
-                                              <p>{resultTo.city}</p>
-                                              <p>{resultTo.airportName}</p>
-                                            </div>
-                                            <div>
-                                              <p>
-                                                {item.flightNumber}{" "}
-                                                {item.plane.planeType}
-                                              </p>
-                                              <p>Flight by 7-Airways</p>
-                                            </div>
-                                            <div>
-                                              <p>{resultFrom.city}</p>
-                                              <p>{resultFrom.airportName}</p>
-                                            </div>
-                                          </div>
 
-                                          <div className="flex flex-col items-center w-full">
-                                            <div className="circle">
-                                              <BsCircle />
-                                            </div>
-                                            <div className="wrap-logo">
-                                              <img
-                                                src={logo}
-                                                style={{
-                                                  width: "90px",
-                                                  height: "90px",
-                                                  borderRadius: "100%",
-                                                  border: "1px solid black",
-                                                }}
-                                              ></img>
-                                            </div>
-                                            <div className="circle">
-                                              <BsCircle />
-                                            </div>
+                                        <div className="flex flex-col items-center w-full">
+                                          <div className="circle">
+                                            <BsCircle />
                                           </div>
-                                          <div className="flex flex-col justify-between w-full">
-                                            <p>{item.departureTime} WIB</p>
+                                          <div className="wrap-logo">
+                                            <img
+                                              src={logo}
+                                              style={{
+                                                width: "90px",
+                                                height: "90px",
+                                                borderRadius: "100%",
+                                                border: "1px solid black",
+                                              }}
+                                            ></img>
+                                          </div>
+                                          <div className="circle">
+                                            <BsCircle />
+                                          </div>
+                                        </div>
+                                        <div className="flex flex-col justify-between w-full">
+                                          <p>{item.departureTime} WIB</p>
 
-                                            <p>{item.arrivalTime} WIB</p>
-                                          </div>
+                                          <p>{item.arrivalTime} WIB</p>
                                         </div>
                                       </div>
-                                    </Modal>
-                                  ))
+                                    </div>
+                                  </Modal>
+                                ))
                               : null}
                           </div>
                         </div>
@@ -851,14 +901,14 @@ export default function CardResultBookingReturn() {
                                 </div>
                               </div>
                               <div className="bg-brand-yellow rounded-md lg:w-1/4 w-1/3 sm:w-full text-center cursor-pointer py-1.5 px-2.5 ">
-                              {SeatsPlaneCount.filter(
+                                {SeatsPlaneCount.filter(
                                   (item) =>
                                     item.planeDetails.planeClass === "ECONOMY"
                                 ).length === 0 &&
-                                SeatsPlaneCount.filter(
-                                  (item) =>
-                                    item.planeDetails.planeClass === "ECONOMY"
-                                ).length <= passanger ? (
+                                  SeatsPlaneCount.filter(
+                                    (item) =>
+                                      item.planeDetails.planeClass === "ECONOMY"
+                                  ).length <= passanger ? (
                                   <p>Seats Not Available</p>
                                 ) : (
                                   <p onClick={() => handleReturn(item)}>
@@ -921,10 +971,10 @@ export default function CardResultBookingReturn() {
                                   (item) =>
                                     item.planeDetails.planeClass === "BUSINESS"
                                 ).length === 0 &&
-                                SeatsPlaneCount.filter(
-                                  (item) =>
-                                    item.planeDetails.planeClass === "BUSINESS"
-                                ).length <= passanger ? (
+                                  SeatsPlaneCount.filter(
+                                    (item) =>
+                                      item.planeDetails.planeClass === "BUSINESS"
+                                  ).length <= passanger ? (
                                   <p>Seats Not Available</p>
                                 ) : (
                                   <p onClick={() => handleReturn(item)}>
@@ -948,6 +998,9 @@ export default function CardResultBookingReturn() {
                       </div>
                     </div>
                   ))}
+                </div>
+                <div className='flex gap-x-2 mt-6 justify-center'>
+                  <Pagination onChange={pagingReturn} current={number1} total={pages1 * 10} />
                 </div>
               </>
             ) : null}
