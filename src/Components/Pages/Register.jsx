@@ -26,7 +26,7 @@ const dateFormatList = ["MM/DD/YYYY", "MM/DD/YY"];
 export const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { authRegister } = useSelector((state) => state.authRegister);
+  const{authRegister} = useSelector((state)=>state.authRegister)
   // console.log(authRegister.data.id);
   // const [id, setId] = useState({data:{
   //   id:""
@@ -125,12 +125,18 @@ export const Register = () => {
         birthday: registerBirth,
         gender: registerGender,
       })
+  
     );
 
     const results = unwrapResult(resultsActions);
     console.log(results);
-    localStorage.setItem("id", JSON.stringify(results.id));
-
+    alert("REGISTER BERHASIL");
+    let createNotifs = {
+      user:results.id,
+      title:"LOGIN",
+      message: "Login Berhasil, silahkan pesan penerbangan yang sesuai dengan keinginan anda",
+      category:"PRIA"
+    }
     if (results && results.id) {
       let notif = {
         user: results.id,

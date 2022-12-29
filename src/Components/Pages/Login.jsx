@@ -51,19 +51,6 @@ export const Login = () => {
         return true;
     }
 
-    useEffect(() => {
-        const emailRegexp =
-            /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        if (loginEmail) {
-            setIsEmailValid(emailRegexp.test(loginEmail));
-        }
-    }, [loginEmail]);
-
-    useEffect(() => {
-        const validate = validatePassword();
-        setIsPasswordValid(validate);
-    }, [loginPassword]);
-
     const loginHandler = async () => {
         if (!isEmailValid || !loginEmail) {
             alert("Email Tidak Valid");
@@ -95,10 +82,19 @@ export const Login = () => {
 
     // ketika user login tidak bisa ke halaman login lagi
     useEffect(() => {
+        const emailRegexp =
+            /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        if (loginEmail) {
+            setIsEmailValid(emailRegexp.test(loginEmail));
+        }
+
+        const validate = validatePassword();
+        setIsPasswordValid(validate);
+
         if (localStorage.getItem("auth")) {
             navigate("/")
         }
-    }, [navigate]);
+    }, [loginEmail, loginPassword, navigate]);
 
     return (
         <React.Fragment>

@@ -4,17 +4,22 @@ import { authConfig } from "../Config";
 
 const initialState = {
   pagination: [],
-  loadPagination: false,
+  Depart: false,
 };
 
-export const loadPagination = createAsyncThunk("pagination/loadPagination", 
-async (size, page) => {
+export const Depart = createAsyncThunk("pagination/loadPagination", 
+async (payload) => {
   try {
+    console.log("SIZE", payload.page)
+    const code = JSON.parse(localStorage.getItem("flightDepart"));
+    const page = 1;
+    // console.log(code[0].departureCode)
     const pagination = await axios.get(
-        `${authConfig.baseUrl}/api/flight/paging/${size}/${page}`
+        `${authConfig.baseUrl}/api/flight/paging/${2}/${payload.page}?departure-code=${payload.flight.departureCode}&arrival-code=${payload.flight.arrivalCode}&date=${payload.flight.departureDate}`
     );
-
-    return pagination.data
+    localStorage.setItem("page", pagination.data.totalPages);
+    localStorage.setItem("number", pagination.data.number)
+    return pagination.data.content
   } catch (error) {
     console.error(error);
   }
@@ -26,14 +31,14 @@ export const postSlice = createSlice(
       initialState,
       reducers: {},
       extraReducers: {
-        [loadPagination.pending]: (state) => {
+        [Depart.pending]: (state) => {
           state.loading = true;
         },
-        [loadPagination.fulfilled]: (state, { payload }) => {
+        [Depart.fulfilled]: (state, { payload }) => {
           state.loading = false;
           state.pagination = payload;
         },
-        [loadPagination.rejected]: (state) => {
+        [Depart.rejected]: (state) => {
           state.loading = false;
         },
       },

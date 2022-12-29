@@ -19,7 +19,7 @@ import ModalMethodPayment from "./ModalMethodPayment";
 import DetailPayment from "./DetailPayment";
 import { updateSeats } from "./Feature/Models/Seat";
 import { FaTrashAlt } from "react-icons/fa";
-import { createBooking } from "./Feature/Models/CreateBooking";
+import { createBooking, createBookingDepart } from "./Feature/Models/CreateBooking";
 import ModalSeatBussines from "./Bookking/ModalSeatBussines";
 import TransactionBusinessReturn from "./TransactionBusinessReturn";
 import TransactionEconomyReturn from "./TransactionEconomyReturn";
@@ -220,6 +220,18 @@ export default function TransactionBusiness() {
     alert("Apakah Metode Pembayaran Sudah Sesuai ?");
     setIsModalBayarOpen(false);
     if (passenger === 1) {
+        let seat1 = seatNumber1.stateSeat;
+  
+        if (seat1 === "BOOKED") {
+          seat1 = "NOT_AVAILABLE";
+        }
+    
+        let updateSeat1 = {
+          id: seatNumber1.idSeat,
+          state: seat1,
+        };
+    
+        dispatch(updateSeats(updateSeat1));
       let x = {
         bookingDetails: [
           {
@@ -236,9 +248,31 @@ export default function TransactionBusiness() {
           paymentMethod: "BRI",
         },
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingDepart(x));
     }
     if (passenger === 2) {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
       let x = {
         bookingDetails: [
           {
@@ -264,9 +298,42 @@ export default function TransactionBusiness() {
           paymentMethod: "BRI",
         },
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingDepart(x));
     }
     if (passenger === 3) {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
       let x = {
         bookingDetails: [
           {
@@ -300,9 +367,53 @@ export default function TransactionBusiness() {
           paymentMethod: "BRI",
         },
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingDepart(x));
     }
     if (passenger === 4) {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      let seat4 = seatNumber4.stateSeat;
+
+      if (seat4 === "BOOKED") {
+        seat4 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat4 = {
+        id: seatNumber4.idSeat,
+        state: seat4,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
+      dispatch(updateSeats(updateSeat4));
       let x = {
         bookingDetails: [
           {
@@ -344,9 +455,64 @@ export default function TransactionBusiness() {
           paymentMethod: "BRI",
         },
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingDepart(x));
     }
     if (passenger === 5) {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      let seat4 = seatNumber4.stateSeat;
+
+      if (seat4 === "BOOKED") {
+        seat4 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat4 = {
+        id: seatNumber4.idSeat,
+        state: seat4,
+      };
+      let seat5 = seatNumber5.stateSeat;
+
+      if (seat5 === "BOOKED") {
+        seat5 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat5 = {
+        id: seatNumber5.idSeat,
+        state: seat5,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
+      dispatch(updateSeats(updateSeat4));
+      dispatch(updateSeats(updateSeat5));
       let x = {
         bookingDetails: [
           {
@@ -396,9 +562,75 @@ export default function TransactionBusiness() {
           paymentMethod: "BRI",
         },
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingDepart(x));
     }
     if (passenger === 6) {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      let seat4 = seatNumber4.stateSeat;
+
+      if (seat4 === "BOOKED") {
+        seat4 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat4 = {
+        id: seatNumber4.idSeat,
+        state: seat4,
+      };
+      let seat5 = seatNumber5.stateSeat;
+
+      if (seat5 === "BOOKED") {
+        seat5 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat5 = {
+        id: seatNumber5.idSeat,
+        state: seat5,
+      };
+      let seat6 = seatNumber6.stateSeat;
+
+      if (seat6 === "BOOKED") {
+        seat6 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat6 = {
+        id: seatNumber6.idSeat,
+        state: seat6,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
+      dispatch(updateSeats(updateSeat4));
+      dispatch(updateSeats(updateSeat5));
+      dispatch(updateSeats(updateSeat6));
       let x = {
         bookingDetails: [
           {
@@ -456,9 +688,86 @@ export default function TransactionBusiness() {
           paymentMethod: "BRI",
         },
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingDepart(x));
     }
     if (passenger === 7) {
+       let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      let seat4 = seatNumber4.stateSeat;
+
+      if (seat4 === "BOOKED") {
+        seat4 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat4 = {
+        id: seatNumber4.idSeat,
+        state: seat4,
+      };
+      let seat5 = seatNumber5.stateSeat;
+
+      if (seat5 === "BOOKED") {
+        seat5 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat5 = {
+        id: seatNumber5.idSeat,
+        state: seat5,
+      };
+      let seat6 = seatNumber6.stateSeat;
+
+      if (seat6 === "BOOKED") {
+        seat6 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat6 = {
+        id: seatNumber6.idSeat,
+        state: seat6,
+      };
+      let seat7 = seatNumber7.stateSeat;
+
+      if (seat7 === "BOOKED") {
+        seat7 = "NOT_AVAILABLE";
+      }
+  
+      let updateSeat7 = {
+        id: seatNumber7.idSeat,
+        state: seat7,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
+      dispatch(updateSeats(updateSeat4));
+      dispatch(updateSeats(updateSeat5));
+      dispatch(updateSeats(updateSeat6));
+      dispatch(updateSeats(updateSeat7));
       let x = {
         bookingDetails: [
           {
@@ -524,7 +833,7 @@ export default function TransactionBusiness() {
           paymentMethod: "BRI",
         },
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingDepart(x));
     }
     if (classReturn) {
       if (classReturn === "ECONOMY") {
@@ -535,7 +844,15 @@ export default function TransactionBusiness() {
         setOneWay(false);
       }
     } else {
-      navigate("/bookingPending");
+      navigate("/ticket");
+      localStorage.removeItem("page");
+      localStorage.removeItem("number");
+      localStorage.removeItem("cityTo");
+      localStorage.removeItem("passenger");
+      localStorage.removeItem("depart");
+      localStorage.removeItem("class");
+      localStorage.removeItem("cityFrom");
+      localStorage.removeItem("flightDepart");
     }
   };
   const dateFormat = "MM/DD/YYYY";
@@ -633,6 +950,51 @@ export default function TransactionBusiness() {
       specialRequest,
       passport,
     };
+
+    if (!titleUser){
+      alert("harus ada title");
+      return
+    }
+
+    if (!ageCategory){
+      alert("harus ada age category");
+      return
+    }
+
+    if (!gender){
+      alert("harus ada gender");
+      return
+    }
+
+    if (!firstName){
+      alert("harus ada first name");
+      return
+    }
+
+    if (!lastName){
+      alert("harus ada lastname");
+      return
+    }
+
+    if (!birthday){
+      alert("harus ada birthday");
+      return
+    }
+
+    if (!nationality){
+      alert("harus ada nationality");
+      return
+    }
+
+    if (!contactNumber){
+      alert("harus ada contact number");
+      return
+    }
+
+    if (!passport){
+      alert("harus ada passport");
+      return
+    }
 
     if (i === 0) {
       setPassenger1(passenger);
@@ -812,7 +1174,7 @@ export default function TransactionBusiness() {
                   </div>
                 </div>
               </div>
-              <div className="container bg-brand-yellow">
+              <div className="bg-brand-yellow">
                 <div className="text-brand-whiteLight pt-5 pl-3">
                   <h4>KeBerangkatan</h4>
                 </div>

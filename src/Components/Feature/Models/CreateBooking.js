@@ -3,11 +3,12 @@ import axios from "axios";
 import { authConfig } from "../Config";
 
 const initialState = {
-  Booking: [],
+  BookingDepart: [],
+  BookingReturn: [],
   loadSeat: false,
 };
 
-export const createBooking = createAsyncThunk("Booking/createBooking", async (Bookings) => {
+export const createBookingDepart = createAsyncThunk("Booking/createBooking", async (Bookings) => {
     // console.log(Bookings);
   try {
     const Booking = await axios.post(
@@ -16,7 +17,22 @@ export const createBooking = createAsyncThunk("Booking/createBooking", async (Bo
         ...Bookings
       }
     );
-    localStorage.setItem("booking", JSON.stringify(Booking.data.payload.bookingDetails))
+    localStorage.setItem("bookingDepart", JSON.stringify(Booking.data.payload.bookingDetails))
+    return Booking.data
+  } catch (error) {
+    console.error(error);
+  }
+});
+export const createBookingReturn = createAsyncThunk("Booking/createBooking", async (Bookings) => {
+    // console.log(Bookings);
+  try {
+    const Booking = await axios.post(
+      `${authConfig.baseUrl}/api/booking/create/`,
+      {
+        ...Bookings
+      }
+    );
+    localStorage.setItem("bookingReturn", JSON.stringify(Booking.data.payload.bookingDetails))
     return Booking.data
   } catch (error) {
     console.error(error);
@@ -30,14 +46,32 @@ export const postSlice = createSlice(
       initialState,
       reducers: {},
       extraReducers: {
-        [createBooking.pending]: (state) => {
+        [createBookingDepart.pending]: (state) => {
           state.loading = true;
         },
-        [createBooking.fulfilled]: (state, { payload }) => {
+        [createBookingDepart.fulfilled]: (state, { payload }) => {
           state.loading = false;
-          state.Booking = payload;
+          state.BookingDepart = payload;
         },
-        [createBooking.rejected]: (state) => {
+        [createBookingDepart.rejected]: (state) => {
+          state.loading = false;
+        },
+      },
+      
+    },    
+    {
+      name: "Booking",
+      initialState,
+      reducers: {},
+      extraReducers: {
+        [createBookingReturn.pending]: (state) => {
+          state.loading = true;
+        },
+        [createBookingReturn.fulfilled]: (state, { payload }) => {
+          state.loading = false;
+          state.BookingReturn = payload;
+        },
+        [createBookingReturn.rejected]: (state) => {
           state.loading = false;
         },
       },

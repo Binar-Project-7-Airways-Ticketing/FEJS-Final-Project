@@ -76,7 +76,7 @@ export default function Book() {
   useEffect(() => {
 
     dispatch(loadAirports());
-  }, [dispatch]);
+  }, []);
 
   return (
     <>

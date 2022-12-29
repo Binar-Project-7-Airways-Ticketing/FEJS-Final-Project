@@ -19,7 +19,11 @@ import ModalMethodPayment from "./ModalMethodPayment";
 import DetailPayment from "./DetailPayment";
 import ModalSeatEconomy from "./Bookking/ModalSeatEconomy";
 import { updateSeats } from "./Feature/Models/Seat";
-import { createBooking } from "./Feature/Models/CreateBooking";
+import {
+  createBooking,
+  createBookingReturn,
+} from "./Feature/Models/CreateBooking";
+import { FaTrashAlt } from "react-icons/fa";
 
 const Completionist = () => <span>You are good to go!</span>;
 
@@ -215,14 +219,27 @@ export default function TransactionEconomyReturn() {
   const dana = () => {
     alert("Apakah Metode Pembayaran Sudah Sesuai ?");
     setIsModalBayarOpen(false);
+
     if (passenger === 1) {
-      let x = {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+
+      dispatch(updateSeats(updateSeat1));
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            flight: returnFlight,
+            flight: departFlight,
           },
         ],
         price:
@@ -233,22 +250,45 @@ export default function TransactionEconomyReturn() {
         },
       };
 
-      dispatch(createBooking(x));
+      dispatch(createBookingReturn(booking));
     }
     if (passenger === 2) {
-      let x = {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            flight: returnFlight,
+            flight: departFlight,
           },
         ],
         price:
@@ -261,28 +301,61 @@ export default function TransactionEconomyReturn() {
           paymentMethod: "BRI",
         },
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingReturn(booking));
     }
     if (passenger === 3) {
-      let x = {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            flight: returnFlight,
+            flight: departFlight,
           },
         ],
         price:
@@ -297,34 +370,78 @@ export default function TransactionEconomyReturn() {
           paymentMethod: "BRI",
         },
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingReturn(booking));
     }
     if (passenger === 4) {
-      let x = {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      let seat4 = seatNumber4.stateSeat;
+
+      if (seat4 === "BOOKED") {
+        seat4 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat4 = {
+        id: seatNumber4.idSeat,
+        state: seat4,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
+      dispatch(updateSeats(updateSeat4));
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi4,
             passenger: passenger4,
             seat: seatNumber4,
-            flight: returnFlight,
+            flight: departFlight,
           },
         ],
         price:
@@ -341,40 +458,95 @@ export default function TransactionEconomyReturn() {
           paymentMethod: "BRI",
         },
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingReturn(booking));
     }
     if (passenger === 5) {
-      let x = {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      let seat4 = seatNumber4.stateSeat;
+
+      if (seat4 === "BOOKED") {
+        seat4 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat4 = {
+        id: seatNumber4.idSeat,
+        state: seat4,
+      };
+      let seat5 = seatNumber5.stateSeat;
+
+      if (seat5 === "BOOKED") {
+        seat5 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat5 = {
+        id: seatNumber5.idSeat,
+        state: seat5,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
+      dispatch(updateSeats(updateSeat4));
+      dispatch(updateSeats(updateSeat5));
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi4,
             passenger: passenger4,
             seat: seatNumber4,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi5,
             passenger: passenger5,
             seat: seatNumber5,
-            flight: returnFlight,
+            flight: departFlight,
           },
         ],
         price:
@@ -393,46 +565,112 @@ export default function TransactionEconomyReturn() {
           paymentMethod: "BRI",
         },
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingReturn(booking));
     }
     if (passenger === 6) {
-      let x = {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      let seat4 = seatNumber4.stateSeat;
+
+      if (seat4 === "BOOKED") {
+        seat4 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat4 = {
+        id: seatNumber4.idSeat,
+        state: seat4,
+      };
+      let seat5 = seatNumber5.stateSeat;
+
+      if (seat5 === "BOOKED") {
+        seat5 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat5 = {
+        id: seatNumber5.idSeat,
+        state: seat5,
+      };
+      let seat6 = seatNumber6.stateSeat;
+
+      if (seat6 === "BOOKED") {
+        seat6 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat6 = {
+        id: seatNumber6.idSeat,
+        state: seat6,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
+      dispatch(updateSeats(updateSeat4));
+      dispatch(updateSeats(updateSeat5));
+      dispatch(updateSeats(updateSeat6));
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi4,
             passenger: passenger4,
             seat: seatNumber4,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi5,
             passenger: passenger5,
             seat: seatNumber5,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi6,
             passenger: passenger6,
             seat: seatNumber6,
-            flight: returnFlight,
+            flight: departFlight,
           },
         ],
         price:
@@ -453,52 +691,129 @@ export default function TransactionEconomyReturn() {
           paymentMethod: "BRI",
         },
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingReturn(booking));
     }
     if (passenger === 7) {
-      let x = {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      let seat4 = seatNumber4.stateSeat;
+
+      if (seat4 === "BOOKED") {
+        seat4 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat4 = {
+        id: seatNumber4.idSeat,
+        state: seat4,
+      };
+      let seat5 = seatNumber5.stateSeat;
+
+      if (seat5 === "BOOKED") {
+        seat5 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat5 = {
+        id: seatNumber5.idSeat,
+        state: seat5,
+      };
+      let seat6 = seatNumber6.stateSeat;
+
+      if (seat6 === "BOOKED") {
+        seat6 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat6 = {
+        id: seatNumber6.idSeat,
+        state: seat6,
+      };
+      let seat7 = seatNumber7.stateSeat;
+
+      if (seat7 === "BOOKED") {
+        seat7 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat7 = {
+        id: seatNumber7.idSeat,
+        state: seat7,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
+      dispatch(updateSeats(updateSeat4));
+      dispatch(updateSeats(updateSeat5));
+      dispatch(updateSeats(updateSeat6));
+      dispatch(updateSeats(updateSeat7));
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi4,
             passenger: passenger4,
             seat: seatNumber4,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi5,
             passenger: passenger5,
             seat: seatNumber5,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi6,
             passenger: passenger6,
             seat: seatNumber6,
-            flight: returnFlight,
+            flight: departFlight,
           },
           {
             luggage: bagasi7,
             passenger: passenger7,
             seat: seatNumber7,
-            flight: returnFlight,
+            flight: departFlight,
           },
         ],
         price:
@@ -521,15 +836,23 @@ export default function TransactionEconomyReturn() {
           paymentMethod: "BRI",
         },
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingReturn(booking));
     }
-    if (returnFlight) {
-      setShowReturn(true);
-    } else {
-      navigate("/bookingPending");
-    }
-    navigate("/bookingPending");
+
+    navigate("/ticket");
+    localStorage.removeItem("page");
+    localStorage.removeItem("number");
+    localStorage.removeItem("cityTo");
+    localStorage.removeItem("cityFrom");
+    localStorage.removeItem("passanger");
+    localStorage.removeItem("depart");
+    localStorage.removeItem("return");
+    localStorage.removeItem("classDepart");
+    localStorage.removeItem("classReturn");
+    localStorage.removeItem("flightDepart");
+    localStorage.removeItem("flightReturn");
   };
+
   const dateFormat = "MM/DD/YYYY";
 
   const [titleUser, setTitle] = useState("");
@@ -687,17 +1010,17 @@ export default function TransactionEconomyReturn() {
     dispatch(updateSeats(updateSeat));
   };
   const seatNumber = () => {
-    // return SeatsPlaneCount.filter((item) => item.stateSeat === "BOOKED")
-    //   .slice(0, passenger)
-    //   .map((item, i) => (
-    //     <div className="flex items-center gap-2">
-    //       <p>Number Seat</p>
-    //       <Radio onClick={(e) => handleChangeSeat(item, i)}>
-    //         {item.numberSeat}
-    //       </Radio>
-    //       <FaTrashAlt onClick={() => seatDelete(item)} color="red" />
-    //     </div>
-    //   ));
+    return SeatsPlaneCount.filter((item) => item.stateSeat === "BOOKED")
+      .slice(0, passenger)
+      .map((item, i) => (
+        <div className="flex items-center gap-2">
+          <p>Number Seat</p>
+          <Radio onClick={(e) => handleChangeSeat(item, i)}>
+            {item.numberSeat}
+          </Radio>
+          <FaTrashAlt onClick={() => seatDelete(item)} color="red" />
+        </div>
+      ));
   };
   const harga = () => {
     return (
@@ -798,9 +1121,9 @@ export default function TransactionEconomyReturn() {
               </div>
             </div>
           </div>
-          <div className="container bg-brand-yellow">
+          <div className="bg-brand-yellow">
             <div className="text-brand-whiteLight pt-5 pl-3">
-             <h4>KePulangan</h4>
+              <h4>KePulangan</h4>
             </div>
             <div className="booking-container">
               <div className="booking-left">

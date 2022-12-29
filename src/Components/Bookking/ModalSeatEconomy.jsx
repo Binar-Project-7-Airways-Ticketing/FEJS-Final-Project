@@ -171,9 +171,7 @@ export default function ModalSeatEconomy(props) {
                     <h5>
                       {planeNumber}, {planeType}
                     </h5>
-                    {/* {SeatsPlaneCount.filter(
-                      (item) => item.stateSeat === "BOOKED"
-                    ).length <= passenger ? ( */}
+               
                       <div className="flex w-fit gap-2">
                         <div className="flex w-fit gap-2">
                           <div className="flex items-center relative gap-1 flex-col">

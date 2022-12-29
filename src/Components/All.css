@@ -1006,8 +1006,9 @@ footer {
   }
 
   .login-account a {
-    @apply flex cursor-pointer justify-center px-16 py-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] text-xl rounded-md;
+    @apply flex cursor-pointer justify-center sm:px-12 md:px-16 py-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] text-xl rounded-md;
   }
+  
 
   /*-------------------------REGISTER---------------------------------*/
   .register-page {
@@ -1141,12 +1142,12 @@ footer {
   }
 
   .register-account a {
-    @apply flex cursor-pointer justify-center px-16 py-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] text-xl rounded-md;
+    @apply flex cursor-pointer justify-center sm:px-12 md:px-16 py-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] text-xl rounded-md;
   }
 
   /*---------------Transaction---------------*/
   .booking-container {
-    @apply block lg:flex justify-between w-full sm:py-[1rem] md:py-[2rem] lg:py-[3rem];
+    @apply block lg:flex justify-between w-full sm:py-[1rem] md:py-[2rem] lg:py-[1rem];
   }
 
   .booking-left,
@@ -1197,14 +1198,24 @@ footer {
   height: 90px;
   border: 1px solid rgb(178, 178, 178);
   border-radius: 10px;
-  padding: 5px 20px;
+  padding: 17px 20px;
   position: relative;
   display: flex;
- 
   justify-content: center;
-  gap: 7px;
-  cursor: pointer;
+  gap: 20px;
+  
 }
+
+.btn-detail-history {
+  background: #cba052;
+  height: 40px;
+  width: fit-content;
+  font-size: 13px;
+  color: #f1efe9;
+  padding: 6px;
+  border-radius: 5px;
+}
+
 .gggg {
   height: 600px;
 }

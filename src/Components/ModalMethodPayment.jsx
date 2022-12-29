@@ -12,7 +12,7 @@ import danaa from "../image/dana.jpg";
 
 export default function ModalMethodPayment(props) {
   return (
-    <div className="parent-d w-full mt-6 flex sm:justify-center md:justify-start lg:justify-end p-4 mb-4">
+    <div className="parent-d w-full mt-6 flex sm:justify-center md:justify-start lg:justify-end mb-4">
       <button
         className="block rounded-lg cursor-pointer justify-center h-[60px] w-[50%] bg-brand-green text-[#f9f9f9] border-0 font-[600] tracking-[2px]"
         type="submit"
