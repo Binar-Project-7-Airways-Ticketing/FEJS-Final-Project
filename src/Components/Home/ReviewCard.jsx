@@ -36,15 +36,15 @@ export default function ReviewCard() {
                 },
                 1440: {
                   spaceBetween: 10,
-                  slidesPerView: 5,
+                  slidesPerView: 4,
                 },
                 1024: {
                   spaceBetween: 10,
-                  slidesPerView: 4,
+                  slidesPerView: 3,
                 },
                 768: {
                   spaceBetween: 10,
-                  slidesPerView: 3,
+                  slidesPerView: 2,
                 },
                 425: {
                   spaceBetween: 10,

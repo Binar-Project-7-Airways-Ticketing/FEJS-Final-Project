@@ -80,16 +80,8 @@ export default function Book() {
 
   return (
     <>
-      <div className="wrap-detail-booking">
-        <div className="wrap-detail-title">
-          <div className="detail-title">
-            <h5>Get Flight Route</h5>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. A,
-              error.
-            </p>
-          </div>
-        </div>
+      <div className="w-full bg-brand-whiteLight h-fit md:rounded-r-3xl rounded-b-3xl drop-shadow-xl text-brand-yellow p-7 ">
+    
         <Form
           name="basic"
           labelCol={{
@@ -151,7 +143,7 @@ export default function Book() {
               </div>
             </div>
           </div>
-          <div className="find md:w-1/4 sm:w-full">
+          <div className="find md:w-1/5 sm:w-full">
             <ButtonFindFlight value={"Find Flight"} />
           </div>
         </Form>
