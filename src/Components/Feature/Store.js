@@ -14,6 +14,7 @@ import getPrice from "./Models/GetPrice";
 import luggagesPlane from "./Models/LuggageSliceIdPlane";
 import category from "./Models/GetCategory";
 import pagination from "./Models/PaginationSlice";
+import paginationReturn from "./Models/PaginationSlice";
 
 export const store = configureStore({
   reducer: {
@@ -32,5 +33,6 @@ export const store = configureStore({
     seatsPlaneCount: seatsPlaneCount,
     category: category,
     pagination: pagination,
+    paginationReturn: paginationReturn,
   },
 });

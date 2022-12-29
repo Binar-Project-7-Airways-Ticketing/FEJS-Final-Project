@@ -44,40 +44,8 @@ export default function CardResultBookingOneWay() {
   const [resultFlightReturn, setResultFlightReturn] = useState([]);
   const [resultFlightDepart, setResultFlightDepart] = useState([]);
 
-  const [aktifPage, setAktifPage] = useState(1);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-    // dispatch(loadPagination(aktifPage));
-// }, [dispatch])
-
-  const handlePrev = () => {
-    const prevPage = aktifPage !== 1 ? (aktifPage - 1) : aktifPage;
-    // dispatch(loadPagination({departure_code:"CGK", arrival_code:"DPS", date:"12/30/2022", size:2, page:1}));
-    // dispatch(loadPagination(prevPage))
-    setAktifPage(prevPage);
-  }
-
-  const handleNext = () => {
-    const nextPage = aktifPage !== 5 ? (aktifPage + 1) : aktifPage;
-    // dispatch(loadPagination({departure_code:"CGK", arrival_code:"DPS", date:"12/30/2022", size:2, page:2}));
-    // dispatch(loadPagination(nextPage))
-    setAktifPage(nextPage);
-  }
-
-  const handlePageNumber = (index) => {
-    // dispatch(loadPagination(index));
-    console.log(index)
-    setAktifPage(index);
-  }
-
-  const handlePageNumber1 = (index) => {
-    // dispatch(loadPagination(index));
-    console.log(index)
-    setAktifPage(index);
-  }
 
   const handleDepartOneWay = (e) => {
     localStorage.setItem("depart", JSON.stringify(e));
@@ -173,9 +141,9 @@ export default function CardResultBookingOneWay() {
     setResultTo(cityTo);
     setResultFrom(cityFrom);
     setResultFlightDepart(flightDepart);
-    const pages = { 
-      page:1,
-      flight:flightDepart[0]
+    const pages = {
+      page: 1,
+      flight: flightDepart[0]
     }
     setTotalPages(localStorage.getItem("page"))
     setNumber(localStorage.getItem("number"))
@@ -436,7 +404,7 @@ export default function CardResultBookingOneWay() {
                       <div className="benefit sm:w-full">
                         <h2>Economy Class Flight</h2>
                         <div className="bg-brand-yellow w-fit p-2 rounded-lg">
-                          <p>{SeatsPlaneCount.filter((item) => item.stateSeat === "AVAILABLE").filter((item)=> item.planeDetails.planeClass==="ECONOMY").length} Kursi tersisa</p>
+                          <p>{SeatsPlaneCount.filter((item) => item.stateSeat === "AVAILABLE").filter((item) => item.planeDetails.planeClass === "ECONOMY").length} Kursi tersisa</p>
                         </div>
                         <p>The benefits you get in economy class</p>
                         <div className="benefit-detail">
@@ -526,16 +494,7 @@ export default function CardResultBookingOneWay() {
             ))}
           </div>
           <div className='flex gap-x-2 mt-6 justify-center'>
-            {/* <button disabled={aktifPage === 1} onClick={handlePrev} className='w-10 h-10 border-2 border-gray-500 hover:border-brand-yellow text-black hover:text-brand-yellow duration-300'>{'<'}</button>
-            {new Array(3).fill().map((value, index) => {
-              const hal = 1;
-              const isActive = index + 1 === aktifPage;
-              if (isActive) return <button onClick={() => handlePageNumber(index + 1)} className='w-10 h-10 border-2 border-brand-yellow text-brand-yellow '>{index + 1}</button>
-              return <button onClick={() => handlePageNumber1(index + 1)} className='w-10 h-10 border-2 border-gray-500 hover:border-brand-yellow text-black hover:text-brand-yellow duration-300'>{index + 1}</button>
-            })}
-            <button disabled={aktifPage === 3} onClick={handleNext} className='w-10 h-10 border-2 border-gray-500 hover:border-brand-yellow text-black hover:text-brand-yellow duration-300'>{'>'}</button> */}
-           
-           <Pagination onChange={paging} current={number} total={pages*10} />
+            <Pagination onChange={paging} current={number} total={pages * 10} />
           </div>
         </div>
       ) : (
