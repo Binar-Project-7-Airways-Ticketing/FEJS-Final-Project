@@ -8,6 +8,7 @@ import { BsCircle } from "react-icons/bs";
 import { Button, Modal } from "antd";
 
 function CardHistory({ histories }) {
+  console.log(histories);
   const navigate = useNavigate();
   const items = [
     {
@@ -39,23 +40,27 @@ function CardHistory({ histories }) {
 
   return (
     <>
-      <div className="wrap-history">
+      {histories.map((item) => {
+        console.log(item);
+        item.map((data) => {
+          console.log(data);
+        });
+      })}
+      {/* <div className="wrap-history">
         <div className="wrap-detail-title">
           <div className="detail-title">
             <h2>Your Travel History</h2>
-            {/* <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, error.</p> */}
           </div>
         </div>
         {histories.map((item) => (
           <div key={item.idBooking}>
             <p>{console.log(item)}</p>
-
             {item?.bookingDetails.map((data) => (
               <div className="detail-booking">
                 <div className="wrap-input">
                   <div className="input">
                     <div className="history">
-                      <p style={{ fontSize: "18px" }}>Depature From</p> 
+                      <p style={{ fontSize: "18px" }}>Depature From</p>
                       <p style={{ fontSize: "18px" }}>{data.flight.departureCode}</p>
                     </div>
                     <div className="history">
@@ -67,10 +72,6 @@ function CardHistory({ histories }) {
                   <Modal title="Flight Details" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[null]}>
                     <div className="wrap-modal-detail-flight">
                       <div className="title-detail-flight">
-                        <p>{console.log(data.flight)}</p>
-                        {/* <p>{data.flight.departureCode}</p>
-                  <p>to</p>
-                  <p>{data.flight.arrivalCode}</p> */}
                         <p>{data.flight.departureDate}</p>
                       </div>
                       <div className="modal-detail-flight">
@@ -119,21 +120,15 @@ function CardHistory({ histories }) {
 
                   <div className="history">
                     <p style={{ fontSize: "18px" }}>Class</p>
-                    
-                    <div>
-                    {data.flight.plane.planeClass.map((kelas) => (
-                      <>
-                        <p>{console.log(kelas)}</p>
-                        
-                        <p style={{ fontSize: "18px" }}>{kelas.planeClass}</p>
-                        
-                      </>
-                    ))}
-                    </div>
 
-                    
+                    <div>
+                      {data.flight.plane.planeClass.map((kelas) => (
+                        <>
+                          <p style={{ fontSize: "18px" }}>{kelas.planeClass}</p>
+                        </>
+                      ))}
+                    </div>
                   </div>
-                  
                 </div>
               </div>
             ))}
@@ -141,11 +136,11 @@ function CardHistory({ histories }) {
             <button onClick={showModal} className="btn-detail-history">
               History Detail
             </button>
-            
-            {/* <button className="btn-detail-flight">Delete History</button> */}
+
+            <button className="btn-detail-flight">Delete History</button>
           </div>
         ))}
-      </div>
+      </div> */}
     </>
   );
 }
