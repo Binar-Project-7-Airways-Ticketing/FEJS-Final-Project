@@ -217,6 +217,7 @@ export default function PageAscend() {
         }
         setTotalPages1(localStorage.getItem("page1"))
         setNumber1(localStorage.getItem("number1"))
+        
         dispatch(DepartReturn(pages1));
         setIsPage1(page1)
     }, [dispatch, Price, SeatsPlaneCount]);
