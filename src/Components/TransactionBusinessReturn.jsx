@@ -1085,16 +1085,17 @@ export default function TransactionBusinessReturn() {
     const countPass = JSON.parse(localStorage.getItem("passanger"));
     const departFl = JSON.parse(localStorage.getItem("depart"));
     const returnFl = JSON.parse(localStorage.getItem("return"));
+    const tokenn = localStorage.getItem("token");
     setPassenger(countPass.adults + countPass.child + countPass.infant);
     setClassFlight(JSON.parse(localStorage.getItem("class")));
-    setToken(localStorage.getItem("token"))
+    setToken(tokenn)
     setDepart(departFl);
     setReturn(returnFl);
 
     dispatch(loadCategory());
     dispatch(loadLuggagesIdPlane(departFl.plane.idPlane));
     dispatch(loadPrice(departFl.idFlight));
-    if (token) {
+    if (tokenn) {
       dispatch(loadUser(localStorage.getItem("id")));
     }
   }, [dispatch]);
