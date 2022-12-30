@@ -869,6 +869,7 @@ export default function TransactionEconomy() {
       localStorage.removeItem("class");
       localStorage.removeItem("cityFrom");
       localStorage.removeItem("flightDepart");
+      localStorage.removeItem("flightReturn");
     }
   };
   const dateFormat = "MM/DD/YYYY";
@@ -1150,6 +1151,9 @@ export default function TransactionEconomy() {
     const countPass = JSON.parse(localStorage.getItem("passanger"));
     const departFl = JSON.parse(localStorage.getItem("depart"));
     const returnFl = JSON.parse(localStorage.getItem("return"));
+    const tokenn = localStorage.getItem("token");
+
+    setToken(tokenn)
     setClassReturn(JSON.parse(localStorage.getItem("classReturn")));
     setPassenger(countPass.adults + countPass.child + countPass.infant);
     setClassFlight(JSON.parse(localStorage.getItem("class")));
@@ -1160,7 +1164,7 @@ export default function TransactionEconomy() {
     dispatch(loadCategory());
     dispatch(loadLuggagesIdPlane(departFl.plane.idPlane));
     dispatch(loadPrice(departFl.idFlight));
-    if (token) {
+    if (tokenn) {
       dispatch(loadUser(localStorage.getItem("id")));
     }
   }, [dispatch]);
@@ -1185,6 +1189,8 @@ export default function TransactionEconomy() {
                 </div>
               </div>
               <div className="bg-brand-yellow">
+                <div className="container">
+
                 <div className="text-brand-whiteLight pt-5 pl-3">
                   <h4>KeBerangkatan</h4>
                 </div>
@@ -1332,6 +1338,7 @@ export default function TransactionEconomy() {
                     handleOk={handleOk}
                     harga={harga()}
                   />
+                </div>
                 </div>
               </div>
               <Footer />

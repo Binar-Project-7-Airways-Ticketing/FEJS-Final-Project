@@ -37,15 +37,21 @@ export default function Footer() {
                 <stop stopColor="#1DA1F2" offset="70%" />
               </linearGradient>
             </svg>
-            <div className="flex items-center xl:justify-between justify-start xl:gap-0 gap-5">
+            <div className="flex items-center justify-start gap-5 ">
               <BsInstagram size={25} style={{ fill: "url(#instagram-gradient)"}} />
               <BsTwitter size={25} style={{ fill: "url(#twitter-gradient)"}} />
               <BsFacebook className="facebook" />
               <BsYoutube className="youtube" />
             </div>
           </div>
-          <div className="flex w-full">
+          <div className="flex flex-col gap-1 w-full">
             <h5>PHONES</h5>
+            <p>+62 87778580841</p>
+            <p>+62 87778580841</p>
+            <p>+62 87778580841</p>
+            <p>+62 87778580841</p>
+            <p>+62 87778580841</p>
+            <p>+62 87778580841</p>
           </div>
         </div>
       </div>

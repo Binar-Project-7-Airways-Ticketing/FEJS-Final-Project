@@ -19,7 +19,10 @@ import ModalMethodPayment from "./ModalMethodPayment";
 import DetailPayment from "./DetailPayment";
 import { updateSeats } from "./Feature/Models/Seat";
 import { FaTrashAlt } from "react-icons/fa";
-import { createBooking, createBookingDepart } from "./Feature/Models/CreateBooking";
+import {
+  createBooking,
+  createBookingDepart,
+} from "./Feature/Models/CreateBooking";
 import ModalSeatBussines from "./Bookking/ModalSeatBussines";
 import TransactionBusinessReturn from "./TransactionBusinessReturn";
 import TransactionEconomyReturn from "./TransactionEconomyReturn";
@@ -53,6 +56,7 @@ export default function TransactionBusiness() {
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
   const { category } = useSelector((state) => state.category);
   const { users } = useSelector((state) => state.getUser);
+  // console.log(users);
   const { Price } = useSelector((state) => state.getPrice);
 
   const navigate = useNavigate();
@@ -219,19 +223,20 @@ export default function TransactionBusiness() {
   const dana = () => {
     alert("Apakah Metode Pembayaran Sudah Sesuai ?");
     setIsModalBayarOpen(false);
+
     if (passenger === 1) {
-        let seat1 = seatNumber1.stateSeat;
-  
-        if (seat1 === "BOOKED") {
-          seat1 = "NOT_AVAILABLE";
-        }
-    
-        let updateSeat1 = {
-          id: seatNumber1.idSeat,
-          state: seat1,
-        };
-    
-        dispatch(updateSeats(updateSeat1));
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+
+      dispatch(updateSeats(updateSeat1));
       let booking = {
         bookingDetails: [
           {
@@ -257,7 +262,7 @@ export default function TransactionBusiness() {
       if (seat1 === "BOOKED") {
         seat1 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat1 = {
         id: seatNumber1.idSeat,
         state: seat1,
@@ -267,7 +272,7 @@ export default function TransactionBusiness() {
       if (seat2 === "BOOKED") {
         seat2 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat2 = {
         id: seatNumber2.idSeat,
         state: seat2,
@@ -308,7 +313,7 @@ export default function TransactionBusiness() {
       if (seat1 === "BOOKED") {
         seat1 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat1 = {
         id: seatNumber1.idSeat,
         state: seat1,
@@ -318,7 +323,7 @@ export default function TransactionBusiness() {
       if (seat2 === "BOOKED") {
         seat2 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat2 = {
         id: seatNumber2.idSeat,
         state: seat2,
@@ -328,7 +333,7 @@ export default function TransactionBusiness() {
       if (seat3 === "BOOKED") {
         seat3 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat3 = {
         id: seatNumber3.idSeat,
         state: seat3,
@@ -378,7 +383,7 @@ export default function TransactionBusiness() {
       if (seat1 === "BOOKED") {
         seat1 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat1 = {
         id: seatNumber1.idSeat,
         state: seat1,
@@ -388,7 +393,7 @@ export default function TransactionBusiness() {
       if (seat2 === "BOOKED") {
         seat2 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat2 = {
         id: seatNumber2.idSeat,
         state: seat2,
@@ -398,7 +403,7 @@ export default function TransactionBusiness() {
       if (seat3 === "BOOKED") {
         seat3 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat3 = {
         id: seatNumber3.idSeat,
         state: seat3,
@@ -408,7 +413,7 @@ export default function TransactionBusiness() {
       if (seat4 === "BOOKED") {
         seat4 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat4 = {
         id: seatNumber4.idSeat,
         state: seat4,
@@ -467,7 +472,7 @@ export default function TransactionBusiness() {
       if (seat1 === "BOOKED") {
         seat1 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat1 = {
         id: seatNumber1.idSeat,
         state: seat1,
@@ -477,7 +482,7 @@ export default function TransactionBusiness() {
       if (seat2 === "BOOKED") {
         seat2 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat2 = {
         id: seatNumber2.idSeat,
         state: seat2,
@@ -487,7 +492,7 @@ export default function TransactionBusiness() {
       if (seat3 === "BOOKED") {
         seat3 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat3 = {
         id: seatNumber3.idSeat,
         state: seat3,
@@ -497,7 +502,7 @@ export default function TransactionBusiness() {
       if (seat4 === "BOOKED") {
         seat4 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat4 = {
         id: seatNumber4.idSeat,
         state: seat4,
@@ -507,7 +512,7 @@ export default function TransactionBusiness() {
       if (seat5 === "BOOKED") {
         seat5 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat5 = {
         id: seatNumber5.idSeat,
         state: seat5,
@@ -575,7 +580,7 @@ export default function TransactionBusiness() {
       if (seat1 === "BOOKED") {
         seat1 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat1 = {
         id: seatNumber1.idSeat,
         state: seat1,
@@ -585,7 +590,7 @@ export default function TransactionBusiness() {
       if (seat2 === "BOOKED") {
         seat2 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat2 = {
         id: seatNumber2.idSeat,
         state: seat2,
@@ -595,7 +600,7 @@ export default function TransactionBusiness() {
       if (seat3 === "BOOKED") {
         seat3 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat3 = {
         id: seatNumber3.idSeat,
         state: seat3,
@@ -605,7 +610,7 @@ export default function TransactionBusiness() {
       if (seat4 === "BOOKED") {
         seat4 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat4 = {
         id: seatNumber4.idSeat,
         state: seat4,
@@ -615,7 +620,7 @@ export default function TransactionBusiness() {
       if (seat5 === "BOOKED") {
         seat5 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat5 = {
         id: seatNumber5.idSeat,
         state: seat5,
@@ -625,7 +630,7 @@ export default function TransactionBusiness() {
       if (seat6 === "BOOKED") {
         seat6 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat6 = {
         id: seatNumber6.idSeat,
         state: seat6,
@@ -697,12 +702,12 @@ export default function TransactionBusiness() {
       dispatch(createBookingDepart(booking));
     }
     if (passenger === 7) {
-       let seat1 = seatNumber1.stateSeat;
+      let seat1 = seatNumber1.stateSeat;
 
       if (seat1 === "BOOKED") {
         seat1 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat1 = {
         id: seatNumber1.idSeat,
         state: seat1,
@@ -712,7 +717,7 @@ export default function TransactionBusiness() {
       if (seat2 === "BOOKED") {
         seat2 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat2 = {
         id: seatNumber2.idSeat,
         state: seat2,
@@ -722,7 +727,7 @@ export default function TransactionBusiness() {
       if (seat3 === "BOOKED") {
         seat3 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat3 = {
         id: seatNumber3.idSeat,
         state: seat3,
@@ -732,7 +737,7 @@ export default function TransactionBusiness() {
       if (seat4 === "BOOKED") {
         seat4 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat4 = {
         id: seatNumber4.idSeat,
         state: seat4,
@@ -742,7 +747,7 @@ export default function TransactionBusiness() {
       if (seat5 === "BOOKED") {
         seat5 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat5 = {
         id: seatNumber5.idSeat,
         state: seat5,
@@ -752,7 +757,7 @@ export default function TransactionBusiness() {
       if (seat6 === "BOOKED") {
         seat6 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat6 = {
         id: seatNumber6.idSeat,
         state: seat6,
@@ -762,7 +767,7 @@ export default function TransactionBusiness() {
       if (seat7 === "BOOKED") {
         seat7 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat7 = {
         id: seatNumber7.idSeat,
         state: seat7,
@@ -874,12 +879,11 @@ export default function TransactionBusiness() {
   const [contactNumber, setContactNumber] = useState("");
   const [specialRequest, setSpecialRequest] = useState("");
   const [passport, setPasspoort] = useState("");
-  
+
   const handleChangePassport = (e) => {
     setPasspoort(e.target.value);
   };
   const handleChangeSpecialRequest = (e) => {
-
     setSpecialRequest(e.label);
   };
   const handleChangeContactNumber = (e) => {
@@ -957,49 +961,49 @@ export default function TransactionBusiness() {
       passport,
     };
 
-    if (!titleUser){
+    if (!titleUser) {
       alert("harus ada title");
-      return
+      return;
     }
 
-    if (!ageCategory){
+    if (!ageCategory) {
       alert("harus ada age category");
-      return
+      return;
     }
 
-    if (!gender){
+    if (!gender) {
       alert("harus ada gender");
-      return
+      return;
     }
 
-    if (!firstName){
+    if (!firstName) {
       alert("harus ada first name");
-      return
+      return;
     }
 
-    if (!lastName){
+    if (!lastName) {
       alert("harus ada lastname");
-      return
+      return;
     }
 
-    if (!birthday){
+    if (!birthday) {
       alert("harus ada birthday");
-      return
+      return;
     }
 
-    if (!nationality){
+    if (!nationality) {
       alert("harus ada nationality");
-      return
+      return;
     }
 
-    if (!contactNumber){
+    if (!contactNumber) {
       alert("harus ada contact number");
-      return
+      return;
     }
 
-    if (!passport){
+    if (!passport) {
       alert("harus ada passport");
-      return
+      return;
     }
 
     if (i === 0) {
@@ -1141,19 +1145,21 @@ export default function TransactionBusiness() {
     const countPass = JSON.parse(localStorage.getItem("passanger"));
     const departFl = JSON.parse(localStorage.getItem("depart"));
     const returnFl = JSON.parse(localStorage.getItem("return"));
+    const tokenn = localStorage.getItem("token");
     setClassReturn(JSON.parse(localStorage.getItem("classReturn")));
     setPassenger(countPass.adults + countPass.child + countPass.infant);
     setClassFlight(JSON.parse(localStorage.getItem("class")));
-    setToken(localStorage.getItem("token"))
+
+    setToken(tokenn);
     setDepart(departFl);
     setReturn(returnFl);
-
-  
-    dispatch(loadLuggagesIdPlane(departFl.plane.idPlane));
-    dispatch(loadPrice(departFl.idFlight));
-    if (token) {
+    if (tokenn) {
       dispatch(loadUser(localStorage.getItem("id")));
     }
+
+    dispatch(loadLuggagesIdPlane(departFl.plane.idPlane));
+    dispatch(loadPrice(departFl.idFlight));
+
     // dispatch(loadPayment());
   }, [dispatch]);
 
@@ -1177,156 +1183,158 @@ export default function TransactionBusiness() {
                 </div>
               </div>
               <div className="bg-brand-yellow">
-                <div className="text-brand-whiteLight pt-5 pl-3">
-                  <h4>KeBerangkatan</h4>
-                </div>
-                <div className="booking-container">
-                  <div className="booking-left">
-                    {token ? (
-                      <>
-                        {penumpang.map((item, i) => (
-                          <div key={i}>
-                            <ComponentFormTransaction
-                              handleChangeUserTitle={(e) =>
-                                handleChangeUserTitle(e, i)
-                              }
-                              handleChangeCategory={(e) =>
-                                handleChangeCategory(e, i)
-                              }
-                              handleChangeGender={(e) =>
-                                handleChangeGender(e, i)
-                              }
-                              handleChangeFirstName={(e) =>
-                                handleChangeFirstName(e, i)
-                              }
-                              handleChangeLastName={(e) =>
-                                handleChangeLastName(e, i)
-                              }
-                              handleChangeBirtday={handleChangeBirtday}
-                              handleChangePassport={(e) =>
-                                handleChangePassport(e, i)
-                              }
-                              handleChangeNationality={(e) =>
-                                handleChangeNationality(e, i)
-                              }
-                              handleChangeSpecialRequest={(e) =>
-                                handleChangeSpecialRequest(e, i)
-                              }
-                              handleChangeContactNumber={(e) =>
-                                handleChangeContactNumber(e, i)
-                              }
-                              dateFormat={dateFormat}
-                              options={options}
-                              value={value}
-                              pay={() => clik(i)}
-                            />
-                          </div>
-                        ))}
-                      </>
-                    ) : (
-                      <>
-                        {penumpang.map((item, i) => (
-                          <div key={i}>
-                            <ComponentFormTransaction
-                              penumpang={`Penumpang ${i + 1}`}
-                              handleChangeUserTitle={(e) =>
-                                handleChangeUserTitle(e, i)
-                              }
-                              handleChangeCategory={(e) =>
-                                handleChangeCategory(e, i)
-                              }
-                              handleChangeGender={(e) =>
-                                handleChangeGender(e, i)
-                              }
-                              handleChangeFirstName={(e) =>
-                                handleChangeFirstName(e, i)
-                              }
-                              handleChangeLastName={(e) =>
-                                handleChangeLastName(e, i)
-                              }
-                              handleChangeBirtday={handleChangeBirtday}
-                              handleChangePassport={(e) =>
-                                handleChangePassport(e, i)
-                              }
-                              handleChangeNationality={(e) =>
-                                handleChangeNationality(e, i)
-                              }
-                              handleChangeSpecialRequest={(e) =>
-                                handleChangeSpecialRequest(e, i)
-                              }
-                              handleChangeContactNumber={(e) =>
-                                handleChangeContactNumber(e, i)
-                              }
-                              dateFormat={dateFormat}
-                              options={options}
-                              value={value}
-                              pay={() => clik(i)}
-                            />
-                          </div>
-                        ))}
-                      </>
-                    )}
-
-                    <div className="parent-c w-full bg-brand-nude p-6 mt-6 rounded-md border-2 border-brand-black">
-                      <div className="left-header">
-                        <span>
-                          <UnorderedListOutlined />
-                        </span>
-                        <h3>Extra Fasilitas</h3>
-                      </div>
-                      <div className="flex flex-col justify-between  mb-4 gap-1">
-                        <div className="flex h-fit items-center mb-4 gap-4">
-                          <span>
-                            <ShoppingOutlined />
-                          </span>
-                          <h3 className="text-[20px] mt-2">Bagasi</h3>
-                        </div>
-                        <div className="flex w-full gap-2 flex-col">
-                          {passNum.map((item, i) => (
-                            <div className="flex flex-col gap-2">
-                              <p>Penumpang {i + 1}</p>
-                              <Luggages
-                                handleChange={(e) => handleChangeBag1(e, i)}
+                <div className="container">
+                  <div className="text-brand-whiteLight pt-5 pl-3">
+                    <h4>KeBerangkatan</h4>
+                  </div>
+                  <div className="booking-container">
+                    <div className="booking-left">
+                      {token ? (
+                        <>
+                          {penumpang.map((item, i) => (
+                            <div key={i}>
+                              <ComponentFormTransaction
+                                handleChangeUserTitle={(e) =>
+                                  handleChangeUserTitle(e, i)
+                                }
+                                handleChangeCategory={(e) =>
+                                  handleChangeCategory(e, i)
+                                }
+                                handleChangeGender={(e) =>
+                                  handleChangeGender(e, i)
+                                }
+                                handleChangeFirstName={(e) =>
+                                  handleChangeFirstName(e, i)
+                                }
+                                handleChangeLastName={(e) =>
+                                  handleChangeLastName(e, i)
+                                }
+                                handleChangeBirtday={handleChangeBirtday}
+                                handleChangePassport={(e) =>
+                                  handleChangePassport(e, i)
+                                }
+                                handleChangeNationality={(e) =>
+                                  handleChangeNationality(e, i)
+                                }
+                                handleChangeSpecialRequest={(e) =>
+                                  handleChangeSpecialRequest(e, i)
+                                }
+                                handleChangeContactNumber={(e) =>
+                                  handleChangeContactNumber(e, i)
+                                }
+                                dateFormat={dateFormat}
+                                options={options}
+                                value={value}
+                                pay={() => clik(i)}
                               />
                             </div>
                           ))}
+                        </>
+                      ) : (
+                        <>
+                          {penumpang.map((item, i) => (
+                            <div key={i}>
+                              <ComponentFormTransaction
+                                penumpang={`Penumpang ${i + 1}`}
+                                handleChangeUserTitle={(e) =>
+                                  handleChangeUserTitle(e, i)
+                                }
+                                handleChangeCategory={(e) =>
+                                  handleChangeCategory(e, i)
+                                }
+                                handleChangeGender={(e) =>
+                                  handleChangeGender(e, i)
+                                }
+                                handleChangeFirstName={(e) =>
+                                  handleChangeFirstName(e, i)
+                                }
+                                handleChangeLastName={(e) =>
+                                  handleChangeLastName(e, i)
+                                }
+                                handleChangeBirtday={handleChangeBirtday}
+                                handleChangePassport={(e) =>
+                                  handleChangePassport(e, i)
+                                }
+                                handleChangeNationality={(e) =>
+                                  handleChangeNationality(e, i)
+                                }
+                                handleChangeSpecialRequest={(e) =>
+                                  handleChangeSpecialRequest(e, i)
+                                }
+                                handleChangeContactNumber={(e) =>
+                                  handleChangeContactNumber(e, i)
+                                }
+                                dateFormat={dateFormat}
+                                options={options}
+                                value={value}
+                                pay={() => clik(i)}
+                              />
+                            </div>
+                          ))}
+                        </>
+                      )}
+
+                      <div className="parent-c w-full bg-brand-nude p-6 mt-6 rounded-md border-2 border-brand-black">
+                        <div className="left-header">
+                          <span>
+                            <UnorderedListOutlined />
+                          </span>
+                          <h3>Extra Fasilitas</h3>
+                        </div>
+                        <div className="flex flex-col justify-between  mb-4 gap-1">
+                          <div className="flex h-fit items-center mb-4 gap-4">
+                            <span>
+                              <ShoppingOutlined />
+                            </span>
+                            <h3 className="text-[20px] mt-2">Bagasi</h3>
+                          </div>
+                          <div className="flex w-full gap-2 flex-col">
+                            {passNum.map((item, i) => (
+                              <div className="flex flex-col gap-2">
+                                <p>Penumpang {i + 1}</p>
+                                <Luggages
+                                  handleChange={(e) => handleChangeBag1(e, i)}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="flex justify-start items-center mb-4 gap-4">
+                          <span>
+                            <ShoppingOutlined />
+                          </span>
+                          <h3
+                            onClick={showModalSeat}
+                            className="text-[20px] mt-2 cursor-pointer"
+                          >
+                            Seats
+                          </h3>
+                          <ModalSeatBussines
+                            isModalOpen={isModalSeatOpen}
+                            handleCancel={handleCancelSeat}
+                            numberSeat={seatNumber()}
+                          />
                         </div>
                       </div>
-                      <div className="flex justify-start items-center mb-4 gap-4">
-                        <span>
-                          <ShoppingOutlined />
-                        </span>
-                        <h3
-                          onClick={showModalSeat}
-                          className="text-[20px] mt-2 cursor-pointer"
-                        >
-                          Seats
-                        </h3>
-                        <ModalSeatBussines
-                          isModalOpen={isModalSeatOpen}
-                          handleCancel={handleCancelSeat}
-                          numberSeat={seatNumber()}
-                        />
-                      </div>
+                      <ModalMethodPayment
+                        showModalBayar={showModalBayar}
+                        dana={dana}
+                        isModalBayarOpen={isModalBayarOpen}
+                        handleBayarOk={handleBayarOk}
+                        handleBayarCancel={handleBayarCancel}
+                      />
                     </div>
-                    <ModalMethodPayment
-                      showModalBayar={showModalBayar}
-                      dana={dana}
-                      isModalBayarOpen={isModalBayarOpen}
-                      handleBayarOk={handleBayarOk}
-                      handleBayarCancel={handleBayarCancel}
+                    <DetailPayment
+                      showModal={showModal}
+                      isModalOpen={isModalOpen}
+                      handleCancel={handleCancel}
+                      handleOk={handleOk}
+                      harga={harga()}
                     />
                   </div>
-                  <DetailPayment
-                    showModal={showModal}
-                    isModalOpen={isModalOpen}
-                    handleCancel={handleCancel}
-                    handleOk={handleOk}
-                    harga={harga()}
-                  />
                 </div>
               </div>
-              {/* <Footer /> */}
+              <Footer />
             </>
           ) : (
             <div className="container">

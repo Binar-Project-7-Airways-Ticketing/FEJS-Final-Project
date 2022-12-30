@@ -9,9 +9,16 @@ import { Modal } from "antd";
 import logo from "../logo.png";
 
 import { BsCircle } from "react-icons/bs";
+import { useEffect } from "react";
 
 export default function DetailPayment(props) {
   const [bagasi, setBagasi] = useState("");
+  const [cityTo, setCityTo] = useState("");
+  const [cityFrom, setCityFrom] = useState("");
+  useEffect(()=>{
+    setCityTo(JSON.parse(localStorage.getItem("cityTo")))
+    setCityFrom(JSON.parse(localStorage.getItem("cityFrom")))
+  },[])
 
   return (
     <div className="booking-right">
@@ -23,18 +30,18 @@ export default function DetailPayment(props) {
           <div className="py-2">
             <div className="flex w-full gap-8 mb-2 p-2 ">
               <div className="flex w-full gap-4">
-                <h3>Jakarta</h3>
+                <h3>{cityFrom.city}</h3>
                 <span>
                   <ArrowRightOutlined />
                 </span>
-                <h3>Singapore</h3>
+                <h3>{cityTo.city}</h3>
               </div>
-              <div>
+              {/* <div>
                 <button className="text-blue-600" onClick={props.showModal}>
                   Detail
                 </button>
-              </div>
-              <Modal
+              </div> */}
+              {/* <Modal
                 title="Flight Detail"
                 open={props.isModalOpen}
                 onOk={props.handleOk}
@@ -100,9 +107,9 @@ export default function DetailPayment(props) {
                     <p></p>
                   </div>
                 </div>
-              </Modal>
+              </Modal> */}
             </div>
-            <div className="w-full my-[2rem] border-2 border-brand-gray p-2">
+            {/* <div className="w-full my-[2rem] border-2 border-brand-gray p-2">
               <h3 className="text-[20px] text-black mb-4">Kebijakan Tiket</h3>
               <div className="flex justify-start items-center mb-4 gap-4">
                 <span>
@@ -116,13 +123,13 @@ export default function DetailPayment(props) {
                 </span>
                 <p className="mt-2">Bisa Rescedhule</p>
               </div>
-            </div>
-            <div className="flex justify-end w-full my-[2rem]">
+            </div> */}
+            <div className="flex justify-start w-full my-[2rem] h-fit">
               <div>
                 <h3 className="text-[16px] text-black mb-4 font-semibold">
                   Total Pembayaran
                 </h3>
-                <span className="w-full">{props.harga}</span>
+                <span className="w-full h-fit">{props.harga}</span>
               </div>
             </div>
           </div>
