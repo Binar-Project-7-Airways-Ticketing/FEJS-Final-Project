@@ -15,7 +15,8 @@ import { loadPrice } from "../Feature/Models/GetPrice";
 import dateFormat, { masks } from "dateformat";
 import { loadSeatsIdPlaneCount } from "../Feature/Models/Seat";
 import { Depart } from "../Feature/Models/PaginationSlice";
-import { DepartReturn } from "../Feature/Models/PaginationSlice"
+import { DepartReturn } from "../Feature/Models/PaginationReturnSlice";
+import PageAscend from "./PageAscend";
 
 export default function CardResultBookingReturn() {
   // const { flight } = useSelector((state) => state.flight);
@@ -42,10 +43,15 @@ export default function CardResultBookingReturn() {
   const [resultFlightReturn, setResultFlightReturn] = useState([]);
   const [resultFlightDepart, setResultFlightDepart] = useState([]);
   const [page, setIsPage] = useState([]);
-  const [page1, setIsPage1] = useState([])
+  const [page1, setIsPage1] = useState([]);
+  const [ascends, setAscends] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const Ascend = () => {
+    setAscends(true);
+  }
 
   const handleDepart = (e) => {
     localStorage.setItem("depart", JSON.stringify(e));
@@ -209,8 +215,8 @@ export default function CardResultBookingReturn() {
       page: 1,
       flight: flightReturn[0]
     }
-    setTotalPages1(localStorage.getItem("page"))
-    setNumber1(localStorage.getItem("number"))
+    setTotalPages1(localStorage.getItem("page1"))
+    setNumber1(localStorage.getItem("number1"))
     dispatch(DepartReturn(pages1));
     setIsPage1(page1)
   }, [dispatch, Price, SeatsPlaneCount]);
@@ -594,6 +600,7 @@ export default function CardResultBookingReturn() {
               <Pagination onChange={paging} current={number} total={pages * 10} />
             </div>
           </div>
+
           <div className="pt-14">
             {showReturn ? (
               <>
@@ -612,7 +619,7 @@ export default function CardResultBookingReturn() {
                   <div className="flex justify-between">
                     <h6>Result {resultFlightReturn.length} Flight for you </h6>
                     <div className="bg-brand-yellow p-2 rounded-lg text-brand-whiteLight w-60 h-8">
-                      {pagination.map((item, i) => (
+                      {paginationReturn.map((item, i) => (
                         <>
                           {economy === item.idFlight ||
                             business === item.idFlight
@@ -640,7 +647,7 @@ export default function CardResultBookingReturn() {
                   </div>
                 </div>
                 <div className="flex flex-col gap-5">
-                  {resultFlightReturn.map((item, i) => (
+                  {paginationReturn.map((item, i) => (
                     <div key={i} className="card-result-booking">
                       <div className="wrap-card-result-booking">
                         <div className="flex w-full lg:flex-row gap-5 sm:flex-col-reverse">
