@@ -1115,6 +1115,7 @@ export default function TransactionBusinessReturn() {
             </div>
           </div>
           <div className="bg-brand-yellow">
+          <div className="container">
             <div className="text-brand-whiteLight pt-5 pl-3">
               <h4>KePulangan</h4>
             </div>
@@ -1259,6 +1260,7 @@ export default function TransactionBusinessReturn() {
                 harga={harga()}
               />
             </div>
+          </div>
           </div>
           <Footer />
         </>

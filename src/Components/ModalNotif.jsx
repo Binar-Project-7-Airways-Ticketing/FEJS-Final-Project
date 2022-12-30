@@ -16,7 +16,7 @@ export default function ModalNotif(props) {
       >
         <div className="flex w-full gap-5">
           <div className="border-2 bg-brand-black rounded-full p-2 ">
-            <BsFillBellFill size={40} className="rotate-12" color="#cba052"/>
+            <BsFillBellFill onClick={props.read} size={40} className="rotate-12" color="#cba052"/>
           </div>
           <div className="w-full">
             <p>{props.message}</p>

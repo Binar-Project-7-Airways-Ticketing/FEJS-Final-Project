@@ -10,9 +10,11 @@ import Prf from "./Reusable/Prf";
 import "./All.css";
 import { useDispatch, useSelector } from "react-redux";
 import ModalNotif from "./ModalNotif";
+import { loadNotif, updateNotif } from "./Feature/Models/Notification";
 
 export default function Navbar() {
-  const [search, setSearch] = useState(false);
+  const { notif } = useSelector((state) => state.notif);
+
   const [isLogin, setIsLogin] = useState(false);
   const [openNotif, setOpenNotif] = useState(false);
   const [show, setShow] = useState(false);
@@ -20,6 +22,10 @@ export default function Navbar() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [idNotif, setIdNotif] = useState({});
+  const navRef = useRef();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const showModal = (e) => {
     setIdNotif(e);
     setIsModalOpen(true);
@@ -29,32 +35,28 @@ export default function Navbar() {
     setIsModalOpen(false);
   };
 
-  const navRef = useRef();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { notif } = useSelector((state) => state.notif);
-
-  const srch = () => {
-    setSearch(true);
-  };
-  const srchClose = () => {
-    setSearch(false);
-  };
-
-  const items = notif.map((item) => ({
+  const items = notif.map((item)=>({
     key: item.idNotification,
     label: (
       <div onClick={() => showModal(item.idNotification)}>{item.title}</div>
     ),
-  }));
+    }));
+  const read=(e)=>{
+    console.log(e.idNotification);
+    dispatch(updateNotif(e.idNotification))
+  }
+
+
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setIsLogin(true);
+      dispatch(loadNotif(localStorage.getItem("id")))
     } else {
       setIsLogin(false);
     }
-  }, [setIsLogin, dispatch]);
+   
+  }, [setIsLogin, dispatch, notif]);
 
   return (
     <nav>
@@ -82,6 +84,7 @@ export default function Navbar() {
                         <Space className="space">
                           <div className="relative">
                             <AiOutlineBell size={30} />
+                            
                             {openNotif ? null : (
                               <div className="text-brand-whiteLight bg-brand-yellow rounded-full absolute top-0 w-5 h-5 text-center">
                                 <p>{items.length}</p>
@@ -183,11 +186,19 @@ export default function Navbar() {
                         <Space className="space">
                           <div className="relative">
                             <AiOutlineBell size={35} />
-                            {openNotif ? null : (
-                              <div className="text-brand-whiteLight bg-brand-yellow rounded-full absolute top-0 w-5 h-5 text-center">
-                                <p>{items.length}</p>
-                              </div>
-                            )}
+                            
+                            {notif.filter((item)=>item.isRead===false).map((item)=>(
+                              item.isRead===true? null:
+                              <>
+                              {openNotif ? null : (
+                                <div className="text-brand-whiteLight bg-brand-yellow rounded-full absolute top-0 w-5 h-5 text-center">
+                                    <p>{items.length}</p>
+                                  
+                                </div>
+                              )}
+                              </>
+                              ))}
+                            
                           </div>
                         </Space>
                       </a>
@@ -357,6 +368,7 @@ export default function Navbar() {
             message={item.message}
             isModalOpen={isModalOpen}
             handleCancel={handleCancel}
+            read={()=>read(item)}
           />
         ))}
     </nav>

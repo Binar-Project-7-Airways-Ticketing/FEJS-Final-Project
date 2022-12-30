@@ -80,7 +80,7 @@ export default function Book() {
 
   return (
     <>
-      <div className="w-full bg-brand-whiteLight h-fit md:rounded-r-3xl rounded-b-3xl drop-shadow-xl text-brand-yellow p-7 ">
+      <div className="2xl:w-3/4 sm:w-full  bg-brand-whiteLight h-fit md:rounded-r-3xl rounded-b-3xl drop-shadow-xl text-brand-yellow p-7 ">
     
         <Form
           name="basic"

@@ -869,6 +869,7 @@ export default function TransactionEconomy() {
       localStorage.removeItem("class");
       localStorage.removeItem("cityFrom");
       localStorage.removeItem("flightDepart");
+      localStorage.removeItem("flightReturn");
     }
   };
   const dateFormat = "MM/DD/YYYY";
@@ -1185,6 +1186,8 @@ export default function TransactionEconomy() {
                 </div>
               </div>
               <div className="bg-brand-yellow">
+                <div className="container">
+
                 <div className="text-brand-whiteLight pt-5 pl-3">
                   <h4>KeBerangkatan</h4>
                 </div>
@@ -1332,6 +1335,7 @@ export default function TransactionEconomy() {
                     handleOk={handleOk}
                     harga={harga()}
                   />
+                </div>
                 </div>
               </div>
               <Footer />

@@ -1177,6 +1177,7 @@ export default function TransactionBusiness() {
                 </div>
               </div>
               <div className="bg-brand-yellow">
+              <div className="container">
                 <div className="text-brand-whiteLight pt-5 pl-3">
                   <h4>KeBerangkatan</h4>
                 </div>
@@ -1326,7 +1327,8 @@ export default function TransactionBusiness() {
                   />
                 </div>
               </div>
-              {/* <Footer /> */}
+              </div>
+              <Footer />
             </>
           ) : (
             <div className="container">

@@ -32,7 +32,7 @@ export default function ReviewCard() {
               breakpoints={{
                 1920: {
                   spaceBetween: 10,
-                  slidesPerView: 6,
+                  slidesPerView: 5,
                 },
                 1440: {
                   spaceBetween: 10,

@@ -4,66 +4,66 @@ import { authConfig } from "../Config";
 
 const initialState = {
   notif: [],
-  notifDetail: [],
+  notifUpdate: [],
   notifCreate: [],
   loadSeat: false,
-}
+};
 
-export const createNotif = createAsyncThunk("notif/createNotif", async (notifs) => {
-  console.log(notifs);
-try {
-  const notif = await axios.post(
-    `${authConfig.baseUrl}/api/notification/create`,
-    {
-     
-      ...notifs
-    }
-  );
- 
-  return notif.data
-} catch (error) {
-  console.error(error);
-}
-})
-// export const loadNotifDetail = createAsyncThunk(
-//   "notifDeatil/loadNotifDetail",
-//   async (notifUser) => {
-  
-//     try {
-//       const notif = await axios.get(
-//         `${authConfig.baseUrl}/api/notification/${notifUser}`,{
-//           headers: {
-//             Authorization : `Bearer ${localStorage.getItem("token")}`
-//           },
-//         }
-//       );
-
-//       return notif.data.user;
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   }
-// );
-export const loadNotif = createAsyncThunk(
-  "notif/loadNotif",
-  async (notifUser) => {
-    console.log(notifUser);
-    const token = localStorage.getItem("token")
-    const id = localStorage.getItem("id")
+export const createNotif = createAsyncThunk(
+  "notif/createNotif",
+  async (notifs) => {
     try {
-      const notif = await axios.get(
-        `${authConfig.baseUrl}/api/notification/user/${id}`,{
-          headers: {
-            'Authorization' : `Bearer ${token} `
-          },
+      const notif = await axios.post(
+        `${authConfig.baseUrl}/api/notification/create`,
+        {
+          ...notifs,
         }
-        
       );
-      console.log(notif);
-     return notif.data
+
+      return notif.data;
     } catch (error) {
       console.error(error);
     }
+  }
+);
+export const loadNotif = createAsyncThunk(
+  "notif/loadNotif",
+  async (notifUser) => {
+    const token = localStorage.getItem("token");
+    const id = localStorage.getItem("id");
+    try {
+      const notif = await axios.get(
+        `${authConfig.baseUrl}/api/notification/user/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token} `,
+          },
+        }
+      );
+      return notif.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+export const updateNotif = createAsyncThunk(
+  "notif/loadNotif",
+  async (idNotif) => {
+    console.log(idNotif);
+    // const token = localStorage.getItem("token")
+    // try {
+    //   const notif = await axios.get(
+    //     `${authConfig.baseUrl}/api/notification/read/${idNotif}`,{
+    //       headers: {
+    //         'Authorization' : `Bearer ${token} `
+    //       },
+    //     }
+
+    //   );
+    //  return notif.data
+    // } catch (error) {
+    //   console.error(error);
+    // }
   }
 );
 
@@ -85,23 +85,6 @@ export const postSlice = createSlice(
       },
     },
   },
-  // {
-  //   name: "detailNotif",
-  //   initialState,
-  //   reducers: {},
-  //   extraReducers: {
-  //     [loadNotifDetail.pending]: (state) => {
-  //       state.loading = true;
-  //     },
-  //     [loadNotifDetail.fulfilled]: (state, { payload }) => {
-  //       state.loading = false;
-  //       state.notifDetail = payload;
-  //     },
-  //     [loadNotifDetail.rejected]: (state) => {
-  //       state.loading = false;
-  //     },
-  //   },
-  // },
   {
     name: "createnotif",
     initialState,
@@ -118,9 +101,24 @@ export const postSlice = createSlice(
         state.loading = false;
       },
     },
-    
-  },    
-
+  },
+  {
+    name: "updatenotif",
+    initialState,
+    reducers: {},
+    extraReducers: {
+      [updateNotif.pending]: (state) => {
+        state.loading = true;
+      },
+      [updateNotif.fulfilled]: (state, { payload }) => {
+        state.loading = false;
+        state.notifUpdate = payload;
+      },
+      [updateNotif.rejected]: (state) => {
+        state.loading = false;
+      },
+    },
+  }
 );
 
 export default postSlice.reducer;
