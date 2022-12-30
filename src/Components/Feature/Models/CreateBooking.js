@@ -9,7 +9,7 @@ const initialState = {
 };
 
 export const createBookingDepart = createAsyncThunk("Booking/createBooking", async (Bookings) => {
-    // console.log(Bookings);
+    console.log(Bookings);
   try {
     const Booking = await axios.post(
       `${authConfig.baseUrl}/api/booking/create/`,
@@ -18,13 +18,14 @@ export const createBookingDepart = createAsyncThunk("Booking/createBooking", asy
       }
     );
     localStorage.setItem("bookingDepart", JSON.stringify(Booking.data.payload.bookingDetails))
+    localStorage.setItem("idBookingDepart", JSON.stringify(Booking.data.payload.idBooking))
     return Booking.data
   } catch (error) {
     console.error(error);
   }
 });
 export const createBookingReturn = createAsyncThunk("Booking/createBooking", async (Bookings) => {
-    // console.log(Bookings);
+    console.log(Bookings);
   try {
     const Booking = await axios.post(
       `${authConfig.baseUrl}/api/booking/create/`,
@@ -59,24 +60,24 @@ export const postSlice = createSlice(
       },
       
     },    
-    {
-      name: "Booking",
-      initialState,
-      reducers: {},
-      extraReducers: {
-        [createBookingReturn.pending]: (state) => {
-          state.loading = true;
-        },
-        [createBookingReturn.fulfilled]: (state, { payload }) => {
-          state.loading = false;
-          state.BookingReturn = payload;
-        },
-        [createBookingReturn.rejected]: (state) => {
-          state.loading = false;
-        },
-      },
+    // {
+    //   name: "Booking",
+    //   initialState,
+    //   reducers: {},
+    //   extraReducers: {
+    //     [createBookingReturn.pending]: (state) => {
+    //       state.loading = true;
+    //     },
+    //     [createBookingReturn.fulfilled]: (state, { payload }) => {
+    //       state.loading = false;
+    //       state.BookingReturn = payload;
+    //     },
+    //     [createBookingReturn.rejected]: (state) => {
+    //       state.loading = false;
+    //     },
+    //   },
       
-    },    
+    // },    
     
     
   );

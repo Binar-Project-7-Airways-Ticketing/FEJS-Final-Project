@@ -55,7 +55,7 @@ export default function TransactionEconomy() {
   const { luggagesPlane } = useSelector((state) => state.luggagePlane);
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
   const { category } = useSelector((state) => state.category);
-  const { user } = useSelector((state) => state.getUser);
+  const { users } = useSelector((state) => state.getUser);
   const { Price } = useSelector((state) => state.getPrice);
 
   const navigate = useNavigate();
@@ -224,19 +224,19 @@ export default function TransactionEconomy() {
   const dana = () => {
     alert("Apakah Metode Pembayaran Sudah Sesuai ?");
     setIsModalBayarOpen(false);
-   
+
     if (passenger === 1) {
       let seat1 = seatNumber1.stateSeat;
 
       if (seat1 === "BOOKED") {
         seat1 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat1 = {
         id: seatNumber1.idSeat,
         state: seat1,
       };
-  
+
       dispatch(updateSeats(updateSeat1));
       let booking = {
         bookingDetails: [
@@ -253,6 +253,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
 
       dispatch(createBookingDepart(booking));
@@ -263,7 +264,7 @@ export default function TransactionEconomy() {
       if (seat1 === "BOOKED") {
         seat1 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat1 = {
         id: seatNumber1.idSeat,
         state: seat1,
@@ -273,7 +274,7 @@ export default function TransactionEconomy() {
       if (seat2 === "BOOKED") {
         seat2 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat2 = {
         id: seatNumber2.idSeat,
         state: seat2,
@@ -305,7 +306,9 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
+      console.log(booking);
       dispatch(createBookingDepart(booking));
     }
     if (passenger === 3) {
@@ -314,7 +317,7 @@ export default function TransactionEconomy() {
       if (seat1 === "BOOKED") {
         seat1 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat1 = {
         id: seatNumber1.idSeat,
         state: seat1,
@@ -324,7 +327,7 @@ export default function TransactionEconomy() {
       if (seat2 === "BOOKED") {
         seat2 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat2 = {
         id: seatNumber2.idSeat,
         state: seat2,
@@ -334,7 +337,7 @@ export default function TransactionEconomy() {
       if (seat3 === "BOOKED") {
         seat3 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat3 = {
         id: seatNumber3.idSeat,
         state: seat3,
@@ -374,6 +377,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -383,7 +387,7 @@ export default function TransactionEconomy() {
       if (seat1 === "BOOKED") {
         seat1 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat1 = {
         id: seatNumber1.idSeat,
         state: seat1,
@@ -393,7 +397,7 @@ export default function TransactionEconomy() {
       if (seat2 === "BOOKED") {
         seat2 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat2 = {
         id: seatNumber2.idSeat,
         state: seat2,
@@ -403,7 +407,7 @@ export default function TransactionEconomy() {
       if (seat3 === "BOOKED") {
         seat3 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat3 = {
         id: seatNumber3.idSeat,
         state: seat3,
@@ -413,7 +417,7 @@ export default function TransactionEconomy() {
       if (seat4 === "BOOKED") {
         seat4 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat4 = {
         id: seatNumber4.idSeat,
         state: seat4,
@@ -462,6 +466,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -471,7 +476,7 @@ export default function TransactionEconomy() {
       if (seat1 === "BOOKED") {
         seat1 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat1 = {
         id: seatNumber1.idSeat,
         state: seat1,
@@ -481,7 +486,7 @@ export default function TransactionEconomy() {
       if (seat2 === "BOOKED") {
         seat2 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat2 = {
         id: seatNumber2.idSeat,
         state: seat2,
@@ -491,7 +496,7 @@ export default function TransactionEconomy() {
       if (seat3 === "BOOKED") {
         seat3 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat3 = {
         id: seatNumber3.idSeat,
         state: seat3,
@@ -501,7 +506,7 @@ export default function TransactionEconomy() {
       if (seat4 === "BOOKED") {
         seat4 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat4 = {
         id: seatNumber4.idSeat,
         state: seat4,
@@ -511,7 +516,7 @@ export default function TransactionEconomy() {
       if (seat5 === "BOOKED") {
         seat5 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat5 = {
         id: seatNumber5.idSeat,
         state: seat5,
@@ -569,6 +574,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -578,7 +584,7 @@ export default function TransactionEconomy() {
       if (seat1 === "BOOKED") {
         seat1 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat1 = {
         id: seatNumber1.idSeat,
         state: seat1,
@@ -588,7 +594,7 @@ export default function TransactionEconomy() {
       if (seat2 === "BOOKED") {
         seat2 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat2 = {
         id: seatNumber2.idSeat,
         state: seat2,
@@ -598,7 +604,7 @@ export default function TransactionEconomy() {
       if (seat3 === "BOOKED") {
         seat3 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat3 = {
         id: seatNumber3.idSeat,
         state: seat3,
@@ -608,7 +614,7 @@ export default function TransactionEconomy() {
       if (seat4 === "BOOKED") {
         seat4 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat4 = {
         id: seatNumber4.idSeat,
         state: seat4,
@@ -618,7 +624,7 @@ export default function TransactionEconomy() {
       if (seat5 === "BOOKED") {
         seat5 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat5 = {
         id: seatNumber5.idSeat,
         state: seat5,
@@ -628,7 +634,7 @@ export default function TransactionEconomy() {
       if (seat6 === "BOOKED") {
         seat6 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat6 = {
         id: seatNumber6.idSeat,
         state: seat6,
@@ -695,6 +701,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -704,7 +711,7 @@ export default function TransactionEconomy() {
       if (seat1 === "BOOKED") {
         seat1 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat1 = {
         id: seatNumber1.idSeat,
         state: seat1,
@@ -714,7 +721,7 @@ export default function TransactionEconomy() {
       if (seat2 === "BOOKED") {
         seat2 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat2 = {
         id: seatNumber2.idSeat,
         state: seat2,
@@ -724,7 +731,7 @@ export default function TransactionEconomy() {
       if (seat3 === "BOOKED") {
         seat3 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat3 = {
         id: seatNumber3.idSeat,
         state: seat3,
@@ -734,7 +741,7 @@ export default function TransactionEconomy() {
       if (seat4 === "BOOKED") {
         seat4 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat4 = {
         id: seatNumber4.idSeat,
         state: seat4,
@@ -744,7 +751,7 @@ export default function TransactionEconomy() {
       if (seat5 === "BOOKED") {
         seat5 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat5 = {
         id: seatNumber5.idSeat,
         state: seat5,
@@ -754,7 +761,7 @@ export default function TransactionEconomy() {
       if (seat6 === "BOOKED") {
         seat6 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat6 = {
         id: seatNumber6.idSeat,
         state: seat6,
@@ -764,7 +771,7 @@ export default function TransactionEconomy() {
       if (seat7 === "BOOKED") {
         seat7 = "NOT_AVAILABLE";
       }
-  
+
       let updateSeat7 = {
         id: seatNumber7.idSeat,
         state: seat7,
@@ -840,6 +847,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -862,7 +870,6 @@ export default function TransactionEconomy() {
       localStorage.removeItem("cityFrom");
       localStorage.removeItem("flightDepart");
     }
-
   };
   const dateFormat = "MM/DD/YYYY";
 
@@ -876,9 +883,7 @@ export default function TransactionEconomy() {
   const [contactNumber, setContactNumber] = useState("");
   const [specialRequest, setSpecialRequest] = useState("");
   const [passport, setPasspoort] = useState("");
-  const ssss = () => {
-    console.log(passenger1.passenger.firstName);
-  };
+
   const handleChangePassport = (e) => {
     setPasspoort(e.target.value);
   };
@@ -1143,27 +1148,22 @@ export default function TransactionEconomy() {
 
   useEffect(() => {
     const countPass = JSON.parse(localStorage.getItem("passanger"));
-    const tokenn = localStorage.getItem("token");
     const departFl = JSON.parse(localStorage.getItem("depart"));
-    const Class = JSON.parse(localStorage.getItem("class"));
     const returnFl = JSON.parse(localStorage.getItem("return"));
-    const users = localStorage.getItem("idUser");
     setClassReturn(JSON.parse(localStorage.getItem("classReturn")));
     setPassenger(countPass.adults + countPass.child + countPass.infant);
-    setClassFlight(Class);
-    setToken(tokenn);
+    setClassFlight(JSON.parse(localStorage.getItem("class")));
+    setToken(localStorage.getItem("token"))
     setDepart(departFl);
     setReturn(returnFl);
 
-    if (users) {
-      dispatch(loadUser(users));
-    } else {
-    }
     dispatch(loadCategory());
     dispatch(loadLuggagesIdPlane(departFl.plane.idPlane));
     dispatch(loadPrice(departFl.idFlight));
-    // dispatch(loadPayment());
-  }, [category]);
+    if (token) {
+      dispatch(loadUser(localStorage.getItem("id")));
+    }
+  }, [dispatch]);
 
   return (
     <React.Fragment>
@@ -1217,7 +1217,7 @@ export default function TransactionEconomy() {
                               handleChangeNationality={(e) =>
                                 handleChangeNationality(e, i)
                               }
-                              handleChangeRequest={(e) =>
+                              handleChangeSpecialRequest={(e) =>
                                 handleChangeSpecialRequest(e, i)
                               }
                               handleChangeContactNumber={(e) =>

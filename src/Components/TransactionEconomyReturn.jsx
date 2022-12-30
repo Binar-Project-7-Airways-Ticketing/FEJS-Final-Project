@@ -19,20 +19,19 @@ import ModalMethodPayment from "./ModalMethodPayment";
 import DetailPayment from "./DetailPayment";
 import ModalSeatEconomy from "./Bookking/ModalSeatEconomy";
 import { updateSeats } from "./Feature/Models/Seat";
-import {
-  createBooking,
-  createBookingReturn,
-} from "./Feature/Models/CreateBooking";
+// import {
+//   createBooking,
+//   createBookingReturn,
+// } from "./Feature/Models/CreateBooking";
 import { FaTrashAlt } from "react-icons/fa";
+import { createBookingReturn } from "./Feature/Models/CreateBooking";
 
 const Completionist = () => <span>You are good to go!</span>;
 
 const renderer = ({ hours, minutes, seconds, completed }) => {
   if (completed) {
-    // Render a completed state
     return <Completionist />;
   } else {
-    // Render a countdown
     return (
       <>
         <span className="flex justify-center items-center h-8 w-8 text-brand-nude bg-brand-yellow">
@@ -53,7 +52,7 @@ export default function TransactionEconomyReturn() {
   const { luggagesPlane } = useSelector((state) => state.luggagePlane);
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
   const { category } = useSelector((state) => state.category);
-  const { user } = useSelector((state) => state.getUser);
+  const { users } = useSelector((state) => state.getUser);
   const { Price } = useSelector((state) => state.getPrice);
 
   const navigate = useNavigate();
@@ -239,7 +238,7 @@ export default function TransactionEconomyReturn() {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            flight: departFlight,
+            flight: returnFlight,
           },
         ],
         price:
@@ -248,6 +247,7 @@ export default function TransactionEconomyReturn() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
 
       dispatch(createBookingReturn(booking));
@@ -282,13 +282,13 @@ export default function TransactionEconomyReturn() {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            flight: departFlight,
+            flight: returnFlight,
           },
         ],
         price:
@@ -300,6 +300,7 @@ export default function TransactionEconomyReturn() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
       dispatch(createBookingReturn(booking));
     }
@@ -343,19 +344,19 @@ export default function TransactionEconomyReturn() {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            flight: departFlight,
+            flight: returnFlight,
           },
         ],
         price:
@@ -369,6 +370,7 @@ export default function TransactionEconomyReturn() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
       dispatch(createBookingReturn(booking));
     }
@@ -423,25 +425,25 @@ export default function TransactionEconomyReturn() {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi4,
             passenger: passenger4,
             seat: seatNumber4,
-            flight: departFlight,
+            flight: returnFlight,
           },
         ],
         price:
@@ -457,6 +459,7 @@ export default function TransactionEconomyReturn() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
       dispatch(createBookingReturn(booking));
     }
@@ -522,31 +525,31 @@ export default function TransactionEconomyReturn() {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi4,
             passenger: passenger4,
             seat: seatNumber4,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi5,
             passenger: passenger5,
             seat: seatNumber5,
-            flight: departFlight,
+            flight: returnFlight,
           },
         ],
         price:
@@ -564,6 +567,7 @@ export default function TransactionEconomyReturn() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
       dispatch(createBookingReturn(booking));
     }
@@ -640,37 +644,37 @@ export default function TransactionEconomyReturn() {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi4,
             passenger: passenger4,
             seat: seatNumber4,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi5,
             passenger: passenger5,
             seat: seatNumber5,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi6,
             passenger: passenger6,
             seat: seatNumber6,
-            flight: departFlight,
+            flight: returnFlight,
           },
         ],
         price:
@@ -690,6 +694,7 @@ export default function TransactionEconomyReturn() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
       dispatch(createBookingReturn(booking));
     }
@@ -777,43 +782,43 @@ export default function TransactionEconomyReturn() {
             luggage: bagasi1,
             passenger: passenger1,
             seat: seatNumber1,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi2,
             passenger: passenger2,
             seat: seatNumber2,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi3,
             passenger: passenger3,
             seat: seatNumber3,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi4,
             passenger: passenger4,
             seat: seatNumber4,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi5,
             passenger: passenger5,
             seat: seatNumber5,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi6,
             passenger: passenger6,
             seat: seatNumber6,
-            flight: departFlight,
+            flight: returnFlight,
           },
           {
             luggage: bagasi7,
             passenger: passenger7,
             seat: seatNumber7,
-            flight: departFlight,
+            flight: returnFlight,
           },
         ],
         price:
@@ -835,6 +840,7 @@ export default function TransactionEconomyReturn() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
       dispatch(createBookingReturn(booking));
     }
@@ -1084,27 +1090,23 @@ export default function TransactionEconomyReturn() {
   };
 
   useEffect(() => {
-    const countPass = JSON.parse(localStorage.getItem("passanger"));
-    const tokenn = JSON.parse(localStorage.getItem("token"));
+   const countPass = JSON.parse(localStorage.getItem("passanger"));
     const departFl = JSON.parse(localStorage.getItem("depart"));
-    const Class = JSON.parse(localStorage.getItem("class"));
     const returnFl = JSON.parse(localStorage.getItem("return"));
-    const users = localStorage.getItem("idUser");
     setPassenger(countPass.adults + countPass.child + countPass.infant);
-    setClassFlight(Class);
-    setToken(tokenn);
+    setClassFlight(JSON.parse(localStorage.getItem("class")));
+    setToken(localStorage.getItem("token"))
     setDepart(departFl);
     setReturn(returnFl);
 
-    if (users) {
-      dispatch(loadUser(users));
-    } else {
-    }
     dispatch(loadCategory());
     dispatch(loadLuggagesIdPlane(departFl.plane.idPlane));
     dispatch(loadPrice(departFl.idFlight));
+    if (token) {
+      dispatch(loadUser(localStorage.getItem("id")));
+    }
     // dispatch(loadPayment());
-  }, [category]);
+  }, [dispatch]);
 
   return (
     <React.Fragment>
@@ -1152,7 +1154,7 @@ export default function TransactionEconomyReturn() {
                           handleChangeNationality={(e) =>
                             handleChangeNationality(e, i)
                           }
-                          handleChangeRequest={(e) =>
+                          handleChangeSpecialRequest={(e) =>
                             handleChangeSpecialRequest(e, i)
                           }
                           handleChangeContactNumber={(e) =>

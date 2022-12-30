@@ -16,7 +16,7 @@ export default function ComponentFormTransaction(props) {
     const token = localStorage.getItem("token");
     dispatch(loadCategory());
     setToken(token);
-  }, [category]);
+  }, [dispatch]);
 
   if(!props.handleChangeUserTitle) {
     alert("harus ada tittle");

@@ -1,40 +1,23 @@
 import React, { useState, useMemo } from "react";
 
-import {
-  ArrowRightOutlined,
-  ScheduleOutlined,
-  DollarCircleOutlined,
-} from "@ant-design/icons";
+
 import { Button, Modal } from "antd";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import logo from "../logo.png";
-import bri from "../image/bri.jpg";
-import bca from "../image/bca.jpg";
-import mandiri from "../image/mandiri.jpg";
-import bni from "../image/bni.jpg";
-import ovo from "../image/ovo.jpg";
-import danaa from "../image/dana.jpg";
-import {
-  MdFlightTakeoff,
-  MdFlightLand,
-  MdKeyboardArrowRight,
-  MdKeyboardArrowLeft,
-} from "react-icons/md";
-import { BsCircle } from "react-icons/bs";
+
 
 import { SlPlane } from "react-icons/sl";
 import { FaBarcode } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { loadTicket } from "./Feature/Models/GetTicket";
-import { loadCity } from "./Feature/Models/AirportSlice";
 
-import PDFTicket from "./PDFTikcet";
+
 import { Preview, print } from "react-html2pdf";
 
+
 export default function Ticket() {
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const [ticketDepart, setTicketDepart] = useState([]);
   const [ticketReturn, setTicketReturn] = useState([]);
@@ -58,6 +41,7 @@ export default function Ticket() {
   useEffect(() => {
     setTicketDepart(JSON.parse(localStorage.getItem("bookingDepart")));
     setTicketReturn(JSON.parse(localStorage.getItem("bookingReturn")));
+ 
   }, []);
 
   return (
@@ -72,12 +56,12 @@ export default function Ticket() {
                 {ticketDepart.map((item, i) => (
                   <div key={i} className="py-5 flex">
                     <div className=" w-4/5 bg-brand-black h-80 rounded-3xl ">
-                      <div className="flex justify-between py-5 px-5 items-center">
-                        <div>
+                      <div className="text-brand-whiteLight flex justify-between py-5 px-5 items-center">
+                        <div className="text-brand-whiteLight">
                           <h6>BOARDING PASS</h6>
                           <h6>7-AIRWAYS</h6>
                         </div>
-                        <SlPlane size={25} />
+                        <SlPlane color="f1efe9" size={25} />
                       </div>
                       <div className="bg-brand-whiteLight text-brand-black flex py-2 gap-5 px-3 border-dotted border-r-2 border-brand-black">
                         <div className="flex flex-col">
@@ -135,11 +119,11 @@ export default function Ticket() {
                     </div>
                     <div className="w-2/5 bg-brand-black h-80 rounded-3xl ">
                       <div className="flex justify-between py-5 px-5 items-center">
-                        <div>
+                      <div className="text-brand-whiteLight">
                           <h6>FLIGHT</h6>
                           <h6>7-AIRWAYS</h6>
                         </div>
-                        <SlPlane size={25} />
+                        <SlPlane color="f1efe9" size={25} />
                       </div>
                       <div className="bg-brand-whiteLight text-brand-black flex flex-col py-2 px-2 gap-5">
                         <div className="w-full flex gap-2 ">
@@ -206,11 +190,11 @@ export default function Ticket() {
                       <div key={i} className="py-5 flex">
                         <div className=" w-4/5 bg-brand-black h-80 rounded-3xl ">
                           <div className="flex justify-between py-5 px-5 items-center">
-                            <div>
+                          <div className="text-brand-whiteLight">
                               <h6>BOARDING PASS</h6>
                               <h6>7-AIRWAYS</h6>
                             </div>
-                            <SlPlane size={25} />
+                            <SlPlane color="f1efe9" size={25} />
                           </div>
                           <div className="bg-brand-whiteLight text-brand-black flex py-2 gap-5 px-3 border-dotted border-r-2 border-brand-black">
                             <div className="flex flex-col">
@@ -268,11 +252,11 @@ export default function Ticket() {
                         </div>
                         <div className="w-2/5 bg-brand-black h-80 rounded-3xl ">
                           <div className="flex justify-between py-5 px-5 items-center">
-                            <div>
+                          <div className="text-brand-whiteLight">
                               <h6>FLIGHT</h6>
                               <h6>7-AIRWAYS</h6>
                             </div>
-                            <SlPlane size={25} />
+                            <SlPlane color="f1efe9" size={25} />
                           </div>
                           <div className="bg-brand-whiteLight text-brand-black flex flex-col py-2 px-2 gap-5">
                             <div className="w-full flex gap-2 ">

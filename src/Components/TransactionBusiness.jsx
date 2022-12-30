@@ -52,13 +52,13 @@ export default function TransactionBusiness() {
   const { luggagesPlane } = useSelector((state) => state.luggagePlane);
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
   const { category } = useSelector((state) => state.category);
-  const { user } = useSelector((state) => state.getUser);
+  const { users } = useSelector((state) => state.getUser);
   const { Price } = useSelector((state) => state.getPrice);
 
   const navigate = useNavigate();
   const [classReturn, setClassReturn] = useState();
   const [oneWay, setOneWay] = useState(true);
-  const [passenger, setPassenger] = useState("");
+  const [passenger, setPassenger] = useState(undefined);
   const [classFlight, setClassFlight] = useState("");
   const [departFlight, setDepart] = useState([]);
   const [token, setToken] = useState(false);
@@ -232,7 +232,7 @@ export default function TransactionBusiness() {
         };
     
         dispatch(updateSeats(updateSeat1));
-      let x = {
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
@@ -247,8 +247,9 @@ export default function TransactionBusiness() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
-      dispatch(createBookingDepart(x));
+      dispatch(createBookingDepart(booking));
     }
     if (passenger === 2) {
       let seat1 = seatNumber1.stateSeat;
@@ -273,7 +274,7 @@ export default function TransactionBusiness() {
       };
       dispatch(updateSeats(updateSeat1));
       dispatch(updateSeats(updateSeat2));
-      let x = {
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
@@ -297,8 +298,9 @@ export default function TransactionBusiness() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
-      dispatch(createBookingDepart(x));
+      dispatch(createBookingDepart(booking));
     }
     if (passenger === 3) {
       let seat1 = seatNumber1.stateSeat;
@@ -334,7 +336,7 @@ export default function TransactionBusiness() {
       dispatch(updateSeats(updateSeat1));
       dispatch(updateSeats(updateSeat2));
       dispatch(updateSeats(updateSeat3));
-      let x = {
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
@@ -366,8 +368,9 @@ export default function TransactionBusiness() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
-      dispatch(createBookingDepart(x));
+      dispatch(createBookingDepart(booking));
     }
     if (passenger === 4) {
       let seat1 = seatNumber1.stateSeat;
@@ -414,7 +417,7 @@ export default function TransactionBusiness() {
       dispatch(updateSeats(updateSeat2));
       dispatch(updateSeats(updateSeat3));
       dispatch(updateSeats(updateSeat4));
-      let x = {
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
@@ -454,8 +457,9 @@ export default function TransactionBusiness() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
-      dispatch(createBookingDepart(x));
+      dispatch(createBookingDepart(booking));
     }
     if (passenger === 5) {
       let seat1 = seatNumber1.stateSeat;
@@ -513,7 +517,7 @@ export default function TransactionBusiness() {
       dispatch(updateSeats(updateSeat3));
       dispatch(updateSeats(updateSeat4));
       dispatch(updateSeats(updateSeat5));
-      let x = {
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
@@ -561,8 +565,9 @@ export default function TransactionBusiness() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
-      dispatch(createBookingDepart(x));
+      dispatch(createBookingDepart(booking));
     }
     if (passenger === 6) {
       let seat1 = seatNumber1.stateSeat;
@@ -631,7 +636,7 @@ export default function TransactionBusiness() {
       dispatch(updateSeats(updateSeat4));
       dispatch(updateSeats(updateSeat5));
       dispatch(updateSeats(updateSeat6));
-      let x = {
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
@@ -687,8 +692,9 @@ export default function TransactionBusiness() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
-      dispatch(createBookingDepart(x));
+      dispatch(createBookingDepart(booking));
     }
     if (passenger === 7) {
        let seat1 = seatNumber1.stateSeat;
@@ -768,7 +774,7 @@ export default function TransactionBusiness() {
       dispatch(updateSeats(updateSeat5));
       dispatch(updateSeats(updateSeat6));
       dispatch(updateSeats(updateSeat7));
-      let x = {
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
@@ -832,8 +838,9 @@ export default function TransactionBusiness() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
-      dispatch(createBookingDepart(x));
+      dispatch(createBookingDepart(booking));
     }
     if (classReturn) {
       if (classReturn === "ECONOMY") {
@@ -848,7 +855,7 @@ export default function TransactionBusiness() {
       localStorage.removeItem("page");
       localStorage.removeItem("number");
       localStorage.removeItem("cityTo");
-      localStorage.removeItem("passenger");
+      localStorage.removeItem("passanger");
       localStorage.removeItem("depart");
       localStorage.removeItem("class");
       localStorage.removeItem("cityFrom");
@@ -867,13 +874,12 @@ export default function TransactionBusiness() {
   const [contactNumber, setContactNumber] = useState("");
   const [specialRequest, setSpecialRequest] = useState("");
   const [passport, setPasspoort] = useState("");
-  const ssss = () => {
-    console.log(passenger1.passenger.firstName);
-  };
+  
   const handleChangePassport = (e) => {
     setPasspoort(e.target.value);
   };
   const handleChangeSpecialRequest = (e) => {
+
     setSpecialRequest(e.label);
   };
   const handleChangeContactNumber = (e) => {
@@ -1133,27 +1139,23 @@ export default function TransactionBusiness() {
 
   useEffect(() => {
     const countPass = JSON.parse(localStorage.getItem("passanger"));
-    const tokenn = JSON.parse(localStorage.getItem("token"));
     const departFl = JSON.parse(localStorage.getItem("depart"));
-    const Class = JSON.parse(localStorage.getItem("class"));
     const returnFl = JSON.parse(localStorage.getItem("return"));
-    const users = localStorage.getItem("idUser");
     setClassReturn(JSON.parse(localStorage.getItem("classReturn")));
     setPassenger(countPass.adults + countPass.child + countPass.infant);
-    setClassFlight(Class);
-    setToken(tokenn);
+    setClassFlight(JSON.parse(localStorage.getItem("class")));
+    setToken(localStorage.getItem("token"))
     setDepart(departFl);
     setReturn(returnFl);
 
-    if (users) {
-      dispatch(loadUser(users));
-    } else {
-    }
-    dispatch(loadCategory());
+  
     dispatch(loadLuggagesIdPlane(departFl.plane.idPlane));
     dispatch(loadPrice(departFl.idFlight));
+    if (token) {
+      dispatch(loadUser(localStorage.getItem("id")));
+    }
     // dispatch(loadPayment());
-  }, [category]);
+  }, [dispatch]);
 
   return (
     <React.Fragment>

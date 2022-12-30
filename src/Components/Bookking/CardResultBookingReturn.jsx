@@ -124,7 +124,7 @@ export default function CardResultBookingReturn() {
       setDetail(true);
       setEconomy(idFlight);
     }
-    console.log(idPlane);
+  
     dispatch(loadSeatsIdPlaneCount(idPlane));
     dispatch(loadPrice(idFlight));
     setPriceBusinessReturn(Price.business);
@@ -166,7 +166,7 @@ export default function CardResultBookingReturn() {
       flight: departDate,
     }
     dispatch(Depart(halaman))
-    console.log("ONE", pages, pageSize)
+   
   }
 
   const pagingReturn = (pages1, pageSize1) => {
@@ -175,7 +175,7 @@ export default function CardResultBookingReturn() {
       flight: returnDate,
     }
     dispatch(DepartReturn(halamanReturn))
-    console.log("RETURN", pages1, pageSize1)
+
   }
 
   const [pages, setTotalPages] = useState(0);
@@ -215,8 +215,7 @@ export default function CardResultBookingReturn() {
     setIsPage1(page1)
   }, [dispatch, Price, SeatsPlaneCount]);
 
-  console.log("PAGINATION", pagination);
-  console.log("PAGINATIONRETURN", paginationReturn)
+
   return (
     <>
       {resultFlightDepart.length && resultFlightReturn.length !== 0 ? (
@@ -641,7 +640,7 @@ export default function CardResultBookingReturn() {
                   </div>
                 </div>
                 <div className="flex flex-col gap-5">
-                  {pagination.map((item, i) => (
+                  {resultFlightReturn.map((item, i) => (
                     <div key={i} className="card-result-booking">
                       <div className="wrap-card-result-booking">
                         <div className="flex w-full lg:flex-row gap-5 sm:flex-col-reverse">
@@ -999,9 +998,9 @@ export default function CardResultBookingReturn() {
                     </div>
                   ))}
                 </div>
-                <div className='flex gap-x-2 mt-6 justify-center'>
+                {/* <div className='flex gap-x-2 mt-6 justify-center'>
                   <Pagination onChange={pagingReturn} current={number1} total={pages1 * 10} />
-                </div>
+                </div> */}
               </>
             ) : null}
           </div>
