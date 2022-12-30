@@ -8,6 +8,7 @@ import CardHistory from "../CardHistory";
 import axios from "axios";
 import { authConfig } from "../Feature/Config";
 import moment from "moment";
+import Histories from "../Histories";
 
 export const Profile = (setIsLogin) => {
   const [isEmailValid, setIsEmailValid] = useState(true);
@@ -27,6 +28,8 @@ export const Profile = (setIsLogin) => {
   const navigate = useNavigate();
   const [changePass, setChangePass] = useState(false);
 
+  const token = localStorage.getItem("token");
+
   const changePassword = () => {
     setChangePass(true);
   };
@@ -41,7 +44,7 @@ export const Profile = (setIsLogin) => {
     }
   }, [navigate]);
 
-  let userId = localStorage.getItem("idUser");
+  let userId = localStorage.getItem("id");
   // userId = userId ? JSON.parse(userId).id : 1;
 
   function validatePassword() {
@@ -152,10 +155,20 @@ export const Profile = (setIsLogin) => {
 
   // Get data history travel
   const getHistoryTravel = () => {
-    axios.get(authConfig.baseUrl + "/api/booking/" + userId).then((response) => {
-      console.log(response.data.payload);
-      setHistories([response.data.payload]);
-    });
+    axios
+      .get(authConfig.baseUrl + "/api/history/user/" + userId, {
+        // userid atas diganti 40
+        headers: {
+          Authorization: `Bearer ${token} `,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        setHistories([response.data.payload]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   // upload image
@@ -238,10 +251,10 @@ export const Profile = (setIsLogin) => {
 
                   <div className="textbox-select ">
                     <select onChange={(event) => setRegisterGender(event.target.value)} type="text">
-                    {/* <option selected className="text-black">
+                      {/* <option selected className="text-black">
                     Gender
                   </option> */}
-                 
+
                       {registerGender === "WANITA" ? (
                         <option selected className="text-black" value="Wanita">
                           Wanita
@@ -377,7 +390,7 @@ export const Profile = (setIsLogin) => {
       </main>
 
       <Card style={{ backgroundColor: "#3f4444", width: "100%" }}>
-        <CardHistory histories={histories} />
+        <Histories histories={histories} />
       </Card>
       <Footer />
     </React.Fragment>
