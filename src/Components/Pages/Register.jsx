@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { UserOutlined, LockOutlined, MailOutlined, CalendarOutlined, EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  LockOutlined,
+  MailOutlined,
+  CalendarOutlined,
+  EyeInvisibleOutlined,
+  EyeOutlined,
+} from "@ant-design/icons";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +26,7 @@ const dateFormatList = ["MM/DD/YYYY", "MM/DD/YY"];
 export const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { authRegister } = useSelector((state) => state.authRegister)
+  const{authRegister} = useSelector((state)=>state.authRegister)
   // console.log(authRegister.data.id);
   // const [id, setId] = useState({data:{
   //   id:""
@@ -70,7 +77,8 @@ export const Register = () => {
   }
 
   useEffect(() => {
-    const emailRegexp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    const emailRegexp =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     if (registerEmail) {
       setIsEmailValid(emailRegexp.test(registerEmail));
     }
@@ -117,29 +125,46 @@ export const Register = () => {
         birthday: registerBirth,
         gender: registerGender,
       })
-
+  
     );
 
     const results = unwrapResult(resultsActions);
     console.log(results);
     alert("REGISTER BERHASIL");
     let createNotifs = {
-      user: results.id,
-      title: "LOGIN",
+      user:results.id,
+      title:"LOGIN",
       message: "Login Berhasil, silahkan pesan penerbangan yang sesuai dengan keinginan anda",
-      category: "PRIA"
+      category:"PRIA"
     }
     if (results && results.id) {
-      dispatch(createNotif(createNotifs));
+      let notif = {
+        user: results.id,
+        title: "LOGIN",
+        message:
+          "Login Berhasil, silahkan pesan penerbangan yang sesuai dengan keinginan anda",
+        category: "",
+      };
+      dispatch(createNotif(notif));
+      alert("REGISTER BERHASIL");
     }
   };
+
+  // const coba=()=>{
+  //   let createNotifs = {
+  //     user:results.id,
+  //     title:"LOGIN",
+  //     message: "Login Berhasil, silahkan pesan penerbangan yang sesuai dengan keinginan anda",
+  //     category:"PRIA"
+  //   }
+  // }
 
   // ketika user login tidak bisa ke halaman login lagi
   useEffect(() => {
     if (localStorage.getItem("auth")) {
       navigate("/");
     }
-  }, [navigate, dispatch,]);
+  }, [navigate, dispatch]);
 
   return (
     <React.Fragment>
@@ -200,7 +225,11 @@ export const Register = () => {
                     <MailOutlined style={{ color: "#F2EFEA" }} />
                   </span>
                 </div>
-                {!isEmailValid ? <span className="text-red-500">email tidak valid</span> : <></>}
+                {!isEmailValid ? (
+                  <span className="text-red-500">email tidak valid</span>
+                ) : (
+                  <></>
+                )}
               </div>
               <div className="block w-full">
                 {/* <div className="textbox">
@@ -274,7 +303,10 @@ export const Register = () => {
                 {/* </input> */}
               </div>
               <div className="textbox-select">
-                <select onChange={(event) => setRegisterGender(event.target.value)} type="text">
+                <select
+                  onChange={(event) => setRegisterGender(event.target.value)}
+                  type="text"
+                >
                   {/* <option selected className="text-black">
                     Gender
                   </option> */}
@@ -306,7 +338,10 @@ export const Register = () => {
                   <h1>Have account</h1>
                 </div>
                 <div className="register-account-desc">
-                  <p>Manage your bookings and receive our latest news and offers just for you</p>
+                  <p>
+                    Manage your bookings and receive our latest news and offers
+                    just for you
+                  </p>
                 </div>
                 <a href="/login" type="button">
                   Login

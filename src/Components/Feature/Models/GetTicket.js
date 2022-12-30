@@ -3,33 +3,33 @@ import axios from "axios";
 import { authConfig } from "../Config";
 
 const initialState = {
-  users: [],
+  Ticket: [],
   loadSeat: false,
 };
 
-export const loadUser = createAsyncThunk("user/loadUser", async (users) => {
+export const loadTicket = createAsyncThunk("Ticket/loadTicket", async (idBooking) => {
   try {
-    const user = await axios.get(`${authConfig.baseUrl}/api/user/${users}`, 
-    );
-    return user.data;
+    const Ticket = await axios.get(`${authConfig.baseUrl}/api/ticket/${idBooking}`);
+
+    return Ticket.data;
   } catch (error) {
     console.error(error);
   }
 });
 
 export const postSlice = createSlice({
-  name: "User",
+  name: "Ticket",
   initialState,
   reducers: {},
   extraReducers: {
-    [loadUser.pending]: (state) => {
+    [loadTicket.pending]: (state) => {
       state.loading = true;
     },
-    [loadUser.fulfilled]: (state, { payload }) => {
+    [loadTicket.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.users = payload;
+      state.Ticket = payload;
     },
-    [loadUser.rejected]: (state) => {
+    [loadTicket.rejected]: (state) => {
       state.loading = false;
     },
   },

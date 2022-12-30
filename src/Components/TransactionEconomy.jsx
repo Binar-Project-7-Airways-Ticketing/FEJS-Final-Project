@@ -20,7 +20,10 @@ import ModalMethodPayment from "./ModalMethodPayment";
 import DetailPayment from "./DetailPayment";
 import ModalSeatEconomy from "./Bookking/ModalSeatEconomy";
 import { updateSeats } from "./Feature/Models/Seat";
-import { createBooking } from "./Feature/Models/CreateBooking";
+import {
+  createBooking,
+  createBookingDepart,
+} from "./Feature/Models/CreateBooking";
 import TransactionEconomyReturn from "./TransactionEconomyReturn";
 import TransactionBusinessReturn from "./TransactionBusinessReturn";
 
@@ -52,7 +55,7 @@ export default function TransactionEconomy() {
   const { luggagesPlane } = useSelector((state) => state.luggagePlane);
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
   const { category } = useSelector((state) => state.category);
-  const { user } = useSelector((state) => state.getUser);
+  const { users } = useSelector((state) => state.getUser);
   const { Price } = useSelector((state) => state.getPrice);
 
   const navigate = useNavigate();
@@ -221,8 +224,21 @@ export default function TransactionEconomy() {
   const dana = () => {
     alert("Apakah Metode Pembayaran Sudah Sesuai ?");
     setIsModalBayarOpen(false);
+
     if (passenger === 1) {
-      let x = {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+
+      dispatch(updateSeats(updateSeat1));
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
@@ -237,12 +253,36 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
 
-      dispatch(createBooking(x));
+      dispatch(createBookingDepart(booking));
     }
     if (passenger === 2) {
-      let x = {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
@@ -266,11 +306,46 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
-      dispatch(createBooking(x));
+      console.log(booking);
+      dispatch(createBookingDepart(booking));
     }
     if (passenger === 3) {
-      let x = {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
@@ -302,11 +377,56 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingDepart(booking));
     }
     if (passenger === 4) {
-      let x = {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      let seat4 = seatNumber4.stateSeat;
+
+      if (seat4 === "BOOKED") {
+        seat4 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat4 = {
+        id: seatNumber4.idSeat,
+        state: seat4,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
+      dispatch(updateSeats(updateSeat4));
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
@@ -346,11 +466,67 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingDepart(booking));
     }
     if (passenger === 5) {
-      let x = {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      let seat4 = seatNumber4.stateSeat;
+
+      if (seat4 === "BOOKED") {
+        seat4 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat4 = {
+        id: seatNumber4.idSeat,
+        state: seat4,
+      };
+      let seat5 = seatNumber5.stateSeat;
+
+      if (seat5 === "BOOKED") {
+        seat5 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat5 = {
+        id: seatNumber5.idSeat,
+        state: seat5,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
+      dispatch(updateSeats(updateSeat4));
+      dispatch(updateSeats(updateSeat5));
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
@@ -398,11 +574,78 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingDepart(booking));
     }
     if (passenger === 6) {
-      let x = {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      let seat4 = seatNumber4.stateSeat;
+
+      if (seat4 === "BOOKED") {
+        seat4 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat4 = {
+        id: seatNumber4.idSeat,
+        state: seat4,
+      };
+      let seat5 = seatNumber5.stateSeat;
+
+      if (seat5 === "BOOKED") {
+        seat5 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat5 = {
+        id: seatNumber5.idSeat,
+        state: seat5,
+      };
+      let seat6 = seatNumber6.stateSeat;
+
+      if (seat6 === "BOOKED") {
+        seat6 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat6 = {
+        id: seatNumber6.idSeat,
+        state: seat6,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
+      dispatch(updateSeats(updateSeat4));
+      dispatch(updateSeats(updateSeat5));
+      dispatch(updateSeats(updateSeat6));
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
@@ -458,11 +701,89 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingDepart(booking));
     }
     if (passenger === 7) {
-      let x = {
+      let seat1 = seatNumber1.stateSeat;
+
+      if (seat1 === "BOOKED") {
+        seat1 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat1 = {
+        id: seatNumber1.idSeat,
+        state: seat1,
+      };
+      let seat2 = seatNumber2.stateSeat;
+
+      if (seat2 === "BOOKED") {
+        seat2 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat2 = {
+        id: seatNumber2.idSeat,
+        state: seat2,
+      };
+      let seat3 = seatNumber3.stateSeat;
+
+      if (seat3 === "BOOKED") {
+        seat3 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat3 = {
+        id: seatNumber3.idSeat,
+        state: seat3,
+      };
+      let seat4 = seatNumber4.stateSeat;
+
+      if (seat4 === "BOOKED") {
+        seat4 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat4 = {
+        id: seatNumber4.idSeat,
+        state: seat4,
+      };
+      let seat5 = seatNumber5.stateSeat;
+
+      if (seat5 === "BOOKED") {
+        seat5 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat5 = {
+        id: seatNumber5.idSeat,
+        state: seat5,
+      };
+      let seat6 = seatNumber6.stateSeat;
+
+      if (seat6 === "BOOKED") {
+        seat6 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat6 = {
+        id: seatNumber6.idSeat,
+        state: seat6,
+      };
+      let seat7 = seatNumber7.stateSeat;
+
+      if (seat7 === "BOOKED") {
+        seat7 = "NOT_AVAILABLE";
+      }
+
+      let updateSeat7 = {
+        id: seatNumber7.idSeat,
+        state: seat7,
+      };
+      dispatch(updateSeats(updateSeat1));
+      dispatch(updateSeats(updateSeat2));
+      dispatch(updateSeats(updateSeat3));
+      dispatch(updateSeats(updateSeat4));
+      dispatch(updateSeats(updateSeat5));
+      dispatch(updateSeats(updateSeat6));
+      dispatch(updateSeats(updateSeat7));
+      let booking = {
         bookingDetails: [
           {
             luggage: bagasi1,
@@ -526,8 +847,9 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
+        user: token ? users : null,
       };
-      dispatch(createBooking(x));
+      dispatch(createBookingDepart(booking));
     }
     if (classReturn) {
       if (classReturn === "ECONOMY") {
@@ -538,7 +860,15 @@ export default function TransactionEconomy() {
         setOneWay(false);
       }
     } else {
-      navigate("/bookingPending");
+      navigate("/ticket");
+      localStorage.removeItem("page");
+      localStorage.removeItem("number");
+      localStorage.removeItem("cityTo");
+      localStorage.removeItem("passanger");
+      localStorage.removeItem("depart");
+      localStorage.removeItem("class");
+      localStorage.removeItem("cityFrom");
+      localStorage.removeItem("flightDepart");
     }
   };
   const dateFormat = "MM/DD/YYYY";
@@ -553,9 +883,7 @@ export default function TransactionEconomy() {
   const [contactNumber, setContactNumber] = useState("");
   const [specialRequest, setSpecialRequest] = useState("");
   const [passport, setPasspoort] = useState("");
-  const ssss = () => {
-    console.log(passenger1.passenger.firstName);
-  };
+
   const handleChangePassport = (e) => {
     setPasspoort(e.target.value);
   };
@@ -640,378 +968,69 @@ export default function TransactionEconomy() {
 
     if (!titleUser) {
       alert("harus ada title");
-      return
+      return;
     }
 
     if (!ageCategory) {
       alert("harus ada age category");
-      return
+      return;
     }
 
     if (!gender) {
       alert("harus ada gender");
-      return
+      return;
     }
 
     if (!firstName) {
       alert("harus ada first name");
-      return
+      return;
     }
 
     if (!lastName) {
       alert("harus ada lastname");
-      return
+      return;
     }
 
     if (!birthday) {
       alert("harus ada birthday");
-      return
+      return;
     }
 
     if (!nationality) {
       alert("harus ada nationality");
-      return
+      return;
     }
 
     if (!contactNumber) {
       alert("harus ada contact number");
-      return
+      return;
     }
 
     if (!passport) {
       alert("harus ada passport");
-      return
+      return;
     }
 
     if (i === 0) {
-      // if (!titleUser) {
-      //   alert("harus ada title");
-      //   return
-      // }
-
-      // if (!ageCategory) {
-      //   alert("harus ada age category");
-      //   return
-      // }
-
-      // if (!gender) {
-      //   alert("harus ada gender");
-      //   return
-      // }
-
-      // if (!firstName) {
-      //   alert("harus ada first name");
-      //   return
-      // }
-
-      // if (!lastName) {
-      //   alert("harus ada lastname");
-      //   return
-      // }
-
-      // if (!birthday) {
-      //   alert("harus ada birthday");
-      //   return
-      // }
-
-      // if (!nationality) {
-      //   alert("harus ada nationality");
-      //   return
-      // }
-
-      // if (!contactNumber) {
-      //   alert("harus ada contact number");
-      //   return
-      // }
-
-      // if (!passport) {
-      //   alert("harus ada passport");
-      //   return
-      // }
       setPassenger1(passenger);
     }
     if (i === 1) {
-      // if (!titleUser){
-      //   alert("harus ada title");
-      //   return
-      // }
-  
-      // if (!ageCategory){
-      //   alert("harus ada age category");
-      //   return
-      // }
-  
-      // if (!gender){
-      //   alert("harus ada gender");
-      //   return
-      // }
-  
-      // if (!firstName){
-      //   alert("harus ada first name");
-      //   return
-      // }
-  
-      // if (!lastName){
-      //   alert("harus ada lastname");
-      //   return
-      // }
-  
-      // if (!birthday){
-      //   alert("harus ada birthday");
-      //   return
-      // }
-  
-      // if (!nationality){
-      //   alert("harus ada nationality");
-      //   return
-      // }
-  
-      // if (!contactNumber){
-      //   alert("harus ada contact number");
-      //   return
-      // }
-  
-      // if (!passport){
-      //   alert("harus ada passport");
-      //   return
-      // }
       setPassenger2(passenger);
-      console.log("COBA")
     }
     if (i === 2) {
-      // if (!titleUser){
-      //   alert("harus ada title");
-      //   return
-      // }
-  
-      // if (!ageCategory){
-      //   alert("harus ada age category");
-      //   return
-      // }
-  
-      // if (!gender){
-      //   alert("harus ada gender");
-      //   return
-      // }
-  
-      // if (!firstName){
-      //   alert("harus ada first name");
-      //   return
-      // }
-  
-      // if (!lastName){
-      //   alert("harus ada lastname");
-      //   return
-      // }
-  
-      // if (!birthday){
-      //   alert("harus ada birthday");
-      //   return
-      // }
-  
-      // if (!nationality){
-      //   alert("harus ada nationality");
-      //   return
-      // }
-  
-      // if (!contactNumber){
-      //   alert("harus ada contact number");
-      //   return
-      // }
-  
-      // if (!passport){
-      //   alert("harus ada passport");
-      //   return
-      // }
       setPassenger3(passenger);
     }
     if (i === 3) {
-      // if (!titleUser){
-      //   alert("harus ada title");
-      //   return
-      // }
-  
-      // if (!ageCategory){
-      //   alert("harus ada age category");
-      //   return
-      // }
-  
-      // if (!gender){
-      //   alert("harus ada gender");
-      //   return
-      // }
-  
-      // if (!firstName){
-      //   alert("harus ada first name");
-      //   return
-      // }
-  
-      // if (!lastName){
-      //   alert("harus ada lastname");
-      //   return
-      // }
-  
-      // if (!birthday){
-      //   alert("harus ada birthday");
-      //   return
-      // }
-  
-      // if (!nationality){
-      //   alert("harus ada nationality");
-      //   return
-      // }
-  
-      // if (!contactNumber){
-      //   alert("harus ada contact number");
-      //   return
-      // }
-  
-      // if (!passport){
-      //   alert("harus ada passport");
-      //   return
-      // }
       setPassenger4(passenger);
     }
     if (i === 4) {
-      // if (!titleUser){
-      //   alert("harus ada title");
-      //   return
-      // }
-  
-      // if (!ageCategory){
-      //   alert("harus ada age category");
-      //   return
-      // }
-  
-      // if (!gender){
-      //   alert("harus ada gender");
-      //   return
-      // }
-  
-      // if (!firstName){
-      //   alert("harus ada first name");
-      //   return
-      // }
-  
-      // if (!lastName){
-      //   alert("harus ada lastname");
-      //   return
-      // }
-  
-      // if (!birthday){
-      //   alert("harus ada birthday");
-      //   return
-      // }
-  
-      // if (!nationality){
-      //   alert("harus ada nationality");
-      //   return
-      // }
-  
-      // if (!contactNumber){
-      //   alert("harus ada contact number");
-      //   return
-      // }
-  
-      // if (!passport){
-      //   alert("harus ada passport");
-      //   return
-      // }
       setPassenger5(passenger);
     }
     if (i === 5) {
-      // if (!titleUser){
-      //   alert("harus ada title");
-      //   return
-      // }
-  
-      // if (!ageCategory){
-      //   alert("harus ada age category");
-      //   return
-      // }
-  
-      // if (!gender){
-      //   alert("harus ada gender");
-      //   return
-      // }
-  
-      // if (!firstName){
-      //   alert("harus ada first name");
-      //   return
-      // }
-  
-      // if (!lastName){
-      //   alert("harus ada lastname");
-      //   return
-      // }
-  
-      // if (!birthday){
-      //   alert("harus ada birthday");
-      //   return
-      // }
-  
-      // if (!nationality){
-      //   alert("harus ada nationality");
-      //   return
-      // }
-  
-      // if (!contactNumber){
-      //   alert("harus ada contact number");
-      //   return
-      // }
-  
-      // if (!passport){
-      //   alert("harus ada passport");
-      //   return
-      // }
       setPassenger6(passenger);
     }
 
     if (i === 6) {
-      // if (!titleUser){
-      //   alert("harus ada title");
-      //   return
-      // }
-  
-      // if (!ageCategory){
-      //   alert("harus ada age category");
-      //   return
-      // }
-  
-      // if (!gender){
-      //   alert("harus ada gender");
-      //   return
-      // }
-  
-      // if (!firstName){
-      //   alert("harus ada first name");
-      //   return
-      // }
-  
-      // if (!lastName){
-      //   alert("harus ada lastname");
-      //   return
-      // }
-  
-      // if (!birthday){
-      //   alert("harus ada birthday");
-      //   return
-      // }
-  
-      // if (!nationality){
-      //   alert("harus ada nationality");
-      //   return
-      // }
-  
-      // if (!contactNumber){
-      //   alert("harus ada contact number");
-      //   return
-      // }
-  
-      // if (!passport){
-      //   alert("harus ada passport");
-      //   return
-      // }
       setPassenger7(passenger);
     }
   };
@@ -1129,27 +1148,22 @@ export default function TransactionEconomy() {
 
   useEffect(() => {
     const countPass = JSON.parse(localStorage.getItem("passanger"));
-    const tokenn = JSON.parse(localStorage.getItem("token"));
     const departFl = JSON.parse(localStorage.getItem("depart"));
-    const Class = JSON.parse(localStorage.getItem("class"));
     const returnFl = JSON.parse(localStorage.getItem("return"));
-    const users = localStorage.getItem("idUser");
     setClassReturn(JSON.parse(localStorage.getItem("classReturn")));
     setPassenger(countPass.adults + countPass.child + countPass.infant);
-    setClassFlight(Class);
-    setToken(tokenn);
+    setClassFlight(JSON.parse(localStorage.getItem("class")));
+    setToken(localStorage.getItem("token"))
     setDepart(departFl);
     setReturn(returnFl);
 
-    if (users) {
-      dispatch(loadUser(users));
-    } else {
-    }
     dispatch(loadCategory());
     dispatch(loadLuggagesIdPlane(departFl.plane.idPlane));
     dispatch(loadPrice(departFl.idFlight));
-    // dispatch(loadPayment());
-  }, [category]);
+    if (token) {
+      dispatch(loadUser(localStorage.getItem("id")));
+    }
+  }, [dispatch]);
 
   return (
     <React.Fragment>
@@ -1203,7 +1217,7 @@ export default function TransactionEconomy() {
                               handleChangeNationality={(e) =>
                                 handleChangeNationality(e, i)
                               }
-                              handleChangeRequest={(e) =>
+                              handleChangeSpecialRequest={(e) =>
                                 handleChangeSpecialRequest(e, i)
                               }
                               handleChangeContactNumber={(e) =>

@@ -8,18 +8,12 @@ export default function Luggages(props) {
 const dispatch = useDispatch()
 
     const { luggagesPlane } = useSelector((state) => state.luggagePlane);
-    const [classFlight, setClassFlight] = useState("");
-    const [bagasi, setBagasi] = useState("");
-
-    const handleChange = (values) => {
-        console.log(values);
-        setBagasi(values.price);
-      };
+  
 
     useEffect(()=>{
         const departFl = JSON.parse(localStorage.getItem("depart"));
         dispatch(loadLuggagesIdPlane(departFl.plane.idPlane));
-    },[luggagesPlane])
+    },[dispatch])
   return (
     <Select
     className="w-full"

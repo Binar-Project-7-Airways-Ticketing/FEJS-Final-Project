@@ -57,7 +57,7 @@ export default function Prf(setIsLogin, props) {
       <Dropdown placement={props.place} arrow menu={{ items }}>
         <a onClick={(e) => e.preventDefault()}>
           <Space>
-            <img className="rounded-full h-14 w-14" src={imageUser}></img>
+            <img className="rounded-full h-10 w-10" src={imageUser}></img>
           </Space>
         </a>
       </Dropdown>

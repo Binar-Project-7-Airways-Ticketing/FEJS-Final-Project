@@ -6,6 +6,7 @@ const initialState = {
   cityFrom: [],
   airport: [],
   cityTo: [],
+  city: [],
   loadSeat: false,
 };
 
@@ -43,6 +44,21 @@ export const loadCitiesFrom = createAsyncThunk(
         `${authConfig.baseUrl}/api/airport/name/${name}`
       );
       localStorage.setItem("cityFrom", JSON.stringify(cityFrom.data));
+
+      return cityFrom.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+export const loadCity = createAsyncThunk(
+  "airports/loadCityFrom",
+  async (name) => {
+    try {
+      const cityFrom = await axios.get(
+        `${authConfig.baseUrl}/api/airport/code/${name}`
+      );
+      localStorage.setItem("city", JSON.stringify(cityFrom.data));
 
       return cityFrom.data;
     } catch (error) {
@@ -89,7 +105,7 @@ export const postSlice = createSlice(
     },
   },
   {
-    name: "city",
+    name: "citTo",
     initialState,
     reducers: {},
     extraReducers: {
@@ -101,6 +117,23 @@ export const postSlice = createSlice(
         state.cityTo = payload;
       },
       [loadCitiesTo.rejected]: (state) => {
+        state.loading = false;
+      },
+    },
+  },
+  {
+    name: "city",
+    initialState,
+    reducers: {},
+    extraReducers: {
+      [loadCity.pending]: (state) => {
+        state.loading = true;
+      },
+      [loadCity.fulfilled]: (state, { payload }) => {
+        state.loading = false;
+        state.city = payload;
+      },
+      [loadCity.rejected]: (state) => {
         state.loading = false;
       },
     },

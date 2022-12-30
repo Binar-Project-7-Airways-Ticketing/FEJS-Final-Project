@@ -445,7 +445,7 @@ export default function CardResultBookingOneWay() {
                       <div className="benefit  sm:w-full">
                         <h2>Business Class Flight</h2>
                         <div className="bg-brand-yellow w-fit p-2 rounded-lg">
-                          <p>{SeatsPlaneCount.filter((item) => item.planeDetails.planeClass === "BUSINESS").length} kursi tersedia</p>
+                          <p>{SeatsPlaneCount.filter((item) => item.stateSeat === "AVAILABLE").filter((item) => item.planeDetails.planeClass === "BUSINESS").length} kursi tersedia</p>
                         </div>
                         <p>The benefits you get in economy class</p>
                         <div className="benefit-detail">

@@ -22,7 +22,10 @@ export const getLogin = createAsyncThunk("auth/login", async (body) => {
   const results = await axios.post(`${authConfig.baseUrl}/api/auth/signin`, {
     headers: {
       "Content-Type": "application/json",
+      Authentication: "Bearer Token",
+      "X-Custom-Header": "header value",
     },
+
     ...body,
   });
 
@@ -31,15 +34,10 @@ export const getLogin = createAsyncThunk("auth/login", async (body) => {
   }
 
   const data = await results.data;
-  console.log(data);
 
-  localStorage.setItem(
-    "token",
-    JSON.stringify({
-      token: data.token,
-    })
-  );
-  localStorage.setItem("idUser", JSON.stringify(data.id));
+  localStorage.setItem("token",data.token);
+  localStorage.setItem("id",data.id);
+
   // return data;
   setTimeout(function () {
     window.location.reload(1);

@@ -1350,7 +1350,7 @@ footer {
   /*-------------- booking component homepage---------------*/
   .swap {
     right: 0;
-    left: 85%;
+    left: 80%;
     top: 39%;
 
   }
@@ -1399,18 +1399,5 @@ footer {
     width: 120%;
   }
 
-  /*-------------- booking component homepage---------------*/
-  /* .inpt-book{
-    padding: 8px;
-  }
-  .inpt-passenger{
-    padding: 8px;
 
-  }
-  .wrap-detail-booking{
-    padding: 15px;
-  }
-  .swap {
-    left: 45.5%;
-  } */
 }

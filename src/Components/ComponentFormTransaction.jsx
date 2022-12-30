@@ -13,10 +13,10 @@ export default function ComponentFormTransaction(props) {
   const { category } = useSelector((state) => state.category);
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("token"));
+    const token = localStorage.getItem("token");
     dispatch(loadCategory());
     setToken(token);
-  }, [category]);
+  }, [dispatch]);
 
   if(!props.handleChangeUserTitle) {
     alert("harus ada tittle");

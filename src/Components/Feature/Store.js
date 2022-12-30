@@ -13,6 +13,9 @@ import getUser from "../Feature/Models/GetUser";
 import getPrice from "./Models/GetPrice";
 import luggagesPlane from "./Models/LuggageSliceIdPlane";
 import category from "./Models/GetCategory";
+import ticket from "./Models/GetTicket";
+import booking from "./Models/CreateBooking"
+import city from "./Models/AirportSlice"
 import pagination from "./Models/PaginationSlice";
 import paginationReturn from "./Models/PaginationReturnSlice";
 import ascending from "./Models/AscendingSlice";
@@ -33,6 +36,9 @@ export const store = configureStore({
     luggagePlane: luggagesPlane,
     seatsPlaneCount: seatsPlaneCount,
     category: category,
+    ticket:ticket,
+    booking:booking,
+    city:city,
     pagination: pagination,
     paginationReturn: paginationReturn,
     ascending: ascending,
