@@ -74,6 +74,7 @@ function Histories({ histories }) {
                             {details.passenger.titleUser} {details.passenger.firstName}
                           </h6>
                         </div>
+
                         <div className="wrap-modal-detail-flight">
                           <div className="title-detail-flight">
                             <p>{details.flight.departureDate}</p>
@@ -118,6 +119,12 @@ function Histories({ histories }) {
 
                               <p>{details.flight.arrivalTime}</p>
                             </div>
+                          </div>
+                          <div></div>
+                          <div></div>
+                          <div>
+                            <p>Total Price</p>
+                            <p>{details.flight.price}</p>
                           </div>
                         </div>
                       </Modal>
