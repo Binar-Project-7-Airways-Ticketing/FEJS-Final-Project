@@ -4,7 +4,6 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
 import { Card } from "antd";
-import CardHistory from "../CardHistory";
 import axios from "axios";
 import { authConfig } from "../Feature/Config";
 import moment from "moment";
