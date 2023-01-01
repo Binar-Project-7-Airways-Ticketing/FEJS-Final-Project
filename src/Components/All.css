@@ -34,7 +34,7 @@ p {
 header {
   /* background: #3f4444; */
   background-image: url("https://images.pexels.com/photos/417054/pexels-photo-417054.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-  height: 100vh;
+  height: 80vh;
   padding-top: 70px;
   background-size: cover;
   width: 100%;
@@ -354,12 +354,12 @@ header {
   height: fit-content;
 }
 .swap {
-  right: 47.5%;
+  left: 22.2%;
   position: absolute;
   background: #f1efe9;
   width: 40px;
   height: 40px;
-  border: 1px solid rgb(178, 178, 178);
+  border: 1px solid #cba052;
   border-radius: 100%;
   display: flex;
   justify-content: center;
@@ -409,6 +409,9 @@ header {
 .ant-select-arrow {
   display: none;
 }
+/* .ant-select-dropdown {
+  width: 500px;
+} */
 
 /*-------------------------Modal Seats---------------------------------*/
 .wrap-detail-seats {
@@ -557,8 +560,17 @@ nav {
   transition: none;
   border-radius: 8px;
 } */
+.ant-selector:hover {
+  border-color: #cba052;
+}
+.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(
+    .ant-pagination-size-changer
+  ):hover
+  .ant-select-selector {
+  border-color: #cba052;
+}
 .ant-picker {
-  border-color: #8c857b;
+  border-color: #d9d9d9;
   background: white;
 }
 .ant-picker:hover {
@@ -768,20 +780,27 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 .wrap-logo::before {
-  border-left: 1px solid #000000;
+  border-bottom: 1px solid #000000;
   content: "";
+  position: absolute;
+  rotate: 90deg;
   flex-grow: 1;
-  position: relative;
-  left: 50%;
+  width: 8%;
+  left: 46%;
+  top: 42.3%;
 }
 .wrap-logo::after {
-  border-left: 1px solid #000000;
+  border-bottom: 1px solid #000000;
   content: "";
+  position: absolute;
+  rotate: 90deg;
   flex-grow: 1;
-  position: relative;
-  left: 50%;
+  width: 8%;
+  left: 46%;
+  bottom: 24.5%;
 }
 
 .detail-economy-class h2 {
@@ -816,7 +835,7 @@ nav {
   gap: 7px;
 }
 .text-benefit {
-  justify-content:flex-start;
+  justify-content: flex-start;
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -919,7 +938,9 @@ footer {
   font-size: 25px;
   color: red;
 }
-
+.css-1s2u09g-control:hover {
+    border-color: #cba052
+}
 /*-------------------------LOGIN---------------------------------*/
 @layer components {
   .login-page {
@@ -1008,7 +1029,6 @@ footer {
   .login-account a {
     @apply flex cursor-pointer justify-center sm:px-12 md:px-16 py-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] text-xl rounded-md;
   }
-  
 
   /*-------------------------REGISTER---------------------------------*/
   .register-page {
@@ -1190,7 +1210,6 @@ footer {
   border-radius: 0 0 16px 16px;
   color: #cba052;
   padding: 30px;
-
 }
 
 .history {
@@ -1203,7 +1222,6 @@ footer {
   display: flex;
   justify-content: center;
   gap: 20px;
-  
 }
 
 .btn-detail-history {
@@ -1281,10 +1299,14 @@ footer {
 }
 @media only screen and (max-width: 1024px) {
   .swap {
-    right: 43%;
+    left: 22.8%;
+    width: 30px;
+    height: 30px;
+    top: 35%;
   }
 }
 @media only screen and (max-width: 768px) {
+  
   /*--------------navbar ---------------*/
   h2 {
     font-size: 2.5rem;
@@ -1324,10 +1346,21 @@ footer {
   }
   /*-------------- booking component homepage---------------*/
   .swap {
-    right: 47.5%;
+    width: 30px;
+    height: 30px;
+    top: 20%;
+    left: 31%;
   }
 }
 @media only screen and (max-width: 425px) {
+  .wrap-logo::before {
+    width: 9.5%;
+    left: 45.2%;
+  }
+  .wrap-logo::after {
+    width: 9.5%;
+    left: 45.2%;
+  }
   h2 {
     font-size: 1.7rem;
     line-height: 1.3;
@@ -1340,19 +1373,17 @@ footer {
     font-size: 1.2rem;
     font-weight: 400;
   }
-  h6{
+  h6 {
     font-size: 0.7rem;
   }
-  p{
+  p {
     font-size: 10px;
   }
 
   /*-------------- booking component homepage---------------*/
   .swap {
-    right: 0;
-    left: 80%;
-    top: 39%;
-
+    top: 22%;
+    left: 87%;
   }
   /*--------------navbar ---------------*/
   .nav-btn-responsive {
@@ -1398,6 +1429,4 @@ footer {
   .img-benefit img {
     width: 120%;
   }
-
-
 }

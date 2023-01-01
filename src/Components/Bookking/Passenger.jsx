@@ -17,13 +17,6 @@ export default function Passenger() {
   const handlePassengerClose = () => {
     setPasenger(false);
   };
-  // console.log(adultsArray);
- {
-
- 
-  // console.log(arrayAdults);
-  // setAdultsArray(arrayAdults)
-  }
   const adultIncrement = () => {
     let value = 6;
     if (adults >= value) {
@@ -118,18 +111,31 @@ export default function Passenger() {
     localStorage.setItem("class", JSON.stringify(classes));
     setPasenger(false);
   };
+  useEffect(()=>{
+    let passangers={
+      adults:adults,
+      child: childs,
+      infant: infants,
+    }
+    let classes = {
+      class: seats,
+    };
+    localStorage.setItem("passanger", JSON.stringify(passangers));
+    localStorage.setItem("class", JSON.stringify(classes));
+
+  },[])
 
   return (
-    <div>
+    <>
       {passenger ? (
         <>
           <div
             onClick={handlePassengerClose}
-            className="flex flex-col rounded-lg h-24 w-full xl:py-1.5 xl:pr-5 xl:pl-6 lg:p-2 sm:p-3 border-brand-gray border gap-5"
+            className="flex flex-col rounded-lg h-14 w-full gap-2 p-2"
           >
-            <p style={{ fontSize: "15px" }} onClick={handlePassengerClose}>
+            <h6 style={{ fontSize: "15px" }} onClick={handlePassengerClose}>
               Class {seats}
-            </p>
+            </h6>
             <div className="flex gap-4 items-center">
               <BsFillPersonPlusFill size={28} color="#CBA052" />
               <div>
@@ -255,10 +261,10 @@ export default function Passenger() {
       ) : (
         <div
           onClick={handlePassenger}
-          className="flex flex-col relative rounded-lg h-24 w-full xl:py-1.5 xl:pr-5 xl:pl-6 lg:p-2 sm:p-3 border-brand-gray border gap-5"
+          className="flex flex-col relative rounded-lg h-fit w-full gap-3 pl-3 sm:p-2"
         >
-          <p style={{ fontSize: "15px" }}>Passenger/Class</p>
-          <div className="flex gap-4 items-center">
+          <h6 className="sm:text-sm">Passenger/Class</h6>
+          <div className="flex gap-4 items-center ">
             <BsFillPersonPlusFill size={28} color="#CBA052" />
             <p>
               Passenger {adults + childs + infants}, Class {seats}
@@ -266,6 +272,6 @@ export default function Passenger() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

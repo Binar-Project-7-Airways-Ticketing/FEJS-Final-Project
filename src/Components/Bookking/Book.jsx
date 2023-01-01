@@ -3,18 +3,22 @@ import { Form, Space } from "antd";
 import { useNavigate } from "react-router-dom";
 import Passenger from "./Passenger";
 import FormToFrom from "./FormToFrom";
+import { SlPlane } from "react-icons/sl";
 import Trip from "./Trip";
 import ButtonFindFlight from "../Reusable/ButtonFindFlight";
 import Date from "./Date";
-import { MdOutlineSwapVert } from "react-icons/md";
+import { MdOutlineSwapVert, MdSwapHoriz } from "react-icons/md";
 import { MdFlightTakeoff, MdFlightLand } from "react-icons/md";
-import { AiOutlineSwap } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { loadAirports, loadCitiesFrom, loadCitiesTo } from "../Feature/Models/AirportSlice";
-import { loadFlightReturn } from "../Feature/Models/FlightSliceReturn";
-// import { loadCitiesFrom } from "../Feature/Models/AirportFromSlice";
-// import { loadCitiesTo } from "../Feature/Models/AirportToSlice";
-import { loadFlightDepart } from "../Feature/Models/FlightSliceReturn";
+import {
+  loadAirports,
+  loadCitiesFrom,
+  loadCitiesTo,
+} from "../Feature/Models/AirportSlice";
+import {
+  loadFlightReturn,
+  loadFlightDepart,
+} from "../Feature/Models/FlightSliceReturn";
 
 export default function Book() {
   const { airport } = useSelector((state) => state.airport);
@@ -25,7 +29,7 @@ export default function Book() {
   const [toCode, setToCode] = useState("");
   const [dateFrom, setDateFrom] = useState(null);
   const [dateTo, setDateTo] = useState(null);
-  const [trip, setTrip] = useState("Return");
+  const [trip, setTrip] = useState("Round trip");
   const [airportFrom, setAirportFrom] = useState("");
   const [airportTo, setAirportTo] = useState("");
   const [btn, setBtn] = useState(false);
@@ -41,7 +45,6 @@ export default function Book() {
     setToCode(e);
     setTo(values.city);
     setAirportTo(values.airport);
-    console.log(values);
   };
   const handleDateFrom = (date, dateString) => {
     setDateFrom(dateString);
@@ -51,20 +54,31 @@ export default function Book() {
   };
 
   const onFinish = (values) => {
-    let x = {
-      from: values.flightFrom,
-      to: values.flightTo,
-      datefrom: dateFrom,
-      dateto: dateTo,
-    };
+    if (trip === "Round trip") {
+      let flight = {
+        from: values.flightFrom,
+        to: values.flightTo,
+        datefrom: dateFrom,
+        dateto: dateTo,
+      };
+      dispatch(loadFlightReturn(flight));
+      dispatch(loadFlightDepart(flight));
+      // dispatch(loadCitiesFrom(airportFrom));
+      // dispatch(loadCitiesTo(airportTo));
+      navigate(`/booking/${trip}/${airportFrom}/${airportTo}`);
+    } else {
+      let flight = {
+        from: values.flightFrom,
+        to: values.flightTo,
+        datefrom: dateFrom,
+        // dateto: dateTo,
+      };
+      dispatch(loadFlightDepart(flight));
+   
+      navigate(`/booking/${trip}/${airportFrom}/${airportTo}`);
+    }
 
-  
-    dispatch(loadFlightDepart(x));
-    dispatch(loadFlightReturn(x));
-    dispatch(loadCitiesFrom(airportFrom));
-    dispatch(loadCitiesTo(airportTo));
-
-    navigate(`/booking/${trip}`);
+   
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -74,14 +88,22 @@ export default function Book() {
     setTrip(e.target.value);
   };
   useEffect(() => {
-
     dispatch(loadAirports());
   }, []);
 
   return (
     <>
-      <div className="2xl:w-3/4 sm:w-full  bg-brand-whiteLight h-fit md:rounded-r-3xl rounded-b-3xl drop-shadow-xl text-brand-yellow p-7 ">
-    
+      <div className="shadow-xl w-fit ">
+        <div className="w-full h-20 rounded-t-2xl">
+          <div className="flex items-center w-full h-full justify-start bg-brand-yellow rounded-t-3xl gap-3.5 text-brand-whiteLight px-3 text-xl py-2">
+            <SlPlane size={35} />
+            <h5 className="sm:text-base sm:font-bold">
+              Cari tiket murah...? buruan cek disini...!
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div className="2xl:w-3/4 sm:w-full sm:p-4 bg-brand-whiteLight h-fit md:rounded-r-3xl rounded-b-3xl drop-shadow-xl text-brand-yellow border-brand-yellow border ">
         <Form
           name="basic"
           labelCol={{
@@ -98,8 +120,8 @@ export default function Book() {
           autoComplete="off"
         >
           <Trip change={handleChangeTrip} value={trip} />
-          <div className="flex lg:flex-row md:flex-col w-full h-fit mb-5 gap-2 text-brand-black sm:flex-col">
-            <div className="lg:flex lg:flex-row md:gap-2 w-full h-fit md:grid md:grid-cols-2 sm:flex-col relative">
+          <div className="lg:flex lg:flex-row sm:w-full h-fit mb-5 lg:gap-0 sm:flex sm:gap-1 text-brand-black md:grid md:grid-cols-3 sm:flex-col relative  lg:border-y lg:border-brand-yellow">
+            <div className="w-full ">
               <FormToFrom
                 name="flightFrom"
                 label="From"
@@ -107,42 +129,42 @@ export default function Book() {
                 value={from}
                 iconFlight={<MdFlightTakeoff size={30} color="#CBA052" />}
               />
-              <div className="swap">
-                <AiOutlineSwap className="sm:hidden md:block" />
-                <MdOutlineSwapVert className="md:hidden" size={25}/>
-              </div>
-              <div className="w-full md:pt-0 sm:pt-2">
-
+            </div>
+            <div className="swap">
+              <MdSwapHoriz className="sm:hidden md:block xl:text-3xl text-xl" />
+              <MdOutlineSwapVert className="md:hidden" size={25} />
+            </div>
+            <div className="w-full lg:pl-4 ">
               <FormToFrom
-             
                 name="flightTo"
                 label="To"
                 handleChange={handleChangeTo}
                 value={to}
                 iconFlight={<MdFlightLand size={30} color="#CBA052" />}
               />
-              </div>
             </div>
-            <div className="lg:flex lg:flex-row gap-2 w-full h-fit md:grid md:grid-cols-2 sm:flex-col ">
-              <div className="flex flex-col  rounded-lg h-24 w-full xl:py-1.5 xl:pr-5 xl:pl-6 lg:p-2 sm:p-3 border-brand-gray border gap-3">
-                <div className="flex justify-start w-full h-fit xl:gap-2 gap-1">
-                  <div className="flex flex-col w-full gap-2">
-                    <p>Departure Date</p>
-                    <Date date="dateDeparture" handleDate={handleDateFrom} />
+
+            <div className="w-full flex gap-3 pl-2 sm:p-2  lg:border-y-transparent  lg:border-l-transparent lg:rounded-none  sm:border sm:rounded-lg sm:border-brand-yellow">
+              <div className="flex flex-col w-full gap-2">
+                <h6 className="sm:text-sm">Departure</h6>
+                <Date date="dateDeparture" handleDate={handleDateFrom} />
+              </div>
+              {trip === "Round trip" ? (
+                <>
+                  <div className="flex flex-col w-full gap-2 ">
+                    <h6 className="sm:text-sm">Return </h6>
+                    <Date date="dateReturn" handleDate={handleDateTo} />
                   </div>
-                  {trip === "Return" ? (
-                    <div className="flex flex-col w-full gap-2">
-                      <p>Return Date</p>
-                      <Date date="dateReturn" handleDate={handleDateTo} />
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-              <div className="w-full relative md:pt-0 sm:pt-2">
-                <Passenger />
-              </div>
+                  <div></div>
+                </>
+              ) : null}
+            </div>
+
+            <div className="w-full relative lg:border-transparent sm:border sm:rounded-lg sm:border-brand-yellow">
+              <Passenger />
             </div>
           </div>
+
           <div className="find md:w-1/5 sm:w-full">
             <ButtonFindFlight value={"Find Flight"} />
           </div>

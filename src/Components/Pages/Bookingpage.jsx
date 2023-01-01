@@ -4,27 +4,47 @@ import Navbar from "../Navbar";
 import CardResultBooking from "../Bookking/CardResultBooking";
 import { useEffect } from "react";
 import ButtonFindFlight from "../Reusable/ButtonFindFlight";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Empty } from "antd";
+import CardResultBookingReturn from "../Bookking/CardResultBookingRoundTrip";
+import CardResultBookingOneWay from "../Bookking/CardResultBookingOneWay";
 
 export default function Bookingpage() {
   const [haveSchedule1, setHaveSchedeule1] = useState(true);
   const [haveSchedule2, setHaveSchedeule2] = useState(true);
-  const navigate = useNavigate()
+  const { trip } = useParams();
+  const navigate = useNavigate();
   useEffect(() => {
     const flightReturn = localStorage.getItem("flightDepart");
     const flightOneway = localStorage.getItem("flightReturn");
     setHaveSchedeule1(flightReturn);
     setHaveSchedeule2(flightOneway);
-  },[haveSchedule1, haveSchedule2]);
+  }, [haveSchedule1, haveSchedule2]);
   return (
     <div>
-      {haveSchedule1 || haveSchedule2 ? (
+      {trip ? (
         <>
-          <Navbar />
-
-          <CardResultBooking />
-          <Footer />
+          {trip === "Round trip" ? (
+            <>
+              <Navbar />
+              <section className="main-result-booking">
+                <div className="container">
+                  <CardResultBookingReturn />
+                </div>
+              </section>
+              <Footer />
+            </>
+          ) : (
+            <>
+              <Navbar />
+              <section className="main-result-booking">
+                <div className="container">
+                  <CardResultBookingOneWay />
+                </div>
+              </section>
+              <Footer />
+            </>
+          )}
         </>
       ) : (
         <div className="container">
