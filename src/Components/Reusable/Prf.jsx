@@ -10,7 +10,7 @@ import { useState } from "react";
 export default function Prf(setIsLogin, props) {
   const { login } = useSelector((state) => state.authLogin);
   const navigate = useNavigate();
-  let userId = localStorage.getItem("idUser");
+  let userId = localStorage.getItem("id");
   const [imageUser, setImageUser] = useState("");
   const logOutHandler = () => {
     localStorage.removeItem("token");
