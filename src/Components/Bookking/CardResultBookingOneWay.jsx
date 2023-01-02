@@ -128,7 +128,7 @@ export default function CardResultBookingOneWay() {
     if (resultTo === null) {
       setTimeout(function () {
         window.location.reload(1);
-      }, 500);
+      }, 700);
     }
     const flightDepart = JSON.parse(localStorage.getItem("flightDepart"));
     const countPassenger = JSON.parse(localStorage.getItem("passanger"));
@@ -458,7 +458,7 @@ export default function CardResultBookingOneWay() {
                           )}
                         </div>
                       </div>
-                      <div className="w-full h-max relative overflow-hidden rounded-2xl ">
+                      <div className="w-full sm:h-max md:h-72 relative overflow-hidden rounded-2xl ">
                         <img src="https://images.unsplash.com/photo-1529990131237-cfa5ce9517b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"></img>
                       </div>
                     </div>
@@ -520,7 +520,7 @@ export default function CardResultBookingOneWay() {
                           )}
                         </div>
                       </div>
-                      <div className="w-full h-max relative overflow-hidden rounded-2xl ">
+                      <div className="w-full sm:h-max md:h-80 relative overflow-hidden rounded-2xl ">
                         <img src="https://media.istockphoto.com/id/903718466/id/foto/pria-dengan-pesawat-jet-pribadi.jpg?s=612x612&w=0&k=20&c=alq9cAHoN6wZwyHq7UlH8Gueh_2wYwrZx6TkHYN-AEw="></img>
                       </div>
                     </div>
