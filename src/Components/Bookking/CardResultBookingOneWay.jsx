@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { Modal, Empty, Pagination } from "antd";
-import logo from "../../logo.png";
+import logo from "../../image/logo.png";
 import { BsCircle } from "react-icons/bs";
 import { useNavigate, useParams } from "react-router-dom";
 import { AiOutlineDollar } from "react-icons/ai";

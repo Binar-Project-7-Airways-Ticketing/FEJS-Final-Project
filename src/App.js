@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Homepage from "./Components/Pages/Homepage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -8,7 +7,6 @@ import Bookingpage from "./Components/Pages/Bookingpage";
 import Profile from "./Components/Pages/Profile";
 import Transaction from "./Components/Transaction";
 import FlightStatusPage from "./Components/Pages/FlightStatusPage";
-import axios from "axios";
 import Review from "./Components/Pages/Review";
 import Ticket from "./Components/Ticket";
 
@@ -19,12 +17,15 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/booking/:trip/:cityFrom/:cityTo" element={<Bookingpage />} />
-        <Route path="/flight status" element={<FlightStatusPage/>} />
+        <Route
+          path="/booking/:trip/:cityFrom/:cityTo"
+          element={<Bookingpage />}
+        />
+        <Route path="/flight status" element={<FlightStatusPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/transaction" element={<Transaction />} />
-        <Route path="/review" element={<Review/>} />
-        <Route path="/ticket" element={<Ticket/>} />
+        <Route path="/review" element={<Review />} />
+        <Route path="/ticket" element={<Ticket />} />
       </Routes>
     </BrowserRouter>
   );
