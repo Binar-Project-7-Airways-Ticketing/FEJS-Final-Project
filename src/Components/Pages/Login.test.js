@@ -18,14 +18,14 @@ jest.mock("axios", () => ({
     expect(true).toBe(true);
   });
 
-//   test("sign in", () => {
-//     const { getByPlaceholderText } = render(
-//       <BrowserRouter>
-//         <Login />
-//       </BrowserRouter>
-//     );
-//     expect(
-//       getByPlaceholderText("Email")
-//     ).toBeInTheDocument();
-//   });
+  test("sign in", () => {
+    const { getByPlaceholderText } = render(
+      <BrowserRouter>
+        <Login />
+      </BrowserRouter>
+    );
+    expect(
+      getByPlaceholderText("Email")
+    ).toBeInTheDocument();
+  });
 // });
