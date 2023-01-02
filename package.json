@@ -14,7 +14,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.0.1",
-    "axios": "^1.2.0",
+    "axios": "^1.2.2",
     "bootstrap": "^5.2.3",
     "cldr-core": "^42.0.0",
     "cldr-dates-full": "^42.0.0",
@@ -44,7 +44,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "eject": "react-scripts eject",
     "build-css": "tailwindcss build All.css -o assets/css/styles.css",
     "dummy": "json-server-auth public/dummy.json --port 3004"
