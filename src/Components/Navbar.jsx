@@ -62,7 +62,7 @@ export default function Navbar() {
     <nav>
       <div className="container">
         <div className="flex items-center justify-between h-fit w-full transition gap-1 py-2 text-brand-whiteLight relative">
-          <div className="flex lg:w-48 sm:w-60 justify-start h-16 ">
+          <div className="flex lg:w-48 sm:w-64 justify-start h-16 ">
             <img
               onClick={() => navigate("/")}
               className="flex cursor-pointer "
@@ -168,9 +168,7 @@ export default function Navbar() {
                 >
                   Home
                 </li>
-                <li className="hover:bg-brand-whiteLight hover:text-brand-black w-fit py-1 px-4 rounded-md">
-                  About Us
-                </li>
+              
               </ul>
 
               <div className="flex gap-2 items-center justify-end cursor-pointer w-full">
@@ -252,18 +250,10 @@ export default function Navbar() {
                 {isLogin ? (
                   <div className="flex w-full justify-between">
                     <ul className="flex flex-col gap-1">
-                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
+                      <li onClick={() => navigate("/")} className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
                         Home
                       </li>
-                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
-                        About Us
-                      </li>
-                      <li
-                        className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md cursor-pointer"
-                        onClick={() => navigate("review")}
-                      >
-                        Review
-                      </li>
+                  
                     </ul>
                     <button
                       className="flex h-full visible opacity-100"
@@ -275,18 +265,10 @@ export default function Navbar() {
                 ) : (
                   <div className="flex w-full justify-between">
                     <ul className="flex flex-col gap-1">
-                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
+                      <li onClick={() => navigate("/")} className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
                         Home
                       </li>
-                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
-                        About Us
-                      </li>
-                      <li
-                        className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md cursor-pointer"
-                        onClick={() => navigate("review")}
-                      >
-                        Review
-                      </li>
+                  
                     </ul>
                     <button
                       className="flex h-full visible opacity-100"
@@ -310,18 +292,10 @@ export default function Navbar() {
                       <div className="px-4">
                         <Prf place="bottomRight" />
                       </div>
-                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
+                      <li onClick={() => navigate("/")} className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
                         Home
                       </li>
-                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
-                        About Us
-                      </li>
-                      <li
-                        className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md cursor-pointer"
-                        onClick={() => navigate("review")}
-                      >
-                        Review
-                      </li>
+                  
                     </ul>
                     <button
                       className="flex h-full visible opacity-100"
@@ -333,18 +307,10 @@ export default function Navbar() {
                 ) : (
                   <div className="flex w-full justify-between">
                     <ul className="flex flex-col gap-1">
-                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
+                      <li onClick={() => navigate("/")} className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
                         Home
                       </li>
-                      <li className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md">
-                        About Us
-                      </li>
-                      <li
-                        className="hover:bg-brand-black hover:text-brand-whiteLight w-fit py-1 px-4 rounded-md cursor-pointer"
-                        onClick={() => navigate("review")}
-                      >
-                        Review
-                      </li>
+                  
                     </ul>
                     <button
                       className="flex h-full visible opacity-100"
