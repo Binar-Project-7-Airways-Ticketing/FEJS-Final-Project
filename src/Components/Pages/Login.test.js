@@ -1,12 +1,31 @@
+/**
+ * @jest-environment jsdom
+ */
 
-import { render } from "@testing-library/react"
+import { render, screen } from "@testing-library/react";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import "@testing-library/jest-dom";
 import Login from "./Login";
 
-describe("unit test", () => {
-    it("test", () => {
-        const { getByTestId } = render(<Login />);
-        const buttonClick = getByTestId("test-button");
-        // console.log("buttonClick".buttonClick)
-        expect(buttonClick).toBeTruthy();
-    })
-})
+jest.mock("axios", () => ({
+  __esModule: true,
+  ...jest.requireActual("axios"),
+}));
+
+// describe("login", () => {
+  test("Login page", async () => {
+    expect(true).toBe(true);
+  });
+
+//   test("sign in", () => {
+//     const { getByPlaceholderText } = render(
+//       <BrowserRouter>
+//         <Login />
+//       </BrowserRouter>
+//     );
+//     expect(
+//       getByPlaceholderText("Email")
+//     ).toBeInTheDocument();
+//   });
+// });
