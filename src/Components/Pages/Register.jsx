@@ -272,14 +272,14 @@ export const Register = () => {
                   onChange={(event) => setRegisterGender(event.target.value)}
                   type="text"
                 >
-                  <option selected className="text-black">
-                    GENDER
-                  </option>
                   <option selected className="text-black" value="PEREMPUAN">
                     PEREMPUAN
                   </option>
                   <option selected className="text-black" value="PRIA">
                     PRIA
+                  </option>
+                  <option selected className="text-black" placeholder="Gender">
+                    GENDER
                   </option>
                 </select>
                 <span className="material-symbols-outlined">
