@@ -13,19 +13,19 @@ jest.mock("axios", () => ({
   ...jest.requireActual("axios"),
 }));
 
-// describe("login", () => {
+describe("login", () => {
   test("Login page", async () => {
     expect(true).toBe(true);
   });
 
-//   test("sign in", () => {
-//     const { getByPlaceholderText } = render(
-//       <BrowserRouter>
-//         <Login />
-//       </BrowserRouter>
-//     );
-//     expect(
-//       getByPlaceholderText("Email")
-//     ).toBeInTheDocument();
-//   });
-// });
+  test("sign in", () => {
+    const { getByPlaceholderText } = render(
+      <BrowserRouter>
+        <Login />
+      </BrowserRouter>
+    );
+    expect(
+      getByPlaceholderText("Email")
+    ).toBeInTheDocument();
+  });
+});

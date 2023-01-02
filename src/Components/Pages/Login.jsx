@@ -158,7 +158,7 @@ export const Login = () => {
                             <a href="#">
                                 Forgot your credentials?
                             </a>
-                            <button type="submit">LOGIN With GOOGLE</button>
+                            
                         </div>
                     </div>
                     <div className="login-container-right">
