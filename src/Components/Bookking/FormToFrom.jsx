@@ -13,12 +13,12 @@ export default function FormToFrom(props) {
   }, []);
 
   return (
-    <div className="flex rounded-lg h-24 w-full lg:py-1.5 lg:pr-5 lg:pl-6 sm:p-3 border-brand-gray border gap-3">
+    <div className="flex xl:gap-3 gap-2 lg:px-0 sm:h-24  lg:border-y-transparent  lg:border-l-transparent lg:rounded-none sm:rounded-lg sm:border sm:border-brand-yellow sm:p-2">
       <div className="flex flex-col gap-2">
-        <p>{props.label}</p>
+        <h6 className="w-8 sm:text-sm">{props.label}</h6>
         {props.iconFlight}
       </div>
-      <div className="flex w-4/5 pt-7">
+      <div className="flex xl:w-48 sm:pt-7 lg:w-40 sm:w-3/4">
       
         <Form.Item
           name={props.name}
@@ -31,8 +31,9 @@ export default function FormToFrom(props) {
           className="w-full"
         >
           <Select
+          dropdownStyle={{width:"100%"}}
+          placeholder="Select flight..."
             showSearch
-            // className="w-3/4"
             value={<p>{props.value}</p>}
             showArrow={false}
             filterOption={(input, option) =>

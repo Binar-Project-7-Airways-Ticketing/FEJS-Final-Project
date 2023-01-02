@@ -3,7 +3,7 @@ import { Radio, Form} from "antd";
 
 export default function Trip(props) {
   return (
-    <div className="inpt-trip">
+    <div className="sm:h-14 lg:h-14">
       <Form.Item
         name="trip"
         rules={[
@@ -13,9 +13,9 @@ export default function Trip(props) {
           },
         ]}
       >
-        <Radio.Group onChange={props.change} value={"Return"}>
-          <Radio value={"Return"}>Return</Radio>
-          <Radio value={"Oneway"}>One Way</Radio>
+        <Radio.Group onChange={props.change} value={"Return"} >
+          <Radio value={"Round trip"} ><h6 className="text-brand-black sm:text-sm">Round trip</h6></Radio>
+          <Radio value={"One way"}><h6 className="text-brand-black sm:text-sm">One way</h6></Radio>
         </Radio.Group>
       </Form.Item>
     </div>

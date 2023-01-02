@@ -10,21 +10,14 @@ const initialState = {
 export const DepartReturn = createAsyncThunk(
   "pagination/loadPagination",
   async (payload) => {
+    const pages = payload.flight[0]
     try {
-      console.log("SIZE", payload.page);
-      const code = JSON.parse(localStorage.getItem("flightReturn"));
-      const page = 1;
-      // console.log(code[0].departureCode)
       const paginationReturn = await axios.get(
-        `${authConfig.baseUrl}/api/flight/paging/${3}/${
-          payload.page
-        }?departure-code=${payload.flight.departureCode}&arrival-code=${
-          payload.flight.arrivalCode
-        }&date=${payload.flight.departureDate}`
+        `${authConfig.baseUrl}/api/flight/paging/${3}/${payload.page}?departure-code=${pages.departureCode}&arrival-code=${pages.arrivalCode}&date=${pages.departureDate}`
       );
       localStorage.setItem("page1", paginationReturn.data.totalPages);
       localStorage.setItem("number1", paginationReturn.data.number);
-      console.log(paginationReturn.data.content);
+
       return paginationReturn.data.content;
     } catch (error) {
       console.error(error);

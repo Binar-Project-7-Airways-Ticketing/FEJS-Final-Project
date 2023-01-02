@@ -3,38 +3,45 @@ import axios from "axios";
 import { authConfig } from "../Config";
 
 const initialState = {
-
-  flightReturn:[],
-  flightDepart:[],
+  flightReturn: [],
+  flightDepart: [],
   loadFlight: false,
 };
 
-export const loadFlightDepart = createAsyncThunk("flight/loadFlightDepart", async (dataFlight) => {
-
-  try {
-    const flight = await axios.get(
-      `${authConfig.baseUrl}/api/flight/${dataFlight.from}/${dataFlight.to}/date?date=${dataFlight.datefrom}`
-      // `${authConfig.baseUrl}/api/flight/paging/${1}/${2}?departure-code=${dataFlight.from}&arrival-code=${dataFlight.to}&date=${dataFlight.datefrom}`
-    );
-    localStorage.setItem("flightDepart", JSON.stringify(flight.data));
-
-    return flight
-  } catch (error) {
-    console.error(error);
+export const loadFlightDepart = createAsyncThunk(
+  "flight/loadFlightDepart",
+  async (dataFlight) => {
+    try {
+      const flight = await axios.get(
+        `${authConfig.baseUrl}/api/flight/${dataFlight.from}/${dataFlight.to}/date?date=${dataFlight.datefrom}`
+      );
+      localStorage.setItem("flightDepart", JSON.stringify(flight.data));
+      return flight.data;
+      
+    } catch (error) {
+      console.error(error);
+    }
+    setTimeout(function () {
+      window.location.reload(1);
+    }, 200);
   }
-});
+);
 
-export const loadFlightReturn = createAsyncThunk("flight/loadFlightReturn", async (dataFlight) => {
-
-  try {
-    const flight = await axios.get(
-      `${authConfig.baseUrl}/api/flight/${dataFlight.to}/${dataFlight.from}/date?date=${dataFlight.dateto}`
-    );
-    localStorage.setItem("flightReturn", JSON.stringify(flight.data));
-  } catch (error) {
-    console.error(error);
+export const loadFlightReturn = createAsyncThunk(
+  "flight/loadFlightReturn",
+  async (dataFlight) => {
+    try {
+      const flight = await axios.get(
+        `${authConfig.baseUrl}/api/flight/${dataFlight.to}/${dataFlight.from}/date?date=${dataFlight.dateto}`
+      );
+      
+      localStorage.setItem("flightReturn", JSON.stringify(flight.data));
+      return flight.data;
+    } catch (error) {
+      console.error(error);
+    }
   }
-});
+);
 
 export const postSlice = createSlice(
   {
@@ -54,23 +61,23 @@ export const postSlice = createSlice(
       },
     },
   },
-    {
-      name: "flightReturn",
-      initialState,
-      reducers: {},
-      extraReducers: {
-        [loadFlightReturn.pending]: (state) => {
-          state.loading = true;
-        },
-        [loadFlightReturn.fulfilled]: (state, { payload }) => {
-          state.loading = false;
-          state.flightReturn = payload;
-        },
-        [loadFlightReturn.rejected]: (state) => {
-          state.loading = false;
-        },
+  {
+    name: "flightReturn",
+    initialState,
+    reducers: {},
+    extraReducers: {
+      [loadFlightReturn.pending]: (state) => {
+        state.loading = true;
+      },
+      [loadFlightReturn.fulfilled]: (state, { payload }) => {
+        state.loading = false;
+        state.flightReturn = payload;
+      },
+      [loadFlightReturn.rejected]: (state) => {
+        state.loading = false;
       },
     },
-  );
-  
-  export default postSlice.reducer;
+  }
+);
+
+export default postSlice.reducer;

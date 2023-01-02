@@ -30,15 +30,16 @@ export default function ComponentFormTransaction(props) {
           <span>
             <ContactsOutlined />
           </span>
-          <h3>{token ? "Pemesan" : props.penumpang}</h3>
+          <h3>{props.penumpang}</h3>
         </div>
 
         <div className="left-content">
           <div className="sm:block md:flex w-full gap-1 mb-2 ">
             <Select
-              className="border-brand-gray border-2 rounded-md w-full sm:mb-2 md:mb-0"
+              className="border-brand-gray border rounded-md w-full sm:mb-2 md:mb-0"
               type="text"
               defaultValue="MR"
+              placeholder={<p className="text-brand-gray">Select title</p>}
               onChange={props.handleChangeUserTitle}
               options={[
                 {
@@ -65,9 +66,9 @@ export default function ComponentFormTransaction(props) {
             ></Select>
 
             <Select
-              className="border-brand-gray border-2 rounded-md w-full h-full sm:mb-2 md:mb-0"
+              className="border-brand-gray border rounded-md w-full h-full sm:mb-2 md:mb-0"
               type="text"
-              placeholder="Category"
+              placeholder={<p className="text-brand-gray">Kategori</p>}
               onChange={props.handleChangeCategory}
               options={category.map((item, key) => ({
                 value: item.idCategory,
@@ -78,8 +79,8 @@ export default function ComponentFormTransaction(props) {
 
             <Select
               onChange={props.handleChangeGender}
-              className="border-brand-gray border-2 rounded-md w-full h-full sm:mb-2 md:mb-0"
-              placeholder="gender"
+              className="border-brand-gray border rounded-md w-full h-full sm:mb-2 md:mb-0"
+              placeholder={<p className="text-brand-gray">Gender</p>}
               type="text"
               options={[
                 {
@@ -130,16 +131,16 @@ export default function ComponentFormTransaction(props) {
           <div className="sm:block md:flex w-full gap-1 mb-2 ">
             <Select
               onChange={props.handleChangeNationality}
-              className="sm:mb-2 md:mb-0 border-brand-gray border-2 rounded-md w-full placeholder:text-black"
+              className="sm:mb-2 md:mb-0 border-brand-gray border rounded-md w-full placeholder:text-black"
               options={props.options}
               value1={props.value}
-              placeholder="Nationality"
+              placeholder={<p className="text-brand-gray">Nationality</p>}
             />
 
             <Select
               onChange={props.handleChangeSpecialRequest}
-              className="border-brand-gray border-2 rounded-md w-full h-full"
-              placeholder="request"
+              className="border-brand-gray border rounded-md w-full h-full"
+              placeholder={<p className="text-brand-gray">Request</p>}
               type="text"
               options={[
                 {
@@ -155,7 +156,7 @@ export default function ComponentFormTransaction(props) {
           </div>
 
           <div className="sm:block sm:w-full md:flex mb-2 md:w-1/2">
-            <div className="textbox !mb-0 h-full border-brand-gray border-2 rounded-md">
+            <div className="textbox !mb-0 h-full border-brand-gray border rounded-md">
               <Input
                
                 onChange={props.handleChangeContactNumber}

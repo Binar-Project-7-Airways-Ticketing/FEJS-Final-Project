@@ -1,10 +1,11 @@
 import React from "react";
-import Booking from "../Bookking/Booking";
+
 import { Card } from "antd";
 import Destination from "../Home/DestinationCard";
 import ComingServices from "../Home/ComingServicesCard";
 import ReviewCard from "../Home/ReviewCard";
 import Benefit from "../Home/Benefit";
+import Book from "../Bookking/Book";
 const { Meta } = Card;
 
 export default function MainHome() {
@@ -13,7 +14,7 @@ export default function MainHome() {
       <section className="w-full ">
         <div className="container">
           <div className="py-12">
-            <Booking />
+            <Book />
           </div>
         </div>
       </section>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { Modal, Empty, Pagination } from "antd";
-import logo from "../../image/logo.png";
-import { BsCircle } from "react-icons/bs";
+import logo from "../../logo.png";
+import { BsCircle, BsWindowSidebar } from "react-icons/bs";
 import { useNavigate, useParams } from "react-router-dom";
 import { AiOutlineDollar } from "react-icons/ai";
 import { MdFastfood } from "react-icons/md";
@@ -12,26 +12,36 @@ import { VscVm } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadPrice } from "../Feature/Models/GetPrice";
-import dateFormat from "dateformat";
+import dateFormat, { masks } from "dateformat";
 import { loadSeatsIdPlaneCount } from "../Feature/Models/Seat";
 import { Depart } from "../Feature/Models/PaginationSlice";
+import { DepartReturn } from "../Feature/Models/PaginationReturnSlice";
+import PageAscend from "./PageAscend";
 import { loadCitiesFrom, loadCitiesTo } from "../Feature/Models/AirportSlice";
 
-export default function CardResultBookingOneWay() {
-  const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
+export default function CardResultDepart() {
   const { pagination } = useSelector((state) => state.pagination);
+  const { paginationReturn } = useSelector((state) => state.paginationReturn);
+  const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
   const { Price } = useSelector((state) => state.getPrice);
 
   const { cityTo } = useParams();
   const { cityFrom } = useParams();
 
   const [passanger, setPassenger] = useState("");
+  const [priceEconomyReturn, setPriceEconomyReturn] = useState(0);
+  const [priceBusinessReturn, setPriceBusinessReturn] = useState(0);
+  const [priceEconomy, setPriceEconomy] = useState(0);
+  const [priceBusiness, setPriceBusiness] = useState(0);
+  const [total, setTotal] = useState(0);
   const [economy, setEconomy] = useState(false);
   const [business, setBusiness] = useState(false);
   const [detail, setDetail] = useState(false);
   const [modal, setModal] = useState(false);
-  const [departDate, setDepartDate] = useState();
-  const [priceTotal, setPricTotal] = useState(false);
+  const [showReturn, setShowReturn] = useState(false);
+  const [departDate, setDepartDate] = useState(undefined);
+  const [returnDate, setReturnDate] = useState(undefined);
+  const [priceTotal, setPriceTotal] = useState(false);
   const [resultTo, setResultTo] = useState(() => {
     const city = JSON.parse(localStorage.getItem("cityTo"));
     return city;
@@ -40,49 +50,104 @@ export default function CardResultBookingOneWay() {
     const city = JSON.parse(localStorage.getItem("cityFrom"));
     return city;
   });
-  const [resultFlightDepart, setResultFlightDepart] = useState("");
+  const [resultFlightReturn, setResultFlightReturn] = useState([]);
+  const [resultFlightDepart, setResultFlightDepart] = useState([]);
+  const [pages, setTotalPages] = useState(0);
+  const [number, setNumber] = useState(0);
+  const [showDepart, setShowDepart] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleDepartOneWay = (e) => {
+  const handleDepart = (e) => {
     localStorage.setItem("depart", JSON.stringify(e));
+    alert("Silahkan pilih penerbangan kepulangan anda");
     setBusiness(false);
     setEconomy(false);
+    setShowReturn(true);
+    localStorage.removeItem("class");
+  };
+
+  const handleReturn = (e) => {
+    localStorage.setItem("return", JSON.stringify(e));
+    setBusiness(false);
+    setEconomy(false);
+    setShowReturn(true);
     navigate("/transaction");
   };
-  const detailClassEconomyOneWay = (e) => {
+  const detailClassEconomy = (e) => {
     let idFlight = e.idFlight;
     let idPlane = e.plane.idPlane;
-    let Class = {
+    let classDepart = {
       class: "ECONOMY",
     };
 
-    if (resultFlightDepart.filter((item) => item.idFlight === idFlight)) {
+    if (resultFlightReturn.filter((item) => item.idFlight === idFlight)) {
       setDetail(true);
       setEconomy(idFlight);
     }
 
-    localStorage.setItem("class", JSON.stringify(Class));
-    setPricTotal(true);
+    localStorage.setItem("classDepart", JSON.stringify(classDepart));
+    setPriceTotal(true);
+    setPriceEconomy(Price.economy);
     dispatch(loadSeatsIdPlaneCount(idPlane));
-
     dispatch(loadPrice(idFlight));
+    setTotal(Price.economy);
   };
-  const detailClassBusinessOneWay = (e) => {
+
+  const detailClassBusiness = (e) => {
     let idFlight = e.idFlight;
     let idPlane = e.plane.idPlane;
-    let Class = {
+    let classDepart = {
       class: "BUSINESS",
     };
-    if (resultFlightDepart.filter((item) => item.idFlight === idFlight)) {
+    if (resultFlightReturn.filter((item) => item.idFlight === e)) {
       setDetail(true);
       setBusiness(idFlight);
     }
-    localStorage.setItem("class", JSON.stringify(Class));
+    localStorage.setItem("classDepart", JSON.stringify(classDepart));
     dispatch(loadSeatsIdPlaneCount(idPlane));
-    setPricTotal(true);
+    setPriceBusiness(Price.business);
     dispatch(loadPrice(idFlight));
+    setPriceTotal(true);
+    setTotal(Price.business);
   };
+  const detailClassEconomyReturn = (e) => {
+    let idFlight = e.idFlight;
+    let idPlane = e.plane.idPlane;
+    let classReturn = {
+      class: "ECONOMY",
+    };
+
+    if (resultFlightReturn.filter((item) => item.idFlight === idFlight)) {
+      setDetail(true);
+      setEconomy(idFlight);
+    }
+    setPriceTotal(true);
+    dispatch(loadSeatsIdPlaneCount(idPlane));
+    dispatch(loadPrice(idFlight));
+    setPriceEconomyReturn(Price.economy);
+    localStorage.setItem("classReturn", JSON.stringify(classReturn));
+  };
+  const detailClassBusinessReturn = (e) => {
+    let idFlight = e.idFlight;
+    let idPlane = e.plane.idPlane;
+    let classReturn = {
+      class: "BUSINESS",
+    };
+
+    if (resultFlightReturn.filter((item) => item.idFlight === idFlight)) {
+      setDetail(true);
+      setBusiness(idFlight);
+    }
+    setPriceTotal(true);
+    console.log(Price.business);
+    dispatch(loadSeatsIdPlaneCount(idPlane));
+    dispatch(loadPrice(idFlight));
+    setPriceBusinessReturn(Price.business);
+    localStorage.setItem("classReturn", JSON.stringify(classReturn));
+  };
+
   const detailClassClose = (e) => {
     if (e === 2) {
       setEconomy(false);
@@ -93,16 +158,24 @@ export default function CardResultBookingOneWay() {
       setDetail(false);
       setBusiness(false);
     }
-    setPricTotal(false);
+    setPriceTotal(false);
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalReturnOpen, setIsModalReturnOpen] = useState(false);
 
-  const showModalOneWay = (e) => {
+  const showModal = (e) => {
     if (resultFlightDepart.filter((item) => item.idFlight === e)) {
       setIsModalOpen(true);
       setModal(e);
     }
+  };
+  const showModalReturn = (e) => {
+    console.log(e);
+    // if (resultFlightReturn.filter((item) => item.idFlight === e)) {
+    //   setIsModalReturnOpen(true);
+    //   setModal(e);
+    // }
   };
 
   const handleOk = () => {
@@ -121,11 +194,16 @@ export default function CardResultBookingOneWay() {
     dispatch(Depart(halaman));
   };
 
-  const [pages, setTotalPages] = useState(0);
-  const [number, setNumber] = useState(0);
-  const [showDepart, setShowDepart] = useState(false);
+  const pagingReturn = (pages1, pageSize1) => {
+    const halamanReturn = {
+      page: pages1,
+      flight: returnDate,
+    };
+    dispatch(DepartReturn(halamanReturn));
+  };
+
   useEffect(() => {
-    if (resultTo === null) {
+    if (resultTo == null) {
       setTimeout(function () {
         window.location.reload(1);
       }, 500);
@@ -144,7 +222,6 @@ export default function CardResultBookingOneWay() {
     setPassenger(
       countPassenger.adults + countPassenger.child + countPassenger.infant
     );
-    
     setShowDepart(true);
     dispatch(loadCitiesFrom(cityFrom));
     dispatch(loadCitiesTo(cityTo));
@@ -157,46 +234,59 @@ export default function CardResultBookingOneWay() {
         <div className="pt-5">
           <div className="text-brand-black 2xl:w-3/5 xl:w-3/4 mb-5">
             <h6>
-              {dateFormat(new Date(departDate[0].departureDate), "mmmm dS, yyyy")}
+              {dateFormat(
+                new Date(departDate[0].departureDate),
+                "mmmm dS, yyyy"
+              )}
             </h6>
-
             <h2 className="mb-5 mt-5 sm:text-lg lg:text-5xl">
               Pilih penerbangan keberangkatan kamu dari{" "}
               <b className="text-brand-yellow">{resultFrom.city}</b> ke{" "}
               <b className="text-brand-yellow">{resultTo.city}</b>
             </h2>
-          </div>
-          <div className="flex sm:flex-col lg:flex-row lg:justify-between w-full pb-2">
-            <h6 className="py-2">
-              {resultFlightDepart.length} hasil pencarian penerbangan untuk kamu{" "}
-            </h6>
-            <div className="block justify-center bg-brand-yellow p-2 rounded-lg text-brand-whiteLight sm:w-full lg:w-1/2 ">
-              {priceTotal ? (
-                <>
-                  {pagination.map((item, i) => (
-                    <>
-                      {economy === item.idFlight ? (
-                        <>
-                          <h6>Total harga Rp. {Price.economy}</h6>
-                          <p>Harga untuk setiap wisatawan sekali jalan</p>
-                        </>
-                      ) : null}
-                      {business === item.idFlight ? (
-                        <>
-                          <h6>Total harga Rp. {Price.business}</h6>
-                          <p>Harga untuk setiap wisatawan sekali jalan</p>
-                        </>
-                      ) : null}
-                    </>
-                  ))}
-                </>
-              ) : (
-                <>
-                  <h6>Total harga Rp.</h6>
+            <div className="flex sm:flex-col lg:flex-row lg:justify-between w-full pb-2">
+              <h6 className="py-2">
+                {resultFlightDepart.length} hasil pencarian penerbangan untuk
+                kamu{" "}
+              </h6>
+              <div className="block justify-center bg-brand-yellow p-2 rounded-lg text-brand-whiteLight sm:w-full lg:w-1/2 ">
+                {/* {showReturn ? null : (
+                  <> */}
+                {priceTotal ? (
+                  <>
+                    {pagination.map((item, i) => (
+                      <>
+                        {economy === item.idFlight ? (
+                          <>
+                            <h6>
+                              Total harga Rp.
+                              {priceEconomy}
+                            </h6>
+                            <p>Harga untuk setiap wisatawan sekali jalan</p>
+                          </>
+                        ) : null}
+                        {business === item.idFlight ? (
+                          <>
+                            <h6>
+                              Total harga Rp.
+                              {priceBusiness}
+                            </h6>
+                            <p>Harga untuk setiap wisatawan sekali jalan</p>
+                          </>
+                        ) : null}
+                      </>
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    <h6>Total harga Rp.</h6>
 
-                  <p>Harga untuk setiap wisatawan sekali jalan</p>
-                </>
-              )}
+                    <p>Harga untuk setiap wisatawan sekali jalan</p>
+                  </>
+                )}
+                {/* </>
+                )} */}
+              </div>
             </div>
           </div>
           <div className="flex flex-col gap-5">
@@ -228,7 +318,7 @@ export default function CardResultBookingOneWay() {
                         ) : (
                           <div
                             className="flex flex-col bg-brand-whiteLight cursor-pointer sm:gap-7 text-brand-black rounded-lg w-full md:p-5 sm:p-2 md:h-44 sm:h-fit"
-                            onClick={() => detailClassEconomyOneWay(item)}
+                            onClick={() => detailClassEconomy(item)}
                           >
                             {item.plane.planeClass
                               .filter((item) => item.planeClass === "ECONOMY")
@@ -279,7 +369,7 @@ export default function CardResultBookingOneWay() {
                         ) : (
                           <div
                             className="flex flex-col bg-brand-whiteLight cursor-pointer sm:gap-7 text-brand-black rounded-lg w-full md:p-5 sm:p-2 md:h-44 sm:h-fit"
-                            onClick={() => detailClassBusinessOneWay(item)}
+                            onClick={() => detailClassBusiness(item)}
                           >
                             {item.plane.planeClass
                               .filter((item) => item.idPlaneClass === 2)
@@ -307,10 +397,10 @@ export default function CardResultBookingOneWay() {
                     </div>
                     <div className="flex flex-col p-5 bg-brand-whiteLight items-end rounded-lg w-full h-44 text-brand-black">
                       <button
-                        onClick={() => showModalOneWay(item.idFlight)}
+                        onClick={() => showModal(item.idFlight)}
                         className="btn-detail-flight"
                       >
-                        Detail Penerbangan
+                        Flight Detail
                       </button>
                       <div className="times">
                         <div className="flex flex-col items-center justify-center w-3/5">
@@ -329,7 +419,7 @@ export default function CardResultBookingOneWay() {
                         </div>
                       </div>
                       {modal === item.idFlight
-                        ? pagination
+                        ? resultFlightDepart
                             .filter((item) => item.idFlight === modal)
                             .map((item) => (
                               <Modal
@@ -412,7 +502,7 @@ export default function CardResultBookingOneWay() {
                   {economy === item.idFlight ? (
                     <div className="detail-economy-class md:flex md:flex-row w-full gap-5 sm:grid sm:grid-rows-2">
                       <div className="benefit sm:w-full">
-                        <h2 className="leading-none">Economy Class Flight</h2>
+                        <h2>Economy Class Flight</h2>
                         <div className="bg-brand-yellow w-fit p-2 rounded-lg">
                           <p>
                             {
@@ -443,7 +533,7 @@ export default function CardResultBookingOneWay() {
                             <p>Cheapest Price To Your Destination</p>
                           </div>
                         </div>
-                        <div className="bg-brand-yellow rounded-md lg:w-2/5 w-1/3 sm:w-full  text-center cursor-pointer py-1.5 px-2.5 ">
+                        <div className="bg-brand-yellow rounded-md lg:w-1/4 w-1/3 sm:w-full  text-center cursor-pointer py-1.5 px-2.5 ">
                           {SeatsPlaneCount.filter(
                             (item) => item.planeDetails.planeClass === "ECONOMY"
                           ).length === 0 &&
@@ -452,21 +542,21 @@ export default function CardResultBookingOneWay() {
                           ).length <= passanger ? (
                             <p>Seats Not Available</p>
                           ) : (
-                            <p onClick={() => handleDepartOneWay(item)}>
+                            <p onClick={() => handleDepart(item)}>
                               Select Class
                             </p>
                           )}
                         </div>
                       </div>
-                      <div className="w-full h-max relative overflow-hidden rounded-2xl ">
-                        <img src="https://images.unsplash.com/photo-1529990131237-cfa5ce9517b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"></img>
+                      <div className="img-benefit">
+                        <img src="https://images.unsplash.com/photo-1540339832862-474599807836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"></img>
                       </div>
                     </div>
                   ) : null}
                   {business === item.idFlight ? (
                     <div className="detail-economy-class md:flex md:flex-row w-full gap-5 sm:grid sm:grid-rows-2">
                       <div className="benefit  sm:w-full">
-                        <h2 className="leading-none">Business Class Flight</h2>
+                        <h2>Business Class Flight</h2>
                         <div className="bg-brand-yellow w-fit p-2 rounded-lg">
                           <p>
                             {
@@ -477,7 +567,7 @@ export default function CardResultBookingOneWay() {
                                   item.planeDetails.planeClass === "BUSINESS"
                               ).length
                             }{" "}
-                            kursi tersedia
+                            Kursi tersisa
                           </p>
                         </div>
                         <p>The benefits you get in economy class</p>
@@ -503,7 +593,7 @@ export default function CardResultBookingOneWay() {
                             <p>Get Anything Food You Want</p>
                           </div>
                         </div>
-                        <div className="bg-brand-yellow rounded-md lg:w-2/5 w-1/3 sm:w-full  text-center cursor-pointer py-1.5 px-2.5 ">
+                        <div className="bg-brand-yellow rounded-md lg:w-1/4 w-1/3 sm:w-full  text-center cursor-pointer py-1.5 px-2.5 ">
                           {SeatsPlaneCount.filter(
                             (item) =>
                               item.planeDetails.planeClass === "BUSINESS"
@@ -514,13 +604,13 @@ export default function CardResultBookingOneWay() {
                           ).length <= passanger ? (
                             <p>Seats Not Available</p>
                           ) : (
-                            <p onClick={() => handleDepartOneWay(item)}>
+                            <p onClick={() => handleDepart(item)}>
                               Select Class
                             </p>
                           )}
                         </div>
                       </div>
-                      <div className="w-full h-max relative overflow-hidden rounded-2xl ">
+                      <div className="img-benefit ">
                         <img src="https://media.istockphoto.com/id/903718466/id/foto/pria-dengan-pesawat-jet-pribadi.jpg?s=612x612&w=0&k=20&c=alq9cAHoN6wZwyHq7UlH8Gueh_2wYwrZx6TkHYN-AEw="></img>
                       </div>
                     </div>
@@ -533,27 +623,7 @@ export default function CardResultBookingOneWay() {
             <Pagination onChange={paging} current={number} total={pages * 10} />
           </div>
         </div>
-      ) : (
-        <div className="pt-14 h-fit">
-          <div className="card-result-booking">
-            <div className="wrap-card-result-booking">
-              <Empty />
-            </div>
-            <div className="wrap-card-result-booking">
-              <Empty />
-            </div>
-            <div className="wrap-card-result-booking">
-              <Empty />
-            </div>
-            <div className="wrap-card-result-booking">
-              <Empty />
-            </div>
-            <div className="wrap-card-result-booking">
-              <Empty />
-            </div>
-          </div>
-        </div>
-      )}
+      ) : null}
     </>
   );
 }

@@ -49,7 +49,9 @@ export const loadCitiesFrom = createAsyncThunk(
     } catch (error) {
       console.error(error);
     }
+ 
   }
+  
 );
 export const loadCity = createAsyncThunk(
   "airports/loadCityFrom",
@@ -64,6 +66,9 @@ export const loadCity = createAsyncThunk(
     } catch (error) {
       console.error(error);
     }
+    setTimeout(function () {
+      window.location.reload(1);
+    }, 200);
   }
 );
 

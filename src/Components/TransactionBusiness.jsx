@@ -14,15 +14,11 @@ import { loadUser } from "./Feature/Models/GetUser";
 import ComponentFormTransaction from "./ComponentFormTransaction";
 import { loadPrice } from "./Feature/Models/GetPrice";
 import Luggages from "./Luggages";
-import { loadCategory } from "./Feature/Models/GetCategory";
 import ModalMethodPayment from "./ModalMethodPayment";
 import DetailPayment from "./DetailPayment";
 import { updateSeats } from "./Feature/Models/Seat";
 import { FaTrashAlt } from "react-icons/fa";
-import {
-  createBooking,
-  createBookingDepart,
-} from "./Feature/Models/CreateBooking";
+import { createBookingDepart } from "./Feature/Models/CreateBooking";
 import ModalSeatBussines from "./Bookking/ModalSeatBussines";
 import TransactionBusinessReturn from "./TransactionBusinessReturn";
 import TransactionEconomyReturn from "./TransactionEconomyReturn";
@@ -31,10 +27,10 @@ const Completionist = () => <span>You are good to go!</span>;
 
 const renderer = ({ hours, minutes, seconds, completed }) => {
   if (completed) {
-    // Render a completed state
+
     return <Completionist />;
   } else {
-    // Render a countdown
+
     return (
       <>
         <span className="flex justify-center items-center h-8 w-8 text-brand-nude bg-brand-yellow">
@@ -56,7 +52,6 @@ export default function TransactionBusiness() {
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
   const { category } = useSelector((state) => state.category);
   const { users } = useSelector((state) => state.getUser);
-  // console.log(users);
   const { Price } = useSelector((state) => state.getPrice);
 
   const navigate = useNavigate();
