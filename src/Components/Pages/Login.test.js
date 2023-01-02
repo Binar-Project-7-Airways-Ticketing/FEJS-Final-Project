@@ -13,7 +13,7 @@ jest.mock("axios", () => ({
   ...jest.requireActual("axios"),
 }));
 
-describe("login", () => {
+// describe("login", () => {
   test("Login page", async () => {
     expect(true).toBe(true);
   });
@@ -28,4 +28,4 @@ describe("login", () => {
       getByPlaceholderText("Email")
     ).toBeInTheDocument();
   });
-});
+// });
