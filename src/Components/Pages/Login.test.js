@@ -1,34 +1,14 @@
-// import { render } from "@testing-library/react";
-// import Login from "./Pages/Login.test.js";
-
-// test("username input should be render", ()=>{
-//     // render(<Login/>);
-//     const userInputEl = screen.getByPlaceholderText(/Email/i);
-//     expect(userInputEl).toBeInTheDocument()
+// test('there is no I in team', () => {
+//     expect('team').not.toMatch(/I/);
 // })
+import { render } from "@testing-library/react"
+import Login from "./Login";
 
-// const { Login } = require("./Login");
-
-// describe("Login", () => {
-//     const context = {
-//         getUser: () => null,
-//         createUser: () => null,
-//     };
-
-//     it("should throw an error if the user is missing an email", () => {
-//         expect(
-//             Login(context, {
-//                 password: "Password123"
-//             })
-//         ).rejects.toThrow("")
-//     })
-// })
-
-test('there is no I in team', () => {
-    expect('team').not.toMatch(/I/);
+describe("unit test", () => {
+    it("test", () => {
+        const { getByTestId } = render(<Login />);
+        const buttonClick = getByTestId("test-button");
+        // console.log("buttonClick".buttonClick)
+        expect(buttonClick).toBeTruthy();
+    })
 })
-
-test('but there is a "stop" in lusiph@gmail.com', () => {
-    expect('team').toMatch(/stop/);
-});
-

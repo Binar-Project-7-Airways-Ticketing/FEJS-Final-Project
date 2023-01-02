@@ -13,8 +13,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getRegister } from "../Feature/Models/AuthRegister";
 import { unwrapResult } from "@reduxjs/toolkit";
-import axios from "axios";
-import { DatePicker, Space } from "antd";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import "dayjs/locale/zh-cn";
@@ -27,10 +25,6 @@ export const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const{authRegister} = useSelector((state)=>state.authRegister)
-  // console.log(authRegister.data.id);
-  // const [id, setId] = useState({data:{
-  //   id:""
-  // }})
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [passwordErrors, setIsPasswordErrors] = useState([]);
@@ -150,15 +144,6 @@ export const Register = () => {
     }
   };
 
-  // const coba=()=>{
-  //   let createNotifs = {
-  //     user:results.id,
-  //     title:"LOGIN",
-  //     message: "Login Berhasil, silahkan pesan penerbangan yang sesuai dengan keinginan anda",
-  //     category:"PRIA"
-  //   }
-  // }
-
   // ketika user login tidak bisa ke halaman login lagi
   useEffect(() => {
     if (localStorage.getItem("auth")) {
@@ -232,12 +217,6 @@ export const Register = () => {
                 )}
               </div>
               <div className="block w-full">
-                {/* <div className="textbox">
-                                    <input onChange={(event) => { setRegisterPassword(event.target.value) }} type="password" placeholder="Password" />
-                                    <span className="material-symbols-outlined">
-                                        <LockOutlined style={{ color: '#F2EFEA' }} />
-                                    </span>
-                                </div> */}
                 <div className="textbox">
                   <span className="material-symbols-outlined">
                     <LockOutlined style={{ color: "#F2EFEA" }} />
@@ -284,32 +263,18 @@ export const Register = () => {
                   type="text"
                   placeholder="MM/DD/YY"
                 />
-                {/* <Space direction="vertical" size={20}>
-                                    <DatePicker
-                                        format={dateFormatList}
-                                    />
-                                </Space> */}
-                {/* </input> */}
                 <span className="material-symbols-outlined">
                   <CalendarOutlined style={{ color: "#F2EFEA" }} />
                 </span>
-                {/* <input > */}
-                {/* <input onChange={(event) => { setRegisterBirth(event.target.value) }}> */}
-                {/* <Space onChange={(event) => { setRegisterBirth(event.target.value) }} direction="vertical" size={20}>
-                                    <DatePicker
-                                        format={dateFormatList}
-                                    />
-                                </Space> */}
-                {/* </input> */}
               </div>
               <div className="textbox-select">
                 <select
                   onChange={(event) => setRegisterGender(event.target.value)}
                   type="text"
                 >
-                  {/* <option selected className="text-black">
-                    Gender
-                  </option> */}
+                  <option selected className="text-black">
+                    GENDER
+                  </option>
                   <option selected className="text-black" value="PEREMPUAN">
                     PEREMPUAN
                   </option>

@@ -44,7 +44,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "build-css": "tailwindcss build All.css -o assets/css/styles.css",
     "dummy": "json-server-auth public/dummy.json --port 3004"
