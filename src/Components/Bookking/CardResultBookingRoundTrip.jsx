@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { Modal, Empty, Pagination } from "antd";
 import logo from "../../logo.png";
-import { BsCircle, BsWindowSidebar } from "react-icons/bs";
+import { BsCircle } from "react-icons/bs";
 import { useNavigate, useParams } from "react-router-dom";
 import { AiOutlineDollar } from "react-icons/ai";
 import { MdFastfood } from "react-icons/md";
@@ -12,13 +12,12 @@ import { VscVm } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadPrice } from "../Feature/Models/GetPrice";
-import dateFormat, { masks } from "dateformat";
+import dateFormat from "dateformat";
 import { loadSeatsIdPlaneCount } from "../Feature/Models/Seat";
 import { Depart } from "../Feature/Models/PaginationSlice";
 import { DepartReturn } from "../Feature/Models/PaginationReturnSlice";
-import PageAscend from "./PageAscend";
+
 import { loadCitiesFrom, loadCitiesTo } from "../Feature/Models/AirportSlice";
-import CardResultDepart from "./CardResultDepart";
 
 export default function CardResultBookingRoundTrip() {
   const { pagination } = useSelector((state) => state.pagination);
@@ -39,6 +38,7 @@ export default function CardResultBookingRoundTrip() {
   const [business, setBusiness] = useState(false);
   const [detail, setDetail] = useState(false);
   const [modal, setModal] = useState(false);
+  const [modalReturn, setModalReturn] = useState(false);
   const [showReturn, setShowReturn] = useState(false);
   const [departDate, setDepartDate] = useState(undefined);
   const [returnDate, setReturnDate] = useState(undefined);
@@ -54,8 +54,6 @@ export default function CardResultBookingRoundTrip() {
   const [resultFlightReturn, setResultFlightReturn] = useState([]);
   const [resultFlightDepart, setResultFlightDepart] = useState([]);
   const [showDepart, setShowDepart] = useState(false);
-
-  const [page1, setIsPage1] = useState([]);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -165,21 +163,14 @@ export default function CardResultBookingRoundTrip() {
   const [isModalReturnOpen, setIsModalReturnOpen] = useState(false);
 
   const showModal = (e) => {
-    if (resultFlightDepart.filter((item) => item.idFlight === e)) {
-      setIsModalOpen(true);
-      setModal(e);
-    }
+    setIsModalOpen(true);
+    setModal(e);
   };
   const showModalReturn = (e) => {
-    // console.log(e);
     if (resultFlightReturn.filter((item) => item.idFlight === e)) {
       setIsModalReturnOpen(true);
-      setModal(e);
+      setModalReturn(e);
     }
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
   };
 
   const handleCancel = () => {
@@ -210,17 +201,15 @@ export default function CardResultBookingRoundTrip() {
   const [pages1, setTotalPages1] = useState(0);
   const [number1, setNumber1] = useState(0);
   useEffect(() => {
-    if (resultTo == null) {
+    const flightReturn = JSON.parse(localStorage.getItem("flightReturn"));
+    const flightDepart = JSON.parse(localStorage.getItem("flightDepart"));
+    if (flightDepart === null) {
       setTimeout(function () {
         window.location.reload(1);
       }, 500);
     }
-    const flightDepart = JSON.parse(localStorage.getItem("flightDepart"));
+
     const countPassenger = JSON.parse(localStorage.getItem("passanger"));
-    const pages = {
-      page: 1,
-      flight: flightDepart,
-    };
 
     setResultFlightDepart(JSON.parse(localStorage.getItem("flightDepart")));
     setDepartDate(JSON.parse(localStorage.getItem("flightDepart")));
@@ -232,9 +221,13 @@ export default function CardResultBookingRoundTrip() {
     setShowDepart(true);
     dispatch(loadCitiesFrom(cityFrom));
     dispatch(loadCitiesTo(cityTo));
+
+    const pages = {
+      page: 1,
+      flight: flightDepart,
+    };
     dispatch(Depart(pages));
 
-    const flightReturn = JSON.parse(localStorage.getItem("flightReturn"));
     setReturnDate(flightReturn);
     setResultFlightReturn(flightReturn);
     const pages1 = {
@@ -460,6 +453,7 @@ export default function CardResultBookingRoundTrip() {
                               </div>
                               <div className="time-logo">
                                 <img
+                                  alt=""
                                   className="xl:w-36 xl:h-36 lg:w-28 lg:h-28 sm:w-16 smh-20"
                                   src={logo}
                                 ></img>
@@ -469,14 +463,16 @@ export default function CardResultBookingRoundTrip() {
                                 <h6>{resultFrom.city}</h6>
                               </div>
                             </div>
-                            {modal === item.idFlight
+                            {modalReturn === item.idFlight
                               ? resultFlightReturn
-                                  .filter((item) => item.idFlight === modal)
+                                  .filter(
+                                    (item) => item.idFlight === modalReturn
+                                  )
                                   .map((item) => (
                                     <Modal
                                       title="Detail Penerbangan"
                                       open={isModalReturnOpen}
-                                      onOk={handleOk}
+                                      // onOk={handleOk}
                                       onCancel={handleCancelReturn}
                                       footer={[null]}
                                     >
@@ -521,6 +517,7 @@ export default function CardResultBookingRoundTrip() {
                                             </div>
                                             <div className="wrap-logo">
                                               <img
+                                                alt=""
                                                 src={logo}
                                                 style={{
                                                   width: "90px",
@@ -604,7 +601,10 @@ export default function CardResultBookingRoundTrip() {
                               </div>
                             </div>
                             <div className="img-benefit">
-                              <img src="https://images.unsplash.com/photo-1540339832862-474599807836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"></img>
+                              <img
+                                alt=""
+                                src="https://images.unsplash.com/photo-1540339832862-474599807836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                              ></img>
                             </div>
                           </div>
                         ) : null}
@@ -670,7 +670,10 @@ export default function CardResultBookingRoundTrip() {
                               </div>
                             </div>
                             <div className="img-benefit">
-                              <img src="https://media.istockphoto.com/id/903718466/id/foto/pria-dengan-pesawat-jet-pribadi.jpg?s=612x612&w=0&k=20&c=alq9cAHoN6wZwyHq7UlH8Gueh_2wYwrZx6TkHYN-AEw="></img>
+                              <img
+                                alt=""
+                                src="https://media.istockphoto.com/id/903718466/id/foto/pria-dengan-pesawat-jet-pribadi.jpg?s=612x612&w=0&k=20&c=alq9cAHoN6wZwyHq7UlH8Gueh_2wYwrZx6TkHYN-AEw="
+                              ></img>
                             </div>
                           </div>
                         ) : null}
@@ -709,12 +712,10 @@ export default function CardResultBookingRoundTrip() {
                         untuk kamu{" "}
                       </h6>
                       <div className="block justify-center bg-brand-yellow p-2 rounded-lg text-brand-whiteLight sm:w-full lg:w-1/2 ">
-                        {/* {showReturn ? null : (
-                  <> */}
                         {priceTotal ? (
                           <>
                             {pagination.map((item, i) => (
-                              <>
+                              <div key={i}>
                                 {economy === item.idFlight ? (
                                   <>
                                     <h6>
@@ -737,7 +738,7 @@ export default function CardResultBookingRoundTrip() {
                                     </p>
                                   </>
                                 ) : null}
-                              </>
+                              </div>
                             ))}
                           </>
                         ) : (
@@ -898,6 +899,7 @@ export default function CardResultBookingRoundTrip() {
                                 </div>
                                 <div className="time-logo">
                                   <img
+                                    alt=""
                                     className="xl:w-36 xl:h-36 lg:w-28 lg:h-28 sm:w-16 smh-20"
                                     src={logo}
                                   ></img>
@@ -914,7 +916,7 @@ export default function CardResultBookingRoundTrip() {
                                       <Modal
                                         title="Detail Penerbangan"
                                         open={isModalOpen}
-                                        onOk={handleOk}
+                                        // onOk={handleOk}
                                         onCancel={handleCancel}
                                         footer={[null]}
                                       >
@@ -960,6 +962,7 @@ export default function CardResultBookingRoundTrip() {
                                               </div>
                                               <div className="wrap-logo">
                                                 <img
+                                                  alt=""
                                                   src={logo}
                                                   style={{
                                                     width: "90px",
@@ -1043,7 +1046,10 @@ export default function CardResultBookingRoundTrip() {
                                 </div>
                               </div>
                               <div className="img-benefit">
-                                <img src="https://images.unsplash.com/photo-1540339832862-474599807836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"></img>
+                                <img
+                                  alt=""
+                                  src="https://images.unsplash.com/photo-1540339832862-474599807836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                ></img>
                               </div>
                             </div>
                           ) : null}
@@ -1111,7 +1117,10 @@ export default function CardResultBookingRoundTrip() {
                                 </div>
                               </div>
                               <div className="img-benefit ">
-                                <img src="https://media.istockphoto.com/id/903718466/id/foto/pria-dengan-pesawat-jet-pribadi.jpg?s=612x612&w=0&k=20&c=alq9cAHoN6wZwyHq7UlH8Gueh_2wYwrZx6TkHYN-AEw="></img>
+                                <img
+                                  alt=""
+                                  src="https://media.istockphoto.com/id/903718466/id/foto/pria-dengan-pesawat-jet-pribadi.jpg?s=612x612&w=0&k=20&c=alq9cAHoN6wZwyHq7UlH8Gueh_2wYwrZx6TkHYN-AEw="
+                                ></img>
                               </div>
                             </div>
                           ) : null}

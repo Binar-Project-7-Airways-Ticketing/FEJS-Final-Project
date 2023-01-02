@@ -19,7 +19,7 @@ import ModalMethodPayment from "./ModalMethodPayment";
 import DetailPayment from "./DetailPayment";
 import { updateSeats } from "./Feature/Models/Seat";
 import { FaTrashAlt } from "react-icons/fa";
-// import { createBooking, createBookingReturn } from "./Feature/Models/CreateBooking";
+
 import ModalSeatBussines from "./Bookking/ModalSeatBussines";
 import { createBookingReturn } from "./Feature/Models/CreateBooking";
 
@@ -27,10 +27,10 @@ const Completionist = () => <span>You are good to go!</span>;
 
 const renderer = ({ hours, minutes, seconds, completed }) => {
   if (completed) {
-    // Render a completed state
+
     return <Completionist />;
   } else {
-    // Render a countdown
+
     return (
       <>
         <span className="flex justify-center items-center h-8 w-8 text-brand-nude bg-brand-yellow">
@@ -842,6 +842,8 @@ export default function TransactionBusinessReturn() {
     navigate("/ticket");
     localStorage.removeItem("page");
     localStorage.removeItem("number");
+    localStorage.removeItem("page1");
+    localStorage.removeItem("number1");
     localStorage.removeItem("cityTo");
     localStorage.removeItem("cityFrom");
     localStorage.removeItem("passanger");

@@ -19,10 +19,6 @@ import ModalMethodPayment from "./ModalMethodPayment";
 import DetailPayment from "./DetailPayment";
 import ModalSeatEconomy from "./Bookking/ModalSeatEconomy";
 import { updateSeats } from "./Feature/Models/Seat";
-// import {
-//   createBooking,
-//   createBookingReturn,
-// } from "./Feature/Models/CreateBooking";
 import { FaTrashAlt } from "react-icons/fa";
 import { createBookingReturn } from "./Feature/Models/CreateBooking";
 
@@ -848,6 +844,8 @@ export default function TransactionEconomyReturn() {
     navigate("/ticket");
     localStorage.removeItem("page");
     localStorage.removeItem("number");
+    localStorage.removeItem("page1");
+    localStorage.removeItem("number1");
     localStorage.removeItem("cityTo");
     localStorage.removeItem("cityFrom");
     localStorage.removeItem("passanger");
