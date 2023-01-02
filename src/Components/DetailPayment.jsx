@@ -1,24 +1,15 @@
-import React, { useState, useMemo } from "react";
-import {
-  ArrowRightOutlined,
-  ScheduleOutlined,
-  DollarCircleOutlined,
-} from "@ant-design/icons";
-import { Modal } from "antd";
+import React, { useState } from "react";
+import { ArrowRightOutlined } from "@ant-design/icons";
 
-import logo from "../logo.png";
-
-import { BsCircle } from "react-icons/bs";
 import { useEffect } from "react";
 
 export default function DetailPayment(props) {
-  const [bagasi, setBagasi] = useState("");
   const [cityTo, setCityTo] = useState("");
   const [cityFrom, setCityFrom] = useState("");
-  useEffect(()=>{
-    setCityTo(JSON.parse(localStorage.getItem("cityTo")))
-    setCityFrom(JSON.parse(localStorage.getItem("cityFrom")))
-  },[])
+  useEffect(() => {
+    setCityTo(JSON.parse(localStorage.getItem("cityTo")));
+    setCityFrom(JSON.parse(localStorage.getItem("cityFrom")));
+  }, []);
 
   return (
     <div className="booking-right">

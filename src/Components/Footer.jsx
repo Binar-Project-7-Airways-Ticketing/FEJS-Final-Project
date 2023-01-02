@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../logo3.png";
+import logo from "../image/logo3.png";
 import { BsInstagram, BsTwitter, BsFacebook, BsYoutube } from "react-icons/bs";
 export default function Footer() {
   return (

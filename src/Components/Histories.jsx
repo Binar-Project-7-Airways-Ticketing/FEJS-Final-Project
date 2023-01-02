@@ -1,29 +1,10 @@
-import { DownOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
-import { AiOutlineSwap } from "react-icons/ai";
-import Passenger from "./Bookking/Passenger";
-import { useNavigate } from "react-router-dom";
-import logo from "../logo.png";
+import logo from "../image/logo.png";
 import { BsCircle } from "react-icons/bs";
-import { Button, Modal } from "antd";
+import { Modal } from "antd";
 
 function Histories({ histories }) {
   console.log(histories);
-  const navigate = useNavigate();
-  const items = [
-    {
-      label: <a href="#">Return</a>,
-      key: "0",
-    },
-    {
-      label: <a href="#">One Way</a>,
-      key: "1",
-    },
-    {
-      label: "Multiple cities or countries",
-      key: "3",
-    },
-  ];
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
