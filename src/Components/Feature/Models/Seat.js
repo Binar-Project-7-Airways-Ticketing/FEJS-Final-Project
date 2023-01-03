@@ -11,7 +11,6 @@ const initialState = {
 export const updateSeats = createAsyncThunk(
   "seasts/updateSeats",
   async (seat) => {
-    console.log(typeof seat.id);
     try {
       const updateSeats = await axios.put(
         `${authConfig.baseUrl}/api/seat/update/${seat.id}/${seat.state}`

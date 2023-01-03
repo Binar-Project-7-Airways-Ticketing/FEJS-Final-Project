@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import TransactionBusiness from "./TransactionBusiness";
@@ -8,7 +7,7 @@ export default function TransactionReturn() {
   const [depart, setClassDepart] = useState(false);
   const [returnn, setClassReturn] = useState(false);
   const [showReturnn, setShowReturn] = useState(false);
-  const returnFlight = () => {};
+
   useEffect(() => {
     setClassDepart(JSON.parse(localStorage.getItem("classDepart")));
     setClassReturn(JSON.parse(localStorage.getItem("classReturn")));
@@ -32,7 +31,6 @@ export default function TransactionReturn() {
           )}
         </>
       )}
-     
     </>
   );
 }

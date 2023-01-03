@@ -1,6 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.container {
+  height: 100%;
+}
+
+.Homepage {
+  background: #3f4444;
+  width: 100vw;
+}
 
 h1 {
   font-size: 4.5rem;
@@ -855,10 +863,10 @@ nav {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(1.5);
-  -moz-transform: translate(-50%, -50%) scale(1.5);
-  -o-transform: translate(-50%, -50%) scale(1.5);
-  transform: translate(-50%, -50%) scale(1.5);
+  -webkit-transform: translate(-50%, -50%) scale(1.8);
+  -moz-transform: translate(-50%, -50%) scale(1.8);
+  -o-transform: translate(-50%, -50%) scale(1.8);
+  transform: translate(-50%, -50%) scale(1.8);
 }
 .ant-col-16 {
   max-width: none;
@@ -939,7 +947,7 @@ footer {
   color: red;
 }
 .css-1s2u09g-control:hover {
-    border-color: #cba052
+  border-color: #cba052;
 }
 /*-------------------------LOGIN---------------------------------*/
 @layer components {
@@ -1306,7 +1314,6 @@ footer {
   }
 }
 @media only screen and (max-width: 768px) {
-  
   /*--------------navbar ---------------*/
   h2 {
     font-size: 2.5rem;

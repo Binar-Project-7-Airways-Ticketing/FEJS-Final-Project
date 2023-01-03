@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Space } from "antd";
+import { Form } from "antd";
 import { useNavigate } from "react-router-dom";
 import Passenger from "./Passenger";
 import FormToFrom from "./FormToFrom";
@@ -9,40 +9,30 @@ import ButtonFindFlight from "../Reusable/ButtonFindFlight";
 import Date from "./Date";
 import { MdOutlineSwapVert, MdSwapHoriz } from "react-icons/md";
 import { MdFlightTakeoff, MdFlightLand } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  loadAirports,
-  loadCitiesFrom,
-  loadCitiesTo,
-} from "../Feature/Models/AirportSlice";
+import { useDispatch} from "react-redux";
+import { loadAirports } from "../Feature/Models/AirportSlice";
 import {
   loadFlightReturn,
   loadFlightDepart,
 } from "../Feature/Models/FlightSliceReturn";
 
 export default function Book() {
-  const { airport } = useSelector((state) => state.airport);
-
   const [from, setFrom] = useState("");
-  const [fromCode, setFromCode] = useState("");
   const [to, setTo] = useState("");
-  const [toCode, setToCode] = useState("");
   const [dateFrom, setDateFrom] = useState(null);
   const [dateTo, setDateTo] = useState(null);
   const [trip, setTrip] = useState("Round trip");
   const [airportFrom, setAirportFrom] = useState("");
   const [airportTo, setAirportTo] = useState("");
-  const [btn, setBtn] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleChangeFrom = (e, values) => {
-    setFromCode(e);
     setFrom(values.city);
     setAirportFrom(values.airport);
   };
   const handleChangeTo = (e, values) => {
-    setToCode(e);
     setTo(values.city);
     setAirportTo(values.airport);
   };
@@ -63,22 +53,18 @@ export default function Book() {
       };
       dispatch(loadFlightReturn(flight));
       dispatch(loadFlightDepart(flight));
-      // dispatch(loadCitiesFrom(airportFrom));
-      // dispatch(loadCitiesTo(airportTo));
+
       navigate(`/booking/${trip}/${airportFrom}/${airportTo}`);
     } else {
       let flight = {
         from: values.flightFrom,
         to: values.flightTo,
         datefrom: dateFrom,
-        // dateto: dateTo,
       };
       dispatch(loadFlightDepart(flight));
-   
+
       navigate(`/booking/${trip}/${airportFrom}/${airportTo}`);
     }
-
-   
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);

@@ -17,7 +17,7 @@ const initialState = {
 export const getRegister = createAsyncThunk(
   "authRegister/register",
   async (body) => {
-    console.log(body);
+
     const results = await axios.post(`${authConfig.baseUrl}/api/auth/signup`, {
       headers: {
         "Content-Type": "application/json",

@@ -1,5 +1,5 @@
 import React from "react";
-import {  Modal,} from "antd";
+import { Modal } from "antd";
 import { CaretDownOutlined, CaretUpOutlined } from "@ant-design/icons";
 import { MdEventSeat, MdOutlineAirlineSeatReclineExtra } from "react-icons/md";
 import { useState } from "react";
@@ -18,7 +18,7 @@ export default function ModalSeatBusiness(props) {
   const [detailSea, setDetailSea] = useState(false);
   const [arrowSeat, setArrowSeat] = useState(true);
   const [arrowPassenger, setArrowPassenger] = useState(true);
-  const [numberSeat, setNumberSeat] = useState([]);
+
   const [resultTo, setResultTo] = useState([]);
   const [resultFrom, setResultFrom] = useState([]);
   const [passenger, setPassenger] = useState("");
@@ -32,10 +32,8 @@ export default function ModalSeatBusiness(props) {
     } else {
       if (seat === "AVAILABLE") {
         seat = "BOOKED";
-        setNumberSeat(e.numberSeat);
       } else {
         seat = "AVAILABLE";
-        setNumberSeat("");
       }
     }
     let updateSeat = {
@@ -45,8 +43,6 @@ export default function ModalSeatBusiness(props) {
 
     dispatch(updateSeats(updateSeat));
   };
-
- 
 
   const HandleDetailSeat = (e) => {
     setDetailSeat(e);
@@ -64,7 +60,6 @@ export default function ModalSeatBusiness(props) {
       </div>
     ) : null;
   };
-
 
   useEffect(() => {
     const countPass = JSON.parse(localStorage.getItem("passanger"));

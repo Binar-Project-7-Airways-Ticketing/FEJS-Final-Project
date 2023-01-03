@@ -123,14 +123,7 @@ export const Register = () => {
     );
 
     const results = unwrapResult(resultsActions);
-    console.log(results);
     alert("REGISTER BERHASIL");
-    let createNotifs = {
-      user:results.id,
-      title:"LOGIN",
-      message: "Login Berhasil, silahkan pesan penerbangan yang sesuai dengan keinginan anda",
-      category:"PRIA"
-    }
     if (results && results.id) {
       let notif = {
         user: results.id,

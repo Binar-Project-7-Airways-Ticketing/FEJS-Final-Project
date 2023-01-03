@@ -10,7 +10,6 @@ import { updateSeats } from "../Feature/Models/Seat";
 import { loadSeatsIdPlaneCount } from "../Feature/Models/Seat";
 
 export default function ModalSeatEconomy(props) {
-
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
   const [planeType, setPlaneType] = useState(undefined);
   const [planeNumber, setPlaneNumber] = useState(undefined);
@@ -18,7 +17,7 @@ export default function ModalSeatEconomy(props) {
   const [detailSea, setDetailSea] = useState(false);
   const [arrowSeat, setArrowSeat] = useState(true);
   const [arrowPassenger, setArrowPassenger] = useState(true);
-  const [numberSeat, setNumberSeat] = useState([]);
+
   const [resultTo, setResultTo] = useState([]);
   const [resultFrom, setResultFrom] = useState([]);
   const [passenger, setPassenger] = useState("");
@@ -32,10 +31,8 @@ export default function ModalSeatEconomy(props) {
     } else {
       if (seat === "AVAILABLE") {
         seat = "BOOKED";
-        setNumberSeat(e.numberSeat);
       } else {
         seat = "AVAILABLE";
-        setNumberSeat("");
       }
     }
     let updateSeat = {
@@ -171,8 +168,8 @@ export default function ModalSeatEconomy(props) {
                     <h5>
                       {planeNumber}, {planeType}
                     </h5>
-               
-                      {SeatsPlaneCount.filter(
+
+                    {SeatsPlaneCount.filter(
                       (item) => item.stateSeat === "BOOKED"
                     ).length < passenger ? (
                       <div className="flex w-fit gap-2">

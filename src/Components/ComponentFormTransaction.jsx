@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React  from "react";
 import { ContactsOutlined } from "@ant-design/icons";
 
 import Select from "react-select";
@@ -9,13 +9,10 @@ import { loadCategory } from "./Feature/Models/GetCategory";
 
 export default function ComponentFormTransaction(props) {
   const dispatch = useDispatch();
-  const [token, setToken] = useState(false);
   const { category } = useSelector((state) => state.category);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
     dispatch(loadCategory());
-    setToken(token);
   }, [dispatch]);
 
   if(!props.handleChangeUserTitle) {

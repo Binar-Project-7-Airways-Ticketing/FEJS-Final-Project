@@ -47,7 +47,7 @@ export default function PageAscend() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    // console.log(AscendingBooking)
+   
 
     const Ascend = () => {
         setAscends(true);
@@ -130,7 +130,7 @@ export default function PageAscend() {
             setDetail(true);
             setEconomy(idFlight);
         }
-        console.log(idPlane);
+   
         dispatch(loadSeatsIdPlaneCount(idPlane));
         dispatch(loadPrice(idFlight));
         setPriceBusinessReturn(Price.business);
@@ -172,7 +172,7 @@ export default function PageAscend() {
             flight: departDate,
         }
         dispatch(Depart(halaman))
-        console.log("ONE", pages, pageSize)
+      
     }
 
     const pagingReturn = (pages1, pageSize1) => {
@@ -181,7 +181,7 @@ export default function PageAscend() {
             flight: returnDate,
         }
         dispatch(DepartReturn(halamanReturn))
-        console.log("RETURN", pages1, pageSize1)
+     
     }
 
     const [pages, setTotalPages] = useState(0);

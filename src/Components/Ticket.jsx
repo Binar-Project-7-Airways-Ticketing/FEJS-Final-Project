@@ -1,20 +1,18 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 
-import { Button, Modal } from "antd";
+import { Button } from "antd";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 import { SlPlane } from "react-icons/sl";
 import { FaBarcode } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+
 import { useEffect } from "react";
 
 import { Preview, print } from "react-html2pdf";
-import PDFTicket from "./PDFTikcet";
 
 export default function Ticket() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showTiket, setShowTiket] = useState(false);
   const [ticketDepart, setTicketDepart] = useState(() => {
@@ -27,7 +25,6 @@ export default function Ticket() {
   });
 
   const downloadTiketDepart = () => {
-    <PDFTicket />;
     print("Tiket Penerbangan", "tiketDepart");
 
     if (ticketReturn) {
