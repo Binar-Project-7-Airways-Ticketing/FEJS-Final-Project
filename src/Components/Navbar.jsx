@@ -242,7 +242,7 @@ export default function Navbar() {
           )}
         </div>
       </div>
-      <div className="text-brand-black w-full bg-brand-whiteLight ">
+      <div className="text-brand-black w-full bg-brand-whiteDark ">
         {show ? (
           <div className="container">
             <div className="flex flex-col w-full h-fit py-5">
