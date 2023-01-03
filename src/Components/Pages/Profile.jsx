@@ -15,7 +15,6 @@ export const Profile = (setIsLogin) => {
   const [passwordErrors, setIsPasswordErrors] = useState([]);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [histories, setHistories] = useState([]);
-  const [user, setUser] = useState(Object);
   const [registerFirstName, setRegisterFirstName] = useState("");
   const [registerLastname, setRegisterLastName] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
@@ -23,7 +22,6 @@ export const Profile = (setIsLogin) => {
   const [registerBirth, setRegisterBirth] = useState("");
   const [registerGender, setRegisterGender] = useState("");
   const [registerProfilePhoto, setRegisterProfilePhoto] = useState("");
-  const [update, setupdate] = useState(true);
   const navigate = useNavigate();
   const [changePass, setChangePass] = useState(false);
 
@@ -90,16 +88,7 @@ export const Profile = (setIsLogin) => {
     setIsPasswordValid(validate);
   }, [registerPassword]);
 
-  function registerHandler() {
-    if (!isEmailValid || !registerEmail) {
-      alert("Email Tidak Valid");
-      return;
-    }
-    if (!isPasswordValid || !registerPassword) {
-      alert("Password Tidak Valid");
-      return;
-    }
-  }
+ 
 
   // Update user profile
   const handleUpdateProfile = () => {
@@ -162,7 +151,6 @@ export const Profile = (setIsLogin) => {
         },
       })
       .then((response) => {
-        console.log(response);
         setHistories([response.data.payload]);
       })
       .catch((error) => {

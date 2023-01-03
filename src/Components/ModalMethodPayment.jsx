@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Modal } from "antd";
+import { Modal } from "antd";
 
 import bri from "../image/bri.jpg";
 import bca from "../image/bca.jpg";
@@ -33,6 +33,7 @@ export default function ModalMethodPayment(props) {
             className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
           >
             <img
+            alt=""
               src={bri}
               style={{
                 width: "70px",
@@ -46,6 +47,7 @@ export default function ModalMethodPayment(props) {
             className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
           >
             <img
+            alt=""
               src={bca}
               style={{
                 width: "70px",
@@ -59,6 +61,7 @@ export default function ModalMethodPayment(props) {
             className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
           >
             <img
+            alt=""
               src={mandiri}
               style={{
                 width: "70px",
@@ -72,6 +75,7 @@ export default function ModalMethodPayment(props) {
             className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
           >
             <img
+            alt=""
               src={bni}
               style={{
                 width: "70px",
@@ -85,6 +89,7 @@ export default function ModalMethodPayment(props) {
             className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
           >
             <img
+            alt=""
               src={ovo}
               style={{
                 width: "70px",
@@ -98,6 +103,7 @@ export default function ModalMethodPayment(props) {
             className="flex justify-start mt-2 border-2 border-brand-gray rounded-md p-2"
           >
             <img
+            alt=""
               src={danaa}
               style={{
                 width: "70px",

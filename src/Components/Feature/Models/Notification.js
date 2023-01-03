@@ -46,26 +46,6 @@ export const loadNotif = createAsyncThunk(
     }
   }
 );
-export const updateNotif = createAsyncThunk(
-  "notif/loadNotif",
-  async (idNotif) => {
-    console.log(idNotif);
-    // const token = localStorage.getItem("token")
-    // try {
-    //   const notif = await axios.get(
-    //     `${authConfig.baseUrl}/api/notification/read/${idNotif}`,{
-    //       headers: {
-    //         'Authorization' : `Bearer ${token} `
-    //       },
-    //     }
-
-    //   );
-    //  return notif.data
-    // } catch (error) {
-    //   console.error(error);
-    // }
-  }
-);
 
 export const postSlice = createSlice(
   {
@@ -102,23 +82,6 @@ export const postSlice = createSlice(
       },
     },
   },
-  {
-    name: "updatenotif",
-    initialState,
-    reducers: {},
-    extraReducers: {
-      [updateNotif.pending]: (state) => {
-        state.loading = true;
-      },
-      [updateNotif.fulfilled]: (state, { payload }) => {
-        state.loading = false;
-        state.notifUpdate = payload;
-      },
-      [updateNotif.rejected]: (state) => {
-        state.loading = false;
-      },
-    },
-  }
 );
 
 export default postSlice.reducer;

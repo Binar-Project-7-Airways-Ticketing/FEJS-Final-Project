@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container">
         <div className="lg:flex gap-x-16 gap-y-8 w-full h-full text-brand-whiteLight sm:grid grid grid-cols-2 py-10 ">
           <div style={{ width: "100%" }}>
-            <img style={{ width: "300px" }} src={logo}></img>
+            <img alt="" style={{ width: "300px" }} src={logo}></img>
             <p>The general airline Aviation Operator and Services Provider. Delivering World-Class Services in Aircraft sales, completiones, management, flight support, charter and FBO-Indonesia.</p>
           </div>
 

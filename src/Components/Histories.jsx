@@ -82,6 +82,7 @@ function Histories({ histories }) {
                               </div>
                               <div className="wrap-logo">
                                 <img
+                                alt=""
                                   src={logo}
                                   style={{
                                     width: "90px",

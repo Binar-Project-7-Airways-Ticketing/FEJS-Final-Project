@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { BsSearch } from "react-icons/bs";
+
 import { AiOutlineUser, AiOutlineBell } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
-import { Dropdown, Space, Input, Modal } from "antd";
+import { useNavigate } from "react-router-dom";
+import { Dropdown, Space,} from "antd";
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../image/logo5.png";
@@ -10,7 +10,7 @@ import Prf from "./Reusable/Prf";
 import "./All.css";
 import { useDispatch, useSelector } from "react-redux";
 import ModalNotif from "./ModalNotif";
-import { loadNotif, updateNotif } from "./Feature/Models/Notification";
+import { loadNotif } from "./Feature/Models/Notification";
 
 export default function Navbar() {
   const { notif } = useSelector((state) => state.notif);
@@ -41,10 +41,7 @@ export default function Navbar() {
       <div onClick={() => showModal(item.idNotification)}>{item.title}</div>
     ),
     }));
-  const read=(e)=>{
-    console.log(e.idNotification);
-    dispatch(updateNotif(e.idNotification))
-  }
+
 
 
 
@@ -63,8 +60,8 @@ export default function Navbar() {
       <div className="container">
         <div className="flex items-center justify-between h-fit w-full transition gap-1 py-2 text-brand-whiteLight relative">
           <div className="flex lg:w-48 sm:w-64 justify-start h-16 ">
-            <img
-              onClick={() => navigate("/")}
+            <img alt=""
+              onClick={() => navigate("/", localStorage.removeItem("go"))}
               className="flex cursor-pointer "
               src={logo}
             ></img>
@@ -334,7 +331,7 @@ export default function Navbar() {
             message={item.message}
             isModalOpen={isModalOpen}
             handleCancel={handleCancel}
-            read={()=>read(item)}
+          
           />
         ))}
     </nav>

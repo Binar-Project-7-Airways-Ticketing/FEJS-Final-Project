@@ -48,9 +48,9 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 };
 
 export default function TransactionBusiness() {
-  const { luggagesPlane } = useSelector((state) => state.luggagePlane);
+
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
-  const { category } = useSelector((state) => state.category);
+
   const { users } = useSelector((state) => state.getUser);
   const { Price } = useSelector((state) => state.getPrice);
 
@@ -58,10 +58,10 @@ export default function TransactionBusiness() {
   const [classReturn, setClassReturn] = useState();
   const [oneWay, setOneWay] = useState(true);
   const [passenger, setPassenger] = useState(undefined);
-  const [classFlight, setClassFlight] = useState("");
+
   const [departFlight, setDepart] = useState([]);
   const [token, setToken] = useState(false);
-  const [returnFlight, setReturn] = useState([]);
+
   const [showReturnnEconomy, setShowReturnEconomy] = useState(false);
   const [showReturnnBusiness, setShowReturnBusiness] = useState(false);
   const [value, setValue] = useState("");
@@ -1139,15 +1139,15 @@ export default function TransactionBusiness() {
   useEffect(() => {
     const countPass = JSON.parse(localStorage.getItem("passanger"));
     const departFl = JSON.parse(localStorage.getItem("depart"));
-    const returnFl = JSON.parse(localStorage.getItem("return"));
+  
     const tokenn = localStorage.getItem("token");
     setClassReturn(JSON.parse(localStorage.getItem("classReturn")));
     setPassenger(countPass.adults + countPass.child + countPass.infant);
-    setClassFlight(JSON.parse(localStorage.getItem("class")));
+   
 
     setToken(tokenn);
     setDepart(departFl);
-    setReturn(returnFl);
+   
     if (tokenn) {
       dispatch(loadUser(localStorage.getItem("id")));
     }

@@ -1,5 +1,4 @@
 import React from "react";
-import { Carousel } from "antd";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";

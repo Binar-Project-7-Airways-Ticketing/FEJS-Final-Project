@@ -25,6 +25,11 @@ export default function CardResultBookingOneWay() {
   const { cityTo } = useParams();
   const { cityFrom } = useParams();
 
+
+  const [go, setGo] = useState(() => {
+    const gos = localStorage.getItem("go");
+    return gos;
+  });
   const [departure, setDeparture] = useState(true);
   const [passanger, setPassenger] = useState("");
   const [economy, setEconomy] = useState(false);
@@ -34,12 +39,12 @@ export default function CardResultBookingOneWay() {
   const [departDate, setDepartDate] = useState();
   const [priceTotal, setPricTotal] = useState(false);
   const [resultTo, setResultTo] = useState(() => {
-    const city = JSON.parse(localStorage.getItem("cityTo"));
-    return city;
+    const cityTo = JSON.parse(localStorage.getItem("cityTo"));
+    return cityTo;
   });
   const [resultFrom, setResultFrom] = useState(() => {
-    const city = JSON.parse(localStorage.getItem("cityFrom"));
-    return city;
+    const cityFrom = JSON.parse(localStorage.getItem("cityFrom"));
+    return cityFrom;
   });
   const [resultFlightDepart, setResultFlightDepart] = useState("");
   const navigate = useNavigate();
@@ -128,23 +133,25 @@ export default function CardResultBookingOneWay() {
 
   useEffect(() => {
     const flightDepart = JSON.parse(localStorage.getItem("flightDepart"));
-    if (resultTo === null) {
+
+    setResultFlightDepart(JSON.parse(localStorage.getItem("flightDepart")));
+    if (go === null) {
       dispatch(loadCitiesFrom(cityFrom));
       dispatch(loadCitiesTo(cityTo));
       setTimeout(function () {
         window.location.reload(1);
-      }, 700);
+      }, 200);
     }
     if (flightDepart.length !== 0) {
       const countPassenger = JSON.parse(localStorage.getItem("passanger"));
-
-      setResultFlightDepart(JSON.parse(localStorage.getItem("flightDepart")));
       setDepartDate(JSON.parse(localStorage.getItem("flightDepart")));
       setTotalPages(localStorage.getItem("page"));
       setNumber(localStorage.getItem("number"));
       setPassenger(
         countPassenger.adults + countPassenger.child + countPassenger.infant
       );
+      dispatch(loadCitiesFrom(cityFrom));
+      dispatch(loadCitiesTo(cityTo));
       setShowDepart(true);
       setDeparture(false);
       const pages = {
@@ -153,15 +160,10 @@ export default function CardResultBookingOneWay() {
       };
       dispatch(Depart(pages));
     } else {
-      setResultTo({});
       setDeparture(true);
     }
 
-    // if (resultFlightDepart.length === 0) {
-    //   setDeparture(true);
-    // }
-
-    // }
+    localStorage.setItem("go", "back");
   }, [dispatch]);
 
   return (
@@ -383,6 +385,7 @@ export default function CardResultBookingOneWay() {
                             </div>
                             <div className="time-logo">
                               <img
+                              alt=""
                                 className="xl:w-36 xl:h-36 lg:w-28 lg:h-28 sm:w-16 smh-20"
                                 src={logo}
                               ></img>
@@ -444,6 +447,7 @@ export default function CardResultBookingOneWay() {
                                           </div>
                                           <div className="wrap-logo">
                                             <img
+                                            alt=""
                                               src={logo}
                                               style={{
                                                 width: "90px",
@@ -522,13 +526,14 @@ export default function CardResultBookingOneWay() {
                                 <p>Kursi tidak tersedia</p>
                               ) : (
                                 <p onClick={() => handleDepartOneWay(item)}>
-                                Pilih kelas
+                                  Pilih kelas
                                 </p>
                               )}
                             </div>
                           </div>
                           <div className="img-benefit">
-                            <img src="https://images.unsplash.com/photo-1540339832862-474599807836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"></img>
+                            <img
+                            alt="" src="https://images.unsplash.com/photo-1540339832862-474599807836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"></img>
                           </div>
                         </div>
                       ) : null}
@@ -589,13 +594,14 @@ export default function CardResultBookingOneWay() {
                                 <p>Kursi tidak tersedia</p>
                               ) : (
                                 <p onClick={() => handleDepartOneWay(item)}>
-                                Pilih kelas
+                                  Pilih kelas
                                 </p>
                               )}
                             </div>
                           </div>
                           <div className="img-benefit ">
-                            <img src="https://media.istockphoto.com/id/903718466/id/foto/pria-dengan-pesawat-jet-pribadi.jpg?s=612x612&w=0&k=20&c=alq9cAHoN6wZwyHq7UlH8Gueh_2wYwrZx6TkHYN-AEw="></img>
+                            <img
+                            alt="" src="https://media.istockphoto.com/id/903718466/id/foto/pria-dengan-pesawat-jet-pribadi.jpg?s=612x612&w=0&k=20&c=alq9cAHoN6wZwyHq7UlH8Gueh_2wYwrZx6TkHYN-AEw="></img>
                           </div>
                         </div>
                       ) : null}

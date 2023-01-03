@@ -43,6 +43,10 @@ export default function CardResultBookingRoundTrip() {
   const [departDate, setDepartDate] = useState(undefined);
   const [returnDate, setReturnDate] = useState(undefined);
   const [priceTotal, setPriceTotal] = useState(false);
+  const [go, setGo] = useState(() => {
+    const gos = localStorage.getItem("go");
+    return gos;
+  });
   const [resultTo, setResultTo] = useState(() => {
     const city = JSON.parse(localStorage.getItem("cityTo"));
     return city;
@@ -204,7 +208,7 @@ export default function CardResultBookingRoundTrip() {
     const flightReturn = JSON.parse(localStorage.getItem("flightReturn"));
 
     const flightDepart = JSON.parse(localStorage.getItem("flightDepart"));
-    if (resultTo === null) {
+    if (go === null) {
       dispatch(loadCitiesFrom(cityFrom));
       dispatch(loadCitiesTo(cityTo));
       const countPassenger = JSON.parse(localStorage.getItem("passanger"));
@@ -213,7 +217,7 @@ export default function CardResultBookingRoundTrip() {
       );
       setTimeout(function () {
         window.location.reload(1);
-      }, 700);
+      }, 500);
     }
     if (flightDepart.length !== 0 && flightReturn.length!==0) {
 
@@ -243,7 +247,7 @@ export default function CardResultBookingRoundTrip() {
       setDeparture(true);
     }
 
- 
+    localStorage.setItem("go", "back");
   }, [dispatch]);
 
   return (

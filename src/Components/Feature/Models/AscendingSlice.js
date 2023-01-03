@@ -11,7 +11,6 @@ export const AscendingBooking = createAsyncThunk(
   "pagination/loadPagination",
   async (payload) => {
     try {
-      console.log("SIZE", payload.page);
       const code = JSON.parse(localStorage.getItem("flightDepart"));
       const page = 1;
       const ascending = await axios.get(

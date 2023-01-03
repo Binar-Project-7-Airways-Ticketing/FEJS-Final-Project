@@ -1,11 +1,9 @@
 import React from "react";
-import { Space, DatePicker, Form } from "antd";
+import { DatePicker, Form } from "antd";
 
 import "dayjs/locale/zh-cn";
 
 export default function Date(props) {
-  const { RangePicker } = DatePicker;
-
   const dateFormat = "MM/DD/YYYY";
 
   return (

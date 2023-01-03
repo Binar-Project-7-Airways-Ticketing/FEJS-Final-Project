@@ -44,7 +44,6 @@ export default function Prf(setIsLogin, props) {
     axios
       .get(authConfig.baseUrl + "/api/user/" + userId)
       .then((res) => {
-        console.log(res.data);
         setImageUser(res.data.pictureUrl);
       })
       .catch((error) => {

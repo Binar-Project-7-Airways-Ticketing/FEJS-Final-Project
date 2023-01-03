@@ -3,7 +3,6 @@ import { UserOutlined, LockOutlined, EyeInvisibleOutlined, EyeOutlined } from '@
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { getLogin } from "../Feature/Models/AuthLogin";
 import { useDispatch } from "react-redux";
 import { unwrapResult } from "@reduxjs/toolkit";
@@ -61,7 +60,6 @@ export const Login = () => {
             alert("Password Tidak Valid");
             return;
         }
-        // console.log(loginEmail);
 
         const resultsActions = await dispatch(getLogin({
             email: loginEmail,
@@ -72,7 +70,6 @@ export const Login = () => {
         const results = unwrapResult(resultsActions);
 
       dispatch(loadNotif(results.id));
-        console.log(results);
         if (results && results.token) {
             if (results.token) {
                 dispatch(loadNotif(localStorage.getItem("id")));
