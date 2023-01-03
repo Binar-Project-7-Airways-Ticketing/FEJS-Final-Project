@@ -6,8 +6,6 @@ import { Register } from "./Components/Pages/Register";
 import Bookingpage from "./Components/Pages/Bookingpage";
 import Profile from "./Components/Pages/Profile";
 import Transaction from "./Components/Transaction";
-import FlightStatusPage from "./Components/Pages/FlightStatusPage";
-import Review from "./Components/Pages/Review";
 import Ticket from "./Components/Ticket";
 
 function App() {
@@ -21,10 +19,8 @@ function App() {
           path="/booking/:trip/:cityFrom/:cityTo"
           element={<Bookingpage />}
         />
-        <Route path="/flight status" element={<FlightStatusPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/transaction" element={<Transaction />} />
-        <Route path="/review" element={<Review />} />
         <Route path="/ticket" element={<Ticket />} />
       </Routes>
     </BrowserRouter>

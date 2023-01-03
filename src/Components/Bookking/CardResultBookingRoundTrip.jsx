@@ -43,6 +43,10 @@ export default function CardResultBookingRoundTrip() {
   const [departDate, setDepartDate] = useState(undefined);
   const [returnDate, setReturnDate] = useState(undefined);
   const [priceTotal, setPriceTotal] = useState(false);
+  const [go, setGo] = useState(() => {
+    const gos = localStorage.getItem("go");
+    return gos;
+  });
   const [resultTo, setResultTo] = useState(() => {
     const city = JSON.parse(localStorage.getItem("cityTo"));
     return city;
@@ -195,40 +199,40 @@ export default function CardResultBookingRoundTrip() {
     };
     dispatch(DepartReturn(halamanReturn));
   };
-
+  const [departure, setDeparture] = useState(true);
   const [pages, setTotalPages] = useState(0);
   const [number, setNumber] = useState(0);
   const [pages1, setTotalPages1] = useState(0);
   const [number1, setNumber1] = useState(0);
   useEffect(() => {
     const flightReturn = JSON.parse(localStorage.getItem("flightReturn"));
+
     const flightDepart = JSON.parse(localStorage.getItem("flightDepart"));
-    if (flightDepart === null) {
+    if (go === null) {
+      dispatch(loadCitiesFrom(cityFrom));
+      dispatch(loadCitiesTo(cityTo));
+      const countPassenger = JSON.parse(localStorage.getItem("passanger"));
+      setPassenger(
+        countPassenger.adults + countPassenger.child + countPassenger.infant
+      );
       setTimeout(function () {
         window.location.reload(1);
       }, 500);
     }
+    if (flightDepart.length !== 0 && flightReturn.length!==0) {
 
-    const countPassenger = JSON.parse(localStorage.getItem("passanger"));
-
-    setResultFlightDepart(JSON.parse(localStorage.getItem("flightDepart")));
-    setDepartDate(JSON.parse(localStorage.getItem("flightDepart")));
-    setTotalPages(localStorage.getItem("page"));
-    setNumber(localStorage.getItem("number"));
-    setPassenger(
-      countPassenger.adults + countPassenger.child + countPassenger.infant
-    );
-    setShowDepart(true);
-    dispatch(loadCitiesFrom(cityFrom));
-    dispatch(loadCitiesTo(cityTo));
-
-    const pages = {
-      page: 1,
-      flight: flightDepart,
-    };
-    dispatch(Depart(pages));
-
-    setReturnDate(flightReturn);
+      setResultFlightDepart(JSON.parse(localStorage.getItem("flightDepart")));
+      setDepartDate(JSON.parse(localStorage.getItem("flightDepart")));
+      setTotalPages(localStorage.getItem("page"));
+      setNumber(localStorage.getItem("number"));
+      setShowDepart(true);
+      setDeparture(false);
+      const pages = {
+        page: 1,
+        flight: flightDepart,
+      };
+      dispatch(Depart(pages));
+         setReturnDate(flightReturn);
     setResultFlightReturn(flightReturn);
     const pages1 = {
       page: 1,
@@ -238,11 +242,37 @@ export default function CardResultBookingRoundTrip() {
     setTotalPages1(localStorage.getItem("page1"));
     setNumber1(localStorage.getItem("number1"));
     dispatch(DepartReturn(pages1));
-  }, [dispatch, resultTo]);
+    } else {
+      setResultTo({});
+      setDeparture(true);
+    }
+
+    localStorage.setItem("go", "back");
+  }, [dispatch]);
 
   return (
     <>
-      {resultFlightDepart.length && resultFlightReturn.length !== 0 ? (
+      {departure ? (
+        <div className="pt-14 h-fit">
+          <div className="card-result-booking">
+            <div className="wrap-card-result-booking">
+              <Empty />
+            </div>
+            <div className="wrap-card-result-booking">
+              <Empty />
+            </div>
+            <div className="wrap-card-result-booking">
+              <Empty />
+            </div>
+            <div className="wrap-card-result-booking">
+              <Empty />
+            </div>
+            <div className="wrap-card-result-booking">
+              <Empty />
+            </div>
+          </div>
+        </div>
+      ) : (
         <>
           {showReturn ? (
             <div className="pt-5">
@@ -444,7 +474,7 @@ export default function CardResultBookingRoundTrip() {
                               onClick={() => showModalReturn(item.idFlight)}
                               className="btn-detail-flight"
                             >
-                              Flight Detail
+                              Detail Penerbangan
                             </button>
                             <div className="times">
                               <div className="flex flex-col items-center justify-center w-3/5">
@@ -583,7 +613,7 @@ export default function CardResultBookingRoundTrip() {
                                   <p>Cheapest Price To Your Destination</p>
                                 </div>
                               </div>
-                              <div className="bg-brand-yellow rounded-md lg:w-1/4 w-1/3 sm:w-full text-center cursor-pointer py-1.5 px-2.5 ">
+                              <div className="bg-brand-yellow rounded-md lg:w-2/5 w-1/3 sm:w-full text-center cursor-pointer py-1.5 px-2.5 ">
                                 {SeatsPlaneCount.filter(
                                   (item) =>
                                     item.planeDetails.planeClass === "ECONOMY"
@@ -592,10 +622,10 @@ export default function CardResultBookingRoundTrip() {
                                   (item) =>
                                     item.planeDetails.planeClass === "ECONOMY"
                                 ).length <= passanger ? (
-                                  <p>Seats Not Available</p>
+                                  <p>Kursi tidak tersedia</p>
                                 ) : (
                                   <p onClick={() => handleReturn(item)}>
-                                    Select Class
+                                 Pilih kelas
                                   </p>
                                 )}
                               </div>
@@ -652,7 +682,7 @@ export default function CardResultBookingRoundTrip() {
                                   <p>Get Anything Food You Want</p>
                                 </div>
                               </div>
-                              <div className="bg-brand-yellow rounded-md lg:w-1/4 w-1/3 sm:w-full text-center cursor-pointer py-1.5 px-2.5 ">
+                              <div className="bg-brand-yellow rounded-md lg:w-2/5 w-1/3 sm:w-full text-center cursor-pointer py-1.5 px-2.5 ">
                                 {SeatsPlaneCount.filter(
                                   (item) =>
                                     item.planeDetails.planeClass === "BUSINESS"
@@ -661,10 +691,10 @@ export default function CardResultBookingRoundTrip() {
                                   (item) =>
                                     item.planeDetails.planeClass === "BUSINESS"
                                 ).length <= passanger ? (
-                                  <p>Seats Not Available</p>
+                                  <p>Kursi tidak tersedia</p>
                                 ) : (
                                   <p onClick={() => handleReturn(item)}>
-                                    Select Class
+                                 Pilih kelas
                                   </p>
                                 )}
                               </div>
@@ -890,7 +920,7 @@ export default function CardResultBookingRoundTrip() {
                                 onClick={() => showModal(item.idFlight)}
                                 className="btn-detail-flight"
                               >
-                                Flight Detail
+                                Detail Penerbangan
                               </button>
                               <div className="times">
                                 <div className="flex flex-col items-center justify-center w-3/5">
@@ -1028,7 +1058,7 @@ export default function CardResultBookingRoundTrip() {
                                     <p>Cheapest Price To Your Destination</p>
                                   </div>
                                 </div>
-                                <div className="bg-brand-yellow rounded-md lg:w-1/4 w-1/3 sm:w-full  text-center cursor-pointer py-1.5 px-2.5 ">
+                                <div className="bg-brand-yellow rounded-md lg:w-2/5 w-1/3 sm:w-full  text-center cursor-pointer py-1.5 px-2.5 ">
                                   {SeatsPlaneCount.filter(
                                     (item) =>
                                       item.planeDetails.planeClass === "ECONOMY"
@@ -1037,10 +1067,10 @@ export default function CardResultBookingRoundTrip() {
                                     (item) =>
                                       item.planeDetails.planeClass === "ECONOMY"
                                   ).length <= passanger ? (
-                                    <p>Seats Not Available</p>
+                                    <p>Kursi tidak tersedia</p>
                                   ) : (
                                     <p onClick={() => handleDepart(item)}>
-                                      Select Class
+                                   Pilih kelas
                                     </p>
                                   )}
                                 </div>
@@ -1097,7 +1127,7 @@ export default function CardResultBookingRoundTrip() {
                                     <p>Get Anything Food You Want</p>
                                   </div>
                                 </div>
-                                <div className="bg-brand-yellow rounded-md lg:w-1/4 w-1/3 sm:w-full  text-center cursor-pointer py-1.5 px-2.5 ">
+                                <div className="bg-brand-yellow rounded-md lg:w-2/5 w-1/3 sm:w-full  text-center cursor-pointer py-1.5 px-2.5 ">
                                   {SeatsPlaneCount.filter(
                                     (item) =>
                                       item.planeDetails.planeClass ===
@@ -1108,10 +1138,10 @@ export default function CardResultBookingRoundTrip() {
                                       item.planeDetails.planeClass ===
                                       "BUSINESS"
                                   ).length <= passanger ? (
-                                    <p>Seats Not Available</p>
+                                    <p>Kursi tidak tersedia</p>
                                   ) : (
                                     <p onClick={() => handleDepart(item)}>
-                                      Select Class
+                                   Pilih kelas
                                     </p>
                                   )}
                                 </div>
@@ -1140,26 +1170,6 @@ export default function CardResultBookingRoundTrip() {
             </>
           )}
         </>
-      ) : (
-        <div className="pt-14 h-screen">
-          <div className="card-result-booking">
-            <div className="wrap-card-result-booking">
-              <Empty />
-            </div>
-            <div className="wrap-card-result-booking">
-              <Empty />
-            </div>
-            <div className="wrap-card-result-booking">
-              <Empty />
-            </div>
-            <div className="wrap-card-result-booking">
-              <Empty />
-            </div>
-            <div className="wrap-card-result-booking">
-              <Empty />
-            </div>
-          </div>
-        </div>
       )}
     </>
   );

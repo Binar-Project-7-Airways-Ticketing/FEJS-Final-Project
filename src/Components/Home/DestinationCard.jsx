@@ -10,7 +10,7 @@ export default function Destination() {
 
   useEffect(() => {
     dispatch(loadAirports());
-  }, []);
+  }, [dispatch]);
   return (
     <div className="flex flex-col h-full w-full">
       <div>

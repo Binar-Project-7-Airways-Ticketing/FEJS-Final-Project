@@ -1,6 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.container {
+  height: 100%;
+}
+
+.Homepage {
+  background: #3f4444;
+  width: 100vw;
+}
 
 h1 {
   font-size: 4.5rem;
@@ -855,10 +863,10 @@ nav {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(1.5);
-  -moz-transform: translate(-50%, -50%) scale(1.5);
-  -o-transform: translate(-50%, -50%) scale(1.5);
-  transform: translate(-50%, -50%) scale(1.5);
+  -webkit-transform: translate(-50%, -50%) scale(1.8);
+  -moz-transform: translate(-50%, -50%) scale(1.8);
+  -o-transform: translate(-50%, -50%) scale(1.8);
+  transform: translate(-50%, -50%) scale(1.8);
 }
 .ant-col-16 {
   max-width: none;
@@ -939,7 +947,7 @@ footer {
   color: red;
 }
 .css-1s2u09g-control:hover {
-    border-color: #cba052
+  border-color: #cba052;
 }
 /*-------------------------LOGIN---------------------------------*/
 @layer components {
@@ -1015,7 +1023,7 @@ footer {
   }
 
   .login-account-tittle h1 {
-    @apply text-2xl text-brand-nude text-center md:text-2xl lg:text-4xl m-5 md:pt-28 lg:pt-24;
+    @apply text-2xl text-brand-nude text-center md:text-2xl lg:text-4xl m-5 md:pt-4 lg:pt-8;
   }
 
   .login-account-desc {
@@ -1027,7 +1035,7 @@ footer {
   }
 
   .login-account a {
-    @apply flex cursor-pointer justify-center sm:px-12 md:px-16 py-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] text-xl rounded-md;
+    @apply flex cursor-pointer justify-center sm:px-12 md:px-16 py-4 bg-brand-yellow text-[#f9f9f9] border-0 font-[600] tracking-[2px] rounded-md;
   }
 
   /*-------------------------REGISTER---------------------------------*/
@@ -1306,7 +1314,6 @@ footer {
   }
 }
 @media only screen and (max-width: 768px) {
-  
   /*--------------navbar ---------------*/
   h2 {
     font-size: 2.5rem;

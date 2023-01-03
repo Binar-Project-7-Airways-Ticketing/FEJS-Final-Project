@@ -44,11 +44,14 @@ export const loadCitiesFrom = createAsyncThunk(
         `${authConfig.baseUrl}/api/airport/name/${name}`
       );
       localStorage.setItem("cityFrom", JSON.stringify(cityFrom.data));
-
+   
       return cityFrom.data;
     } catch (error) {
       console.error(error);
     }
+    setTimeout(function () {
+      window.location.reload(1);
+    }, 5000);
  
   }
   

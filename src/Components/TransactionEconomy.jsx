@@ -20,10 +20,7 @@ import ModalMethodPayment from "./ModalMethodPayment";
 import DetailPayment from "./DetailPayment";
 import ModalSeatEconomy from "./Bookking/ModalSeatEconomy";
 import { updateSeats } from "./Feature/Models/Seat";
-import {
-  createBooking,
-  createBookingDepart,
-} from "./Feature/Models/CreateBooking";
+import { createBookingDepart } from "./Feature/Models/CreateBooking";
 import TransactionEconomyReturn from "./TransactionEconomyReturn";
 import TransactionBusinessReturn from "./TransactionBusinessReturn";
 
@@ -52,9 +49,8 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 };
 
 export default function TransactionEconomy() {
-  const { luggagesPlane } = useSelector((state) => state.luggagePlane);
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
-  const { category } = useSelector((state) => state.category);
+
   const { users } = useSelector((state) => state.getUser);
   const { Price } = useSelector((state) => state.getPrice);
 
@@ -63,10 +59,10 @@ export default function TransactionEconomy() {
   const [showReturnnEconomy, setShowReturnEconomy] = useState(false);
   const [showReturnnBusiness, setShowReturnBusiness] = useState(false);
   const [passenger, setPassenger] = useState("");
-  const [classFlight, setClassFlight] = useState("");
+
   const [departFlight, setDepart] = useState([]);
   const [token, setToken] = useState(false);
-  const [returnFlight, setReturn] = useState([]);
+
   const [classReturn, setClassReturn] = useState();
   const [oneWay, setOneWay] = useState(true);
 
@@ -308,7 +304,7 @@ export default function TransactionEconomy() {
         },
         user: token ? users : null,
       };
-      console.log(booking);
+
       dispatch(createBookingDepart(booking));
     }
     if (passenger === 3) {
@@ -1150,16 +1146,15 @@ export default function TransactionEconomy() {
   useEffect(() => {
     const countPass = JSON.parse(localStorage.getItem("passanger"));
     const departFl = JSON.parse(localStorage.getItem("depart"));
-    const returnFl = JSON.parse(localStorage.getItem("return"));
+
     const tokenn = localStorage.getItem("token");
 
-    setToken(tokenn)
+    setToken(tokenn);
     setClassReturn(JSON.parse(localStorage.getItem("classReturn")));
     setPassenger(countPass.adults + countPass.child + countPass.infant);
-    setClassFlight(JSON.parse(localStorage.getItem("class")));
-    setToken(localStorage.getItem("token"))
+
+    setToken(localStorage.getItem("token"));
     setDepart(departFl);
-    setReturn(returnFl);
 
     dispatch(loadCategory());
     dispatch(loadLuggagesIdPlane(departFl.plane.idPlane));
@@ -1190,155 +1185,154 @@ export default function TransactionEconomy() {
               </div>
               <div className="bg-brand-yellow">
                 <div className="container">
-
-                <div className="text-brand-whiteLight pt-5 pl-3">
-                  <h4>KeBerangkatan</h4>
-                </div>
-                <div className="booking-container">
-                  <div className="booking-left">
-                    {token ? (
-                      <>
-                        {penumpang.map((item, i) => (
-                          <div key={i}>
-                            <ComponentFormTransaction
-                              handleChangeUserTitle={(e) =>
-                                handleChangeUserTitle(e, i)
-                              }
-                              handleChangeCategory={(e) =>
-                                handleChangeCategory(e, i)
-                              }
-                              handleChangeGender={(e) =>
-                                handleChangeGender(e, i)
-                              }
-                              handleChangeFirstName={(e) =>
-                                handleChangeFirstName(e, i)
-                              }
-                              handleChangeLastName={(e) =>
-                                handleChangeLastName(e, i)
-                              }
-                              handleChangeBirtday={handleChangeBirtday}
-                              handleChangePassport={(e) =>
-                                handleChangePassport(e, i)
-                              }
-                              handleChangeNationality={(e) =>
-                                handleChangeNationality(e, i)
-                              }
-                              handleChangeSpecialRequest={(e) =>
-                                handleChangeSpecialRequest(e, i)
-                              }
-                              handleChangeContactNumber={(e) =>
-                                handleChangeContactNumber(e, i)
-                              }
-                              dateFormat={dateFormat}
-                              options={options}
-                              value={value}
-                              pay={() => clik(i)}
-                            />
-                          </div>
-                        ))}
-                      </>
-                    ) : (
-                      <>
-                        {penumpang.map((item, i) => (
-                          <div key={i}>
-                            <ComponentFormTransaction
-                              penumpang={`Penumpang ${i + 1}`}
-                              handleChangeUserTitle={(e) =>
-                                handleChangeUserTitle(e, i)
-                              }
-                              handleChangeCategory={(e) =>
-                                handleChangeCategory(e, i)
-                              }
-                              handleChangeGender={(e) =>
-                                handleChangeGender(e, i)
-                              }
-                              handleChangeFirstName={(e) =>
-                                handleChangeFirstName(e, i)
-                              }
-                              handleChangeLastName={(e) =>
-                                handleChangeLastName(e, i)
-                              }
-                              handleChangeBirtday={handleChangeBirtday}
-                              handleChangePassport={(e) =>
-                                handleChangePassport(e, i)
-                              }
-                              handleChangeNationality={(e) =>
-                                handleChangeNationality(e, i)
-                              }
-                              handleChangeSpecialRequest={(e) =>
-                                handleChangeSpecialRequest(e, i)
-                              }
-                              handleChangeContactNumber={(e) =>
-                                handleChangeContactNumber(e, i)
-                              }
-                              dateFormat={dateFormat}
-                              options={options}
-                              value={value}
-                              pay={() => clik(i)}
-                            />
-                          </div>
-                        ))}
-                      </>
-                    )}
-
-                    <div className="parent-c w-full bg-brand-nude p-6 mt-6 rounded-md border-2 border-brand-black">
-                      <div className="left-header">
-                        <span>
-                          <UnorderedListOutlined />
-                        </span>
-                        <h3>Extra Fasilitas</h3>
-                      </div>
-                      <div className="flex flex-col justify-between  mb-4 gap-1">
-                        <div className="flex h-fit items-center mb-4 gap-4">
-                          <span>
-                            <ShoppingOutlined />
-                          </span>
-                          <h3 className="text-[20px] mt-2">Bagasi</h3>
-                        </div>
-                        <div className="flex w-full gap-2 flex-col">
-                          {passNum.map((item, i) => (
-                            <div className="flex flex-col gap-2">
-                              <p>Penumpang {i + 1}</p>
-                              <Luggages
-                                handleChange={(e) => handleChangeBag1(e, i)}
+                  <div className="text-brand-whiteLight pt-5 pl-3">
+                    <h4>KeBerangkatan</h4>
+                  </div>
+                  <div className="booking-container">
+                    <div className="booking-left">
+                      {token ? (
+                        <>
+                          {penumpang.map((item, i) => (
+                            <div key={i}>
+                              <ComponentFormTransaction
+                                handleChangeUserTitle={(e) =>
+                                  handleChangeUserTitle(e, i)
+                                }
+                                handleChangeCategory={(e) =>
+                                  handleChangeCategory(e, i)
+                                }
+                                handleChangeGender={(e) =>
+                                  handleChangeGender(e, i)
+                                }
+                                handleChangeFirstName={(e) =>
+                                  handleChangeFirstName(e, i)
+                                }
+                                handleChangeLastName={(e) =>
+                                  handleChangeLastName(e, i)
+                                }
+                                handleChangeBirtday={handleChangeBirtday}
+                                handleChangePassport={(e) =>
+                                  handleChangePassport(e, i)
+                                }
+                                handleChangeNationality={(e) =>
+                                  handleChangeNationality(e, i)
+                                }
+                                handleChangeSpecialRequest={(e) =>
+                                  handleChangeSpecialRequest(e, i)
+                                }
+                                handleChangeContactNumber={(e) =>
+                                  handleChangeContactNumber(e, i)
+                                }
+                                dateFormat={dateFormat}
+                                options={options}
+                                value={value}
+                                pay={() => clik(i)}
                               />
                             </div>
                           ))}
+                        </>
+                      ) : (
+                        <>
+                          {penumpang.map((item, i) => (
+                            <div key={i}>
+                              <ComponentFormTransaction
+                                penumpang={`Penumpang ${i + 1}`}
+                                handleChangeUserTitle={(e) =>
+                                  handleChangeUserTitle(e, i)
+                                }
+                                handleChangeCategory={(e) =>
+                                  handleChangeCategory(e, i)
+                                }
+                                handleChangeGender={(e) =>
+                                  handleChangeGender(e, i)
+                                }
+                                handleChangeFirstName={(e) =>
+                                  handleChangeFirstName(e, i)
+                                }
+                                handleChangeLastName={(e) =>
+                                  handleChangeLastName(e, i)
+                                }
+                                handleChangeBirtday={handleChangeBirtday}
+                                handleChangePassport={(e) =>
+                                  handleChangePassport(e, i)
+                                }
+                                handleChangeNationality={(e) =>
+                                  handleChangeNationality(e, i)
+                                }
+                                handleChangeSpecialRequest={(e) =>
+                                  handleChangeSpecialRequest(e, i)
+                                }
+                                handleChangeContactNumber={(e) =>
+                                  handleChangeContactNumber(e, i)
+                                }
+                                dateFormat={dateFormat}
+                                options={options}
+                                value={value}
+                                pay={() => clik(i)}
+                              />
+                            </div>
+                          ))}
+                        </>
+                      )}
+
+                      <div className="parent-c w-full bg-brand-nude p-6 mt-6 rounded-md border-2 border-brand-black">
+                        <div className="left-header">
+                          <span>
+                            <UnorderedListOutlined />
+                          </span>
+                          <h3>Extra Fasilitas</h3>
+                        </div>
+                        <div className="flex flex-col justify-between  mb-4 gap-1">
+                          <div className="flex h-fit items-center mb-4 gap-4">
+                            <span>
+                              <ShoppingOutlined />
+                            </span>
+                            <h3 className="text-[20px] mt-2">Bagasi</h3>
+                          </div>
+                          <div className="flex w-full gap-2 flex-col">
+                            {passNum.map((item, i) => (
+                              <div className="flex flex-col gap-2">
+                                <p>Penumpang {i + 1}</p>
+                                <Luggages
+                                  handleChange={(e) => handleChangeBag1(e, i)}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="flex justify-start items-center mb-4 gap-4">
+                          <span>
+                            <ShoppingOutlined />
+                          </span>
+                          <h3
+                            onClick={showModalSeat}
+                            className="text-[20px] mt-2 cursor-pointer"
+                          >
+                            Seats
+                          </h3>
+                          <ModalSeatEconomy
+                            isModalOpen={isModalSeatOpen}
+                            handleCancel={handleCancelSeat}
+                            numberSeat={seatNumber()}
+                          />
                         </div>
                       </div>
-                      <div className="flex justify-start items-center mb-4 gap-4">
-                        <span>
-                          <ShoppingOutlined />
-                        </span>
-                        <h3
-                          onClick={showModalSeat}
-                          className="text-[20px] mt-2 cursor-pointer"
-                        >
-                          Seats
-                        </h3>
-                        <ModalSeatEconomy
-                          isModalOpen={isModalSeatOpen}
-                          handleCancel={handleCancelSeat}
-                          numberSeat={seatNumber()}
-                        />
-                      </div>
+                      <ModalMethodPayment
+                        showModalBayar={showModalBayar}
+                        dana={dana}
+                        isModalBayarOpen={isModalBayarOpen}
+                        handleBayarOk={handleBayarOk}
+                        handleBayarCancel={handleBayarCancel}
+                      />
                     </div>
-                    <ModalMethodPayment
-                      showModalBayar={showModalBayar}
-                      dana={dana}
-                      isModalBayarOpen={isModalBayarOpen}
-                      handleBayarOk={handleBayarOk}
-                      handleBayarCancel={handleBayarCancel}
+                    <DetailPayment
+                      showModal={showModal}
+                      isModalOpen={isModalOpen}
+                      handleCancel={handleCancel}
+                      handleOk={handleOk}
+                      harga={harga()}
                     />
                   </div>
-                  <DetailPayment
-                    showModal={showModal}
-                    isModalOpen={isModalOpen}
-                    handleCancel={handleCancel}
-                    handleOk={handleOk}
-                    harga={harga()}
-                  />
-                </div>
                 </div>
               </div>
               <Footer />

@@ -48,17 +48,17 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 };
 
 export default function TransactionBusinessReturn() {
-  const { luggagesPlane } = useSelector((state) => state.luggagePlane);
+
   const { SeatsPlaneCount } = useSelector((state) => state.seatsPlaneCount);
-  const { category } = useSelector((state) => state.category);
+
   const { users } = useSelector((state) => state.getUser);
   const { Price } = useSelector((state) => state.getPrice);
 
   const navigate = useNavigate();
 
   const [passenger, setPassenger] = useState("");
-  const [classFlight, setClassFlight] = useState("");
-  const [departFlight, setDepart] = useState([]);
+
+ 
   const [token, setToken] = useState(false);
   const [returnFlight, setReturn] = useState([]);
 
@@ -1089,9 +1089,9 @@ export default function TransactionBusinessReturn() {
     const returnFl = JSON.parse(localStorage.getItem("return"));
     const tokenn = localStorage.getItem("token");
     setPassenger(countPass.adults + countPass.child + countPass.infant);
-    setClassFlight(JSON.parse(localStorage.getItem("class")));
+  
     setToken(tokenn)
-    setDepart(departFl);
+
     setReturn(returnFl);
 
     dispatch(loadCategory());

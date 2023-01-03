@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
-import CardResultBooking from "../Bookking/CardResultBooking";
 import { useEffect } from "react";
 import ButtonFindFlight from "../Reusable/ButtonFindFlight";
 import { useNavigate, useParams } from "react-router-dom";

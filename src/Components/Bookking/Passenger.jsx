@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, Radio, Space, Button } from "antd";
+import { Input, Radio, Space, Button } from "antd";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 
 export default function Passenger() {
@@ -7,7 +7,6 @@ export default function Passenger() {
   const [adults, setAdults] = useState(1);
   const [childs, setChilds] = useState(0);
   const [infants, setInfants] = useState(0);
-  const [adultsArray, setAdultsArray] = useState();
 
   const [seats, setSeats] = useState("Economy");
 
@@ -24,7 +23,7 @@ export default function Passenger() {
     } else {
       value = adults;
     }
-  
+
     setAdults(value + 1);
 
     let valueChild = 6;
@@ -111,19 +110,18 @@ export default function Passenger() {
     localStorage.setItem("class", JSON.stringify(classes));
     setPasenger(false);
   };
-  useEffect(()=>{
-    let passangers={
-      adults:adults,
+  useEffect(() => {
+    let passangers = {
+      adults: adults,
       child: childs,
       infant: infants,
-    }
+    };
     let classes = {
       class: seats,
     };
     localStorage.setItem("passanger", JSON.stringify(passangers));
     localStorage.setItem("class", JSON.stringify(classes));
-
-  },[])
+  }, []);
 
   return (
     <>
