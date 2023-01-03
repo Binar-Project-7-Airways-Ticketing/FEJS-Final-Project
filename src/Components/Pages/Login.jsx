@@ -154,11 +154,11 @@ export const Login = () => {
                                         : <></>
                                 }
                             </div>
-                            <button onClick={() => { loginHandler() }} type="submit">LOGIN</button>
+                            <button data-testId="test-button" onClick={() => { loginHandler() }} type="submit">LOGIN</button>
                             <a href="#">
                                 Forgot your credentials?
                             </a>
-                            <button type="submit">LOGIN With GOOGLE</button>
+                            
                         </div>
                     </div>
                     <div className="login-container-right">
