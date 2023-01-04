@@ -56,6 +56,7 @@ export default function TransactionEconomy() {
 
   const navigate = useNavigate();
 
+  const [guest, setGuest]=useState(null)
   const [showReturnnEconomy, setShowReturnEconomy] = useState(false);
   const [showReturnnBusiness, setShowReturnBusiness] = useState(false);
   const [passenger, setPassenger] = useState("");
@@ -249,9 +250,9 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
-
+      // console.log(booking);
       dispatch(createBookingDepart(booking));
     }
     if (passenger === 2) {
@@ -302,7 +303,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
 
       dispatch(createBookingDepart(booking));
@@ -373,7 +374,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -462,7 +463,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -570,7 +571,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -697,7 +698,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -843,7 +844,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -856,7 +857,7 @@ export default function TransactionEconomy() {
         setOneWay(false);
       }
     } else {
-      navigate("/ticket");
+      localStorage.removeItem("go")
       localStorage.removeItem("page");
       localStorage.removeItem("number");
       localStorage.removeItem("cityTo");
@@ -949,7 +950,7 @@ export default function TransactionEconomy() {
     setIsModalBayarOpen(true);
   };
 
-  const clik = (i) => {
+  const clik = (i) => {  
     let passenger = {
       titleUser,
       ageCategory,
@@ -962,6 +963,24 @@ export default function TransactionEconomy() {
       specialRequest,
       passport,
     };
+    let guest = {
+      id: 1,
+      displayName: null,
+      firstName: "Fathan",
+      lastName: "Azka",
+      gender: "PRIA",
+      birthday: "06/01/2002",
+      email: "fathanaz@gmail.com",
+      password: "$2a$10$4Xsnsij0ribwPVDVC7x21eF7dQ7Oq/N/UjspmI.hKN1JpQLcpG3/2",
+      lastLoginDate: null,
+      pictureUrl: "http://res.cloudinary.com/dwncupcal/image/upload/d01b3e62-7fbc-4c1e-a5f2-aaf59a06f529",
+      role: {
+        id: 1,
+        roleStatus: "USER_ROLE"
+      },
+      updatedAt: "2022-12-22T06:38:22.965+00:00",
+      active: true
+    }
 
     if (!titleUser) {
       alert("harus ada title");
@@ -1009,6 +1028,7 @@ export default function TransactionEconomy() {
     }
 
     if (i === 0) {
+      setGuest(guest)
       setPassenger1(passenger);
     }
     if (i === 1) {
@@ -1333,6 +1353,7 @@ export default function TransactionEconomy() {
                       harga={harga()}
                     />
                   </div>
+                  
                 </div>
               </div>
               <Footer />

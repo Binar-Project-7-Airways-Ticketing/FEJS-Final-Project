@@ -197,7 +197,7 @@ export const Profile = (setIsLogin) => {
                         value={registerFirstName}
                       />
                       <span className="material-symbols-outlined">
-                        <UserOutlined />
+                        <UserOutlined style={{ color: '#F2EFEA' }} />
                       </span>
                     </div>
                     <div className="textbox ">
@@ -210,7 +210,7 @@ export const Profile = (setIsLogin) => {
                         value={registerLastname}
                       />
                       <span className="material-symbols-outlined">
-                        <UserOutlined />
+                        <UserOutlined style={{ color: '#F2EFEA' }} />
                       </span>
                     </div>
                     <div className="textbox ">
@@ -223,7 +223,7 @@ export const Profile = (setIsLogin) => {
                         value={registerEmail}
                       />
                       <span className="material-symbols-outlined">
-                        <MailOutlined />
+                        <MailOutlined style={{ color: '#F2EFEA' }} />
                       </span>
                     </div>
                     {!isEmailValid ? <span className="text-red-500">email tidak valid</span> : <></>}
@@ -232,7 +232,7 @@ export const Profile = (setIsLogin) => {
                   <div className="textbox ">
                     <input type="date" onChange={(event) => setRegisterBirth(event.target.value)} placeholder="Date of Birth" value={registerBirth} />
                     <span className="material-symbols-outlined">
-                      <CalendarOutlined />
+                      <CalendarOutlined style={{ color: '#F2EFEA' }} />
                     </span>
                   </div>
 
@@ -262,7 +262,7 @@ export const Profile = (setIsLogin) => {
                       )}
                     </select>
                     <span className="material-symbols-outlined">
-                      <UserOutlined />
+                      <UserOutlined style={{ color: '#F2EFEA' }} />
                     </span>
                   </div>
                   <button
