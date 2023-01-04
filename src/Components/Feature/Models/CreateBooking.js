@@ -11,7 +11,6 @@ const initialState = {
 export const createBookingDepart = createAsyncThunk(
   "Booking/createBooking",
   async (Bookings) => {
-
     try {
       const Booking = await axios.post(
         `${authConfig.baseUrl}/api/booking/create/`,
