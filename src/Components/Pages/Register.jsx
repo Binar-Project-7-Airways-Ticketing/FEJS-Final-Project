@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getRegister } from "../Feature/Models/AuthRegister";
 import { unwrapResult } from "@reduxjs/toolkit";
+import moment from "moment";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import "dayjs/locale/zh-cn";
@@ -24,7 +25,7 @@ const dateFormatList = ["MM/DD/YYYY", "MM/DD/YY"];
 export const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const{authRegister} = useSelector((state)=>state.authRegister)
+  const { authRegister } = useSelector((state) => state.authRegister)
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [passwordErrors, setIsPasswordErrors] = useState([]);
@@ -116,10 +117,10 @@ export const Register = () => {
         password: registerPassword,
         firstname: registerFirstName,
         lastname: registerLastname,
-        birthday: registerBirth,
+        birthday:  moment(registerBirth).format("MM/DD/YYYY"),
         gender: registerGender,
       })
-  
+
     );
 
     const results = unwrapResult(resultsActions);
@@ -248,7 +249,7 @@ export const Register = () => {
                   <></>
                 )}
               </div>
-              <div className="textbox">
+              {/* <div className="textbox">
                 <input
                   onChange={(event) => {
                     setRegisterBirth(event.target.value);
@@ -258,6 +259,12 @@ export const Register = () => {
                 />
                 <span className="material-symbols-outlined">
                   <CalendarOutlined style={{ color: "#F2EFEA" }} />
+                </span>
+              </div> */}
+              <div className="textbox ">
+                <input type="date" onChange={(event) => setRegisterBirth(event.target.value)} placeholder="Date of Birth" value={registerBirth} />
+                <span className="material-symbols-outlined">
+                  <CalendarOutlined style={{ color: '#F2EFEA' }} />
                 </span>
               </div>
               <div className="textbox-select">
