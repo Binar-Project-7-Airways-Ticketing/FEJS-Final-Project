@@ -356,8 +356,9 @@ export const Profile = (setIsLogin) => {
                       <span class="sr-only">Choose profile photo</span>
                       <input
                         type="file"
-                        onChange={(e) => {
-                          uploadImage(e);
+                        onChange={(e) =>  {
+                          uploadImage(e)
+                          window.location.reload(true)
                         }}
                         class="block w-full text-sm text-slate-500
       file:mr-4 file:py-2 file:px-4
