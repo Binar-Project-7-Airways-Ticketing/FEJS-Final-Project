@@ -839,6 +839,7 @@ export default function TransactionEconomyReturn() {
     }
 
     navigate("/ticket");
+    localStorage.removeItem("go")
     localStorage.removeItem("page");
     localStorage.removeItem("number");
     localStorage.removeItem("page1");

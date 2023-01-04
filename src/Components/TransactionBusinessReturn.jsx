@@ -840,6 +840,7 @@ export default function TransactionBusinessReturn() {
     dispatch(createBookingReturn(booking));
     }
     navigate("/ticket");
+    localStorage.removeItem("go")
     localStorage.removeItem("page");
     localStorage.removeItem("number");
     localStorage.removeItem("page1");

@@ -61,7 +61,7 @@ export default function TransactionBusiness() {
 
   const [departFlight, setDepart] = useState([]);
   const [token, setToken] = useState(false);
-
+  const [guest, setGuest]=useState(null)
   const [showReturnnEconomy, setShowReturnEconomy] = useState(false);
   const [showReturnnBusiness, setShowReturnBusiness] = useState(false);
   const [value, setValue] = useState("");
@@ -247,7 +247,7 @@ export default function TransactionBusiness() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -298,7 +298,7 @@ export default function TransactionBusiness() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -368,7 +368,7 @@ export default function TransactionBusiness() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -457,7 +457,7 @@ export default function TransactionBusiness() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -565,7 +565,7 @@ export default function TransactionBusiness() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -692,7 +692,7 @@ export default function TransactionBusiness() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -838,7 +838,7 @@ export default function TransactionBusiness() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -852,6 +852,7 @@ export default function TransactionBusiness() {
       }
     } else {
       navigate("/ticket");
+      localStorage.removeItem('go')
       localStorage.removeItem("page");
       localStorage.removeItem("number");
       localStorage.removeItem("cityTo");
@@ -943,6 +944,10 @@ export default function TransactionBusiness() {
     setIsModalBayarOpen(true);
   };
   const clik = (i) => {
+    let randomEmailGuest = require('random-email')
+    let randomPasswordGuest = require('secure-random-password');
+    
+   
     let passenger = {
       titleUser,
       ageCategory,
@@ -955,6 +960,15 @@ export default function TransactionBusiness() {
       specialRequest,
       passport,
     };
+    let guest = {
+      displayName: firstName +" "+ lastName,
+      gender,
+      firstName,
+      lastName,
+      birthday,
+      email: randomEmailGuest({ domain: 'example.com' }),
+      password: randomPasswordGuest.randomPassword()
+    }
 
     if (!titleUser) {
       alert("harus ada title");
@@ -1002,6 +1016,7 @@ export default function TransactionBusiness() {
     }
 
     if (i === 0) {
+      setGuest(guest)
       setPassenger1(passenger);
     }
     if (i === 1) {

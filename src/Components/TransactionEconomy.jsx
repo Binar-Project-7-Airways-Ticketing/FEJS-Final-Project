@@ -56,6 +56,7 @@ export default function TransactionEconomy() {
 
   const navigate = useNavigate();
 
+  const [guest, setGuest]=useState(null)
   const [showReturnnEconomy, setShowReturnEconomy] = useState(false);
   const [showReturnnBusiness, setShowReturnBusiness] = useState(false);
   const [passenger, setPassenger] = useState("");
@@ -249,9 +250,9 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
-
+      // console.log(booking);
       dispatch(createBookingDepart(booking));
     }
     if (passenger === 2) {
@@ -302,7 +303,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
 
       dispatch(createBookingDepart(booking));
@@ -373,7 +374,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -462,7 +463,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -570,7 +571,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -697,7 +698,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -843,7 +844,7 @@ export default function TransactionEconomy() {
         payment: {
           paymentMethod: "BRI",
         },
-        user: token ? users : null,
+        user: token ? users : guest,
       };
       dispatch(createBookingDepart(booking));
     }
@@ -856,7 +857,7 @@ export default function TransactionEconomy() {
         setOneWay(false);
       }
     } else {
-      navigate("/ticket");
+      localStorage.removeItem("go")
       localStorage.removeItem("page");
       localStorage.removeItem("number");
       localStorage.removeItem("cityTo");
@@ -950,6 +951,11 @@ export default function TransactionEconomy() {
   };
 
   const clik = (i) => {
+
+    let randomEmailGuest = require('random-email')
+    let randomPasswordGuest = require('secure-random-password');
+    
+   
     let passenger = {
       titleUser,
       ageCategory,
@@ -962,6 +968,15 @@ export default function TransactionEconomy() {
       specialRequest,
       passport,
     };
+    let guest = {
+      displayName: firstName +" "+ lastName,
+      gender,
+      firstName,
+      lastName,
+      birthday,
+      email: randomEmailGuest({ domain: 'example.com' }),
+      password: randomPasswordGuest.randomPassword()
+    }
 
     if (!titleUser) {
       alert("harus ada title");
@@ -1009,6 +1024,7 @@ export default function TransactionEconomy() {
     }
 
     if (i === 0) {
+      setGuest(guest)
       setPassenger1(passenger);
     }
     if (i === 1) {
@@ -1333,6 +1349,7 @@ export default function TransactionEconomy() {
                       harga={harga()}
                     />
                   </div>
+                  
                 </div>
               </div>
               <Footer />
