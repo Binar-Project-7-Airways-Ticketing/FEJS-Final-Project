@@ -4,7 +4,7 @@ import { BsCircle } from "react-icons/bs";
 import { Modal } from "antd";
 
 function Histories({ histories }) {
-  console.log(histories);
+ 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -29,13 +29,13 @@ function Histories({ histories }) {
 
       {histories.map((item) => (
         <div key={item.idBooking}>
-          <p>{console.log(item)}</p>
+         
           {item.map((data) => (
             <>
-              <p>{console.log(data)}</p>
+             
               {data.bookingDetails.map((details) => (
                 <>
-                  <p>{console.log(details)}</p>
+                  
                   <div className="detail-booking">
                     <div className="wrap-input">
                       <div className="input">
@@ -82,7 +82,7 @@ function Histories({ histories }) {
                               </div>
                               <div className="wrap-logo">
                                 <img
-                                alt=""
+                                  alt=""
                                   src={logo}
                                   style={{
                                     width: "90px",
