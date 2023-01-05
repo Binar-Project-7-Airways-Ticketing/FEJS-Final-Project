@@ -85,7 +85,7 @@ export default function Book() {
           <div className="flex items-center w-full h-full justify-start bg-brand-yellow rounded-t-3xl gap-3.5 text-brand-whiteLight px-3 text-xl py-2">
             <SlPlane size={35} />
             <h5 className="sm:text-base sm:font-bold">
-              Cari tiket murah...? buruan cek disini...!
+              Cari tiket murah? buruan cek disini!
             </h5>
           </div>
         </div>
