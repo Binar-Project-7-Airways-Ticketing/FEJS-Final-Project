@@ -4,14 +4,13 @@ import TransactionEconomy from "./TransactionEconomy";
 import TransactionReturn from "./TransactionReturn";
 
 export default function Transaction() {
-  const [classFlight, setClassFlight] = useState("");
+
   const [depart, setClassDepart] = useState(false);
   const [returnn, setClassReturn] = useState(false);
 
   useEffect(() => {
     setClassDepart(JSON.parse(localStorage.getItem("classDepart")));
     setClassReturn(JSON.parse(localStorage.getItem("classReturn")));
-    setClassFlight(JSON.parse(localStorage.getItem("class")));
   }, []);
 
   return (
@@ -22,8 +21,8 @@ export default function Transaction() {
         </>
       ) : (
         <>
-          {classFlight.class === "BUSINESS" ? <TransactionBusiness /> : null}
-          {classFlight.class === "ECONOMY" ? <TransactionEconomy /> : null}
+          {depart.class === "BUSINESS" ? <TransactionBusiness /> : null}
+          {depart.class === "ECONOMY" ? <TransactionEconomy /> : null}
         </>
       )}
     </React.Fragment>

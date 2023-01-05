@@ -249,7 +249,6 @@ export default function TransactionBusiness() {
         },
         user: token ? users : guest,
       };
-      // console.log(booking);
       dispatch(createBookingDepart(booking));
     }
     if (passenger === 2) {

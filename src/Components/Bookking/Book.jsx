@@ -74,6 +74,7 @@ export default function Book() {
     setTrip(e.target.value);
   };
   useEffect(() => {
+    localStorage.removeItem("go")
     dispatch(loadAirports());
   }, []);
 
