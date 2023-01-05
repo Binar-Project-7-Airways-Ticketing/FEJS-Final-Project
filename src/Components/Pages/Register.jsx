@@ -134,7 +134,6 @@ export const Register = () => {
         category: "",
       };
       dispatch(createNotif(notif));
-      alert("REGISTER BERHASIL");
     }
   };
 
