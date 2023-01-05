@@ -68,7 +68,7 @@ export default function CardResultBookingOneWay() {
       setEconomy(idFlight);
     }
 
-    localStorage.setItem("class", JSON.stringify(Class));
+    localStorage.setItem("classDepart", JSON.stringify(Class));
     setPricTotal(true);
     dispatch(loadSeatsIdPlaneCount(idPlane));
 

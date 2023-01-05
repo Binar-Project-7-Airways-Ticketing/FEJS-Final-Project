@@ -1211,6 +1211,7 @@ export default function TransactionEconomy() {
                           {penumpang.map((item, i) => (
                             <div key={i}>
                               <ComponentFormTransaction
+                              penumpang={`Penumpang ${i + 1}`}
                                 handleChangeUserTitle={(e) =>
                                   handleChangeUserTitle(e, i)
                                 }

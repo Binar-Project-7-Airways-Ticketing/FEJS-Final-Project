@@ -103,11 +103,8 @@ export default function Passenger() {
       child: childs,
       infant: infants,
     };
-    let classes = {
-      class: seats,
-    };
+ 
     localStorage.setItem("passanger", JSON.stringify(passangers));
-    localStorage.setItem("class", JSON.stringify(classes));
     setPasenger(false);
   };
   useEffect(() => {
@@ -116,11 +113,8 @@ export default function Passenger() {
       child: childs,
       infant: infants,
     };
-    let classes = {
-      class: seats,
-    };
     localStorage.setItem("passanger", JSON.stringify(passangers));
-    localStorage.setItem("class", JSON.stringify(classes));
+
   }, []);
 
   return (
@@ -129,10 +123,10 @@ export default function Passenger() {
         <>
           <div
             onClick={handlePassengerClose}
-            className="flex flex-col rounded-lg h-14 w-full gap-2 p-2"
+            className="flex flex-col  rounded-lg h-14 w-full gap-3 p-2"
           >
-            <h6 style={{ fontSize: "15px" }} onClick={handlePassengerClose}>
-              Class {seats}
+            <h6 style={{ fontSize: "14px" }} onClick={handlePassengerClose}>
+          Passenger
             </h6>
             <div className="flex gap-4 items-center">
               <BsFillPersonPlusFill size={28} color="#CBA052" />
@@ -235,18 +229,7 @@ export default function Passenger() {
                   </div>
                 </div>
               </div>
-              <div className="wrap-class">
-                <div>
-                  <p style={{ fontWeight: "700" }}>Class</p>
-                </div>
-
-                <Radio.Group onChange={onChange} value={seats}>
-                  <Space>
-                    <Radio value={"Economy"}>Economy</Radio>
-                    <Radio value={"Business"}>Business</Radio>.
-                  </Space>
-                </Radio.Group>
-              </div>
+      
               <Button
                 onClick={() => handlePassengerClass()}
                 className="confirm-passenger-class"
@@ -261,7 +244,7 @@ export default function Passenger() {
           onClick={handlePassenger}
           className="flex flex-col relative rounded-lg h-fit w-full gap-3 pl-3 sm:p-2"
         >
-          <h6 className="sm:text-sm">Passenger/Class</h6>
+          <h6 className="sm:text-sm">Passenger</h6>
           <div className="flex gap-4 items-center ">
             <BsFillPersonPlusFill size={28} color="#CBA052" />
             <p>
