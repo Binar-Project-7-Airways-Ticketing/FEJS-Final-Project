@@ -44,7 +44,7 @@ export default function Ticket() {
     if (ticketDepart === null) {
       setTimeout(function () {
         window.location.reload(1);
-      }, 500);
+      }, 1000);
     }
     setShowTiket(true);
   }, [ticketDepart]);
