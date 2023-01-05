@@ -88,8 +88,6 @@ export const Profile = (setIsLogin) => {
     setIsPasswordValid(validate);
   }, [registerPassword]);
 
- 
-
   // Update user profile
   const handleUpdateProfile = () => {
     const data = {
@@ -109,6 +107,9 @@ export const Profile = (setIsLogin) => {
       .catch((error) => {
         console.log(error);
       });
+      setTimeout(function () {
+        window.location.reload(1);
+      }, 500);
   };
 
   const handlePassword = () => {
@@ -167,6 +168,9 @@ export const Profile = (setIsLogin) => {
 
     data.append("image", file);
     axios.post(authConfig.baseUrl + "/api/user/upload/" + userId, data).then((response) => {});
+    setTimeout(function () {
+      window.location.reload(1);
+    }, 500);
   };
 
   useEffect(() => {
@@ -197,7 +201,7 @@ export const Profile = (setIsLogin) => {
                         value={registerFirstName}
                       />
                       <span className="material-symbols-outlined">
-                        <UserOutlined style={{ color: '#F2EFEA' }} />
+                        <UserOutlined style={{ color: "#F2EFEA" }} />
                       </span>
                     </div>
                     <div className="textbox ">
@@ -210,7 +214,7 @@ export const Profile = (setIsLogin) => {
                         value={registerLastname}
                       />
                       <span className="material-symbols-outlined">
-                        <UserOutlined style={{ color: '#F2EFEA' }} />
+                        <UserOutlined style={{ color: "#F2EFEA" }} />
                       </span>
                     </div>
                     <div className="textbox ">
@@ -223,7 +227,7 @@ export const Profile = (setIsLogin) => {
                         value={registerEmail}
                       />
                       <span className="material-symbols-outlined">
-                        <MailOutlined style={{ color: '#F2EFEA' }} />
+                        <MailOutlined style={{ color: "#F2EFEA" }} />
                       </span>
                     </div>
                     {!isEmailValid ? <span className="text-red-500">email tidak valid</span> : <></>}
@@ -232,7 +236,7 @@ export const Profile = (setIsLogin) => {
                   <div className="textbox ">
                     <input type="date" onChange={(event) => setRegisterBirth(event.target.value)} placeholder="Date of Birth" value={registerBirth} />
                     <span className="material-symbols-outlined">
-                      <CalendarOutlined style={{ color: '#F2EFEA' }} />
+                      <CalendarOutlined style={{ color: "#F2EFEA" }} />
                     </span>
                   </div>
 
@@ -262,12 +266,13 @@ export const Profile = (setIsLogin) => {
                       )}
                     </select>
                     <span className="material-symbols-outlined">
-                      <UserOutlined style={{ color: '#F2EFEA' }} />
+                      <UserOutlined style={{ color: "#F2EFEA" }} />
                     </span>
                   </div>
                   <button
                     onClick={() => {
                       handleUpdateProfile();
+                      
                     }}
                   >
                     Update
@@ -358,6 +363,7 @@ export const Profile = (setIsLogin) => {
                         type="file"
                         onChange={(e) => {
                           uploadImage(e);
+                          
                         }}
                         class="block w-full text-sm text-slate-500
       file:mr-4 file:py-2 file:px-4

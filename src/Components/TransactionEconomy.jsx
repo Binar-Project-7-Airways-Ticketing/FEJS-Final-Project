@@ -857,6 +857,7 @@ export default function TransactionEconomy() {
         setOneWay(false);
       }
     } else {
+      navigate("/ticket");
       localStorage.removeItem("go")
       localStorage.removeItem("page");
       localStorage.removeItem("number");
