@@ -170,7 +170,7 @@ export const Profile = (setIsLogin) => {
     axios.post(authConfig.baseUrl + "/api/user/upload/" + userId, data).then((response) => {});
     setTimeout(function () {
       window.location.reload(1);
-    }, 500);
+    }, 1000);
   };
 
   useEffect(() => {
