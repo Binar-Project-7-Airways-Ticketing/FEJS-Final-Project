@@ -1022,11 +1022,6 @@ export default function TransactionEconomy() {
       return;
     }
 
-    if (!passport) {
-      alert("harus ada passport");
-      return;
-    }
-
     if (i === 0) {
       setGuest(guest)
       setPassenger1(passenger);
