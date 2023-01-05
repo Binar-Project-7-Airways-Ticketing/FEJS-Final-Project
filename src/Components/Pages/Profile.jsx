@@ -109,7 +109,7 @@ export const Profile = (setIsLogin) => {
       });
       setTimeout(function () {
         window.location.reload(1);
-      }, 800);
+      }, 1000);
   };
 
   const handlePassword = () => {
