@@ -21,6 +21,7 @@ export const Profile = (setIsLogin) => {
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [passwordErrors, setIsPasswordErrors] = useState([]);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [registerDisplayName, setRegisterDisplayName] = useState(undefined);
   const [histories, setHistories] = useState([]);
   const [registerFirstName, setRegisterFirstName] = useState("");
   const [registerLastname, setRegisterLastName] = useState("");
@@ -29,6 +30,7 @@ export const Profile = (setIsLogin) => {
   const [registerBirth, setRegisterBirth] = useState("");
   const [registerGender, setRegisterGender] = useState("");
   const [registerProfilePhoto, setRegisterProfilePhoto] = useState("");
+  const [pict, setPict] = useState(true);
   const navigate = useNavigate();
   const [changePass, setChangePass] = useState(false);
 
@@ -49,6 +51,7 @@ export const Profile = (setIsLogin) => {
   }, [navigate]);
 
   let userId = localStorage.getItem("id");
+
   // userId = userId ? JSON.parse(userId).id : 1;
 
   function validatePassword() {
@@ -101,14 +104,18 @@ export const Profile = (setIsLogin) => {
     const data = {
       firstName: registerFirstName,
       lastName: registerLastname,
-      displayName: registerFirstName,
+      displayName: registerDisplayName,
       gender: registerGender,
       birthday: moment(registerBirth).format("MM/DD/YYYY"),
       email: registerEmail,
     };
 
     axios
-      .put(authConfig.baseUrl + "/api/user/update/" + userId, data)
+      .put(
+        authConfig.baseUrl + "/api/user/update/" + userId,
+
+        { ...data }
+      )
       .then((response) => {
         alert("BERHASIL UPDATE");
       })
@@ -146,6 +153,7 @@ export const Profile = (setIsLogin) => {
     let user = axios
       .get(authConfig.baseUrl + "/api/user/" + userId)
       .then((response) => {
+        setRegisterDisplayName(response.data.displayName);
         setRegisterFirstName(response.data.firstName);
         setRegisterEmail(response.data.email);
         setRegisterLastName(response.data.lastName);
@@ -185,12 +193,16 @@ export const Profile = (setIsLogin) => {
     setRegisterProfilePhoto(URL.createObjectURL(file));
 
     data.append("image", file);
-    axios
+   
+
+    if (e) {
+      axios
       .post(authConfig.baseUrl + "/api/user/upload/" + userId, data)
       .then((response) => {});
-    setTimeout(function () {
-      window.location.reload(1);
-    }, 1000);
+      setTimeout(function () {
+        window.location.reload(1);
+      }, 1000);
+    }
   };
 
   useEffect(() => {
@@ -280,22 +292,26 @@ export const Profile = (setIsLogin) => {
                     Gender
                   </option> */}
 
-                      {registerGender === "WANITA" ? (
-                        <option selected className="text-black" value="Wanita">
-                          Wanita
+                      {registerGender === "PEREMPUAN" ? (
+                        <option
+                          selected
+                          className="text-black"
+                          value="PEREMPUAN"
+                        >
+                          PEREMPUAN
                         </option>
                       ) : (
-                        <option className="text-black" value="Pria">
-                          Wanita
+                        <option className="text-black" value="PEREMPUAN">
+                          PEREMPUAN
                         </option>
                       )}
                       {registerGender === "PRIA" ? (
-                        <option selected className="text-black" value="Wanita">
-                          Pria
+                        <option selected className="text-black" value="PRIA">
+                          PRIA
                         </option>
                       ) : (
-                        <option className="text-black" value="Pria">
-                          Pria
+                        <option className="text-black" value="PRIA">
+                          PRIA
                         </option>
                       )}
                     </select>
