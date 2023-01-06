@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { UserOutlined, LockOutlined, MailOutlined, CalendarOutlined, EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  LockOutlined,
+  MailOutlined,
+  CalendarOutlined,
+  EyeInvisibleOutlined,
+  EyeOutlined,
+} from "@ant-design/icons";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
@@ -77,7 +84,8 @@ export const Profile = (setIsLogin) => {
   }
 
   useEffect(() => {
-    const emailRegexp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    const emailRegexp =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     if (registerEmail) {
       setIsEmailValid(emailRegexp.test(registerEmail));
     }
@@ -107,9 +115,9 @@ export const Profile = (setIsLogin) => {
       .catch((error) => {
         console.log(error);
       });
-      setTimeout(function () {
-        window.location.reload(1);
-      }, 200);
+    setTimeout(function () {
+      window.location.reload(1);
+    }, 200);
   };
 
   const handlePassword = () => {
@@ -120,7 +128,10 @@ export const Profile = (setIsLogin) => {
       alert("Password Tidak Boleh Kosong");
     } else {
       axios
-        .put(authConfig.baseUrl + "/api/user/update/password/" + userId, password)
+        .put(
+          authConfig.baseUrl + "/api/user/update/password/" + userId,
+          password
+        )
         .then((response) => {
           alert("BERHASIL UPDATE");
         })
@@ -132,14 +143,21 @@ export const Profile = (setIsLogin) => {
 
   // Get data user
   const getUserIdentity = () => {
-    axios.get(authConfig.baseUrl + "/api/user/" + userId).then((response) => {
-      setRegisterFirstName(response.data.firstName);
-      setRegisterEmail(response.data.email);
-      setRegisterLastName(response.data.lastName);
-      setRegisterGender(response.data.gender);
-      setRegisterBirth(moment(response.data.birthday).format("YYYY-MM-DD"));
-      setRegisterProfilePhoto(response.data.pictureUrl);
-    });
+    let user = axios
+      .get(authConfig.baseUrl + "/api/user/" + userId)
+      .then((response) => {
+        setRegisterFirstName(response.data.firstName);
+        setRegisterEmail(response.data.email);
+        setRegisterLastName(response.data.lastName);
+        setRegisterGender(response.data.gender);
+        setRegisterBirth(moment(response.data.birthday).format("YYYY-MM-DD"));
+        setRegisterProfilePhoto(response.data.pictureUrl);
+      });
+    if (!user) {
+      setTimeout(function () {
+        window.location.reload(1);
+      }, 200);
+    }
   };
 
   // Get data history travel
@@ -167,7 +185,9 @@ export const Profile = (setIsLogin) => {
     setRegisterProfilePhoto(URL.createObjectURL(file));
 
     data.append("image", file);
-    axios.post(authConfig.baseUrl + "/api/user/upload/" + userId, data).then((response) => {});
+    axios
+      .post(authConfig.baseUrl + "/api/user/upload/" + userId, data)
+      .then((response) => {});
     setTimeout(function () {
       window.location.reload(1);
     }, 1000);
@@ -230,18 +250,32 @@ export const Profile = (setIsLogin) => {
                         <MailOutlined style={{ color: "#F2EFEA" }} />
                       </span>
                     </div>
-                    {!isEmailValid ? <span className="text-red-500">email tidak valid</span> : <></>}
+                    {!isEmailValid ? (
+                      <span className="text-red-500">email tidak valid</span>
+                    ) : (
+                      <></>
+                    )}
                   </div>
 
                   <div className="textbox ">
-                    <input type="date" onChange={(event) => setRegisterBirth(event.target.value)} placeholder="Date of Birth" value={registerBirth} />
+                    <input
+                      type="date"
+                      onChange={(event) => setRegisterBirth(event.target.value)}
+                      placeholder="Date of Birth"
+                      value={registerBirth}
+                    />
                     <span className="material-symbols-outlined">
                       <CalendarOutlined style={{ color: "#F2EFEA" }} />
                     </span>
                   </div>
 
                   <div className="textbox-select ">
-                    <select onChange={(event) => setRegisterGender(event.target.value)} type="text">
+                    <select
+                      onChange={(event) =>
+                        setRegisterGender(event.target.value)
+                      }
+                      type="text"
+                    >
                       {/* <option selected className="text-black">
                     Gender
                   </option> */}
@@ -272,7 +306,6 @@ export const Profile = (setIsLogin) => {
                   <button
                     onClick={() => {
                       handleUpdateProfile();
-                      
                     }}
                   >
                     Update
@@ -309,7 +342,9 @@ export const Profile = (setIsLogin) => {
                       >
                         {isPasswordVisible ? (
                           <>
-                            <EyeInvisibleOutlined style={{ color: "#F2EFEA" }} />
+                            <EyeInvisibleOutlined
+                              style={{ color: "#F2EFEA" }}
+                            />
                           </>
                         ) : (
                           <>
@@ -355,7 +390,11 @@ export const Profile = (setIsLogin) => {
                 <div className="register-account-desc">
                   <form className="block " action="">
                     <div class="shrink-0 ml-24 mb-24">
-                      <img class="h-16 w-16 object-cover rounded-full" src={registerProfilePhoto} alt="Current profile photo" />
+                      <img
+                        class="h-16 w-16 object-cover rounded-full"
+                        src={registerProfilePhoto}
+                        alt="Current profile photo"
+                      />
                     </div>
                     <label class="block">
                       <span class="sr-only">Choose profile photo</span>
@@ -363,7 +402,6 @@ export const Profile = (setIsLogin) => {
                         type="file"
                         onChange={(e) => {
                           uploadImage(e);
-                          
                         }}
                         class="block w-full text-sm text-slate-500
       file:mr-4 file:py-2 file:px-4
