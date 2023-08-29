@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadAirports } from "../Feature/Models/AirportSlice";
 
 export default function FormToFrom(props) {
-  const { airport } = useSelector((state) => state.airport);
+  // const { airport } = useSelector((state) => state.airport);
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadAirports());
-  }, []);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(loadAirports());
+  // }, []);
 
   return (
     <div className="flex xl:gap-3 gap-2 lg:px-0 sm:h-24  lg:border-y-transparent  lg:border-l-transparent lg:rounded-none sm:rounded-lg sm:border sm:border-brand-yellow sm:p-2">
@@ -40,21 +40,22 @@ export default function FormToFrom(props) {
               (option?.city ?? "").toLowerCase().includes(input.toLowerCase())
             }
             onChange={props.handleChange}
-            options={airport.map((item, key) => ({
-              value: item.airportCode,
-              city: item.city,
-              airport: item.airportName,
-              key: item.idAirport,
-              label: (
-                <div className="flex flex-col">
-                  <div className="flex h-full justify-between">
-                    <h6>{item.city}, {item.airportCode}</h6>
-                    {/* <h6>{item.airportCode}</h6> */}
-                  </div>
-                  <p>{item.airportName}</p>
-                </div>
-              ),
-            }))}
+            // options={airport.map((item, key) => ({
+            //   value: item.airportCode,
+            //   city: item.city,
+            //   airport: item.airportName,
+            //   key: item.idAirport,
+            //   label: (
+            //     <div className="flex flex-col">
+            //       <div className="flex h-full justify-between">
+            //         <h6>{item.city}, {item.airportCode}</h6>
+            //         <h6>{item.airportCode}</h6>
+            //       </div>
+            //       <p>{item.airportName}</p>
+            //     </div>
+            //   )
+            //   ,
+            // }))}
           ></Select>
         </Form.Item>
         {/* </div> */}
